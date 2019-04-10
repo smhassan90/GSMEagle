@@ -1,0 +1,73 @@
+<resources>
+    <string name="app_name">MECWheel</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Greenstar Social Marketing</string>
+    <string name="nav_header_subtitle">support.it@greenstar.org.pk</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_mec_wheel">mec_wheel</string>
+    <string name="title_activity_mecwheel_spin">MECWheelSpin</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_counseling_card_description">counseling_card_description</string>
+
+
+    <!-- Card Title and Subtitles -->
+    <string name="subtitle_monthly_injectables">Monthly Injectable</string>
+    <string name="sub_subtitle_monthly_injectables">Combined Injectable\nContraceptives (CICs)</string>
+    <string name="sub_subtitle_harmonal_implants">Hormonal Implants</string>
+
+    <string name="subtitle_emergency_contraceptive_pills">Emergency Contraceptive Pills</string>
+    <string name="sub_subtitle_emergency_contraceptive_pills">ECPs</string>
+
+    <!-- Hard coded text that are same for all counseling cards -->
+    <string name="effectiveness">Effectiveness</string>
+    <string name="typical_use">Typical Usage</string>
+    <string name="correct_use">Correct Use</string>
+    <string name="first_year_use">First year of use</string>
+
+    <!-- Types -->
+    <string name="types_emergency_contraceptive_pills_1">Progestin only</string>
+    <string name="types_emergency_contraceptive_pills_2">Combined progestin and estrogen </string>
+    <string name="types_emergency_contraceptive_pills_3">Ulipristal acetate (UPA)</string>
+
+    <!-- Typical usage description for all cards  -->
+    <string name="typical_usage_description_monthly_injectables">Some missed or late injections – 6 pregnancies per 100 women</string>
+    <string name="typical_usage_description_emergency_contraceptive_pills">Most effective if taken within first 24 hours; can be taken within 5 days of having unprotected sex – 1-2 pregnancies per 100 women after one instance of unprotected sex depending on the ECP</string>
+    <string name="typical_usage_description_harmonal_implants">Less than 1 pregnancy per 100 women</string>
+
+    <!-- Description of Counseling Cards -->
+    <string name="description_monthly_injectables_1">Requires that the client get an injection every 4 weeks (30 days) to prevent pregnancy.</string>
+    <string name="description_monthly_injectables_2">More regular monthly bleeding than with DMPA or NET-EN injectables.</string>
+    <string name="description_monthly_injectables_3">Delayed return of fertility after woman stops method. It takes an average of about 1 month longer than with most other methods. </string>
+    <string name="description_monthly_injectables_4">Not advised if woman is within 21 days of giving birth, regardless of breastfeeding status. </string>
+    <string name="description_monthly_injectables_5">Not advised if woman is breastfeeding an infant less than 6 months old. </string>
+    <string name="description_monthly_injectables_6">Not advised if a woman has migraines and is 35 years or older. </string>
+    <string name="description_monthly_injectables_7">Safe for a woman living with HIV/AIDS, even if she takes antiretroviral (ARV) medicines. </string>
+    <string name="description_monthly_injectables_8">Not advised if woman has a history of breast cancer or if woman has major risk factors for venous cardiovascular disease, including older age, stroke, smoking, diabetes, hypertension or known dyslipidaemia.</string>
+    <string name="description_monthly_injectables_9">Does not protect against sexually transmitted infections (STIs), including HIV. Emphasize the need for dual protection with the client</string>
+
+    <!--Emergency Contraceptive Pills Description -->
+    <string name="description_emergency_contraceptive_pills_1">One of the only methods that can help prevent pregnancy after a woman has had unprotected sex. Other effective emergency contraception includes Copper-bearing or LNG-containing IUDs. .</string>
+    <string name="description_emergency_contraceptive_pills_2">Not recommended for regular use, but there is no harm to the user if used repeatedly. However, a woman using ECPs repeatedly should receive additional family planning counseling in order to select the most appropriate continuous method. .</string>
+    <string name="description_emergency_contraceptive_pills_3">Breastfeeding not recommended for one week after using UPA. </string>
+    <string name="description_emergency_contraceptive_pills_4">Must be used within 5 days (120 hours) of unprotected sex.</string>
+    <string name="description_emergency_contraceptive_pills_5"> Safe for women who cannot use regular hormonal contraceptive methods, including postpartum breastfeeding women.</string>
+    <string name="description_emergency_contraceptive_pills_6">ECPs do not disrupt existing pregnancy.</string>
+    <string name="description_emergency_contraceptive_pills_7">Safe for a woman living with HIV/AIDS, even if she takes any type of antiretroviral (ARV) medicines.</string>
+    <string name="description_emergency_contraceptive_pills_8">Does not protect against sexually transmitted infections (STIs), including HIV. Emphasize the need for dual protection with the client.</string>
+
+
+    <!--Hormonal Implants Description -->
+    <string name="description_harmonal_implants_1">One of the only methods that can help prevent pregnancy after a woman has had unprotected sex. Other effective emergency contraception includes Copper-bearing or LNG-containing IUDs. .</string>
+    <string name="description_harmonal_implants_2">Not recommended for regular use, but there is no harm to the user if used repeatedly. However, a woman using ECPs repeatedly should receive additional family planning counseling in order to select the most appropriate continuous method. .</string>
+    <string name="description_harmonal_implants_3">Breastfeeding not recommended for one week after using UPA. </string>
+    <string name="description_harmonal_implants_4">Must be used within 5 days (120 hours) of unprotected sex.</string>
+    <string name="description_harmonal_implants_5"> Safe for women who cannot use regular hormonal contraceptive methods, including postpartum breastfeeding women.</string>
+    <string name="description_harmonal_implants_6">ECPs do not disrupt existing pregnancy.</string>
+    <string name="description_harmonal_implants_7">Safe for a woman living with HIV/AIDS, even if she takes any type of antiretroviral (ARV) medicines.</string>
+    <string name="description_harmonal_implants_8">Does not protect against sexually transmitted infections (STIs), including HIV. Emphasize the need for dual protection with the client.</string>
+
+</resources>
