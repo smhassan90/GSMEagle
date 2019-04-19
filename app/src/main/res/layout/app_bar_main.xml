@@ -13,14 +13,16 @@
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
+            app:titleTextAppearance="@style/large_text_style_bold"
             android:layout_width="match_parent"
+            app:titleTextColor="@color/whiteColor"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/darkestOrange"
+            android:background="@color/maroon"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
 
-    <include  layout="@layout/content_main" />
+    <include layout="@layout/content_main" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fabu"

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MECWheel</string>
+    <string name="app_name">Greenstar</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Greenstar Social Marketing</string>
@@ -18,25 +18,114 @@
     <string name="subtitle_monthly_injectables">Monthly Injectable</string>
     <string name="sub_subtitle_monthly_injectables">Combined Injectable\nContraceptives (CICs)</string>
     <string name="sub_subtitle_harmonal_implants">Hormonal Implants</string>
+    <string name="sub_title_intrauterine_device">Intrauterine Device</string>
+    <string name="sub_subtitle_intrauterine_device">Copper-bearing IUD</string>
+    <string name="sub_title_lactational_amenorrhea_method">Lactational Amenorrhea Method</string>
+    <string name="sub_subtitle_lactational_amenorrhea_method">LAM</string>
+    <string name="sub_title_male_condoms">Male Condoms</string>
+
+    <string name="subtitle_progestin_only_injectables">Progestin-only Injectables</string>
+    <string name="sub_subtitle_progestin_only_injectables">DMPA or NET-EN</string>
+
+    <string name="sub_subtitle_the_pill">Combined Oral Contraceptives</string>
+    <string name="sub_title_the_pill">The Pill</string>
+
+    <string name="sub_title_intrauterine_device_system">Intrauterine Device/System</string>
+    <string name="sub_subtitle_intrauterine_device_system">Levonorgestrel LNG IUD/IUS</string>
 
     <string name="subtitle_emergency_contraceptive_pills">Emergency Contraceptive Pills</string>
     <string name="sub_subtitle_emergency_contraceptive_pills">ECPs</string>
+
+    <string name="sub_title_standard_days_method">Standard Days Method</string>
+    <string name="sub_subtitle_standard_days_method">SDM</string>
+
+    <string name="sub_title_withdrawal">Withdrawal</string>
+    <string name="sub_subtitle_withdrawal">Coitus Interruptus/ “Pulling Out”</string>
+
+    <string name="sub_title_healthy_timing_and_spacing_of_pregnancy">Healthy Timing and Spacing of Pregnancy</string>
+
+    <string name="sub_title_promoting_a_healthy_postpartum_period">Promoting a Healthy Postpartum Period for the Mother</string>
+
+    <string name="sub_title_post_abortion_care">Post Abortion Care</string>
+    <string name="sub_subtitle_post_abortion_care">PAC</string>
+
+    <string name="sub_title_sti_hiv_transmission_and_prevention">STI/HIV Transmission And Prevention</string>
+
+    <string name="sub_title_sti_and_hiv_risk_assissment">STI and HIV Risk Assessment</string>
+
+    <string name="sub_title_dual_protection">Dual Protection</string>
+
+    <string name="sub_title_hiv_counseling_and_testing">HIV Counseling and Testing</string>
+    <string name="sub_subtitle_hiv_counseling_and_testing">HCT</string>
+
+    <string name="sub_title_screening_for_cervical_cancer">Screening for Cervical Cancer</string>
+
+    <string name="sub_title_adolescent_counseling">Adolescent Counseling</string>
+
 
     <!-- Hard coded text that are same for all counseling cards -->
     <string name="effectiveness">Effectiveness</string>
     <string name="typical_use">Typical Usage</string>
     <string name="correct_use">Correct Use</string>
     <string name="first_year_use">First year of use</string>
+    <string name="types">Types</string>
+    <string name="typical_use_in_first_year">Typical use in first year</string>
+
+    <!-- Bold text after heading-->
+    <string name="bold_text_healthy_timing_and_spacing_of_pregnancy">Advise on healthy timing and spacing of pregnancy.</string>
+    <string name="bold_text_sti_hiv_transmission_and_prevention">
+        Discuss the following about all sexually transmitted infections (STIs), including HIV:
+    </string>
+    <string name="bold_text_sti_and_hiv_risk_assissment">
+        Discuss the following issues to assess the client’s risk of STIs and HIV:
+    </string>
+    <string name="bold_text_screening_for_cervical_cancer">
+        If the client is 30-49 years of age or HIV positive at any age, ask if the client has ever been screened for cancer of the cervix.
+    </string>
+    <string name="bold_text_adolescent_counseling">
+        If a client is younger than 18 years, discuss adolescent health needs.
+    </string>
 
     <!-- Types -->
-    <string name="types_emergency_contraceptive_pills_1">Progestin only</string>
-    <string name="types_emergency_contraceptive_pills_2">Combined progestin and estrogen </string>
-    <string name="types_emergency_contraceptive_pills_3">Ulipristal acetate (UPA)</string>
+    <string name="types_emergency_contraceptive_pills">
+        <li> Progestin only</li>\n
+        <li> Combined progestin and estrogen</li>\n
+        <li> Ulipristal acetate (UPA)</li>
+    </string>
+
+    <string name="types_harmonal_implants">
+        <li>  Single rod (Implanon, Nexplanon/Implanon NXT) </li>\n
+        <li>  Double rod (Jadelle, Sino-plant II)</li>\n
+    </string>
+
+    <string name="types_progestin_only_injectables">
+        <li>   Intramuscular DMPA 150mg or NET-EN </li>\n
+        <li>   Subcutaneous DMPA 104mg (Sayana Press)</li>\n
+    </string>
 
     <!-- Typical usage description for all cards  -->
     <string name="typical_usage_description_monthly_injectables">Some missed or late injections – 6 pregnancies per 100 women</string>
     <string name="typical_usage_description_emergency_contraceptive_pills">Most effective if taken within first 24 hours; can be taken within 5 days of having unprotected sex – 1-2 pregnancies per 100 women after one instance of unprotected sex depending on the ECP</string>
     <string name="typical_usage_description_harmonal_implants">Less than 1 pregnancy per 100 women</string>
+    <string name="typical_usage_description_intrauterine_device">Less than 1 pregnancy per 100 women</string>
+    <string name="typical_usage_description_intrauterine_device_system">Less than 1 pregnancy per 100 women</string>
+    <string name="typical_usage_description_lactational_amenorrhea_method">First 6 months after childbirth when all 3 criteria are met — 2 pregnancies per 100 women</string>
+    <string name="typical_usage_description_male_condoms">
+        Not used consistently — 18 pregnancies per 100 women
+    </string>
+    <string name="typical_usage_description_the_pill">
+        Some missed pills – 9 pregnancies per 100 women
+    </string>
+    <string name="typical_usage_description_progestin_only_injectables">
+        Some missed or late injections – 6 pregnancies per 100 women
+    </string>
+    <string name="typical_usage_description_standard_days_method">
+       12 pregnancies per 100 women
+    </string>
+    <string name="typical_usage_description_withdrawal">
+       22 pregnancies per 100 women
+    </string>
+
 
     <!-- Description of Counseling Cards -->
     <string name="description_monthly_injectables_1">Requires that the client get an injection every 4 weeks (30 days) to prevent pregnancy.</string>
@@ -61,13 +150,449 @@
 
 
     <!--Hormonal Implants Description -->
-    <string name="description_harmonal_implants_1">One of the only methods that can help prevent pregnancy after a woman has had unprotected sex. Other effective emergency contraception includes Copper-bearing or LNG-containing IUDs. .</string>
-    <string name="description_harmonal_implants_2">Not recommended for regular use, but there is no harm to the user if used repeatedly. However, a woman using ECPs repeatedly should receive additional family planning counseling in order to select the most appropriate continuous method. .</string>
-    <string name="description_harmonal_implants_3">Breastfeeding not recommended for one week after using UPA. </string>
-    <string name="description_harmonal_implants_4">Must be used within 5 days (120 hours) of unprotected sex.</string>
-    <string name="description_harmonal_implants_5"> Safe for women who cannot use regular hormonal contraceptive methods, including postpartum breastfeeding women.</string>
-    <string name="description_harmonal_implants_6">ECPs do not disrupt existing pregnancy.</string>
-    <string name="description_harmonal_implants_7">Safe for a woman living with HIV/AIDS, even if she takes any type of antiretroviral (ARV) medicines.</string>
-    <string name="description_harmonal_implants_8">Does not protect against sexually transmitted infections (STIs), including HIV. Emphasize the need for dual protection with the client.</string>
+    <string name="description_harmonal_implants_1">Either 2 small rods or 1 small rod (about the size of a matchstick) put under the skin.</string>
+    <string name="description_harmonal_implants_2"> Provides long-term protection from pregnancy. Length of protection depends on the implant: \n – Jadelle: 5 years \n - Sino-plant II: 4 years \n - Implanon or Nexplanon: 3 years</string>
+    <string name="description_harmonal_implants_3"> A trained provider must insert and remove implants.</string>
+    <string name="description_harmonal_implants_4"> If a woman has unexplained vaginal bleeding, she should be further evaluated and treated prior to initiating this method.</string>
+    <string name="description_harmonal_implants_5">  Safe for women who are breastfeeding. Women may get implants after giving birth. </string>
+    <string name="description_harmonal_implants_6"> Not advised if a woman has a history of breast cancer. </string>
+    <string name="description_harmonal_implants_7"> Causes changes in monthly bleeding. May cause absence of bleeding or temporary heavy bleeding for a few months.</string>
+    <string name="description_harmonal_implants_8">Safe for a woman living with HIV/AIDS, even if she takes antiretroviral (ARV) medicines. </string>
+    <string name="description_harmonal_implants_9"> Does not protect against sexually transmitted infections (STIs), including HIV. Emphasize the need for dual protection with the client.</string>
 
+    <!--Intrauterine Device Description -->
+    <string name="description_intrauterine_device_1">Provides long-term protection against pregnancy for 5 - 12 years.</string>
+    <string name="description_intrauterine_device_2">Is a small, flexible, plastic and copper device placed in the uterus. Most IUDs have 1 or 2 thin strings that hang from the cervix into the vagina.</string>
+    <string name="description_intrauterine_device_3">  It is a safe and effective method for almost all women, including women in the postabortion or postpartum period. </string>
+    <string name="description_intrauterine_device_4"> A trained provider must insert and remove the IUD. This method can be used as emergency contraception.
+    </string>
+    <string name="description_intrauterine_device_5"> Can be inserted immediately after childbirth (within 48 hours) or after 4 weeks postpartum
+    </string>
+    <string name="description_intrauterine_device_6">
+          Typically causes slightly longer and heavier bleeding and more cramps or pain during monthly bleeding
+    </string>
+    <string name="description_intrauterine_device_7">
+         If a woman has unexplained vaginal bleeding, she should be further evaluated and treated prior to initiating this method.
+    </string>
+    <string name="description_intrauterine_device_8">
+         Safe for a woman living with HIV/AIDS who is clinically well (WHO Stage 1 or 2 of HIV clinical disease) on antiretroviral (ARV) medicines.
+    </string>
+    <string name="description_intrauterine_device_9">
+ Not advised for a woman with very high risk of having sexually transmitted infections (STIs), particularly chlamydia or gonorrhea. Evaluate the client for STI risk prior to initiating this method. (See STI and HIV Risk Assessment Card).
+    </string>
+    <string name="description_intrauterine_device_10">
+  Does not protect against sexually transmitted infections (STIs), including HIV. Emphasize the need for dual protection with the client.
+    </string>
+
+    <!--Lactational Amenorrhea Method-->
+    <string name="description_lactational_amenorrhea_method_1">
+        LAM is for women who are exclusively breastfeeding their baby. All women who have infants six months or younger should be encouraged to exclusively breastfeed for the well-being of their baby.
+    </string>
+    <string name="description_lactational_amenorrhea_method_2">
+         LAM requires 3 conditions. All 3 must be met: \n1) The client’s monthly bleeding has not returned since giving birth \n2) The baby is exclusively breastfed, day and night \n3) The baby is less than 6 months old
+    </string>
+    <string name="description_lactational_amenorrhea_method_3">
+        LAM is a temporary family planning method used after pregnancy. A woman using LAM should plan to visit her provider before she starts to use supplemental feeding to talk about switching to another modern method once the 3 conditions for LAM are no longer met. If the woman is willing, initiate the conversation now about what method she plans to use once LAM is no longer effective.
+    </string>
+    <string name="description_lactational_amenorrhea_method_4">
+        Safe for a woman living with HIV/AIDS when she exclusively breastfeeds. There is a chance, however, that mothers with HIV may transmit HIV to their infants through breastfeeding if they are not on ARVs. Does not protect against sexually transmitted infections (STIs), including HIV. Emphasize the need for dual protection with the client.
+    </string>
+    <string name="description_lactational_amenorrhea_method_5">
+        Dispensing ECP when counseling on LAM increases pregnancy protection and timely transition to another method. Counseling on ECP should suggest to clients to use it as a backup if they fail to meet one of the LAM criteria before they are able to obtain another method.
+    </string>
+
+    <!--Intrauterine Device Description System-->
+    <string name="description_intrauterine_device_system_1">Provides long-term protection against pregnancy for up to 5 years.</string>
+    <string name="description_intrauterine_device_system_2">
+         Is a small, flexible, plastic device placed in the uterus with an inner reservoir of levonorgestrel, a progestin hormone. The LNG IUS has 1 or 2 thin strings that hang from the cervix into the vagina.
+    </string>
+    <string name="description_intrauterine_device_system_3"> A trained provider must insert and remove the LNG IUS.
+    </string>
+    <string name="description_intrauterine_device_system_4"> Can be inserted immediately after childbirth (within 48 hours) or after 4 weeks postpartum.
+    </string>
+    <string name="description_intrauterine_device_system_5">
+        Typically causes lighter and shorter monthly periods of bleeding and may cause periods to stop all together.
+    </string>
+    <string name="description_intrauterine_device_system_6">
+        If a woman has unexplained vaginal bleeding, she should be further evaluated and treated prior to initiating this method.
+    </string>
+    <string name="description_intrauterine_device_system_7">
+        Not advised if a woman has a history of breast cancer.
+    </string>
+    <string name="description_intrauterine_device_system_8">
+           Safe for a woman living with HIV/AIDS who is clinically well (WHO Stage 1 or 2 of HIV clinical disease) on antiretroviral (ARV) medicines.
+    </string>
+    <string name="description_intrauterine_device_system_9">
+       Not advised for a woman with very high risk of having sexually transmitted infections (STIs), particularly chlamydia or gonorrhea. Evaluate the client for STI risk prior to initiating this method. (See STI and HIV Risk Assessment Card).
+    </string>
+    <string name="description_intrauterine_device_system_10">
+  Does not protect against sexually transmitted infections (STIs), including HIV. Emphasize the need for dual protection with the client.
+    </string>
+
+
+    <!--Male Condoms-->
+    <string name="description_male_condoms_1">
+        Most condoms are made of thin latex rubber. Some condoms are coated with a lubricant and/or spermicide.
+    </string>
+    <string name="description_male_condoms_2">
+          If the client has had an allergic reaction to latex rubber, they should not use latex condoms. Use polyurethane condoms as a safe and effective alternative for people with a latex allergy.
+    </string>
+    <string name="description_male_condoms_3">
+         Before having sex, place the condom over the erect penis.
+    </string>
+    <string name="description_male_condoms_4">
+         The client must use a new condom for each act of sex.
+    </string>
+    <string name="description_male_condoms_5">
+         Protects against pregnancy and sexually transmitted infections (STIs), including HIV.
+    </string>
+    <string name="description_male_condoms_6">
+        Requires partner’s cooperation to use consistently and correctly.
+    </string>
+
+
+    <!--The Pill-->
+    <string name="description_the_pill_1">
+       Requires that the client takes 1 pill every day.
+    </string>
+    <string name="description_the_pill_2">
+           Not advised if breastfeeding an infant less than 6 months old.
+    </string>
+    <string name="description_the_pill_3">
+          Not advised if woman is within 21 days of giving birth, regardless of breastfeeding status.
+    </string>
+    <string name="description_the_pill_4">
+         May cause irregular bleeding during the first few months of use, after which users may experience lighter and more regular bleeding.
+    </string>
+    <string name="description_the_pill_5">
+          In some cases, may cause other side effects including nausea, headache, bloating, breast tenderness, or weight change.
+    </string>
+    <string name="description_the_pill_6">
+        Not advised if woman takes medicine for seizures or takes Rifampicin (for tuberculosis or other infections).
+    </string>
+    <string name="description_the_pill_7">
+        Not advised if a woman has history of breast cancer.
+    </string>
+    <string name="description_the_pill_8">
+         Not advised if a woman has migraines and is 35 years or older.
+    </string>
+    <string name="description_the_pill_9">
+         Not advised if woman has major risk factors for venous cardiovascular disease, including older age, stroke, smoking, diabetes, hypertension or known dyslipidaemia.
+    </string>
+    <string name="description_the_pill_10">
+         Safe for a woman living with HIV/AIDS, even if she takes antiretroviral (ARV) medicines.
+    </string>
+    <string name="description_the_pill_11">
+          There are many different brands and formulations of combined oral contraceptives. Discuss available and most appropriate method with the client.
+    </string>
+    <string name="description_the_pill_12">
+         Does not protect against sexually transmitted infections (STIs), including HIV. Emphasize the need for dual protection with the client
+    </string>
+
+    <!--Progestin-only Injectables Description-->
+    <string name="description_progestin_only_injectables_1">
+       The client gets an injection every 2 or 3 months, depending on type of injection.
+    </string>
+    <string name="description_progestin_only_injectables_2">
+          Safe for women who are breastfeeding a baby. For a woman who is breastfeeding but not using LAM, injectables can be started after 6 weeks. Fertility can return as early as 3 weeks postpartum, so clients should use a backup method such as condoms until they begin injectables.
+    </string>
+    <string name="description_progestin_only_injectables_3">
+           May cause irregular or no menstrual bleeding.
+    </string>
+    <string name="description_progestin_only_injectables_4">
+        There is a delayed return to fertility after the client stops the method. It takes longer than with most other methods. Return to fertility is, on average, 1 month for NET-EN and 4 months for DMPA.
+    </string>
+    <string name="description_progestin_only_injectables_5">
+           Safe for a woman living with HIV/AIDS, even if she takes antiretroviral (ARV) medicines. Does not protect against sexually transmitted infections (STIs), including HIV. Emphasize the need for dual protection with the client.
+    </string>
+    <string name="description_progestin_only_injectables_6">
+         If a woman has unexplained vaginal bleeding, she should be further evaluated and treated prior to initiating this method.
+    </string>
+    <string name="description_progestin_only_injectables_7">
+         Not advised if woman has a history of breast cancer or if woman has major risk factors for venous cardiovascular disease, including older age, stroke, smoking, diabetes, hypertension or known dyslipidaemia.
+    </string>
+    <string name="description_progestin_only_injectables_8">
+          NET-EN:  \n– NET-EN is not advised if a woman takes medicine for seizures or takes Rifampicin (for tuberculosis or other infections). \n– If on NNRTIs (specifically Efavirenz or Nevirapine) or Ritonavir-boosted protease inhibitors as part of HAART, there may be lower effectiveness of NET-EN injectables. Emphasize dual protection if using NET-EN to reduce chance of pregnancy.
+    </string>
+
+    <!-- description standard days method  -->
+    <string name="description_standard_days_method_1">
+         Ideal for women whose menstrual cycles are usually between 26 and 32 days long. Women who have regular monthly bleeding fall within this range.
+    </string>
+    <string name="description_standard_days_method_2">
+        The client keeps track of their menstrual cycle to know the days they can get pregnant (fertile days).
+    </string>
+    <string name="description_standard_days_method_3">
+        The client uses a calendar or CycleBeads®, a string of color-coded beads, to track the days they can get pregnant and the days they are not likely to get pregnant.
+    </string>
+    <string name="description_standard_days_method_4">
+         On the days the client can get pregnant, they must abstain from having unprotected sex. Or, they can use a condom or other barrier method.
+    </string>
+    <string name="description_standard_days_method_5">
+        Postpartum or breastfeeding women must have 3 regular menstrual cycles before they can use SDM. An alternate method should be used in the interim.
+    </string>
+    <string name="description_standard_days_method_6">
+        Does not protect against sexually transmitted infections (STIs), including HIV. Emphasize the need for dual protection with the client.
+    </string>
+    <string name="description_standard_days_method_7">
+       Requires partner’s cooperation.
+    </string>
+
+    <!--description_withdrawal -->
+    <string name="description_withdrawal_1">
+        The man withdraws his penis from his partner’s vagina before ejaculation, and he ejaculates outside of the vagina.
+    </string>
+    <string name="description_withdrawal_2">
+        Is one of the least effective methods, yet offers better  protection than no method at all.
+    </string>
+    <string name="description_withdrawal_3">
+        Not suitable for men who cannot sense consistently when ejaculation is about to occur or ejaculate prematurely.
+    </string>
+    <string name="description_withdrawal_4">
+        Does not protect against sexually transmitted infections (STIs), including HIV. Emphasize the need for dual protection with the client.
+    </string>
+    <string name="description_withdrawal_5">
+        Requires partner’s cooperation.
+    </string>
+
+    <!-- description_healthy_timing_and_spacing_of_pregnancy -->
+
+    <string name="description_healthy_timing_and_spacing_of_pregnancy_1">
+        For women who want to have additional children after a live birth, advise: \n – For the health of the mother and baby, wait at least 2 years (24 months) before trying to become pregnant again. \n– Use of a family planning method of her choice allows a woman to plan for a healthy pregnancy and provides better health outcomes for her newborn baby and any other children she may have.
+    </string>
+    <string name="description_healthy_timing_and_spacing_of_pregnancy_3">
+        For adolescents, advise: \n– For the health of the mother and the baby, wait until 18 years of age before trying to become pregnant. For teen parents, counsel on waiting until 18 years of age for next pregnancy. \n– If sexually active, early adoption and initiation of a FP method of her choice allows a young woman to prevent unintended pregnancy and preserve her health.
+    </string>
+    <string name="description_healthy_timing_and_spacing_of_pregnancy_2">
+         For women who decide to have a child after a miscarriage or abortion, advise: \n– For the health of the mother and baby, wait at least 6 months before trying to become pregnant again. \n– Use of a family planning method of her choice allows a woman to plan for a healthy pregnancy.
+    </string>
+    <string name="description_healthy_timing_and_spacing_of_pregnancy_4">
+         For women over 35 or with 5 or more term pregnancies, additional pregnancies carry higher risks for both the mother and the baby.
+    </string>
+
+    <!-- description_promoting_a_healthy_postpartum_period_1 -->
+    <string name="description_promoting_a_healthy_postpartum_period_1">
+         Ensure that the mother has support for the first few days after birth; encourage rest and sleep.
+    </string>
+    <string name="description_promoting_a_healthy_postpartum_period_2">
+         Recommend a nutritious diet for the mother that includes plenty of fluids and micronutrients (including Vitamin A and iron).
+    </string>
+    <string name="description_promoting_a_healthy_postpartum_period_3">
+        Discuss normal postpartum bleeding and lochia. Counsel on maternal danger signs, such as heavy bleeding or vaginal discharge that has a foul smell and fever, severe headaches, or convulsions.
+
+    </string>
+    <string name="description_promoting_a_healthy_postpartum_period_4">
+         Discuss the need for four postnatal care visits: at 24-48 hours, 3 to 7 days, 4 to 6 weeks, and 4 to 6 months.
+    </string>
+    <string name="description_promoting_a_healthy_postpartum_period_5">
+        If a woman plans to start supplemental feeding before 6 months postpartum, discuss transition to a FP method prior to starting supplemental feeding.
+    </string>
+    <string name="description_promoting_a_healthy_postpartum_period_6">
+        Advise on maintaining personal hygiene, including care of perineum and breasts.
+    </string>
+    <string name="description_promoting_a_healthy_postpartum_period_7">
+        Counsel on return to sexual activity, which should be whenever the mother feels ready and usually after lochia stops. After that she can become pregnant again even before her menses returns. Pregnancy can occur even if she is still partially breastfeeding and is more likely with older infants.
+    </string>
+    <string name="description_promoting_a_healthy_postpartum_period_8">
+        Encourage her to use FP. Most methods are safe for breastfeeding mothers. Consider providing emergency contraception with instructions to use if she stops exclusively breastfeeding or if she resumes menses and has sex before starting another family planning method.
+    </string>
+    <string name="description_promoting_a_healthy_postpartum_period_9">
+         Counsel on postnatal depression, which may entail: crying easily; feeling tired, agitated, or irritable; lacking motivation; having difficulty sleeping; rejecting the baby.
+    </string>
+
+    <!-- description_post_abortion_care_1-->
+    <string name="description_post_abortion_care_1">
+         Inform client on the quick return to fertility, within 2 weeks after the event, for a 1st trimester miscarriage.
+    </string>
+    <string name="description_post_abortion_care_2">
+         For better health of mother and child, couples should wait 6 months before trying to get pregnant.
+    </string>
+    <string name="description_post_abortion_care_3">
+        Counsel on return to sexual activity, which should be when the woman feels ready (unless the woman has a history of infection or trauma, then wait until condition is treated and resolved).
+    </string>
+    <string name="description_post_abortion_care_4">
+         Advise that she can become pregnant even before her menses returns. Encourage her to use FP.
+    </string>
+    <string name="description_post_abortion_care_5">
+        Most contraceptive methods can be used by a woman presenting for PAC - with the exception of tubal ligation and IUD if there is infection or trauma to the cervix or vagina.
+
+    </string>
+    <string name="description_post_abortion_care_6">
+         After any evacuation of the uterus, discuss and help the woman pick a contraceptive method of her choice. If it is not available or she is undecided, provide her with either condoms or emergency contraception, and offer to refer her to the nearest health center if she hasn’t decided before being discharged.
+    </string>
+    <string name="description_post_abortion_care_7">
+         Inform the woman of the advantage of condoms as a dual-protection method.
+    </string>
+    <string name="description_post_abortion_care_8">
+        A woman who has been treated with misoprostol can be immediately offered any contraceptive method except an IUD. If the woman prefers an IUD, ask her to return following complete evacuation of the uterus and verification that she does not have any infections.
+    </string>
+    <string name="description_post_abortion_care_9">
+        Discuss normal post-abortion bleeding. Counsel on maternal danger signs, such as heavy bleeding or vaginal discharge that has a foul smell.
+    </string>
+    <string name="description_post_abortion_care_10">
+         Ensure that the woman has support for the first few days. Encourage rest and sleep.
+    </string>
+    <string name="description_post_abortion_care_11">
+         If the woman is a survivor of rape and sexual assault, refer her to other supportive care services.
+    </string>
+    <string name="description_post_abortion_care_12">
+         Recognize that accessing PAC can be emotionally traumatic and inform her what psychosocial services are available and offer for her to share her feelings about the process.
+    </string>
+
+    <!-- description_sti_hiv_transmission_and_prevention_1 -->
+    <string name="description_sti_hiv_transmission_and_prevention_1">
+         A person can become infected with STIs, including HIV, through unsafe or unprotected sexual activity.
+    </string>
+    <string name="description_sti_hiv_transmission_and_prevention_2">
+        STIs are common.
+    </string>
+    <string name="description_sti_hiv_transmission_and_prevention_3">
+         A person living with STIs (including HIV) may have no symptoms, may look healthy and may not be aware that s/he is infected.
+    </string>
+    <string name="description_sti_hiv_transmission_and_prevention_4">
+         Common STI symptoms include vaginal discharge, discharge from the penis, sores in the genital area, burning on urination for men, lower abdominal pain for women.
+    </string>
+    <string name="description_sti_hiv_transmission_and_prevention_5">
+         Some STIs can be treated. To avoid re-infection, both partners must be treated and must abstain from unprotected sex unti lboth partners have completed treatment.
+    </string>
+    <string name="description_sti_hiv_transmission_and_prevention_6">
+        Risk of infection can be reduced by using a condom, limiting the number of sex partners, and delaying sex.
+    </string>
+    <string name="description_sti_hiv_transmission_and_prevention_heading_1">
+        Discuss the following facts specifically about HIV:
+    </string>
+    <string name="description_sti_hiv_transmission_and_prevention_8">
+        HIV is a sexually transmitted infection. HIV is transmitted through an exchange of bodily fluids such as semen, blood, breast milk, and during delivery.
+    </string>
+    <string name="description_sti_hiv_transmission_and_prevention_9">
+         Knowing the client’s HIV status protects them, their partner, and their family. Clients can be offered testing today if it is available, or offered a referral to a testing facility
+    </string>
+    <string name="description_sti_hiv_transmission_and_prevention_10">
+         Although HIV cannot be cured, early identification and treatment can allow a person to live a long productive life and prevent his/her partner from becoming infected.
+    </string>
+    <string name="description_sti_hiv_transmission_and_prevention_11">
+        Male circumcision significantly reduces the risk of HIV infection in heterosexual couples.
+    </string>
+    <string name="description_sti_hiv_transmission_and_prevention_12">
+         Maternal transmission of HIV to the child can be substantially reduced by identifying women living with HIV and providing treatment or prophylactic ARV medicines during pregnancy and breastfeeding, should the woman choose to breastfeed.
+    </string>
+
+
+    <!-- description_sti_and_hiv_risk_assissment_1 -->
+    <string name="description_sti_and_hiv_risk_assissment_1">
+        Ask client about past and present condom use (including perception of partner’s attitude) and ask whether s/he is aware that condoms protect against both STIs/HIV and pregnancy.
+    </string>
+    <string name="description_sti_and_hiv_risk_assissment_2">
+         Ask the client whether they know their HIV status and the HIV status of partner(s). If partner is positive, ask whether s/he is taking ARV medicines.
+    </string>
+    <string name="description_sti_and_hiv_risk_assissment_3">
+         Discuss risks associated with multiple or concurrent partners. This includes increased risk for sexually transmitted infections (STIs) and HIV.
+    </string>
+    <string name="description_sti_and_hiv_risk_assissment_4">
+        Ask whether the client has knowledge of their male partner’s circumcision status. Explain that male circumcision reduces the transmission risk of STIs or HIV to the male’s partner.
+    </string>
+    <string name="description_sti_and_hiv_risk_assissment_5">
+         Discuss with clients the types of sex or sexual activities and behaviors that can increase risk for getting an STI or HIV (for example, if partner or self has multiple sexual partners, oral sex, anal sex, dry sex, use of detergents or spermicides).
+    </string>
+    <string name="description_sti_and_hiv_risk_assissment_6">
+         Discuss whether the client has knowledge of partner’s sexual history, including multiple or concurrent partners. If partner or self has history of multiple or concurrent partners, counsel client to attend couples’ counseling or voluntary testing and counseling (VCT) to determine HIV status.
+    </string>
+    <string name="description_sti_and_hiv_risk_assissment_7">
+         Ask about client’s home-life situation (for example, partner violence and social support). If they mention violence, refer to Women’s Support and Safety card.
+    </string>
+    <string name="description_sti_and_hiv_risk_assissment_8">
+         Ask whether client has ever used PMTCT during pregnancy. Discuss benefits of PMTCT to prevent HIV transmission during pregnancy.
+    </string>
+
+    <!--Dual Protection -->
+    <string name="description_dual_protection_heading_1">
+        Discuss the following with the client:
+    </string>
+    <string name="description_dual_protection_1">
+         Dual protection is the use of condoms consistently and correctly in combination with another family planning method. This provides added protection against pregnancy in case of condom failure.
+    </string>
+    <string name="description_dual_protection_2">
+        Use a male or female condom correctly and consistently with every act of sex. This one method protects against STIs and pregnancy.
+    </string>
+    <string name="description_dual_protection_3">
+         Only engage in safer sexual intimacy that prevents semen and vaginal fluids from coming in contact with partner’s genitals or other vulnerable areas, such as the mouth and anus.
+    </string>
+    <string name="description_dual_protection_4">
+        Delay or avoid sexual activity, especially with a partner whose STI/HIV status is not known.
+    </string>
+
+    <!-- description_hiv_counseling_and_testing_1-->
+    <string name="description_hiv_counseling_and_testing_heading_1">
+        Discuss the following with the client:
+    </string>
+    <string name="description_hiv_counseling_and_testing_1">
+        Knowing the client’s HIV status can help them make decisions about protecting themselves and their sexual partner(s).
+    </string>
+    <string name="description_hiv_counseling_and_testing_2">
+        Testing permits people living with HIV to seek treatment so that they can live a full life. The test involves taking a small sample of blood. The test is free and available at clinics, hospitals, and HIV counseling and testing sites.
+    </string>
+    <string name="description_hiv_counseling_and_testing_3">
+         Test results are kept confidential.
+    </string>
+    <string name="description_hiv_counseling_and_testing_4">
+         When a person is first infected with HIV, it can take 3 or more months for the test to detect the infection. This is called the “window period” and is the reason why repeat testing is important.
+    </string>
+    <string name="description_hiv_counseling_and_testing_5">
+         A positive test result means the person is infected with HIV and can transmit the virus to others.
+    </string>
+    <string name="description_hiv_counseling_and_testing_6">
+        A negative test result can mean the person is not infected or that s/he is in the “window period”. Another test should be taken within 3 months. If the second test is still negative, the person is currently not living with HIV but can still become infected with HIV.
+    </string>
+    <string name="description_hiv_counseling_and_testing_7">
+        HIV is a sexually transmitted infection (STI). It is important to ask their sexual partner(s) to be tested too.
+    </string>
+
+
+    <!-- screening_for_cervical_cancer-->
+    <string name="description_screening_for_cervical_cancer_1">
+         Cancer of the cervix is a common cancer of the reproductive tract. It is preventable, easily detectable, and curable in the early stages.
+    </string>
+    <string name="description_screening_for_cervical_cancer_2">
+         Cervical cancer results from infection with a virus known as HPV. \n– Most infections clear up, but those that are persistent may lead to cervical cancer.
+    </string>
+    <string name="description_screening_for_cervical_cancer_3">
+        Describe how cervical cancer presents: \n– Cancer of the cervix is painless and progresses slowly. \n– It occurs at the opening of the uterus. \n– When advanced, a woman may experience an abnormal/unusual smell or odor from her vagina, painful sexual intercourse, bleeding after sex and lower abdominal and back pain.
+    </string>
+    <string name="description_screening_for_cervical_cancer_4">
+         Detection is through a quick, simple, and generally not painful test done by a trained provider (HPV test, VIA or Pap smear).
+    </string>
+    <string name="description_screening_for_cervical_cancer_5">
+        Screening for cancer of the cervix should be done every 3-5 years (depending on national guidelines).  Women living with HIV should be screened every 3 years. If the test is positive, then treatment is recommended. Early treatment involves freezing pre-cancerous sores (cryotherapy) and can be done  as an outpatient procedure.
+    </string>
+    <string name="description_screening_for_cervical_cancer_6">
+         Clients with advanced cancerous sore/s are referred for special treatment.
+    </string>
+
+
+    <!-- description_adolescent_counseling_1-->
+    <string name="description_adolescent_counseling_1">
+          Adolescence is a time of transition marked by physical, psychological and social milestones.
+    </string>
+    <string name="description_adolescent_counseling_2">
+          Adolescents have unique reproductive health needs that can be addressed through health services, including counseling.
+    </string>
+    <string name="description_adolescent_counseling_3">
+          Ask clients about resources in their communities: \n– Are there supportive and positive individuals that you can go to for advice or support? These can include partners, parents, teachers and community leaders.
+    </string>
+    <string name="description_adolescent_counseling_4">
+         All modern contraceptive methods are generally safe for adolescents.
+    </string>
+    <string name="description_adolescent_counseling_5">
+          For married adolescents, discuss desired family size (refer to HTSP card).
+    </string>
+    <string name="description_adolescent_counseling_6">
+          For unmarried adolescents, describe the importance of delaying marriage and pregnancy: \n– For the health of the mother and baby, wait until at least age 18 before trying to become pregnant. \n– Early marriage and pregnancy should be avoided in order to allow for girls’ full mental and physical development. \n– To prevent unintended pregnancy, it is important for a young woman to consistently use a modern contraceptive method.
+    </string>
+    <string name="description_adolescent_counseling_7">
+          Describe other health issues facing adolescent girls: \n– Adolescent girls who are sexually active are at risk for STIs, including HIV. Using a condom in addition to another family planning method can provide added STI and HIV prevention, (refer to STI/HIV Transmission and Prevention). \n– Girls have important nutritional needs to ensure their healthy development.
+    </string>
+    <string name="description_adolescent_counseling_8">
+          Discuss available youth-focused services, including sports clubs, support clubs, young mothers clubs, faith groups or community-based groups. Refer the client to services as needed.
+    </string>
+    <string name="title_activity_try_pdf">TryPDF</string>
 </resources>

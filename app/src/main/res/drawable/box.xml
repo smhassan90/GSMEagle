@@ -13,6 +13,10 @@
         android:color="@android:color/holo_orange_dark" />
     <item android:drawable="@color/whiteColor" android:state_selected="true" />
     <item android:drawable="@color/lightGreen" android:state_pressed="true" />
-    <item android:drawable="@color/whiteColor"  >
+    <item>
+        <shape android:shape="rectangle">
+            <stroke android:width="1dp" android:color="@color/maroon"/>
+            <solid android:color="@color/whiteColor"></solid>
+        </shape>
     </item>
 </selector>

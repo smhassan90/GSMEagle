@@ -12,6 +12,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/menu_item_margin"
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
@@ -20,19 +21,40 @@
             android:gravity="center"
             android:padding="@dimen/menu_item_padding"
             android:orientation="vertical">
-            <TextView
+            <TextView style="@style/small_text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/description_text_color"
                 android:textStyle="bold"
                 android:textAlignment="center"
                 android:text="@string/subtitle_emergency_contraceptive_pills"/>
-            <TextView
+            <TextView style="@style/small_text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:textColor="@color/description_text_color"
                 android:text="@string/sub_subtitle_emergency_contraceptive_pills"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/box"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/menu_item_margin"
+            android:padding="@dimen/menu_item_padding"
+            android:orientation="vertical">
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/description_text_color"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:text="@string/types"/>
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/description_text_color"
+                android:text="@string/types_emergency_contraceptive_pills"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -42,7 +64,7 @@
             android:layout_marginTop="@dimen/menu_item_margin"
             android:padding="@dimen/menu_item_padding"
             android:orientation="vertical">
-            <TextView
+            <TextView style="@style/small_text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
@@ -63,13 +85,13 @@
                     android:paddingRight="@dimen/menu_item_padding"
                     android:paddingLeft="@dimen/menu_item_padding"
                     android:orientation="vertical">
-                    <TextView
+                    <TextView style="@style/small_text_style"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
                         android:textColor="@color/description_text_color"
                         android:text="@string/typical_use"/>
-                    <TextView
+                    <TextView style="@style/small_text_style"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/description_text_color"
@@ -86,51 +108,60 @@
             android:padding="@dimen/menu_item_padding"
             android:layout_marginTop="@dimen/menu_item_margin"
             android:orientation="vertical">
-            <TextView
+            <TextView style="@style/small_text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/bullet_icon"
+                android:layout_marginBottom="@dimen/description_gap"
                 android:textColor="@color/description_text_color"
                 android:text="@string/description_emergency_contraceptive_pills_1"/>
-            <TextView
+            <TextView style="@style/small_text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
                 android:drawableLeft="@drawable/bullet_icon"
                 android:textColor="@color/description_text_color"
                 android:text="@string/description_emergency_contraceptive_pills_2"/>
-            <TextView
+            <TextView style="@style/small_text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
                 android:drawableLeft="@drawable/bullet_icon"
                 android:textColor="@color/description_text_color"
                 android:text="@string/description_emergency_contraceptive_pills_3"/>
-            <TextView
+            <TextView style="@style/small_text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
                 android:drawableLeft="@drawable/bullet_icon"
                 android:textColor="@color/description_text_color"
                 android:text="@string/description_emergency_contraceptive_pills_4"/>
-            <TextView
+            <TextView style="@style/small_text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
                 android:textColor="@color/description_text_color"
                 android:drawableLeft="@drawable/bullet_icon"
                 android:text="@string/description_emergency_contraceptive_pills_5"/>
-            <TextView
+            <TextView style="@style/small_text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
                 android:drawableLeft="@drawable/bullet_icon"
+
                 android:textColor="@color/description_text_color"
                 android:text="@string/description_emergency_contraceptive_pills_6"/>
-            <TextView
+            <TextView style="@style/small_text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
                 android:drawableLeft="@drawable/bullet_icon"
                 android:textColor="@color/description_text_color"
                 android:text="@string/description_emergency_contraceptive_pills_7"/>
-            <TextView
+            <TextView style="@style/small_text_style"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
                 android:drawableLeft="@drawable/bullet_icon"
                 android:textColor="@color/description_text_color"
                 android:text="@string/description_emergency_contraceptive_pills_8"/>

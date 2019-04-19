@@ -19,15 +19,14 @@ public class CounselingCardsFragment extends Fragment implements View.OnClickLis
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private static final String[] counselingCards = { "Monthly Injectable", "Emergency Contraceptive Pills ", "Hormonal Implants",
-    "Intrauterine Device", "Intrauterine Device/System", "Lactational Amenorrhea Method ", "Male Condoms",
-    "The Pill", "Progestin-only Injectables", "Standard Days Method", "Withdrawal",
-    "Tubal Ligation", "Vasectomy", "Healthy Timing and Spacing of Pregnancy", "Promoting a Healthy Postpartum Period for the Mother",
+    "Intrauterine Device", "Intrauterine Device/System", "Lactational Amenorrhea Method", "Male Condoms",
+    "The Pill", "Progestin-only Injectables", "Standard Days Method", "Withdrawal", "Healthy Timing and Spacing of Pregnancy", "Promoting a Healthy Postpartum Period for the Mother",
     "Post Abortion Care", "STI/HIV Transmission & Prevention", "STI and HIV Risk Assessment",
-    "Dual Protection", "HIV Counseling and Testing", "Screening for Cervical Cancer", "Adolescent Counseling"};
+    "Dual Protection", "HIV Counseling and Testing", "Screening for Cervical Cancer", "Adolescent Counseling",""};
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private final int titleLength = 30;
+    private final int titleLength = 25;
     private CounselingCardsFragment.OnFragmentInteractionListener mListener;
 
     public CounselingCardsFragment() {
@@ -40,7 +39,7 @@ public class CounselingCardsFragment extends Fragment implements View.OnClickLis
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment BlankFragment.
+     * @return A new instance of fragment .
      */
     // TODO: Rename and change types and number of parameters
     public static CounselingCardsFragment newInstance(String param1, String param2) {
@@ -67,17 +66,18 @@ public class CounselingCardsFragment extends Fragment implements View.OnClickLis
         View view = inflater.inflate(R.layout.main_counseling, container, false);
         LinearLayout llMainCounseling = view.findViewById(R.id.llMainCounseling);
         createOptions(llMainCounseling);
-
+        getActivity().setTitle("Counseling Cards");
         return view;
     }
 
     @SuppressLint("ResourceType")
     private void createOptions(LinearLayout llMainCounseling) {
         LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        int cardIndex = 1;
+        int cardIndex = 0;
         for(int i=0; i<counselingCards.length/3;i++) {
             View option = (View) inflater.inflate(R.layout.menu_item,
                     null);
+
             LinearLayout llMenuItem = option.findViewById(R.id.llMenuItem);
             LinearLayout llMenuItemInside = null;
             for(int j=0;j<3;j++){
@@ -90,9 +90,15 @@ public class CounselingCardsFragment extends Fragment implements View.OnClickLis
                     tvCardName = llMenuItem.findViewById(R.id.tvCardName2);
                     llMenuItemInside = llMenuItem.findViewById(R.id.llMenuItem2);
                 }
+                else if(j==2 && cardIndex == 20){
+                    llMenuItemInside = llMenuItem.findViewById(R.id.llMenuItem3);
+                    llMenuItemInside.setVisibility(View.INVISIBLE);
+                    break;
+                }
                 else if(j==2){
                     tvCardName = llMenuItem.findViewById(R.id.tvCardName3);
                     llMenuItemInside = llMenuItem.findViewById(R.id.llMenuItem3);
+
                 }
                 String name="";
 
@@ -111,7 +117,6 @@ public class CounselingCardsFragment extends Fragment implements View.OnClickLis
 
             llMainCounseling.addView(llMenuItem);
         }
-
 
     }
 

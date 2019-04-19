@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:layout_marginTop="?attr/actionBarSize"
+    android:background="@color/mustard"
+    android:padding="@dimen/menu_item_padding">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/box"
+        android:orientation="vertical"
+        android:padding="@dimen/menu_item_padding"
+        android:id="@+id/llAboutUs">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="300dp"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/home_pic"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/menu_item_padding"
+                style="@style/large_text_style_bold"
+                android:text="ESTABLISHED IN 1991"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/medium_text_style"
+                android:text="Greenstar Social Marketing (GSM) was established in 1991 as a social enterprise, to improve the sexual and reproductive health of people in the country by increasing choices and access to quality modern family planning methods and contraceptivesSince GSM's inception 25 years ago (1991), we have been working ceaselessly to increase awareness, availability and access to affordable, quality, modern contraceptives.\n\nToday, the GSM Sabzsitara logo is synonymous with reliable family planning information, products and services all across the country. As the largest private sector provider of reproductive health products,GSM is responsible for provision of approximately 53% of all contraceptives, distributed by the private sector, in Pakistan.
+"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+</ScrollView>

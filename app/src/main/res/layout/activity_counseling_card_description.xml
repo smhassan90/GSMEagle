@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/mustard"
     tools:context=".CounselingCardDescription">
 
     <android.support.design.widget.AppBarLayout
@@ -13,14 +14,16 @@
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
+            app:titleTextAppearance="@style/large_text_style_bold"
             android:layout_width="match_parent"
+            app:titleTextColor="@color/whiteColor"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/darkestOrange"
+            android:background="@color/maroon"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
 
-    <include android:id="@+id/layout_counseling_card_description" layout="@layout/main_counseling"></include>
+    <include android:id="@+id/layout_counseling_card_description" layout="@layout/main_counseling_desc"></include>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

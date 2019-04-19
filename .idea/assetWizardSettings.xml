@@ -16,13 +16,41 @@
                             <entry key="actionbar">
                               <value>
                                 <PersistentState>
+                                  <option name="children">
+                                    <map>
+                                      <entry key="image">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="paddingPercent" value="50" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
+                                    </map>
+                                  </option>
                                   <option name="values">
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
-                                      <entry key="imageAsset" value="E:\bullet_icon.png" />
-                                      <entry key="outputName" value="bullet_icon" />
+                                      <entry key="imageAsset" value="E:\about_us_icon.png" />
+                                      <entry key="outputName" value="about_us_icons" />
                                       <entry key="theme" value="CUSTOM" />
-                                      <entry key="themeColor" value="ed3c25" />
+                                      <entry key="themeColor" value="096735" />
+                                    </map>
+                                  </option>
+                                </PersistentState>
+                              </value>
+                            </entry>
+                            <entry key="launcher">
+                              <value>
+                                <PersistentState>
+                                  <option name="values">
+                                    <map>
+                                      <entry key="backgroundAssetType" value="COLOR" />
+                                      <entry key="backgroundColor" value="ffffff" />
+                                      <entry key="foregroundImage" value="E:\MECWheel\app\src\main\res\drawable-hdpi\bullet_icon.png" />
                                     </map>
                                   </option>
                                 </PersistentState>

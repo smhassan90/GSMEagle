@@ -16,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -47,6 +48,11 @@ public class MainActivity extends AppCompatActivity
                 startActivity(intent);
             }
         });
+        Fragment fragment = new HomeFragment();
+
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.content_frame, fragment);
+        ft.commit();
     }
 
     @Override
@@ -66,23 +72,21 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
         Fragment fragment = null;
         if (id == R.id.btnMecWheel) {
-            /*
-            Intent myIntent = new Intent(this, MECWheel.class);
-            this.startActivity(myIntent);
-            */
             fragment = new MECWheelFragment();
 
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.cards) {
             fragment = new CounselingCardsFragment();
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        }else if (id == R.id.cards_urdu) {
+            fragment = new CounselingUrduCardsFragment();
+        }else if (id == R.id.patient_entry) {
+            Toast.makeText(this, "Coming Soon..", Toast.LENGTH_SHORT).show();
+            return false;
+        }else if (id == R.id.dosage_card) {
+            fragment = new DosageCard();
+        }else if (id == R.id.btnHome) {
+            fragment = new HomeFragment();
         }
+
         if (fragment != null) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.content_frame, fragment);

@@ -42,6 +42,8 @@ public class MECWheelFragment extends Fragment implements View.OnTouchListener {
 
         imgMECWheelFront.setScaleX(mScaleFactorForeground);
         imgMECWheelFront.setScaleY(mScaleFactorForeground);
+
+        getActivity().setTitle("MEC Wheel");
         return view;
     }
 
