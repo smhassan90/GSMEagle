@@ -595,4 +595,12 @@
           Discuss available youth-focused services, including sports clubs, support clubs, young mothers clubs, faith groups or community-based groups. Refer the client to services as needed.
     </string>
     <string name="title_activity_try_pdf">TryPDF</string>
+    <string name="lenDigit">5</string>
+    <string name="Login">Login</string>
+    <string name="login">Login</string>
+    <string name="hintCode">Code</string>
+    <string name="performSync">Perform Sync</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="submittedForms">Submitted Forms</string>
+    <string name="CRBForm">CRB Form</string>
 </resources>

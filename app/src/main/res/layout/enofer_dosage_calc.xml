@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mustard"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".CounselingCardDescription"
+    tools:showIn="@layout/activity_counseling_card_description"
+    android:theme="@style/Animation.AppCompat.Dialog">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="@drawable/box"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/menu_item_margin"
+            android:padding="@dimen/menu_item_padding"
+            android:orientation="vertical">
+            <TextView style="@style/medium_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/darkGreen"
+                android:text="BODY REQUIREMENT OF Hb"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingRight="@dimen/menu_item_padding"
+                    android:paddingLeft="@dimen/menu_item_padding"
+                    android:orientation="vertical">
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/form_field_padding"
+                        android:background="@drawable/customborder"
+                        android:padding="@dimen/padding_10"
+                        >
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/maroon"
+                            android:weightSum="1"
+                            >
+                            <LinearLayout
+                                android:layout_height="@dimen/row_height"
+                                android:layout_width="match_parent"
+                                android:weightSum="2"
+                                android:layout_weight="1"
+                                android:padding="@dimen/padding_10"
+                                android:orientation="horizontal">
+                                <TextView android:layout_height="match_parent"
+                                    android:layout_width="match_parent"
+                                    style="@style/small_text_style"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/whiteColor"
+                                    android:text="Age Group"/>
+                                <TextView android:layout_height="match_parent"
+                                    android:layout_width="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    style="@style/small_text_style"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/whiteColor"
+                                    android:text="Target Hb Level"/>
+                            </LinearLayout>
+                        </TableRow>
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:weightSum="1"
+                            >
+                            <LinearLayout
+                                android:layout_height="@dimen/row_height"
+                                android:layout_width="match_parent"
+                                android:weightSum="2"
+                                android:layout_weight="1"
+                                android:padding="@dimen/padding_10"
+                                android:orientation="horizontal">
+                                <TextView android:layout_height="match_parent"
+                                    android:layout_width="match_parent"
+                                    style="@style/small_text_style"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    android:text="Pregnant Women"/>
+                                <TextView android:layout_height="match_parent"
+                                    android:layout_width="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    style="@style/small_text_style"
+                                    android:text="14 g/dl"/>
+                            </LinearLayout>
+                        </TableRow>
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:weightSum="1"
+                            >
+                            <LinearLayout
+                                android:layout_height="@dimen/row_height"
+                                android:layout_width="match_parent"
+                                android:weightSum="2"
+                                android:layout_weight="1"
+                                android:padding="@dimen/padding_10"
+                                android:orientation="horizontal">
+                                <TextView android:layout_height="match_parent"
+                                    android:layout_width="match_parent"
+                                    style="@style/small_text_style"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    android:text="Women above 19"/>
+                                <TextView android:layout_height="match_parent"
+                                    android:layout_width="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    style="@style/small_text_style"
+                                    android:text="15.1 g/dl"/>
+                            </LinearLayout>
+                        </TableRow>
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:weightSum="1"
+                            >
+                            <LinearLayout
+                                android:layout_height="@dimen/row_height"
+                                android:layout_width="match_parent"
+                                android:weightSum="2"
+                                android:layout_weight="1"
+                                android:padding="@dimen/padding_10"
+                                android:orientation="horizontal">
+                                <TextView android:layout_height="match_parent"
+                                    android:layout_width="match_parent"
+                                    style="@style/small_text_style"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    android:text="Men above 19"/>
+                                <TextView android:layout_height="match_parent"
+                                    android:layout_width="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    style="@style/small_text_style"
+                                    android:text="17.7 g/dl"/>
+                            </LinearLayout>
+                        </TableRow>
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:weightSum="1"
+                            >
+                            <LinearLayout
+                                android:layout_height="@dimen/row_height"
+                                android:layout_width="match_parent"
+                                android:weightSum="2"
+                                android:layout_weight="1"
+                                android:padding="@dimen/padding_10"
+                                android:orientation="horizontal">
+                                <TextView android:layout_height="match_parent"
+                                    android:layout_width="match_parent"
+                                    style="@style/small_text_style"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    android:text="Children and Teen aged 12-19"/>
+                                <TextView android:layout_height="match_parent"
+                                    android:layout_width="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    style="@style/small_text_style"
+                                    android:text="16 g/dl"/>
+                            </LinearLayout>
+                        </TableRow>
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:weightSum="1"
+                            >
+                            <LinearLayout
+                                android:layout_height="@dimen/row_height"
+                                android:layout_width="match_parent"
+                                android:weightSum="2"
+                                android:layout_weight="1"
+                                android:padding="@dimen/padding_10"
+                                android:orientation="horizontal">
+                                <TextView android:layout_height="match_parent"
+                                    android:layout_width="match_parent"
+                                    style="@style/small_text_style"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    android:text="Children Below 11 years "/>
+                                <TextView android:layout_height="match_parent"
+                                    android:layout_width="match_parent"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+                                    style="@style/small_text_style"
+                                    android:text="15.5 g/dl"/>
+                            </LinearLayout>
+                        </TableRow>
+                    </TableLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/box"
+            android:padding="@dimen/menu_item_padding"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/menu_item_margin"
+            android:orientation="vertical">
+            <TextView style="@style/medium_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/darkGreen"
+                android:text="CALCULATOR"/>
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                style="@style/spinner_style"
+                android:id="@+id/spAgeGroup">
+
+            </Spinner>
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/form_field_padding"
+                    android:background="@drawable/customborder"
+                    android:weightSum="10">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        style="@style/medium_text_style"
+                        android:textColor="@color/darkGreen"
+                        android:gravity="center_vertical"
+                        android:layout_weight="7"
+                        android:text="Body Weight in KG"/>
+                    <EditText android:maxLength="@string/lenDigit"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:id="@+id/etBodyWeight"
+                        android:inputType="numberDecimal"
+                        android:text="0">
+                    </EditText>
+                </TableRow>
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/form_field_padding"
+                    android:background="@drawable/customborder"
+                    android:weightSum="10">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        style="@style/medium_text_style"
+                        android:textColor="@color/darkGreen"
+                        android:gravity="center_vertical"
+                        android:layout_weight="7"
+                        android:text="Actual Hb"/>
+                    <EditText android:maxLength="@string/lenDigit"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:inputType="numberDecimal"
+                        android:id="@+id/etActualHb"
+                        android:text="0">
+                    </EditText>
+                </TableRow>
+            </TableLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/padding_10"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    style="@style/medium_text_style"
+                    android:text="Required Iron Dose(mg) = "/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="500mg"
+                    android:id="@+id/tvIronDose"
+                    style="@style/medium_text_style"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/padding_10"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    style="@style/medium_text_style"
+                    android:text="Ampule Required = "/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="5"
+                    android:id="@+id/tvAmpuleResult"
+                    style="@style/medium_text_style"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
+                android:textColor="@color/darkGreen"
+                android:layout_gravity="left"
+                android:text="* One Enofer ampule contains 100mg/5ml Iron Sucrose"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="@drawable/box"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/menu_item_margin"
+            android:padding="@dimen/menu_item_padding"
+            android:orientation="vertical">
+            <TextView style="@style/medium_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:textColor="@color/darkGreen"
+                android:text="WHEN TO USE"/>
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
+                android:textColor="@color/darkGreen"
+                android:text="Patients with iron deficiency anemia in whom iron supplementation is being considered."/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="@drawable/box"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/menu_item_margin"
+            android:padding="@dimen/menu_item_padding"
+            android:orientation="vertical">
+            <TextView style="@style/medium_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:textColor="@color/darkGreen"
+                android:text="ENOFER DOSAGE CALCULATION"/>
+            <TextView style="@style/medium_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_marginBottom="@dimen/description_gap"
+                android:textColor="@color/darkGreen"
+                android:text="Required Iron dose (mg) = Body weight in (kg) × Hb Deficit (Target Hb-Actual Hb) ) (g/dl) × 2.4 "/>
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
+                android:textColor="@color/darkGreen"
+                android:drawableLeft="@drawable/bullet_icon"
+                android:text="Factor 2.4 = 0.0034 (Iron content of Hemoglobin = 0.34%) x 0.07 (Blood volume = 7% of Body weight) x 1000
+(conversion of [g] to [mg]) x 10 (Ganzoni constant)"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="@drawable/box"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/menu_item_margin"
+            android:padding="@dimen/menu_item_padding"
+            android:orientation="vertical">
+            <TextView style="@style/medium_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textColor="@color/darkGreen"
+                android:text="DOSAGE"/>
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
+                android:drawableLeft="@drawable/bullet_icon"
+                android:textColor="@color/darkGreen"
+                android:text="Two Ampules (10ml) may be Diluted in 100 ml 0.9% NaCl Solution"/>
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
+                android:drawableLeft="@drawable/bullet_icon"
+                android:textColor="@color/darkGreen"
+                android:text="1st 25ml should be infused as a test Dose over a period of 15 minutes at a rate of 12 drops/min"/>
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
+                android:drawableLeft="@drawable/bullet_icon"
+                android:textColor="@color/darkGreen"
+                android:text="After 30 mints if no adverse events occurs the remaining portion of the infusion i.e.75ml should be given at the rate of 36 drops/min (1.5 hrs)"/>
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
+                android:drawableLeft="@drawable/bullet_icon"
+                android:textColor="@color/darkGreen"
+                android:text="Duration of therapy 6 weeks i.e. 2 Enofer Ampoules per week"/>
+            <TextView style="@style/medium_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/darkGreen"
+                android:layout_gravity="center"
+                android:text="POSTPARTUM TREATMENT"/>
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
+                android:drawableLeft="@drawable/bullet_icon"
+                android:textColor="@color/darkGreen"
+                android:text="3 Doses of 200mg Enofer administered as IV infusion 24 hours apart"/>
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
+                android:drawableLeft="@drawable/bullet_icon"
+                android:textColor="@color/darkGreen"
+                android:text="Duration of therapy 6 weeks i.e. 2 Enofer Ampules per week"/>
+            <TextView style="@style/medium_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:textColor="@color/darkGreen"
+                android:text="CAUTION"/>
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
+                android:drawableLeft="@drawable/bullet_icon"
+                android:textColor="@color/darkGreen"
+                android:text="Can be given 200mg maximum but not more than 3 times/week"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

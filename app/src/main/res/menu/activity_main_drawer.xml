@@ -26,6 +26,11 @@
             android:iconTint="@color/darkGreen"
             android:icon="@drawable/cards_icon"
             android:title="FIGO Dosage Card" />
+        <item
+            android:id="@+id/PharmaProducts"
+            android:iconTint="@color/darkGreen"
+            android:icon="@drawable/cards_icon"
+            android:title="Enofer" />
 
         <item
             android:id="@+id/patient_entry"
@@ -40,18 +45,4 @@
             android:title="About Us" />
 
     </group>
-<!--
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
-        </menu>
-    </item>
--->
 </menu>

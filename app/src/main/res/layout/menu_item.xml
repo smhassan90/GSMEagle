@@ -65,7 +65,7 @@
                 android:id="@+id/tvCardName2"
                 android:textAlignment="center"
                 android:gravity="center"
-                android:text="card1"/>
+                android:text="Information"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="@dimen/menu_item_width"

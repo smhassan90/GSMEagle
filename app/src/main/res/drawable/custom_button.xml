@@ -1,0 +1,6 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/whiteColor" android:state_selected="true" />
+    <item android:drawable="@drawable/shadow_container" android:state_pressed="true" />
+    <item android:drawable="@drawable/custom_android_shadow"  >
+    </item>
+</selector>

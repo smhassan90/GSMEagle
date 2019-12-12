@@ -41,7 +41,6 @@ public class DosageCard extends Fragment implements OnPageChangeListener,OnLoadC
         pdfView.fromAsset(SAMPLE_FILE)
                 .defaultPage(pageNumber)
                 .enableSwipe(true)
-
                 .swipeHorizontal(false)
                 .onPageChange(this)
                 .enableAnnotationRendering(true)

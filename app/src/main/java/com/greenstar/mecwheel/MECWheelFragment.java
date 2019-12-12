@@ -31,6 +31,8 @@ public class MECWheelFragment extends Fragment implements View.OnTouchListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_mec_wheel, container, false);
+        getActivity().setTitle("MEC Wheel");
+
         imgMECWheel = view.findViewById(R.id.btnMecWheel);
         imgMECWheelFront = view.findViewById(R.id.btnMecWheelFront);
 
@@ -42,8 +44,6 @@ public class MECWheelFragment extends Fragment implements View.OnTouchListener {
 
         imgMECWheelFront.setScaleX(mScaleFactorForeground);
         imgMECWheelFront.setScaleY(mScaleFactorForeground);
-
-        getActivity().setTitle("MEC Wheel");
         return view;
     }
 

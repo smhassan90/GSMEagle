@@ -2,12 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.greenstar.mecwheel">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <application
         android:allowBackup="true"
         android:label="@string/app_name"
         android:icon="@mipmap/ic_launcher"
-        android:roundIcon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
@@ -22,6 +23,19 @@
         <activity
             android:name=".CounselingCardDescription"
             android:label="@string/title_activity_counseling_card_description"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".EnoferDosageCalculator"
+            android:label="@string/title_activity_counseling_card_description"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SignAndSymptoms"
+            android:label="@string/title_activity_counseling_card_description"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".crb.controller.LoginScreen"
+            android:label="@string/Login"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 

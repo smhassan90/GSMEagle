@@ -83,6 +83,8 @@ public class MainActivity extends AppCompatActivity
             return false;
         }else if (id == R.id.dosage_card) {
             fragment = new DosageCard();
+        }else if (id == R.id.PharmaProducts) {
+            fragment = new PharmaProducts();
         }else if (id == R.id.btnHome) {
             fragment = new HomeFragment();
         }
