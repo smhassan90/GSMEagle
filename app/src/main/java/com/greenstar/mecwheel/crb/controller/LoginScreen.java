@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.greenstar.mecwheel.R;
 import com.greenstar.mecwheel.crb.db.AppDatabase;
 import com.greenstar.mecwheel.crb.utils.HttpUtils;
 import com.greenstar.mecwheel.crb.utils.Util;
@@ -107,7 +109,7 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
                     editor.putString("token", token);
                     editor.putBoolean("isLoggedIn", true);
                     editor.putLong("dtcFormID",baseID );
-                    editor.putLong("meetingDataID",baseID );
+                    editor.putLong("crbFormID",baseID );
                     editor.putString("staffCode",staffCode);
                     editor.apply();
 

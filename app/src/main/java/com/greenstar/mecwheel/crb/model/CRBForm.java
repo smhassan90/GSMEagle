@@ -24,7 +24,7 @@ public class CRBForm {
 
     private String clientAge;
 
-    private int fbUserCategory;
+    private String fpUserCategory;
 
     private String currentMethod;
 
@@ -105,12 +105,12 @@ public class CRBForm {
         this.clientAge = clientAge;
     }
 
-    public int getFbUserCategory() {
-        return fbUserCategory;
+    public String getFpUserCategory() {
+        return fpUserCategory;
     }
 
-    public void setFbUserCategory(int fbUserCategory) {
-        this.fbUserCategory = fbUserCategory;
+    public void setFpUserCategory(String fpUserCategory) {
+        this.fpUserCategory = fpUserCategory;
     }
 
     public String getCurrentMethod() {

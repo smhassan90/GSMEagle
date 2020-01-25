@@ -66,8 +66,7 @@ public class Menu extends AppCompatActivity implements View.OnClickListener, Web
             Intent myIntent = new Intent(this, CRBFormActivity.class);
             startActivity(myIntent);
         }else if(v.getId()==R.id.llDashboard){
-
-
+            Toast.makeText(this,"Feature is under development",Toast.LENGTH_SHORT).show();
         }else if(v.getId()==R.id.llBasket){
             Intent myIntent = new Intent(this, SubmittedForms.class);
             startActivity(myIntent);

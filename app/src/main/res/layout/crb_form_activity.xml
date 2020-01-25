@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@color/lightBlue"
+                android:padding="@dimen/form_field_padding">
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/form_field_padding"
+                        android:background="@drawable/customborder"
+                        android:padding="@dimen/padding_10"
+                        android:weightSum="10">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            style="@style/text_style"
+                            android:textColor="@color/black"
+                            android:gravity="center_vertical"
+                            android:layout_weight="5"
+                            android:text="Provider Name"/>
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            style="@style/text_style"
+                            android:textColor="@color/black"
+                            android:gravity="center_vertical"
+                            android:layout_weight="5"
+                            android:id="@+id/tvProviderName"
+                            android:text=""/>
+                    </TableRow>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/form_field_padding"
+                        android:background="@drawable/customborder"
+                        android:weightSum="10">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            style="@style/text_style"
+                            android:textColor="@color/black"
+                            android:gravity="center_vertical"
+                            android:layout_weight="5"
+                            android:text="Visit Date"/>
+                        <EditText
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            style="@style/text_style"
+                            android:textStyle="bold"
+                            android:textColor="@color/darkGreen"
+                            android:layout_weight="5"
+                            android:focusable="false"
+                            android:id="@+id/etVisitDate"/>
+                    </TableRow>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/form_field_padding"
+                        android:background="@drawable/customborder"
+                        android:padding="@dimen/padding_10"
+                        android:weightSum="10">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            style="@style/text_style"
+                            android:textColor="@color/black"
+                            android:gravity="center_vertical"
+                            android:layout_weight="5"
+                            android:text="Client Name"/>
+                        <EditText
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            style="@style/text_style"
+                            android:textStyle="bold"
+                            android:textColor="@color/darkGreen"
+                            android:layout_weight="5"
+                            android:id="@+id/etClientName"/>
+                    </TableRow>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/form_field_padding"
+                        android:background="@drawable/customborder"
+                        android:padding="@dimen/padding_10"
+                        android:weightSum="10">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            style="@style/text_style"
+                            android:textColor="@color/black"
+                            android:gravity="center_vertical"
+                            android:layout_weight="5"
+                            android:text="Address"/>
+                        <EditText
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            style="@style/text_style"
+                            android:textStyle="bold"
+                            android:textColor="@color/darkGreen"
+                            android:layout_weight="5"
+                            android:id="@+id/etAddress"/>
+                    </TableRow>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/form_field_padding"
+                        android:background="@drawable/customborder"
+                        android:padding="@dimen/padding_10"
+                        android:weightSum="10">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            style="@style/text_style"
+                            android:textColor="@color/black"
+                            android:gravity="center_vertical"
+                            android:layout_weight="5"
+                            android:text="Contact Number"/>
+                        <EditText
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            style="@style/text_style"
+                            android:textStyle="bold"
+                            android:textColor="@color/darkGreen"
+                            android:layout_weight="5"
+                            android:inputType="number"
+                            android:id="@+id/etContact"/>
+                    </TableRow>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/form_field_padding"
+                        android:background="@drawable/customborder"
+                        android:padding="@dimen/padding_10"
+                        android:weightSum="10">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            style="@style/text_style"
+                            android:textColor="@color/black"
+                            android:gravity="center_vertical"
+                            android:layout_weight="5"
+                            android:text="Number of Current Children"/>
+                        <EditText
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            style="@style/text_style"
+                            android:textStyle="bold"
+                            android:textColor="@color/darkGreen"
+                            android:layout_weight="5"
+                            android:inputType="number"
+                            android:id="@+id/etNoOfCurrentChildren"/>
+                    </TableRow>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/form_field_padding"
+                        android:background="@drawable/customborder"
+                        android:padding="@dimen/padding_10"
+                        android:visibility="gone"
+                        android:weightSum="10">
+
+                        <Spinner
+                            android:id="@+id/spReferredBy"
+                            android:prompt="@string/referredBy"
+                            android:layout_width="match_parent"
+                            style="@style/spinner_style"
+                            android:layout_weight="10"
+                            android:layout_height="@dimen/spinner_height"
+                            android:autofillHints="@string/referredBy"/>
+                    </TableRow>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/form_field_padding"
+                        android:background="@drawable/customborder"
+                        android:padding="@dimen/padding_10"
+                        android:weightSum="10">
+
+                        <Spinner
+                            android:id="@+id/spClientAge"
+                            android:prompt="@string/clientAge"
+                            android:layout_width="match_parent"
+                            style="@style/spinner_style"
+                            android:layout_weight="10"
+                            android:layout_height="@dimen/spinner_height"
+                            android:autofillHints="@string/clientAge"/>
+                    </TableRow>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/table_header_size"
+                        android:gravity="center">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/medium_text_style"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:text="Family Planning Section"/>
+                    </LinearLayout>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/form_field_padding"
+                        android:background="@drawable/customborder"
+                        android:id="@+id/trCurrentUser"
+                        android:weightSum="10">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            style="@style/text_style"
+                            android:textColor="@color/black"
+                            android:gravity="center_vertical"
+                            android:layout_weight="7"
+                            android:text="Is this client currently using any contraceptive method?"/>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:orientation="vertical" >
+
+                            <RadioGroup
+                                android:id="@+id/rgIsCurrentUser"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" >
+
+                                <RadioButton
+                                    android:id="@+id/rbIsCurrentUserYes"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Yes"
+                                    style="@style/text_style"/>
+
+                                <RadioButton
+                                    android:id="@+id/rbIsCurrentUserNo"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    style="@style/text_style"
+                                    android:text="No" />
+
+                            </RadioGroup>
+
+                        </LinearLayout>
+                    </TableRow>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/form_field_padding"
+                        android:background="@drawable/customborder"
+                        android:id="@+id/trNeverUser"
+                        android:weightSum="10">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            style="@style/text_style"
+                            android:textColor="@color/black"
+                            android:gravity="center_vertical"
+                            android:layout_weight="7"
+                            android:text="Has this client never used any method?"/>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:orientation="vertical" >
+
+                            <RadioGroup
+                                android:id="@+id/rgIsNeverUser"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" >
+
+                                <RadioButton
+                                    android:id="@+id/rbIsNeverUserYes"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Yes"
+                                    style="@style/text_style" />
+
+                                <RadioButton
+                                    android:id="@+id/rbIsNeverUserNo"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    style="@style/text_style"
+                                    android:text="No" />
+
+                            </RadioGroup>
+
+                        </LinearLayout>
+                    </TableRow>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/form_field_padding"
+                        android:background="@drawable/customborder"
+                        android:id="@+id/trEverUser"
+                        android:weightSum="10">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            style="@style/text_style"
+                            android:textColor="@color/black"
+                            android:gravity="center_vertical"
+                            android:layout_weight="7"
+                            android:text="Has this client has used any Contraceptive method but now left since 1 year?"/>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:orientation="vertical" >
+
+                            <RadioGroup
+                                android:id="@+id/rgIsEverUser"
+                                android:padding="@dimen/padding_10"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" >
+
+                                <RadioButton
+                                    android:id="@+id/rbIsEverUserYes"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Yes"
+                                    style="@style/text_style"/>
+
+                            </RadioGroup>
+
+                        </LinearLayout>
+                    </TableRow>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/form_field_padding"
+                        android:background="@drawable/customborder"
+                        android:padding="@dimen/padding_10"
+                        android:weightSum="10">
+
+                        <Spinner
+                            android:id="@+id/spCurrentMethod"
+                            android:prompt="@string/currentMethod"
+                            android:layout_width="match_parent"
+                            style="@style/spinner_style"
+                            android:layout_weight="10"
+                            android:layout_height="@dimen/spinner_height"
+                            android:autofillHints="@string/currentMethod"/>
+                    </TableRow>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/form_field_padding"
+                        android:background="@drawable/customborder"
+                        android:padding="@dimen/padding_10"
+                        android:weightSum="10">
+
+                        <Spinner
+                            android:id="@+id/spTimingFPService"
+                            android:prompt="@string/timingFPService"
+                            android:layout_width="match_parent"
+                            style="@style/spinner_style"
+                            android:layout_weight="10"
+                            android:layout_height="@dimen/spinner_height"
+                            android:autofillHints="@string/timingFPService"/>
+                    </TableRow>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/form_field_padding"
+                        android:background="@drawable/customborder"
+                        android:padding="@dimen/padding_10"
+                        android:weightSum="10">
+
+                        <Spinner
+                            android:id="@+id/spServiceType"
+                            android:prompt="@string/ServiceType"
+                            android:layout_width="match_parent"
+                            style="@style/spinner_style"
+                            android:layout_weight="10"
+                            android:layout_height="@dimen/spinner_height"
+                            android:autofillHints="@string/ServiceType"/>
+                    </TableRow>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/form_field_padding"
+                        android:background="@drawable/customborder"
+                        android:weightSum="10">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            style="@style/text_style"
+                            android:textColor="@color/black"
+                            android:gravity="center_vertical"
+                            android:layout_weight="7"
+                            android:text="Have you used this method within 12 months?"/>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:orientation="vertical" >
+
+                            <RadioGroup
+                                android:id="@+id/rgIsWithin12Months"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" >
+
+                                <RadioButton
+                                    android:id="@+id/rbIsWithin12MonthsYes"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Yes"
+                                    style="@style/text_style"/>
+
+                                <RadioButton
+                                    android:id="@+id/rbIsWithin12MonthsNo"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    style="@style/text_style"
+                                    android:text="No" />
+
+                            </RadioGroup>
+
+                        </LinearLayout>
+                    </TableRow>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/table_header_size"
+                        android:gravity="center">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/medium_text_style"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:text="Remarks"/>
+                    </LinearLayout>
+                </TableLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:background="@color/lightBlue"
+                    android:padding="@dimen/form_field_padding"
+                    >
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/customborder"
+                        android:padding="@dimen/padding_10"
+                        android:id="@+id/etPersonalMinutes"
+                        android:hint="Personal Minutes"
+                        android:text="">
+                    </EditText>
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spinner_height"
+                        android:background="@drawable/customborder"
+                        android:id="@+id/btnSubmit"
+                        style="@style/text_style"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/submit"/>
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>

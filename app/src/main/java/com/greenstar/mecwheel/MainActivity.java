@@ -1,6 +1,7 @@
 package com.greenstar.mecwheel;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -14,9 +15,12 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import com.greenstar.mecwheel.crb.controller.Codes;
+import com.greenstar.mecwheel.crb.controller.LoginScreen;
+import com.greenstar.mecwheel.crb.controller.Menu;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -79,8 +83,15 @@ public class MainActivity extends AppCompatActivity
         }else if (id == R.id.cards_urdu) {
             fragment = new CounselingUrduCardsFragment();
         }else if (id == R.id.patient_entry) {
-            Toast.makeText(this, "Coming Soon..", Toast.LENGTH_SHORT).show();
-            return false;
+            SharedPreferences shared = getSharedPreferences(Codes.PREF_NAME, MODE_PRIVATE);
+            boolean isLoggedIn = (shared.getBoolean("isLoggedIn", false));
+            if(isLoggedIn){
+                Intent myIntent = new Intent(this, Menu.class);
+                startActivity(myIntent);
+            }else{
+                Intent myIntent = new Intent(this, LoginScreen.class);
+                startActivity(myIntent);
+            }
         }else if (id == R.id.dosage_card) {
             fragment = new DosageCard();
         }else if (id == R.id.PharmaProducts) {

@@ -13,22 +13,22 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.crashlytics.android.Crashlytics;
-import com.greenstar.gsmdtc.R;
-import com.greenstar.gsmdtc.adapters.PendingFormAdapter;
-import com.greenstar.gsmdtc.dao.DTCFormDeleteListener;
-import com.greenstar.gsmdtc.db.AppDatabase;
-import com.greenstar.gsmdtc.model.DTCForm;
+
+import com.greenstar.mecwheel.R;
+import com.greenstar.mecwheel.crb.adapter.PendingFormAdapter;
+import com.greenstar.mecwheel.crb.dao.CRBFormDeleteListener;
+import com.greenstar.mecwheel.crb.db.AppDatabase;
+import com.greenstar.mecwheel.crb.model.CRBForm;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PendingFormsBasket extends Fragment implements DTCFormDeleteListener {
+public class PendingFormsBasket extends Fragment implements CRBFormDeleteListener {
     View view= null;
     ListView lvBasket;
     PendingFormAdapter basketAdapter;
     AppDatabase db =null;
-    List<DTCForm> dtcForms = new ArrayList<>();
+    List<CRBForm> forms = new ArrayList<>();
 
     private OnFragmentInteractionListener mListener;
     Activity activity;
@@ -41,10 +41,10 @@ public class PendingFormsBasket extends Fragment implements DTCFormDeleteListene
         super.onCreate(savedInstanceState);
 
     }
-    private List<DTCForm> getData(){
-        List<DTCForm> dtcForms = db.getDTCFormDAO().getAllPending();
+    private List<CRBForm> getData(){
+        List<CRBForm> forms = db.getCRBFormDAO().getPendingCRBForms();
 
-        return dtcForms ;
+        return forms ;
     }
 
     @Override
@@ -54,9 +54,9 @@ public class PendingFormsBasket extends Fragment implements DTCFormDeleteListene
         db = AppDatabase.getAppDatabase(getActivity());
         lvBasket = view.findViewById(R.id.lvBasket);
 
-        List<DTCForm> dtcForms = new ArrayList<>();
-        dtcForms = getData();
-        basketAdapter = new PendingFormAdapter(getActivity(), dtcForms, this);
+        List<CRBForm> forms = new ArrayList<>();
+        forms = getData();
+        basketAdapter = new PendingFormAdapter(getActivity(), forms, this);
         lvBasket.setAdapter(basketAdapter);
 
         // Inflate the layout for this fragment
@@ -88,19 +88,18 @@ public class PendingFormsBasket extends Fragment implements DTCFormDeleteListene
 
     private void deleteForm(long formId){
         try{
-            db.getDTCFormDAO().deleteFormById(formId);
-            Toast.makeText(getActivity(),"DTC Form deleted",Toast.LENGTH_SHORT).show();
+            db.getCRBFormDAO().deleteFormById(formId);
+            Toast.makeText(getActivity(),"CRB Form deleted",Toast.LENGTH_SHORT).show();
             basketAdapter = new PendingFormAdapter(getActivity(), getData(), this);
             lvBasket.setAdapter(basketAdapter);
             basketAdapter.notifyDataSetChanged();
         }catch (Exception e){
-            Crashlytics.logException(e);
         }
 
     }
 
     @Override
-    public void deleteDTCForm(final long orderId) {
+    public void deleteCRBForm(final long orderId) {
         new AlertDialog.Builder(getActivity())
                 .setTitle("Delete entry")
                 .setMessage("Are you sure you want to delete this form?")

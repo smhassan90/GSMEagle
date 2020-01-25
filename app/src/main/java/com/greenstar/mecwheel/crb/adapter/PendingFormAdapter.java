@@ -12,21 +12,21 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.crashlytics.android.Crashlytics;
-import com.greenstar.gsmdtc.R;
-import com.greenstar.gsmdtc.dao.DTCFormDeleteListener;
-import com.greenstar.gsmdtc.db.AppDatabase;
-import com.greenstar.gsmdtc.model.DTCForm;
+import com.greenstar.mecwheel.R;
+import com.greenstar.mecwheel.crb.controller.PendingFormsBasket;
+import com.greenstar.mecwheel.crb.dao.CRBFormDeleteListener;
+import com.greenstar.mecwheel.crb.db.AppDatabase;
+import com.greenstar.mecwheel.crb.model.CRBForm;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PendingFormAdapter extends ArrayAdapter<DTCForm> implements View.OnClickListener {
+public class PendingFormAdapter extends ArrayAdapter<CRBForm> implements View.OnClickListener {
     private Activity mActivity;
-    private List<DTCForm> list = new ArrayList<>();
+    private List<CRBForm> list = new ArrayList<>();
     AppDatabase db =null;
-    DTCFormDeleteListener deleteForm = null;
-    public PendingFormAdapter(@NonNull Activity activity, List<DTCForm> list, DTCFormDeleteListener deleteForm) {
+    CRBFormDeleteListener deleteForm = null;
+    public PendingFormAdapter(@NonNull Activity activity, List<CRBForm> list, PendingFormsBasket deleteForm) {
         super(activity, 0, 0, list);
         db = AppDatabase.getAppDatabase(activity);
         mActivity = activity;
@@ -41,7 +41,7 @@ public class PendingFormAdapter extends ArrayAdapter<DTCForm> implements View.On
 
     @Nullable
     @Override
-    public DTCForm getItem(int position) {
+    public CRBForm getItem(int position) {
         return list.get(position);
     }
 
@@ -54,7 +54,6 @@ public class PendingFormAdapter extends ArrayAdapter<DTCForm> implements View.On
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = convertView;
-        View view=null;
         if (v == null) {
             LayoutInflater inflater = mActivity.getLayoutInflater();
             v = inflater.inflate(R.layout.pending_form, null);
@@ -65,21 +64,21 @@ public class PendingFormAdapter extends ArrayAdapter<DTCForm> implements View.On
         TextView tvProviderName = (TextView) v.findViewById(R.id.tvProviderName);
         TextView tvProviderCode = (TextView) v.findViewById(R.id.tvProviderCode);
         TextView tvVisitDate = (TextView) v.findViewById(R.id.tvVisitDate);
-        ImageView btnDelete = v.findViewById(R.id.btnDelete);
+        ImageView btnDelete = (ImageView)v.findViewById(R.id.btnDelete);
 
         btnDelete.setOnClickListener(this);
         if(list!=null && list.size()>0){
-            DTCForm i = list.get(position);
+            CRBForm i = list.get(position);
             if(i!=null){
-                try {
+                try{
                     tvFormId.setText("Form ID : " + i.getId());
-                    tvVisitDate.setText("Meeting Date : " + i.getMeetingDate());
-                    tvProviderName.setText("Chair person : "+i.getChairName());
-                    tvProviderCode.setText("Attending With : "+i.getAttendingWithName());
+                    tvVisitDate.setText("Client Name : " + i.getClientName());
+                    tvProviderName.setText("Age : "+i.getClientAge());
+                    tvProviderCode.setText("Contact Number : "+i.getContactNumber());
                     btnDelete.setTag(i.getId());
-                }catch(Exception e){
-                    Crashlytics.logException(e);
+                }catch (Exception e){
                 }
+
             }else{
 
                 tvFormId.setText("There is no pending form");
@@ -96,7 +95,6 @@ public class PendingFormAdapter extends ArrayAdapter<DTCForm> implements View.On
             tvVisitDate.setVisibility(View.GONE);
             btnDelete.setVisibility(View.GONE);
         }
-
         return v;
     }
 
@@ -106,7 +104,7 @@ public class PendingFormAdapter extends ArrayAdapter<DTCForm> implements View.On
             Object obj =  v.getTag()==null?"0":v.getTag();
             long formId = (long)obj;
             if(formId!=0){
-                deleteForm.deleteDTCForm(formId);
+                deleteForm.deleteCRBForm(formId);
             }else{
                 Toast.makeText(mActivity, "Something went wrong while deleting Form",Toast.LENGTH_SHORT).show();
             }

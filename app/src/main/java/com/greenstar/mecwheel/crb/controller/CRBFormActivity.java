@@ -13,68 +13,119 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.greenstar.mecwheel.R;
+import com.greenstar.mecwheel.crb.adapter.ClientAgeAdapter;
+import com.greenstar.mecwheel.crb.adapter.CurrentMethodAdapter;
+import com.greenstar.mecwheel.crb.adapter.ReferredByAdapter;
+import com.greenstar.mecwheel.crb.adapter.ServiceTypeAdapter;
+import com.greenstar.mecwheel.crb.adapter.TimingFPServiceAdapter;
 import com.greenstar.mecwheel.crb.db.AppDatabase;
+import com.greenstar.mecwheel.crb.model.CRBForm;
+import com.greenstar.mecwheel.crb.model.DropdownCRBData;
+import com.greenstar.mecwheel.crb.utils.Util;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
-public class CRBFormActivity extends AppCompatActivity implements View.OnClickListener {
+public class CRBFormActivity extends AppCompatActivity implements View.OnClickListener, RadioGroup.OnCheckedChangeListener {
 
     AppDatabase db =null;
 
-    EditText etMeetingDate;
-    EditText etPersonName, etPersonDesignation, etPersonECode, etPersonTeam;
-    EditText etChairName, etChairDesignation, etChairCellNumber, etChairEmailAddress, etChairMeetingAddress;
-    EditText etPersonalMinutes;
+    EditText etVisitDate, etClientName, etAddress, etContact, etNoOfChildren;
 
-    TextView tvStaffCodeName;
+    TextView tvProviderName;
 
-    SearchableSpinner spDistricts;
+    Spinner spReferredBy, spClientAge, spCurrentMethod, spTimingFPService, spServiceType;
+
+    RadioGroup rgIsCurrentUser;
+    RadioButton rbIsCurrentUserYes, rbIsCurrentUserNo;
+
+    RadioGroup rgIsNeverUser;
+    RadioButton rbIsNeverUserYes, rbIsNeverUserNo;
+
+    RadioGroup rgIsEverUser;
+    RadioButton rbIsEverUserYes, rbIsEverUserNo;
+
+    RadioGroup rgIsWithin12Months;
+    RadioButton rbIsWithin12MonthsYes, rbIsWithin12MonthsNo;
 
     Button btnSubmit;
 
     DatePickerDialog.OnDateSetListener date = null;
     final Calendar myCalendar = Calendar.getInstance();
 
+    TableRow trCurrentUser, trNeverUser, trEverUser;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.form_activity);
+        setContentView(R.layout.crb_form_activity);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        etMeetingDate = findViewById(R.id.etMeetingDate);
-        etMeetingDate.setOnClickListener(this);
-
-        tvStaffCodeName = findViewById(R.id.tvStaffCodeName);
-
-        spDistricts = findViewById(R.id.spDistricts);
-
-        etPersonName = findViewById(R.id.etName);
-        etPersonDesignation = findViewById(R.id.etDesignation);
-        etPersonECode = findViewById(R.id.etPersonCode);
-        etPersonTeam = findViewById(R.id.etTeam);
-
-        etChairName = findViewById(R.id.etChairName);
-        etChairDesignation = findViewById(R.id.etChairDesignation);
-        etChairCellNumber = findViewById(R.id.etChairCellNumber);
-        etChairEmailAddress = findViewById(R.id.etChairEmail);
-        etChairMeetingAddress = findViewById(R.id.etAddressMeetingOffice);
-
-        etPersonalMinutes = findViewById(R.id.etPersonalMinutes);
-
-        btnSubmit = findViewById(R.id.btnSubmit);
-        btnSubmit.setOnClickListener(this);
+        initializeVariables();
 
         populateForm();
     }
 
+    private void initializeVariables(){
+        etVisitDate = findViewById(R.id.etVisitDate);
+        etVisitDate.setOnClickListener(this);
+
+        etClientName = findViewById(R.id.etClientName);
+        etAddress = findViewById(R.id.etAddress);
+        etContact = findViewById(R.id.etContact);
+        etNoOfChildren = findViewById(R.id.etNoOfCurrentChildren);
+
+        spReferredBy = findViewById(R.id.spReferredBy);
+        spClientAge = findViewById(R.id.spClientAge);
+        spCurrentMethod = findViewById(R.id.spCurrentMethod);
+        spTimingFPService = findViewById(R.id.spTimingFPService);
+        spServiceType = findViewById(R.id.spServiceType);
+
+        rgIsCurrentUser = findViewById(R.id.rgIsCurrentUser);
+        rbIsCurrentUserYes = findViewById(R.id.rbIsCurrentUserYes);
+        rbIsCurrentUserNo = findViewById(R.id.rbIsCurrentUserNo);
+        rgIsCurrentUser.setOnCheckedChangeListener(this);
+
+        rgIsNeverUser = findViewById(R.id.rgIsNeverUser);
+        rbIsNeverUserYes = findViewById(R.id.rbIsNeverUserYes);
+        rbIsNeverUserNo = findViewById(R.id.rbIsNeverUserNo);
+        rgIsNeverUser.setOnCheckedChangeListener(this);
+
+        rgIsEverUser = findViewById(R.id.rgIsEverUser);
+        rbIsEverUserYes = findViewById(R.id.rbIsEverUserYes);
+
+        rgIsWithin12Months = findViewById(R.id.rgIsWithin12Months);
+        rbIsWithin12MonthsYes = findViewById(R.id.rbIsWithin12MonthsYes);
+        rbIsWithin12MonthsNo = findViewById(R.id.rbIsWithin12MonthsNo);
+
+        btnSubmit = findViewById(R.id.btnSubmit);
+        btnSubmit.setOnClickListener(this);
+
+        tvProviderName = findViewById(R.id.tvProviderName);
+
+        trCurrentUser = findViewById(R.id.trCurrentUser);
+        trNeverUser = findViewById(R.id.trNeverUser);
+        trEverUser = findViewById(R.id.trEverUser);
+
+    }
+
     private void populateForm(){
-        updateMeetingDate();
+
+        trNeverUser.setVisibility(View.GONE);
+        trEverUser.setVisibility(View.GONE);
+
+        updateVisitDate();
         date = new DatePickerDialog.OnDateSetListener() {
 
             @Override
@@ -82,62 +133,133 @@ public class CRBFormActivity extends AppCompatActivity implements View.OnClickLi
                 myCalendar.set(Calendar.YEAR, year);
                 myCalendar.set(Calendar.MONTH, month);
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                updateMeetingDate();
+                updateVisitDate();
             }
 
         };
 
         SharedPreferences shared = getSharedPreferences(Codes.PREF_NAME, MODE_PRIVATE);
-        String staffCode = shared.getString("code", "");
-        String staffName = shared.getString("name", "");
-        tvStaffCodeName.setText(staffName);
+        String providerName = shared.getString("name", "");
+        tvProviderName.setText(providerName);
 
-        List<District> districtList = new ArrayList<>();
-        District districtDummy = new District();
-        districtDummy.setDistCode(0);
-        districtDummy.setDistName("Please Select");
+        List<DropdownCRBData> dropdownCRBDataReferredBy = new ArrayList<>();
+        List<DropdownCRBData> dropdownCRBDataClientAge = new ArrayList<>();
+        List<DropdownCRBData> dropdownCRBDataCurrentMethod = new ArrayList<>();
+        List<DropdownCRBData> dropdownCRBDataTimingFPUser = new ArrayList<>();
+        List<DropdownCRBData> dropdownCRBDataServiceType = new ArrayList<>();
+
+        DropdownCRBData referredByDummy = new DropdownCRBData();
+        referredByDummy.setDetailEnglish("Referred By");
+        referredByDummy.setId(0);
+
+        DropdownCRBData clientAgeDummy = new DropdownCRBData();
+        clientAgeDummy.setDetailEnglish("Client Age");
+        clientAgeDummy.setId(0);
+
+        DropdownCRBData currentMethodDummy = new DropdownCRBData();
+        currentMethodDummy.setDetailEnglish("Current Method");
+        currentMethodDummy.setId(0);
+
+        DropdownCRBData timingOfFPDummy = new DropdownCRBData();
+        timingOfFPDummy.setDetailEnglish("When took service");
+        timingOfFPDummy.setId(0);
+
+        DropdownCRBData serviceTypeDummy = new DropdownCRBData();
+        serviceTypeDummy.setDetailEnglish("Service taken on this visit");
+        serviceTypeDummy.setId(0);
 
         try{
             db = AppDatabase.getAppDatabase(this);
-            districtList = db.getDistrictDAO().getAll();
+            dropdownCRBDataReferredBy = db.getDropdownCRBDataDAO().getAllReferredBy();
+            dropdownCRBDataClientAge = db.getDropdownCRBDataDAO().getAllClientAge();
+            dropdownCRBDataCurrentMethod = db.getDropdownCRBDataDAO().getAllCurrentMethod();
+            dropdownCRBDataTimingFPUser = db.getDropdownCRBDataDAO().getAllTimingFPService();
+            dropdownCRBDataServiceType = db.getDropdownCRBDataDAO().getAllServiceType();
         }catch(Exception e){
 
         }
+        dropdownCRBDataReferredBy.add(0,referredByDummy);
+        ReferredByAdapter referredByAdapter = new ReferredByAdapter(this, R.layout.dropdown_layout, R.id.tvNames, dropdownCRBDataReferredBy);
+        spReferredBy.setAdapter(referredByAdapter);
 
-        districtList.add(0, districtDummy);
-        DistrictAdapter districtAdapter = new DistrictAdapter(this, R.layout.dropdown_design, R.id.tvNames, districtList);
-        spDistricts.setAdapter(districtAdapter);
+        dropdownCRBDataClientAge.add(0,clientAgeDummy);
+        ClientAgeAdapter clientAgeAdapter = new ClientAgeAdapter(this, R.layout.dropdown_layout, R.id.tvNames, dropdownCRBDataClientAge);
+        spClientAge.setAdapter(clientAgeAdapter);
+
+        dropdownCRBDataCurrentMethod.add(0,currentMethodDummy);
+        CurrentMethodAdapter currentMethodAdapter = new CurrentMethodAdapter(this, R.layout.dropdown_layout, R.id.tvNames, dropdownCRBDataCurrentMethod);
+        spCurrentMethod.setAdapter(currentMethodAdapter);
+
+        dropdownCRBDataTimingFPUser.add(0,timingOfFPDummy);
+        TimingFPServiceAdapter timingFPServiceAdapter = new TimingFPServiceAdapter(this, R.layout.dropdown_layout, R.id.tvNames, dropdownCRBDataTimingFPUser);
+        spTimingFPService.setAdapter(timingFPServiceAdapter);
+
+        dropdownCRBDataServiceType.add(0,serviceTypeDummy);
+        ServiceTypeAdapter serviceTypeAdapter = new ServiceTypeAdapter(this, R.layout.dropdown_layout, R.id.tvNames, dropdownCRBDataServiceType);
+        spServiceType.setAdapter(serviceTypeAdapter);
 
     }
 
-    private void updateMeetingDate() {
+    private void updateVisitDate() {
         SimpleDateFormat sdf = new SimpleDateFormat(Codes.myFormat);
 
-        etMeetingDate.setText(sdf.format(myCalendar.getTime()));
+        etVisitDate.setText(sdf.format(myCalendar.getTime()));
     }
 
     public void submitForm(){
-        DTCForm dtcForm = new DTCForm();
-        dtcForm.setAttendingWithDesignation(etPersonDesignation.getText().toString());
-        dtcForm.setAttendingWithECode(etPersonECode.getText().toString());
-        dtcForm.setAttendingWithName(etPersonName.getText().toString());
-        dtcForm.setAttendingWithTeam(etPersonTeam.getText().toString());
-        dtcForm.setChairCellNumber(etChairCellNumber.getText().toString());
-        dtcForm.setChairDesignation(etChairDesignation.getText().toString());
-        dtcForm.setChairEmailAddress(etChairEmailAddress.getText().toString());
-        dtcForm.setChairMeetingAddress(etChairMeetingAddress.getText().toString());
-        dtcForm.setChairName(etChairName.getText().toString());
-        dtcForm.setMeetingDate(etMeetingDate.getText().toString());
-        dtcForm.setDistrictCode("12");
-        dtcForm.setPersonalMinutes(etPersonalMinutes.getText().toString());
-        dtcForm.setPersonDesignation(etPersonDesignation.getText().toString());
-        dtcForm.setPersonECode(etPersonECode.getText().toString());
-        dtcForm.setPersonName(etPersonName.getText().toString());
-        dtcForm.setPersonTeam(etPersonTeam.getText().toString());
-        dtcForm.setId(Util.getNextDTCFormID(this));
-        AppDatabase.getAppDatabase(this).getDTCFormDAO().insert(dtcForm);
+        CRBForm form = new CRBForm();
+        form.setAddress(etAddress.getText().toString());
+        DropdownCRBData dataReferredBy = (DropdownCRBData)spReferredBy.getSelectedItem();
+        form.setReferredBy(dataReferredBy.getDetailEnglish());
+
+        DropdownCRBData data = (DropdownCRBData)spClientAge.getSelectedItem();
+        form.setClientAge(data.getDetailEnglish());
+
+        DropdownCRBData dataServiceType = (DropdownCRBData)spServiceType.getSelectedItem();
+        form.setServiceType(dataServiceType.getDetailEnglish());
+
+        DropdownCRBData dataTimingFPService = (DropdownCRBData)spTimingFPService.getSelectedItem();
+        form.setTimingFPService(dataTimingFPService.getDetailEnglish());
+
+        DropdownCRBData dataCurrentMethod = (DropdownCRBData)spCurrentMethod.getSelectedItem();
+        form.setCurrentMethod(dataCurrentMethod.getDetailEnglish());
+
+        form.setAddress(etAddress.getText().toString());
+        form.setClientName(etClientName.getText().toString());
+        form.setContactNumber(etContact.getText().toString());
+        form.setVisitDate(etVisitDate.getText().toString());
+        form.setProviderCode(tvProviderName.getText().toString());
+        form.setNoOfChildren(Integer.valueOf(etNoOfChildren.getText().toString()));
+        form.setMethodWithin12Months(rbIsWithin12MonthsYes.isChecked()==true?1:0);
+        if(rbIsCurrentUserYes.isChecked()){
+            form.setFpUserCategory(Codes.currentUser);
+        }else if(rbIsNeverUserYes.isChecked()){
+            form.setFpUserCategory(Codes.neverUser);
+        }else{
+            form.setFpUserCategory(Codes.everUser);
+        }
+        form.setId(Util.getNextCRBFormID(this));
+        AppDatabase.getAppDatabase(this).getCRBFormDAO().insert(form);
+
         Toast.makeText(this,"Form successfully submitted!",Toast.LENGTH_SHORT).show();
         this.finish();
+    }
+
+    private boolean isValid(){
+        boolean isValid=true;
+
+        if(spClientAge.getSelectedItemId()==0 ||
+                //spReferredBy.getSelectedItemId()==0 ||
+               // spCurrentMethod.getSelectedItemId()==0 ||
+                spTimingFPService.getSelectedItemId()==0 ||
+                spServiceType.getSelectedItemId() ==0 ||
+                "".equals(etClientName.getText().toString()) ||
+                "".equals(etContact.getText().toString()) ||
+                "".equals(etNoOfChildren.getText().toString())){
+            isValid = false;
+        }
+
+        return isValid;
     }
 
     @Override
@@ -145,27 +267,32 @@ public class CRBFormActivity extends AppCompatActivity implements View.OnClickLi
 
 
         if(v.getId()==R.id.btnSubmit){
-            new AlertDialog.Builder(this)
-                    .setTitle("Save Form")
-                    .setMessage("Once submitted, you will not be able to edit this form. Are you sure you want to submit?")
+            if(isValid()){
+                new AlertDialog.Builder(this)
+                        .setTitle("Save Form")
+                        .setMessage("Once submitted, you will not be able to edit this form. Are you sure you want to submit?")
 
-                    // Specifying a listener allows you to take an action before dismissing the dialog.
-                    // The dialog is automatically dismissed when a dialog button is clicked.
-                    .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            submitForm();
+                        // Specifying a listener allows you to take an action before dismissing the dialog.
+                        // The dialog is automatically dismissed when a dialog button is clicked.
+                        .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                submitForm();
 
-                        }
-                    })
+                            }
+                        })
 
-                    // A null listener allows the button to dismiss the dialog and take no further action.
-                    .setNegativeButton(R.string.no, null)
-                    .setIcon(android.R.drawable.ic_dialog_alert)
-                    .show();
+                        // A null listener allows the button to dismiss the dialog and take no further action.
+                        .setNegativeButton(R.string.no, null)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
+            }else{
+                Toast.makeText(this,"Form is incomplete", Toast.LENGTH_SHORT).show();
+            }
+
 
 
         }
-        else if(v.getId()==R.id.etMeetingDate){
+        else if(v.getId()==R.id.etVisitDate){
             new DatePickerDialog(this, date, myCalendar
                     .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                     myCalendar.get(Calendar.DAY_OF_MONTH)).show();
@@ -202,5 +329,29 @@ public class CRBFormActivity extends AppCompatActivity implements View.OnClickLi
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .show();
 
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        if(group.getId() == R.id.rgIsCurrentUser){
+            if (checkedId == R.id.rbIsCurrentUserNo) {
+                trNeverUser.setVisibility(View.VISIBLE);
+                spCurrentMethod.setVisibility(View.VISIBLE);
+            } else  if (checkedId == R.id.rbIsCurrentUserYes) {
+                rgIsEverUser.clearCheck();
+                rgIsNeverUser.clearCheck();
+                trEverUser.setVisibility(View.GONE);
+                trNeverUser.setVisibility(View.GONE);
+                spCurrentMethod.setVisibility(View.GONE);
+            }
+        }else if(group.getId() == R.id.rgIsNeverUser){
+            if (checkedId == R.id.rbIsNeverUserYes) {
+                trEverUser.setVisibility(View.GONE);
+                rgIsEverUser.clearCheck();
+            } else  if (checkedId == R.id.rbIsNeverUserNo) {
+                trEverUser.setVisibility(View.VISIBLE);
+                rbIsEverUserYes.setSelected(true);
+            }
+        }
     }
 }

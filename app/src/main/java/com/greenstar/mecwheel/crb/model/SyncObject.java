@@ -3,13 +3,23 @@ package com.greenstar.mecwheel.crb.model;
 import java.util.List;
 
 public class SyncObject {
-    List<CRBForm> forms;
+    List<CRBForm> crbForms;
 
-    public List<CRBForm> getForms() {
-        return forms;
+    List<DropdownCRBData> dropdownCRBData;
+
+    public List<CRBForm> getCrbForms() {
+        return crbForms;
     }
 
-    public void setForms(List<CRBForm> forms) {
-        this.forms = forms;
+    public void setCrbForms(List<CRBForm> crbForms) {
+        this.crbForms = crbForms;
+    }
+
+    public List<DropdownCRBData> getDropdownCRBData() {
+        return dropdownCRBData;
+    }
+
+    public void setDropdownCRBData(List<DropdownCRBData> dropdownCRBData) {
+        this.dropdownCRBData = dropdownCRBData;
     }
 }

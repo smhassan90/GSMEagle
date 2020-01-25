@@ -13,6 +13,7 @@ import com.greenstar.mecwheel.crb.controller.Codes;
 import com.greenstar.mecwheel.crb.db.AppDatabase;
 import com.greenstar.mecwheel.crb.model.CRBData;
 import com.greenstar.mecwheel.crb.model.CRBForm;
+import com.greenstar.mecwheel.crb.model.DropdownCRBData;
 import com.greenstar.mecwheel.crb.model.SyncObject;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -54,9 +55,15 @@ public class Util {
             try{
                 db = AppDatabase.getAppDatabase(activity);
                 List<CRBForm> crbForms = dataObj.getCrbForms();
+                List<DropdownCRBData> dropdownCRBData = dataObj.getDropdownCRBData();
                 if(crbForms!=null && crbForms.size()>0){
                     db.getCRBFormDAO().nukeTable();
                     db.getCRBFormDAO().insertMultiple(crbForms);
+                }
+
+                if(dropdownCRBData!=null && dropdownCRBData.size()>0){
+                    db.getDropdownCRBDataDAO().nukeTable();
+                    db.getDropdownCRBDataDAO().insertMultiple(dropdownCRBData);
                 }
 
             }catch(Exception e){
@@ -75,7 +82,7 @@ public class Util {
 
         List<CRBForm> forms = db.getCRBFormDAO().getPendingCRBForms();
         SyncObject syncObject = new SyncObject();
-        syncObject.setForms(forms);
+        syncObject.setCrbForms(forms);
         final String data = new Gson().toJson(syncObject);
         rp.add("data",data);
 
@@ -93,7 +100,7 @@ public class Util {
                     message = response.get("message").toString();
                     codeReceived = response.get("status").toString();
                     data =  response.get("data").toString();
-                    staffName = response.get("staffName").toString();
+                    staffName = response.get("providerName").toString();
                     params.put("message", message);
                     params.put("data", data);
                     params.put("staffName",staffName);

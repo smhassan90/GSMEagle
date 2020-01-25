@@ -70,6 +70,9 @@
         <item name="android:paddingBottom">@dimen/padding_10</item>
         <item name="android:gravity">center_horizontal</item>
     </style>
+    <style name="MyCustomTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">#FF4081</item>
+    </style>
 
     <dimen name="medium_text_size">16dp</dimen>
     <dimen name="small_text_size">14dp</dimen>

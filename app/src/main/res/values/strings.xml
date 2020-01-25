@@ -603,4 +603,14 @@
     <string name="dashboard">Dashboard</string>
     <string name="submittedForms">Submitted Forms</string>
     <string name="CRBForm">CRB Form</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="submit">Submit</string>
+    <string name="clientAge">Client Age</string>
+    <string name="referredBy">Referred By</string>
+    <string name="currentMethod">Current Method</string>
+    <string name="ServiceType">Service Type taken on this visit</string>
+    <string name="timingFPService">Timing of FP Service</string>
+    <string name="Menu">Menu</string>
+    <string name="SubmittedForms">Submitted Forms</string>
 </resources>

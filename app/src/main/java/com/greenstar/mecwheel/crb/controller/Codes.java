@@ -13,4 +13,7 @@ public interface Codes {
     final public static String TIMEOUT = "Timeout";
     final public static String SOMETHINGWENTWRONG = "2001";
     final public static String myFormat = "MM/dd/yy";
+    final public static String currentUser = "Current User";
+    final public static String everUser = "Ever User";
+    final public static String neverUser = "Never User";
 }

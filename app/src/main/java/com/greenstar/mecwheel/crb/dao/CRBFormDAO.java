@@ -14,6 +14,9 @@ public interface CRBFormDAO {
     @Insert
     void insertMultiple (List<CRBForm> crbForms);
 
+    @Insert
+    void insert (CRBForm form);
+
     @Query("SELECT * FROM CRBForm")
     List<CRBForm> getAll();
 
@@ -22,6 +25,9 @@ public interface CRBFormDAO {
 
     @Query("SELECT * FROM CRBForm where status=1")
     List<CRBForm> getSuccessfulRBForms();
+
+    @Query("DELETE FROM CRBForm WHERE id=:id")
+    public void deleteFormById(long id);
 
     @Query("DELETE FROM CRBForm")
     public void nukeTable();

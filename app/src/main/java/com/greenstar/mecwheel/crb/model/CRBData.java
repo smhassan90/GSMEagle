@@ -9,6 +9,7 @@ public class CRBData {
     private String code;
 
     List<CRBForm> crbForms;
+    List<DropdownCRBData> dropdownCRBData;
 
     public String getName() {
         return name;
@@ -32,5 +33,13 @@ public class CRBData {
 
     public void setCrbForms(List<CRBForm> crbForms) {
         this.crbForms = crbForms;
+    }
+
+    public List<DropdownCRBData> getDropdownCRBData() {
+        return dropdownCRBData;
+    }
+
+    public void setDropdownCRBData(List<DropdownCRBData> dropdownCRBData) {
+        this.dropdownCRBData = dropdownCRBData;
     }
 }
