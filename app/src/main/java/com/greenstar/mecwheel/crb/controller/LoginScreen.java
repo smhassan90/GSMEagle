@@ -108,7 +108,6 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
 
                     editor.putString("token", token);
                     editor.putBoolean("isLoggedIn", true);
-                    editor.putLong("dtcFormID",baseID );
                     editor.putLong("crbFormID",baseID );
                     editor.putString("staffCode",staffCode);
                     editor.apply();

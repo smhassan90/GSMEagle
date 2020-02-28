@@ -14,21 +14,39 @@ public class CRBForm {
 
     private String clientName;
 
+    private String husbandName;
+
+    private String clientAge;
+
     private String address;
 
     private String contactNumber;
 
+    private int canWeContact;
+
+    private double durationOfMarriage;
+
     private int noOfChildren;
+
+    private int numberOfAbortion;
 
     private String referredBy;
 
-    private String clientAge;
+    private int ipcReferralStatus;
 
-    private String fpUserCategory;
+    private int isEverUser;
+
+    //More 1
+    //Less 0
+    private int methodNotInUse;
+
+    private int isCurrentUser;
+
+    private double currentUseYear;
 
     private String currentMethod;
 
-    private String timingFPService;
+    private String timingOfService;
 
     private String serviceType;
 
@@ -65,6 +83,22 @@ public class CRBForm {
         this.clientName = clientName;
     }
 
+    public String getHusbandName() {
+        return husbandName;
+    }
+
+    public void setHusbandName(String husbandName) {
+        this.husbandName = husbandName;
+    }
+
+    public String getClientAge() {
+        return clientAge;
+    }
+
+    public void setClientAge(String clientAge) {
+        this.clientAge = clientAge;
+    }
+
     public String getAddress() {
         return address;
     }
@@ -81,12 +115,36 @@ public class CRBForm {
         this.contactNumber = contactNumber;
     }
 
+    public int getCanWeContact() {
+        return canWeContact;
+    }
+
+    public void setCanWeContact(int canWeContact) {
+        this.canWeContact = canWeContact;
+    }
+
+    public double getDurationOfMarriage() {
+        return durationOfMarriage;
+    }
+
+    public void setDurationOfMarriage(double durationOfMarriage) {
+        this.durationOfMarriage = durationOfMarriage;
+    }
+
     public int getNoOfChildren() {
         return noOfChildren;
     }
 
     public void setNoOfChildren(int noOfChildren) {
         this.noOfChildren = noOfChildren;
+    }
+
+    public int getNumberOfAbortion() {
+        return numberOfAbortion;
+    }
+
+    public void setNumberOfAbortion(int numberOfAbortion) {
+        this.numberOfAbortion = numberOfAbortion;
     }
 
     public String getReferredBy() {
@@ -97,20 +155,44 @@ public class CRBForm {
         this.referredBy = referredBy;
     }
 
-    public String getClientAge() {
-        return clientAge;
+    public int getIpcReferralStatus() {
+        return ipcReferralStatus;
     }
 
-    public void setClientAge(String clientAge) {
-        this.clientAge = clientAge;
+    public void setIpcReferralStatus(int ipcReferralStatus) {
+        this.ipcReferralStatus = ipcReferralStatus;
     }
 
-    public String getFpUserCategory() {
-        return fpUserCategory;
+    public int getIsEverUser() {
+        return isEverUser;
     }
 
-    public void setFpUserCategory(String fpUserCategory) {
-        this.fpUserCategory = fpUserCategory;
+    public void setIsEverUser(int isEverUser) {
+        this.isEverUser = isEverUser;
+    }
+
+    public int getMethodNotInUse() {
+        return methodNotInUse;
+    }
+
+    public void setMethodNotInUse(int methodNotInUse) {
+        this.methodNotInUse = methodNotInUse;
+    }
+
+    public int getIsCurrentUser() {
+        return isCurrentUser;
+    }
+
+    public void setIsCurrentUser(int isCurrentUser) {
+        this.isCurrentUser = isCurrentUser;
+    }
+
+    public double getCurrentUseYear() {
+        return currentUseYear;
+    }
+
+    public void setCurrentUseYear(double currentUseYear) {
+        this.currentUseYear = currentUseYear;
     }
 
     public String getCurrentMethod() {
@@ -121,12 +203,12 @@ public class CRBForm {
         this.currentMethod = currentMethod;
     }
 
-    public String getTimingFPService() {
-        return timingFPService;
+    public String getTimingOfService() {
+        return timingOfService;
     }
 
-    public void setTimingFPService(String timingFPService) {
-        this.timingFPService = timingFPService;
+    public void setTimingOfService(String timingOfService) {
+        this.timingOfService = timingOfService;
     }
 
     public String getServiceType() {

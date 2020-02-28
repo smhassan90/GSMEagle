@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mustard"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".CounselingCardDescription"
+    tools:showIn="@layout/activity_counseling_card_description"
+    android:theme="@style/Animation.AppCompat.Dialog">
+    <!-- Complete enofer-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/menu_item_margin"
+        android:orientation="vertical">
+
+        <!-- Top Heading enofer-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/box"
+            android:gravity="center"
+            android:padding="@dimen/menu_item_padding"
+            android:orientation="vertical">
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/description_text_color"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:text="@string/title_enofer"/>
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textColor="@color/description_text_color"
+                android:text="@string/sub_title_enofer"/>
+        </LinearLayout>
+
+        <!-- enofer Product Image -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="@drawable/box"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/menu_item_margin"
+            android:padding="@dimen/menu_item_padding"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/enofer_product"/>
+
+        </LinearLayout>
+
+        <!-- Description enofer-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/box"
+            android:padding="@dimen/menu_item_padding"
+            android:layout_marginTop="@dimen/menu_item_margin"
+            android:orientation="vertical">
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
+                android:textColor="@color/description_text_color"
+                android:text="@string/enoferStrength"/>
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
+                android:textColor="@color/description_text_color"
+                android:text="@string/enoferPack"/>
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
+                android:textColor="@color/description_text_color"
+                android:text="@string/enoferIndication"/>
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
+                android:textColor="@color/description_text_color"
+                android:text="@string/enoferDosage"/>
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
+                android:textColor="@color/description_text_color"
+                android:drawableLeft="@drawable/bullet_icon"
+                android:gravity="center_vertical"
+                android:text="@string/enoferDosage1"/>
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
+                android:textColor="@color/description_text_color"
+                android:drawableLeft="@drawable/bullet_icon"
+                android:gravity="center_vertical"
+                android:text="@string/enoferDosage2"/>
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
+                android:textColor="@color/description_text_color"
+                android:text="@string/enoferAdministration"/>
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
+                android:textColor="@color/description_text_color"
+                android:text="@string/enoferPrecaution"/>
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
+                android:textColor="@color/description_text_color"
+                android:drawableLeft="@drawable/bullet_icon"
+                android:gravity="center_vertical"
+                android:text="@string/enoferPrecaution1"/>
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
+                android:textColor="@color/description_text_color"
+                android:drawableLeft="@drawable/bullet_icon"
+                android:gravity="center_vertical"
+                android:text="@string/enoferPrecaution2"/>
+
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
+                android:textColor="@color/description_text_color"
+                android:text="@string/enoferContraindication"/>
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
+                android:textColor="@color/description_text_color"
+                android:text="@string/enoferPrice"/>
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
+                android:textColor="@color/description_text_color"
+                android:drawableLeft="@drawable/bullet_icon"
+                android:gravity="center_vertical"
+                android:text="@string/enoferPrice1"/>
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
+                android:textColor="@color/description_text_color"
+                android:drawableLeft="@drawable/bullet_icon"
+                android:gravity="center_vertical"
+                android:text="@string/enoferPrice2"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

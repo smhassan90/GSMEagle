@@ -30,7 +30,7 @@
             android:id="@+id/PharmaProducts"
             android:iconTint="@color/darkGreen"
             android:icon="@drawable/cards_icon"
-            android:title="Enofer" />
+            android:title="Pharma Products" />
 
         <item
             android:id="@+id/patient_entry"

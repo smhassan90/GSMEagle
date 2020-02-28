@@ -17,11 +17,12 @@ public class PharmaProducts extends Fragment implements View.OnClickListener {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private static final String[] counselingCards = { "Enofer Dosage Calculator","Sign & Symptom of Anemia",""};
+    private static final String[] productNames = { "Emergency Pill", "Novodol", "Depotone", "Nova-Ject", "Femi-Ject", "Protect-5",
+    "Safeload", "Enofer", "Vical Plus", "Vitaferol", "Misotal", "Clean Delivery Kit"};
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private final int titleLength = 25;
+    private final int titleLength = 12;
     private CounselingCardsFragment.OnFragmentInteractionListener mListener;
 
     public PharmaProducts() {
@@ -61,7 +62,7 @@ public class PharmaProducts extends Fragment implements View.OnClickListener {
         View view = inflater.inflate(R.layout.main_counseling, container, false);
         LinearLayout llMainCounseling = view.findViewById(R.id.llMainCounseling);
         createOptions(llMainCounseling);
-        getActivity().setTitle("Enofer");
+        getActivity().setTitle("Greenstar Products");
         return view;
     }
 
@@ -69,7 +70,7 @@ public class PharmaProducts extends Fragment implements View.OnClickListener {
     private void createOptions(LinearLayout llMainCounseling) {
         LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         int cardIndex = 0;
-        for(int i=0; i<counselingCards.length/3;i++) {
+        for(int i=0; i<productNames.length/3;i++) {
             View option = (View) inflater.inflate(R.layout.menu_item,
                     null);
 
@@ -80,30 +81,22 @@ public class PharmaProducts extends Fragment implements View.OnClickListener {
                 if(j==0){
                     tvCardName = llMenuItem.findViewById(R.id.tvCardName1);
                     llMenuItemInside = llMenuItem.findViewById(R.id.llMenuItem1);
-                }
-                else if(j==1 && cardIndex == 1){
+                } else if(j==1){
                     tvCardName = llMenuItem.findViewById(R.id.tvCardName2);
                     llMenuItemInside = llMenuItem.findViewById(R.id.llMenuItem2);
 
-                }
-                else if(j==2 && cardIndex == 2){
-                    tvCardName = llMenuItem.findViewById(R.id.tvCardName3);
-                    llMenuItemInside = llMenuItem.findViewById(R.id.llMenuItem3);
-                    llMenuItemInside.setVisibility(View.INVISIBLE);
-
-                }
-                else if(j==2){
+                } else if(j==2){
                     tvCardName = llMenuItem.findViewById(R.id.tvCardName3);
                     llMenuItemInside = llMenuItem.findViewById(R.id.llMenuItem3);
 
                 }
                 String name="";
 
-                if(counselingCards[cardIndex].length()>titleLength){
-                    name = counselingCards[cardIndex].substring(0, Math.min(counselingCards[cardIndex].length(), titleLength));
+                if(productNames[cardIndex].length()>titleLength){
+                    name = productNames[cardIndex].substring(0, Math.min(productNames[cardIndex].length(), titleLength));
                     name+="...";
                 }else{
-                    name=counselingCards[cardIndex];
+                    name=productNames[cardIndex];
                 }
 
                 tvCardName.setText(name==null?"":name);
@@ -126,19 +119,10 @@ public class PharmaProducts extends Fragment implements View.OnClickListener {
     @SuppressLint("ResourceType")
     @Override
     public void onClick(View v) {
-        if(v.getId()==0){
-            Intent myIntent = new Intent(getActivity(), EnoferDosageCalculator.class);
+            Intent myIntent = new Intent(getActivity(), ProductDescription.class);
             myIntent.putExtra("id", v.getId()); //Optional parameters
-            myIntent.putExtra("title", counselingCards[v.getId()]);
+            myIntent.putExtra("title", productNames[v.getId()]);
             getActivity().startActivity(myIntent);
-        }else if(v.getId()==1){
-            Intent myIntent = new Intent(getActivity(), SignAndSymptoms.class);
-            myIntent.putExtra("id", v.getId()); //Optional parameters
-            myIntent.putExtra("title", counselingCards[v.getId()]);
-            getActivity().startActivity(myIntent);
-        }
-
-
     }
 
     /**

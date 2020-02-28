@@ -49,6 +49,7 @@ public class CounselingCardDescription extends AppCompatActivity implements View
     public void onClick(View v) {
         onBackPressed();
     }
+
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
@@ -129,9 +130,6 @@ public class CounselingCardDescription extends AppCompatActivity implements View
         else if(title.toLowerCase().trim().equals("Adolescent Counseling".toLowerCase().trim())){
             view = getLayoutInflater().inflate(R.layout.card_adolescent_counseling, null, false);
         }
-
-
-
 
         return view;
     }

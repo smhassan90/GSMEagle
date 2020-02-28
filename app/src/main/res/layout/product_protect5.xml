@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mustard"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".CounselingCardDescription"
+    tools:showIn="@layout/activity_counseling_card_description"
+    android:theme="@style/Animation.AppCompat.Dialog">
+    <!-- Complete protect5-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/menu_item_margin"
+        android:orientation="vertical">
+
+        <!-- Top Heading protect5-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/box"
+            android:gravity="center"
+            android:padding="@dimen/menu_item_padding"
+            android:orientation="vertical">
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/description_text_color"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:text="@string/title_protect5"/>
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textColor="@color/description_text_color"
+                android:text="@string/sub_title_protect5"/>
+        </LinearLayout>
+
+        <!-- protect5 Product Image -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="@drawable/box"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/menu_item_margin"
+            android:padding="@dimen/menu_item_padding"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/protect5"/>
+
+        </LinearLayout>
+
+        <!-- Description protect5-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/box"
+            android:padding="@dimen/menu_item_padding"
+            android:layout_marginTop="@dimen/menu_item_margin"
+            android:orientation="vertical">
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
+                android:textColor="@color/description_text_color"
+                android:text="@string/protect5Strength"/>
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
+                android:textColor="@color/description_text_color"
+                android:text="@string/protect5Pack"/>
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
+                android:textColor="@color/description_text_color"
+                android:text="@string/protect5Indication"/>
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
+                android:textColor="@color/description_text_color"
+                android:text="@string/protect5Dosage"/>
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
+                android:textColor="@color/description_text_color"
+                android:text="@string/protect5Administration"/>
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
+                android:textColor="@color/description_text_color"
+                android:drawableLeft="@drawable/bullet_icon"
+                android:gravity="center_vertical"
+                android:text="@string/protect5Administration1"/>
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
+                android:textColor="@color/description_text_color"
+                android:drawableLeft="@drawable/bullet_icon"
+                android:gravity="center_vertical"
+                android:text="@string/protect5Administration2"/>
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
+                android:textColor="@color/description_text_color"
+                android:drawableLeft="@drawable/bullet_icon"
+                android:gravity="center_vertical"
+                android:text="@string/protect5Administration3"/>
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
+                android:textColor="@color/description_text_color"
+                android:drawableLeft="@drawable/bullet_icon"
+                android:gravity="center_vertical"
+                android:text="@string/protect5Administration4"/>
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
+                android:textColor="@color/description_text_color"
+                android:text="@string/protect5Precaution"/>
+
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
+                android:textColor="@color/description_text_color"
+                android:text="@string/protect5Contraindication"/>
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
+                android:textColor="@color/description_text_color"
+                android:text="@string/protect5Price"/>
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
+                android:textColor="@color/description_text_color"
+                android:drawableLeft="@drawable/bullet_icon"
+                android:gravity="center_vertical"
+                android:text="@string/protect5Price1"/>
+            <TextView style="@style/small_text_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/description_gap"
+                android:textColor="@color/description_text_color"
+                android:drawableLeft="@drawable/bullet_icon"
+                android:gravity="center_vertical"
+                android:text="@string/protect5Price2"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

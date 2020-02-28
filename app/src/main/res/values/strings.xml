@@ -24,6 +24,45 @@
     <string name="sub_subtitle_lactational_amenorrhea_method">LAM</string>
     <string name="sub_title_male_condoms">Male Condoms</string>
 
+    <!-- Start Title subtitle of products -->
+    <string name="title_emergency_pills">Emergency Pills</string>
+    <string name="sub_title_emergency_pills">Levonorgestrel</string>
+
+    <string name="title_novodol">Novodol</string>
+    <string name="sub_title_novodol">Levonorgestrel + Ethinyl Estradiol + Furrous Fumarate</string>
+
+    <string name="title_depotone">Depotone</string>
+    <string name="sub_title_depotone">Medroxyprogesterone Acetate</string>
+
+    <string name="title_novaject">Nova-Ject</string>
+    <string name="sub_title_novaject">Norethiesterone Enanthate - Estradiol Valerate</string>
+
+    <string name="title_femiject">Femi-Ject</string>
+    <string name="sub_title_femiject">Norethiesterone Enanthate - Estradiol Valerate</string>
+
+    <string name="title_protect5">Protect-5</string>
+    <string name="sub_title_protect5">Cu 375: a small plastic rod wound with copper wire, two flexible plastic arms and nylon thread.</string>
+
+    <string name="title_safeload">Safeload</string>
+    <string name="sub_title_safeload">T Cu 380 A: T Shape Plastic frame 176 mg Cu wire on its vertical arm and Cu sleeve having 66.5mg Cu each on horizontal arm. Total surface area is 880 mm sq.</string>
+
+    <string name="title_enofer">Enofer</string>
+    <string name="sub_title_enofer">Iron Sucrose</string>
+
+    <string name="title_vical_plus">Vical Plus</string>
+    <string name="sub_title_vical_plus">Ossein Mineral Complex (OMC) + Vitamin D</string>
+
+    <string name="title_vitaferol">Vitaferol</string>
+    <string name="sub_title_vitaferol">Cholecalciferol (Vitamin D3)</string>
+
+    <string name="title_misotal">Misotal</string>
+    <string name="sub_title_misotal">Misoprostol</string>
+
+    <string name="title_cdk">Clean Delivery Kit (CDK)</string>
+    <string name="sub_title_cdk">A Gynae Kit containing different items need for delivery case.</string>
+
+    <!-- End of title / subtitle of products-->
+
     <string name="subtitle_progestin_only_injectables">Progestin-only Injectables</string>
     <string name="sub_subtitle_progestin_only_injectables">DMPA or NET-EN</string>
 
@@ -232,7 +271,7 @@
 
     <!--Male Condoms-->
     <string name="description_male_condoms_1">
-        Most condoms are made of thin latex rubber. Some condoms are coated with a lubricant and/or spermicide.
+        <b>Most condoms </b> are made of thin latex rubber. Some condoms are coated with a lubricant and/or spermicide.
     </string>
     <string name="description_male_condoms_2">
           If the client has had an allergic reaction to latex rubber, they should not use latex condoms. Use polyurethane condoms as a safe and effective alternative for people with a latex allergy.
@@ -613,4 +652,228 @@
     <string name="timingFPService">Timing of FP Service</string>
     <string name="Menu">Menu</string>
     <string name="SubmittedForms">Submitted Forms</string>
+    <string name="ProductDetail">Product Detail</string>
+    <string name="ReferralStatus">Referral Status</string>
+
+
+    <!-- Pharma Product Details -->
+    <!-- ECP Starts -->
+    <string name="ecpStrength"><b>Strength:</b> 0.75 mg Tablet</string>
+    <string name="ecpPack"><b>Pack:</b> Two tablet / pack</string>
+    <string name="ecpIndication"><b>Indication:</b> For women only after unprotected intercourse and known or suspected contraceptive failure to prevent fertilization</string>
+    <string name="ecpDosage"><b>Dosage:</b></string>
+    <string name="ecpDosage1">Take two tablet together once every 120 hrs of unprotected intercourse.</string>
+    <string name="ecpDosage2">More effective if taken as soon as possible</string>
+    <string name="ecpAdministration"><b>Administration:</b> Orally administer</string>
+    <string name="ecpPrecaution"><b>Precaution:</b></string>
+    <string name="ecpPrecaution1">Not more than 4 tablets (2 doses) allowed within a month</string>
+    <string name="ecpPrecaution2">Effective only for emergency case, not reliable for regular planned contraceptive</string>
+    <string name="ecpPrecaution3">Not effective for women weight more than 70kg and for such women a copper IUD is recommended.</string>
+    <string name="ecpContraindication"><b>Contraindication:</b> Pregnancy, Liver or biliary tract disease, past history of jaundice, undiagnosed abnormal genital bleeding </string>
+    <string name="ecpPrice"><b>Price:</b></string>
+    <string name="ecpPrice1">TP 14.66 RS</string>
+    <string name="ecpPrice2">MRP 17.25 Rs</string>
+    <!-- ECP ends-->
+
+
+    <!-- NOVODOL Starts -->
+    <string name="novodolStrength"><b>Strength:</b></string>
+    <string name="novodolStrength1">21 White Tab 0.15mg Levonorgestrel + 0.03mg Ethinyl Estradiol</string>
+    <string name="novodolStrength2">7 Brown Tab 75mg Ferrous Fumerate</string>
+    <string name="novodolPack"><b>Pack:</b> 3 strips of 28 Tablets, 21 White tablets and 7 Brown tablets</string>
+    <string name="novodolIndication"><b>Indication:</b> Also called COC (combined oral contraceptive) is a combination of two hormone, taken orally once daily to prevent pregnancy. </string>
+    <string name="novodolDosage"><b>Dosage:</b>Take 1st white tab opposite the pointing arrow of the 1st pack on the 1st day of onset of Menstrual period, follow the arrow direction and everyday take one white tab (until all 21 tab finished and then take one brown tab daily for 7 days.</string>
+    <string name="novodolAdministration"><b>Administration:</b> Orally take each tab at the same time each day, preferably after evening meal.</string>
+    <string name="novodolPrecaution"><b>Precaution:</b></string>
+    <string name="novodolPrecaution1">Do not skip any day between tablets. </string>
+    <string name="novodolPrecaution2">If skip any white tab, take it as soon as you remember and take the next tab at the usual time.</string>
+    <string name="novodolPrecaution3">If forgot to take 3 or more white tablet, do not take them when you remember. Discard the rest of the pack and start a fresh pack.</string>
+    <string name="novodolContraindication"><b>Contraindication:</b> Do not give it to other who may want birth control pills.</string>
+    <string name="novodolContraindication1">Take only under advice of the consultant physician</string>
+    <string name="novodolPrice"><b>Price:</b></string>
+    <string name="novodolPrice1">TP 53.13 Rs</string>
+    <string name="novodolPrice2">MRP 62.5 Rs</string>
+    <!-- novodol ends-->
+
+    <!-- DEPOTONE Starts -->
+    <string name="depotoneStrength"><b>Strength: 150 / mL vial</b></string>
+    <string name="depotonePack"><b>Pack:</b> One Depotone ampule, one Syringe, Cotton pad, Leaflet, appointment card</string>
+    <string name="depotoneIndication"><b>Indication:</b></string>
+    <string name="depotoneIndication1">Contraception for 3 month Protection</string>
+    <string name="depotoneIndication2">Gynecology : Treatment of Endometriosis, Menopausal vasomotor symptoms</string>
+    <string name="depotoneDosage"><b>Dosage:</b></string>
+    <string name="depotoneDosage1">First dose given during the first 5 days after the onset of a normal menstrual period; within 5 days postpartum if not breast feeding; or,  if exclusively breast feeding, at or after 6 weeks postpartum. </string>
+    <string name="depotoneDosage2">The next dose repeated after every 12 weeks for next 3 months protection if require.</string>
+    <string name="depotoneAdministration"><b>Administration:</b> Intramuscular (IM) given in the arm or buttock.</string>
+    <string name="depotonePrecaution"><b>Precaution:</b></string>
+    <string name="depotonePrecaution1">Shake injection before use. </string>
+    <string name="depotonePrecaution2">Not for subcutaneous injection.</string>
+    <string name="depotoneContraindication"><b>Contraindication:</b></string>
+    <string name="depotoneContraindication1">New Mother can use after 6 week of child birth</string>
+    <string name="depotoneContraindication2">Avoid in Known or suspected pregnancy, undiagnosed vaginal bleeding, severe liver dysfunction,   known hypersensitivity to any component of drug , diabetic, any type of malignancy, CVD.</string>
+    <string name="depotonePrice"><b>Price:</b></string>
+    <string name="depotonePrice1">TP 149.71 RS</string>
+    <string name="depotonePrice2">MRP 153.15 Rs</string>
+    <!-- DEPOTONE ends-->
+
+    <!-- NOVAJECT Starts -->
+    <string name="novajectStrength"><b>Strength: 1ml Vial</b></string>
+    <string name="novajectPack"><b>Pack:</b> One Novaject ampule, one Syringe, Cotton pad, Leaflet, FAQs Leaflet, appointment card</string>
+    <string name="novajectIndication"><b>Indication:</b>Hormonal Contraception, Protection for 2 months</string>
+    <string name="novajectDosage"><b>Dosage:</b></string>
+    <string name="novajectDosage1">First dose should be given within the first 5 days of the women natural cycle (no later than 5th day) or three weeks after child birth (if not breast feeding).</string>
+    <string name="novajectDosage2">The next dose repeated after every 8 weeks for next 2 months protection if require.</string>
+    <string name="novajectAdministration"><b>Administration:</b> Intramuscular (IM) given in the arm or buttock.</string>
+    <string name="novajectContraindication"><b>Contraindication:</b></string>
+    <string name="novajectContraindication1">New Mother can use after 6 week of child birth</string>
+    <string name="novajectContraindication2">Avoid in Known or suspected pregnancy, undiagnosed vaginal bleeding, severe liver dysfunction,   known hypersensitivity to drug component , diabetic, any type of malignancy, CVD.</string>
+    <string name="novajectPrice"><b>Price:</b></string>
+    <string name="novajectPrice1">TP 76.44 RS</string>
+    <string name="novajectPrice2">MRP 89.93 Rs</string>
+    <!-- NOVAJECT ends-->
+
+    <!-- Femiject Starts -->
+    <string name="femijectStrength"><b>Strength: 1ml Vial</b></string>
+    <string name="femijectPack"><b>Pack:</b> One Femiject ampule, one Syringe, Cotton pad, Leaflet, FAQs Leaflet, appointment card</string>
+    <string name="femijectIndication"><b>Indication:</b>Contraception for 1 month Protection</string>
+    <string name="femijectDosage"><b>Dosage:</b></string>
+    <string name="femijectDosage1">First dose given on the 1st day of the women menstrual cycle. Starting on day 2-5 of the menstrual cycle allowed but a barrier method is recommended in addition for the first 7 days after injection.</string>
+    <string name="femijectDosage2">The 2nd dose repeated at interval of 30 +/- 3 days ,i.e. minimum of 27 days and maximum of 33 days interval regardless of cycle pattern for the next 1 month protection if require</string>
+    <string name="femijectAdministration"><b>Administration:</b> Intramuscular (IM) given in the arm or buttock.</string>
+    <string name="femijectPrecaution"><b>Precaution:</b></string>
+    <string name="femijectPrecaution1">Shake injection before use.</string>
+    <string name="femijectPrecaution2">Not for subcutaneous injection.</string>
+    <string name="femijectPrecaution3">Injected immediately after its drawing up into syringe.</string>
+    <string name="femijectContraindication"><b>Contraindication:</b></string>
+    <string name="femijectContraindication1">New Mother can use after 6 week of child birth</string>
+    <string name="femijectContraindication2">Avoid in Known or suspected pregnancy, undiagnosed vaginal bleeding, severe liver dysfunction,   known hypersensitivity to any component of drug , diabetic, any type of malignancy, CVD.</string>
+    <string name="femijectPrice"><b>Price:</b></string>
+    <string name="femijectPrice1">TP 149.71 RS</string>
+    <string name="femijectPrice2">MRP 153.15 Rs</string>
+    <!-- Femiject ends-->
+
+    <!-- Protect5 Starts -->
+    <string name="protect5Strength"><b>Composition:</b>Cu 375: a small plastic rod wound with copper wire, two flexible plastic arms and a nylon thread</string>
+    <string name="protect5Pack"><b>Pack:</b> One Depotone ampule, one Syringe, Cotton pad, Leaflet, appointment card</string>
+    <string name="protect5Indication"><b>Indication:</b>Protect 5 is an Intrauterine Contraceptive Device (IUCD) used for 5 year protection</string>
+    <string name="protect5Dosage"><b>Dosage:</b>At any time during menstrual cycle if the women in non pregnant</string>
+    <string name="protect5Administration"><b>Administration:</b></string>
+    <string name="protect5Administration1">Inserted by the expert doctor in the uterus.</string>
+    <string name="protect5Administration2">Replaced every 5 years.</string>
+    <string name="protect5Administration3">If necessary remind your doctor for replacement.</string>
+    <string name="protect5Administration4">If you wish to pregnant remove protect-5 under Medical supervision.</string>
+    <string name="protect5Precaution"><b>Precaution:</b>Inserted only under Medical supervision and safe in breast feeding mother</string>
+    <string name="protect5Contraindication"><b>Contraindication:</b>Avoid in established or suspected pregnancy, Genital Infection (except candidiasis), PID and Allergy to Cu (Wilson's disease), malignant disease, Vulvular disease</string>
+    <string name="protect5Price"><b>Price:</b></string>
+    <string name="protect5Price1">TP 200 Rs</string>
+    <string name="protect5Price2">MRP 240 Rs</string>
+    <!-- protect5 ends-->
+
+
+    <!-- safeload Starts -->
+    <string name="safeloadStrength"><b>Composition:</b>T Cu 380 A: T Shape Plastic frame 176 mg Cu wire on its vertical arm and  Cu sleeve having 66.5mg Cu each on horizontal arm. Total surface area is 880 mm sq.</string>
+    <string name="safeloadPack"><b>Pack:</b>One IUCD, Leaflet, FAQs leaflet </string>
+    <string name="safeloadIndication"><b>Indication:</b>Safeload is an Intrauterine Contraceptive Device (IUCD) used for 10 year protection</string>
+    <string name="safeloadDosage"><b>Dosage:</b></string>
+    <string name="safeloadDosage1">Only in non pregnant women at any time during menstrual cycle preferably during or immediately after mensturation.</string>
+    <string name="safeloadDosage2">Inserted by the expert doctor in the uterus. </string>
+    <string name="safeloadDosage3">Inserted by the expert doctor if inserted within the 1st 48 hrs postpartum</string>
+    <string name="safeloadAdministration"><b>Administration:</b></string>
+    <string name="safeloadAdministration1">Replaced every 10 years.</string>
+    <string name="safeloadAdministration2">If necessary remind your doctor for replacement. </string>
+    <string name="safeloadAdministration3">If you wish to pregnant remove safeload under Medical supervision</string>
+    <string name="safeloadPrecaution"><b>Precaution:</b>Inserted only under Medical supervision and safe in breast feeding mother</string>
+    <string name="safeloadContraindication"><b>Contraindication:</b>Avoid in established or suspected pregnancy, Genital Infection (except candidiasis), PID and Allergy to Cu (Wilson's disease), malignant disease, Vulvular disease</string>
+    <string name="safeloadPrice"><b>Price:</b></string>
+    <string name="safeloadPrice1">TP 200 Rs</string>
+    <string name="safeloadPrice2">MRP 240 Rs</string>
+    <!-- safeload ends-->
+
+
+    <!-- enofer Starts -->
+    <string name="enoferStrength"><b>Strength:</b>100mg /5 mL vial.</string>
+    <string name="enoferPack"><b>Pack:</b>Five Enofer ampules, Leaflet</string>
+    <string name="enoferIndication"><b>Indication:</b>Anemia, Moderate to Severe type of Anemia, Iron Deficiency Anemia of all age group men, women and children and PPH</string>
+    <string name="enoferDosage"><b>Dosage:</b></string>
+    <string name="enoferDosage1"><b>Anemia:</b> Dilute Two Ampules (10ml) of Enofer in 100 ml 0.9% NaCl Solution (normal saline water). 1st 25ml should be infused as a test Dose over a period of 15 minutes at a rate of 12 drops/min. After 30 mints if no adverse events occurs the remaining portion of the infusion i.e.75ml should be given at the rate of 36 drops/min (1.5 hrs). Duration of therapy 6 weeks i.e. 2 Enofer Ampoules per week.</string>
+    <string name="enoferDosage2"><b>Postpartum hemorrhage (PPH):</b> 3 doses of 200 mg as IV infusion 24 hours apart.</string>
+    <string name="enoferAdministration"><b>Administration:</b>Intravenous (IV) infusion via drip tube</string>
+    <string name="enoferPrecaution"><b>Precaution:</b></string>
+    <string name="enoferPrecaution1">Can be given 200mg maximum but not more than 3 times/week.</string>
+    <string name="enoferPrecaution2">Not for subcutaneous injection or IM route.</string>
+    <string name="enoferContraindication"><b>Contraindication:</b>Test Dose must be given before starting the therapy</string>
+    <string name="enoferPrice"><b>Price:</b></string>
+    <string name="enoferPrice1">TP 977.50 Rs</string>
+    <string name="enoferPrice2">MRP 1150 Rs</string>
+    <!-- enofer ends-->
+
+
+    <!-- vical Starts -->
+    <string name="vicalStrength"><b>Strength:</b>830mg OMC and 400I.U Vitamin D.</string>
+    <string name="vicalPack"><b>Pack:</b>30 Vical plus tablet in Alu-Alu packaging, Leaflet</string>
+    <string name="vicalIndication"><b>Indication:</b>Calcium and Vitamin D deficiency of all age group men, women, menupause, during pregnancy and lactation.</string>
+    <string name="vicalDosage"><b>Dosage:</b>Once a day for all age group, Pregnancy and lactation one tablet twice a day</string>
+    <string name="vicalAdministration"><b>Administration:</b>Orally administer.</string>
+    <string name="vicalPrecaution"><b>Precaution:</b></string>
+    <string name="vicalPrecaution1">Calcium should not be administered intravenously within 48 hours of intravenous ceftriaxone.</string>
+    <string name="vicalPrecaution2">Avoid in combination with Quinolones  antibiotics, Tetracycline antibiotics and Digoxin.</string>
+    <string name="vicalContraindication"><b>Contraindication:</b>Avoid in Sarcoidosis (Inflammatory disease of Lung and Lymph gland), dehydration, constipation, kidney stones, kidney disease with reduction in kidney function</string>
+    <string name="vicalPrice"><b>Price:</b></string>
+    <string name="vicalPrice1">TP 297.50 Rs</string>
+    <string name="vicalPrice2">MRP 350 Rs</string>
+    <!-- vical ends-->
+
+
+    <!-- vitaferol Starts -->
+    <string name="vitaferolStrength"><b>Strength:</b>200,000 I.U.</string>
+    <string name="vitaferolPack"><b>Pack:</b>Five Vitaferol ampules/Pack, Leaflet</string>
+    <string name="vitaferolIndication"><b>Indication:</b>Osteomalacia, Osteoporosis, to treat low level of Calcium and phosphates caused by disorders (such as hypoparathyroidism, pseudo-hypoparathyroidism, familial hypophosphatemia)</string>
+    <string name="vitaferolDosage"><b>Dosage:</b>One injection for 3 months each, followed by one injection in alternate months</string>
+    <string name="vitaferolAdministration"><b>Administration:</b>Intramuscular (IM) given in the arm or buttock/month</string>
+    <string name="vitaferolPrecaution"><b>Precaution:</b></string>
+    <string name="vitaferolPrecaution1">Shake injection before use.</string>
+    <string name="vitaferolPrecaution2">Not for IV injection.</string>
+    <string name="vitaferolPrecaution3">Injected immediately after drawing up into syringe.</string>
+    <string name="vitaferolContraindication"><b>Contraindication:</b>Avoid in patients with history of allergic reaction to vitamin D, hypervitaminosis, hypercalcemia.</string>
+    <string name="vitaferolPrice"><b>Price:</b></string>
+    <string name="vitaferolPrice1">TP 708.70 Rs</string>
+    <string name="vitaferolPrice2">MRP 833.75 Rs</string>
+    <!-- vitaferol ends-->
+
+
+    <!-- misotal Starts -->
+    <string name="misotalStrength"><b>Strength:</b>200mcg Tablet.</string>
+    <string name="misotalPack"><b>Pack:</b>10 Tablets/ pack.</string>
+    <string name="misotalIndication"><b>Indication:</b></string>
+    <string name="misotalIndication1">For immediate post abortion care</string>
+    <string name="misotalIndication2">To reduce unsafe abortions by giving women appropriate information on medical abortion</string>
+    <string name="misotalIndication3">Safe and effective choice in PPH prophylaxis and treatment</string>
+    <string name="misotalIndication4">Treatment of Missed, Incomplete abortion, Interruption of pregnancy and miscarriage</string>
+    <string name="misotalDosage"><b>Dosage:</b></string>
+    <string name="misotalDosage1">Cervical Ripening (Pre-instrumentation): 400mcg vaginal 3 hrs before procedure</string>
+    <string name="misotalDosage2">Missed Abortion: 800 mcg vaginal 3 hrly (max x2) OR 600 mcs sub lingual (max x2)</string>
+    <string name="misotalDosage3">Incomplete Abortion: 600 mcg oral single dose</string>
+    <string name="misotalDosage4">Interruption of pregnancy: 400 mcg vaginal 3 hrly (max x5)</string>
+    <string name="misotalDosage5">Interuterine foetal Death: 13-17 wks: 200 mcg vaginal 6 hrly (max x4); 18-26 wks: 100 mcg vagi nal 6 hrly (max x4); 27-43 wks mcg vaginal 6 hrly</string>
+    <string name="misotalDosage6">Induction of labor: 25 mcg vaginal 6 hrly OR 25 mcg oral 2 hrly</string>
+    <string name="misotalDosage7">Postpartum: PPH prophylaxis 600mcg oral single dose; PPH treatment 800 mcg sublingual single dose</string>
+    <string name="misotalAdministration"><b>Administration:</b>Oral / Vaginal / Sublingual route depending upon the condition</string>
+    <string name="misotalPrecaution"><b>Precaution:</b>Take only under Medical advice and prescription</string>
+    <string name="misotalContraindication"><b>Contraindication:</b>Avoid as an OTC, Only used in recommended indication and under Medical Advice</string>
+    <string name="misotalPrice"><b>Price:</b></string>
+    <string name="misotalPrice1">TP 85 Rs</string>
+    <string name="misotalPrice2">MRP 100 Rs</string>
+    <!-- misotal ends -->
+
+
+    <!-- cdk Starts -->
+    <string name="cdkPack"><b>Pack:</b>1 Misotol pack, Disposable Gloves, Plastic sheet, Cotton Balls, Cotton thread, Gauze bandage, surgical blade, Chlorhexidine tube, cord clamp, Medicated soap.</string>
+    <string name="cdkIndication"><b>Indication:</b>Accessories used for post-delivery cases </string>
+    <string name="cdkDosage"><b>Dosage:</b>Once a day for all age group, Pregnancy and lactation one tablet twice a day</string>
+    <string name="cdkAdministration"><b>Administration:</b>Intravenous (IV) infusion via drip tube</string>
+    <string name="cdkPrecaution"><b>Precaution:</b>Only used by the Providers for the post-delivery cases </string>
+    <string name="cdkContraindication"><b>Contraindication:</b>Avoid as an OTC, Only used in recommended indication and under Medical Advice</string>
+    <string name="cdkPrice"><b>Price:</b></string>
+    <string name="cdkPrice1">TP 750 Rs</string>
+    <!-- cdk ends -->
 </resources>

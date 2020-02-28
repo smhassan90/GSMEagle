@@ -10,6 +10,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -36,24 +37,30 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class CRBFormActivity extends AppCompatActivity implements View.OnClickListener, RadioGroup.OnCheckedChangeListener {
+public class CRBFormActivity extends AppCompatActivity implements View.OnClickListener, RadioGroup.OnCheckedChangeListener, AdapterView.OnItemSelectedListener {
 
     AppDatabase db =null;
 
-    EditText etVisitDate, etClientName, etAddress, etContact, etNoOfChildren;
+    EditText etVisitDate, etClientName, etHusbandName, etAddress, etContact, etMarriageDuration, etNoOfChildren, etNumberOfAbortions, etCurrentUseYear;
 
-    TextView tvProviderName;
+    TextView tvProviderName, tvProviderCode;
 
-    Spinner spReferredBy, spClientAge, spCurrentMethod, spTimingFPService, spServiceType;
+    Spinner spReferredBy, spClientAge, spIPCReferralStatus, spCurrentMethod, spTimingFPService, spServiceType;
 
-    RadioGroup rgIsCurrentUser;
-    RadioButton rbIsCurrentUserYes, rbIsCurrentUserNo;
+    RadioGroup rgCanWeContact;
+    RadioButton rbCanWeContactYes, rbCanWeContactNo;
 
-    RadioGroup rgIsNeverUser;
-    RadioButton rbIsNeverUserYes, rbIsNeverUserNo;
+    RadioGroup rgIPCReferralStatus;
+    RadioButton rbIPCReferralStatusFirst, rbIPCReferralStatusFollowup;
 
     RadioGroup rgIsEverUser;
     RadioButton rbIsEverUserYes, rbIsEverUserNo;
+
+    RadioGroup rgNotInUse;
+    RadioButton rbNotInUseMore, rbNotInUseLess;
+
+    RadioGroup rgIsCurrentUser;
+    RadioButton rbIsCurrentUserYes, rbIsCurrentUserNo;
 
     RadioGroup rgIsWithin12Months;
     RadioButton rbIsWithin12MonthsYes, rbIsWithin12MonthsNo;
@@ -63,7 +70,7 @@ public class CRBFormActivity extends AppCompatActivity implements View.OnClickLi
     DatePickerDialog.OnDateSetListener date = null;
     final Calendar myCalendar = Calendar.getInstance();
 
-    TableRow trCurrentUser, trNeverUser, trEverUser;
+    TableRow trIPCReferralStatus, trNotInUse, trPeriodOfCurrentYears, trCurrentMethod, trIsMethodUseIn12Months;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -81,29 +88,52 @@ public class CRBFormActivity extends AppCompatActivity implements View.OnClickLi
         etVisitDate = findViewById(R.id.etVisitDate);
         etVisitDate.setOnClickListener(this);
 
+        tvProviderCode = findViewById(R.id.tvProviderCode);
+        tvProviderName = findViewById(R.id.tvProviderName);
+
         etClientName = findViewById(R.id.etClientName);
+        etHusbandName = findViewById(R.id.etHusbandName);
+
+        spClientAge = findViewById(R.id.spClientAge);
+
         etAddress = findViewById(R.id.etAddress);
         etContact = findViewById(R.id.etContact);
-        etNoOfChildren = findViewById(R.id.etNoOfCurrentChildren);
 
-        spReferredBy = findViewById(R.id.spReferredBy);
-        spClientAge = findViewById(R.id.spClientAge);
-        spCurrentMethod = findViewById(R.id.spCurrentMethod);
-        spTimingFPService = findViewById(R.id.spTimingFPService);
-        spServiceType = findViewById(R.id.spServiceType);
+        rgCanWeContact = findViewById(R.id.rgCanWeContact);
+        rbCanWeContactYes = findViewById(R.id.rbCanWeContactYes);
+        rbCanWeContactNo = findViewById(R.id.rbCanWeContactNo);
+
+        etMarriageDuration = findViewById(R.id.etMarriageDuration);
+        etNoOfChildren = findViewById(R.id.etNoOfCurrentChildren);
+        etNumberOfAbortions = findViewById(R.id.etNoOfAbortions);
+
+        spReferredBy = findViewById(R.id.spIPCReferralStatus);
+
+        spIPCReferralStatus = findViewById(R.id.spIPCReferralStatus);
+
+        rgIPCReferralStatus = findViewById(R.id.rgIPCReferralStatus);
+        rbIPCReferralStatusFirst = findViewById(R.id.rbIPCReferralStatusFirst);
+        rbIPCReferralStatusFollowup = findViewById(R.id.rbIPCReferralStatusFollowup);
+
+        rgIsEverUser = findViewById(R.id.rgIsEverUser);
+        rbIsEverUserYes = findViewById(R.id.rbIsEverUserYes);
+        rbIsEverUserNo = findViewById(R.id.rbIsEverUserNo);
+
+        rgNotInUse = findViewById(R.id.rgNotInUse);
+        rbNotInUseMore = findViewById(R.id.rbNotInUseMore);
+        rbNotInUseLess = findViewById(R.id.rbNotInUseLess);
 
         rgIsCurrentUser = findViewById(R.id.rgIsCurrentUser);
         rbIsCurrentUserYes = findViewById(R.id.rbIsCurrentUserYes);
         rbIsCurrentUserNo = findViewById(R.id.rbIsCurrentUserNo);
         rgIsCurrentUser.setOnCheckedChangeListener(this);
 
-        rgIsNeverUser = findViewById(R.id.rgIsNeverUser);
-        rbIsNeverUserYes = findViewById(R.id.rbIsNeverUserYes);
-        rbIsNeverUserNo = findViewById(R.id.rbIsNeverUserNo);
-        rgIsNeverUser.setOnCheckedChangeListener(this);
+        etCurrentUseYear = findViewById(R.id.etCurrentMethodYears);
 
-        rgIsEverUser = findViewById(R.id.rgIsEverUser);
-        rbIsEverUserYes = findViewById(R.id.rbIsEverUserYes);
+        spCurrentMethod = findViewById(R.id.spCurrentMethod);
+        spTimingFPService = findViewById(R.id.spTimingFPService);
+        spServiceType = findViewById(R.id.spServiceType);
+        spServiceType.setOnItemSelectedListener(this);
 
         rgIsWithin12Months = findViewById(R.id.rgIsWithin12Months);
         rbIsWithin12MonthsYes = findViewById(R.id.rbIsWithin12MonthsYes);
@@ -112,18 +142,18 @@ public class CRBFormActivity extends AppCompatActivity implements View.OnClickLi
         btnSubmit = findViewById(R.id.btnSubmit);
         btnSubmit.setOnClickListener(this);
 
-        tvProviderName = findViewById(R.id.tvProviderName);
+        trIPCReferralStatus = findViewById(R.id.trIPCReferralStatus);
+        trNotInUse = findViewById(R.id.trNotInUse);
+        trPeriodOfCurrentYears = findViewById(R.id.trPeriodOfCurrentYears);
+        trCurrentMethod = findViewById(R.id.trCurrentMethod);
+        trIsMethodUseIn12Months = findViewById(R.id.trIsMethodUseIn12Months);
 
-        trCurrentUser = findViewById(R.id.trCurrentUser);
-        trNeverUser = findViewById(R.id.trNeverUser);
-        trEverUser = findViewById(R.id.trEverUser);
+        rgIsEverUser.setOnCheckedChangeListener(this);
 
+        spReferredBy.setOnItemSelectedListener(this);
     }
 
     private void populateForm(){
-
-        trNeverUser.setVisibility(View.GONE);
-        trEverUser.setVisibility(View.GONE);
 
         updateVisitDate();
         date = new DatePickerDialog.OnDateSetListener() {
@@ -140,7 +170,9 @@ public class CRBFormActivity extends AppCompatActivity implements View.OnClickLi
 
         SharedPreferences shared = getSharedPreferences(Codes.PREF_NAME, MODE_PRIVATE);
         String providerName = shared.getString("name", "");
+        String providerCode = shared.getString("code", "");
         tvProviderName.setText(providerName);
+        tvProviderCode.setText(providerCode);
 
         List<DropdownCRBData> dropdownCRBDataReferredBy = new ArrayList<>();
         List<DropdownCRBData> dropdownCRBDataClientAge = new ArrayList<>();
@@ -148,13 +180,13 @@ public class CRBFormActivity extends AppCompatActivity implements View.OnClickLi
         List<DropdownCRBData> dropdownCRBDataTimingFPUser = new ArrayList<>();
         List<DropdownCRBData> dropdownCRBDataServiceType = new ArrayList<>();
 
-        DropdownCRBData referredByDummy = new DropdownCRBData();
-        referredByDummy.setDetailEnglish("Referred By");
-        referredByDummy.setId(0);
-
         DropdownCRBData clientAgeDummy = new DropdownCRBData();
         clientAgeDummy.setDetailEnglish("Client Age");
         clientAgeDummy.setId(0);
+
+        DropdownCRBData referredByDummy = new DropdownCRBData();
+        referredByDummy.setDetailEnglish("Referred By");
+        referredByDummy.setId(0);
 
         DropdownCRBData currentMethodDummy = new DropdownCRBData();
         currentMethodDummy.setDetailEnglish("Current Method");
@@ -198,6 +230,8 @@ public class CRBFormActivity extends AppCompatActivity implements View.OnClickLi
         ServiceTypeAdapter serviceTypeAdapter = new ServiceTypeAdapter(this, R.layout.dropdown_layout, R.id.tvNames, dropdownCRBDataServiceType);
         spServiceType.setAdapter(serviceTypeAdapter);
 
+
+
     }
 
     private void updateVisitDate() {
@@ -207,8 +241,8 @@ public class CRBFormActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     public void submitForm(){
+
         CRBForm form = new CRBForm();
-        form.setAddress(etAddress.getText().toString());
         DropdownCRBData dataReferredBy = (DropdownCRBData)spReferredBy.getSelectedItem();
         form.setReferredBy(dataReferredBy.getDetailEnglish());
 
@@ -219,25 +253,62 @@ public class CRBFormActivity extends AppCompatActivity implements View.OnClickLi
         form.setServiceType(dataServiceType.getDetailEnglish());
 
         DropdownCRBData dataTimingFPService = (DropdownCRBData)spTimingFPService.getSelectedItem();
-        form.setTimingFPService(dataTimingFPService.getDetailEnglish());
+        form.setTimingOfService(dataTimingFPService.getDetailEnglish());
 
         DropdownCRBData dataCurrentMethod = (DropdownCRBData)spCurrentMethod.getSelectedItem();
         form.setCurrentMethod(dataCurrentMethod.getDetailEnglish());
 
-        form.setAddress(etAddress.getText().toString());
+        form.setProviderCode(tvProviderCode.getText().toString());
+        form.setProviderName(tvProviderName.getText().toString());
         form.setClientName(etClientName.getText().toString());
+        form.setHusbandName(etHusbandName.getText().toString());
+        form.setAddress(etAddress.getText().toString());
         form.setContactNumber(etContact.getText().toString());
-        form.setVisitDate(etVisitDate.getText().toString());
-        form.setProviderCode(tvProviderName.getText().toString());
-        form.setNoOfChildren(Integer.valueOf(etNoOfChildren.getText().toString()));
-        form.setMethodWithin12Months(rbIsWithin12MonthsYes.isChecked()==true?1:0);
-        if(rbIsCurrentUserYes.isChecked()){
-            form.setFpUserCategory(Codes.currentUser);
-        }else if(rbIsNeverUserYes.isChecked()){
-            form.setFpUserCategory(Codes.neverUser);
+        form.setAddress(etAddress.getText().toString());
+
+        if(rbCanWeContactYes.isChecked()){
+            form.setCanWeContact(1);
         }else{
-            form.setFpUserCategory(Codes.everUser);
+            form.setCanWeContact(2);
         }
+
+        form.setDurationOfMarriage(Double.valueOf(etMarriageDuration.getText().toString()));
+        form.setNoOfChildren(Integer.valueOf(etNoOfChildren.getText().toString()));
+        form.setNumberOfAbortion(Integer.valueOf(etNumberOfAbortions.getText().toString()));
+
+        if(rbIPCReferralStatusFirst.isChecked()){
+            form.setIpcReferralStatus(1);
+        }else{
+            form.setIpcReferralStatus(2);
+        }
+
+        if(rbIsEverUserYes.isChecked()){
+            form.setIsEverUser(1);
+        }else{
+            form.setIsEverUser(2);
+        }
+
+        if(rbNotInUseMore.isChecked()){
+            form.setMethodNotInUse(1);
+        }else{
+            form.setMethodNotInUse(2);
+        }
+
+        if(rbIsCurrentUserYes.isChecked()){
+            form.setIsCurrentUser(1);
+        }else{
+            form.setIsCurrentUser(0);
+        }
+
+        if(rbIsCurrentUserYes.isChecked()){
+            form.setIsCurrentUser(1);
+        }else{
+            form.setIsCurrentUser(0);
+        }
+
+        form.setCurrentUseYear(Double.valueOf(etCurrentUseYear.getText().toString()));
+        form.setVisitDate(etVisitDate.getText().toString());
+
         form.setId(Util.getNextCRBFormID(this));
         AppDatabase.getAppDatabase(this).getCRBFormDAO().insert(form);
 
@@ -333,25 +404,45 @@ public class CRBFormActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
-        if(group.getId() == R.id.rgIsCurrentUser){
-            if (checkedId == R.id.rbIsCurrentUserNo) {
-                trNeverUser.setVisibility(View.VISIBLE);
-                spCurrentMethod.setVisibility(View.VISIBLE);
-            } else  if (checkedId == R.id.rbIsCurrentUserYes) {
-                rgIsEverUser.clearCheck();
-                rgIsNeverUser.clearCheck();
-                trEverUser.setVisibility(View.GONE);
-                trNeverUser.setVisibility(View.GONE);
-                spCurrentMethod.setVisibility(View.GONE);
+        if(group.getId()==R.id.rgIsEverUser){
+            if(rbIsEverUserYes.isChecked()){
+                trNotInUse.setVisibility(View.VISIBLE);
+            }else{
+                trNotInUse.setVisibility(View.GONE);
             }
-        }else if(group.getId() == R.id.rgIsNeverUser){
-            if (checkedId == R.id.rbIsNeverUserYes) {
-                trEverUser.setVisibility(View.GONE);
-                rgIsEverUser.clearCheck();
-            } else  if (checkedId == R.id.rbIsNeverUserNo) {
-                trEverUser.setVisibility(View.VISIBLE);
-                rbIsEverUserYes.setSelected(true);
+        }else if(group.getId() == R.id.rgIsCurrentUser){
+            if(rbIsCurrentUserYes.isChecked()){
+                trPeriodOfCurrentYears.setVisibility(View.VISIBLE);
+                trCurrentMethod.setVisibility(View.VISIBLE);
+            }else{
+                trPeriodOfCurrentYears.setVisibility(View.GONE);
+                trCurrentMethod.setVisibility(View.GONE);
             }
         }
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        DropdownCRBData dropdownCRBData = new DropdownCRBData();
+        dropdownCRBData = (DropdownCRBData) parent.getSelectedItem();
+
+        if(dropdownCRBData.getCategory()!=null && dropdownCRBData.getCategory().equals("Referred By")){
+            if(dropdownCRBData.getDetailEnglish().equals("IPC-Community Educator")){
+                trIPCReferralStatus.setVisibility(View.VISIBLE);
+            }else{
+                trIPCReferralStatus.setVisibility(View.GONE);
+            }
+        }else if(dropdownCRBData.getDetailEnglish()!=null){
+            if(dropdownCRBData.getDetailEnglish().equals("Service taken on this visit")){
+                trIsMethodUseIn12Months.setVisibility(View.GONE);
+            }else{
+                trIsMethodUseIn12Months.setVisibility(View.VISIBLE);
+            }
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }

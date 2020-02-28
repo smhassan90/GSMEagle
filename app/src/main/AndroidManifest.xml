@@ -47,7 +47,13 @@
             android:label="@string/SubmittedForms" />
         <activity
             android:name=".crb.controller.CRBFormActivity"
-            android:label="@string/CRBForm" />
+            android:label="@string/CRBForm" >
+
+        </activity>
+        <activity
+            android:name=".ProductDescription"
+            android:label="@string/ProductDetail"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>
