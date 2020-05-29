@@ -875,5 +875,6 @@
     <string name="cdkContraindication"><b>Contraindication:</b>Avoid as an OTC, Only used in recommended indication and under Medical Advice</string>
     <string name="cdkPrice"><b>Price:</b></string>
     <string name="cdkPrice1">TP 750 Rs</string>
+    <string name="CoronaVirus">Corona Virus Alert</string>
     <!-- cdk ends -->
 </resources>

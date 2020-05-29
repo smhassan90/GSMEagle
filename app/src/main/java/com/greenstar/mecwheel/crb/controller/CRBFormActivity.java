@@ -37,13 +37,13 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class CRBFormActivity extends AppCompatActivity implements View.OnClickListener, RadioGroup.OnCheckedChangeListener, AdapterView.OnItemSelectedListener {
+public class CRBFormActivity extends AppCompatActivity implements View.OnClickListener, RadioGroup.OnCheckedChangeListener, AdapterView.OnItemSelectedListener, View.OnFocusChangeListener {
 
     AppDatabase db =null;
 
-    EditText etVisitDate, etClientName, etHusbandName, etAddress, etContact, etMarriageDuration, etNoOfChildren, etNumberOfAbortions, etCurrentUseYear;
+    EditText etVisitDate, etClientName, etHusbandName, etMarriageDuration, etAddress, etContact, etNoOfCurrentSons, etNoOfCurrentDaughter, etNumberOfAbortions, etCurrentUseYear;
 
-    TextView tvProviderName, tvProviderCode;
+    TextView tvProviderName, tvProviderCode, tvContactNumber, tvClientName;
 
     Spinner spReferredBy, spClientAge, spIPCReferralStatus, spCurrentMethod, spTimingFPService, spServiceType;
 
@@ -62,15 +62,17 @@ public class CRBFormActivity extends AppCompatActivity implements View.OnClickLi
     RadioGroup rgIsCurrentUser;
     RadioButton rbIsCurrentUserYes, rbIsCurrentUserNo;
 
+    /*
     RadioGroup rgIsWithin12Months;
     RadioButton rbIsWithin12MonthsYes, rbIsWithin12MonthsNo;
+    */
 
     Button btnSubmit;
 
     DatePickerDialog.OnDateSetListener date = null;
     final Calendar myCalendar = Calendar.getInstance();
 
-    TableRow trIPCReferralStatus, trNotInUse, trPeriodOfCurrentYears, trCurrentMethod, trIsMethodUseIn12Months;
+    TableRow trIPCReferralStatus, trNotInUse, trPeriodOfCurrentYears, trCurrentMethod, trIsMethodUseIn12Months, trEverUsed;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -98,13 +100,16 @@ public class CRBFormActivity extends AppCompatActivity implements View.OnClickLi
 
         etAddress = findViewById(R.id.etAddress);
         etContact = findViewById(R.id.etContact);
+        tvClientName = findViewById(R.id.tvClientName);
+        tvContactNumber = findViewById(R.id.tvContactNumber);
 
         rgCanWeContact = findViewById(R.id.rgCanWeContact);
         rbCanWeContactYes = findViewById(R.id.rbCanWeContactYes);
         rbCanWeContactNo = findViewById(R.id.rbCanWeContactNo);
 
         etMarriageDuration = findViewById(R.id.etMarriageDuration);
-        etNoOfChildren = findViewById(R.id.etNoOfCurrentChildren);
+        etNoOfCurrentDaughter = findViewById(R.id.etNoOfCurrentDaughter);
+        etNoOfCurrentSons = findViewById(R.id.etNoOfCurrentSons);
         etNumberOfAbortions = findViewById(R.id.etNoOfAbortions);
 
         spReferredBy = findViewById(R.id.spIPCReferralStatus);
@@ -135,18 +140,21 @@ public class CRBFormActivity extends AppCompatActivity implements View.OnClickLi
         spServiceType = findViewById(R.id.spServiceType);
         spServiceType.setOnItemSelectedListener(this);
 
+        /*
         rgIsWithin12Months = findViewById(R.id.rgIsWithin12Months);
         rbIsWithin12MonthsYes = findViewById(R.id.rbIsWithin12MonthsYes);
         rbIsWithin12MonthsNo = findViewById(R.id.rbIsWithin12MonthsNo);
+        */
 
         btnSubmit = findViewById(R.id.btnSubmit);
         btnSubmit.setOnClickListener(this);
 
         trIPCReferralStatus = findViewById(R.id.trIPCReferralStatus);
         trNotInUse = findViewById(R.id.trNotInUse);
+        trEverUsed = findViewById(R.id.trEverUsed);
         trPeriodOfCurrentYears = findViewById(R.id.trPeriodOfCurrentYears);
         trCurrentMethod = findViewById(R.id.trCurrentMethod);
-        trIsMethodUseIn12Months = findViewById(R.id.trIsMethodUseIn12Months);
+       // trIsMethodUseIn12Months = findViewById(R.id.trIsMethodUseIn12Months);
 
         rgIsEverUser.setOnCheckedChangeListener(this);
 
@@ -193,7 +201,7 @@ public class CRBFormActivity extends AppCompatActivity implements View.OnClickLi
         currentMethodDummy.setId(0);
 
         DropdownCRBData timingOfFPDummy = new DropdownCRBData();
-        timingOfFPDummy.setDetailEnglish("When took service");
+        timingOfFPDummy.setDetailEnglish("Timing of service");
         timingOfFPDummy.setId(0);
 
         DropdownCRBData serviceTypeDummy = new DropdownCRBData();
@@ -230,8 +238,20 @@ public class CRBFormActivity extends AppCompatActivity implements View.OnClickLi
         ServiceTypeAdapter serviceTypeAdapter = new ServiceTypeAdapter(this, R.layout.dropdown_layout, R.id.tvNames, dropdownCRBDataServiceType);
         spServiceType.setAdapter(serviceTypeAdapter);
 
+        etMarriageDuration.setText("0");
+        etMarriageDuration.setOnFocusChangeListener(this);
 
+        etNoOfCurrentSons.setText("0");
+        etNoOfCurrentSons.setOnFocusChangeListener(this);
 
+        etNoOfCurrentDaughter.setText("0");
+        etNoOfCurrentDaughter.setOnFocusChangeListener(this);
+
+        etNumberOfAbortions.setText("0");
+        etNumberOfAbortions.setOnFocusChangeListener(this);
+
+        etCurrentUseYear.setText("0");
+        etCurrentUseYear.setOnFocusChangeListener(this);
     }
 
     private void updateVisitDate() {
@@ -273,7 +293,8 @@ public class CRBFormActivity extends AppCompatActivity implements View.OnClickLi
         }
 
         form.setDurationOfMarriage(Double.valueOf(etMarriageDuration.getText().toString()));
-        form.setNoOfChildren(Integer.valueOf(etNoOfChildren.getText().toString()));
+        form.setNoOfSons(Integer.valueOf(etNoOfCurrentSons.getText().toString()));
+        form.setNoOfDaughters(Integer.valueOf(etNoOfCurrentDaughter.getText().toString()));
         form.setNumberOfAbortion(Integer.valueOf(etNumberOfAbortions.getText().toString()));
 
         if(rbIPCReferralStatusFirst.isChecked()){
@@ -299,13 +320,6 @@ public class CRBFormActivity extends AppCompatActivity implements View.OnClickLi
         }else{
             form.setIsCurrentUser(0);
         }
-
-        if(rbIsCurrentUserYes.isChecked()){
-            form.setIsCurrentUser(1);
-        }else{
-            form.setIsCurrentUser(0);
-        }
-
         form.setCurrentUseYear(Double.valueOf(etCurrentUseYear.getText().toString()));
         form.setVisitDate(etVisitDate.getText().toString());
 
@@ -318,16 +332,90 @@ public class CRBFormActivity extends AppCompatActivity implements View.OnClickLi
 
     private boolean isValid(){
         boolean isValid=true;
-
-        if(spClientAge.getSelectedItemId()==0 ||
-                //spReferredBy.getSelectedItemId()==0 ||
-               // spCurrentMethod.getSelectedItemId()==0 ||
+        if("".equals(etClientName.getText().toString()) ||
+                spCurrentMethod.getSelectedItemId()==0 ||
                 spTimingFPService.getSelectedItemId()==0 ||
                 spServiceType.getSelectedItemId() ==0 ||
-                "".equals(etClientName.getText().toString()) ||
-                "".equals(etContact.getText().toString()) ||
-                "".equals(etNoOfChildren.getText().toString())){
+                "".equals(etContact.getText().toString()) ){
+
             isValid = false;
+        }
+
+        if("".equals(etContact.getText().toString())){
+            tvContactNumber.setTextColor(getResources().getColor(R.color.darkestOrange));
+        }else{
+            tvContactNumber.setTextColor(getResources().getColor(R.color.whiteColor));
+        }
+
+        if("".equals(etClientName.getText().toString())){
+            tvClientName.setTextColor(getResources().getColor(R.color.darkestOrange));
+        }else{
+            tvClientName.setTextColor(getResources().getColor(R.color.whiteColor));
+        }
+
+        if(spClientAge.getSelectedItemId()==0) {
+            View view = spClientAge.getSelectedView();
+            (view).setBackgroundColor(getResources().getColor(R.color.darkestOrange));
+            isValid = false;
+        }else{
+            View view = spClientAge.getSelectedView();
+            ( view).setBackgroundColor(getResources().getColor(R.color.whiteColor));
+        }
+
+        if(!rbIsCurrentUserYes.isChecked() && !rbIsCurrentUserNo.isChecked() ){
+            rbIsCurrentUserYes.setTextColor(getResources().getColor( R.color.darkestOrange));
+            rbIsCurrentUserNo.setTextColor(getResources().getColor( R.color.darkestOrange));
+            isValid = false;
+        }else{
+            rbIsCurrentUserYes.setTextColor(getResources().getColor( R.color.darkGreen));
+            rbIsCurrentUserNo.setTextColor(getResources().getColor( R.color.darkGreen));
+        }
+        if(rbIsCurrentUserYes.isChecked()){
+           if(spCurrentMethod.getSelectedItemId()==0) {
+               View view = spCurrentMethod.getSelectedView();
+               (view).setBackgroundColor(getResources().getColor(R.color.darkestOrange));
+               isValid = false;
+           }else{
+               View view = spCurrentMethod.getSelectedView();
+               (view).setBackgroundColor(getResources().getColor(R.color.whiteColor));
+           }
+        }else if(rbIsCurrentUserNo.isChecked()){
+            if(!rbIsEverUserYes.isChecked() && !rbIsEverUserNo.isChecked()){
+                isValid=false;
+                rbIsEverUserYes.setTextColor(getResources().getColor( R.color.darkestOrange));
+                rbIsEverUserNo.setTextColor(getResources().getColor( R.color.darkestOrange));
+            }else{
+                rbIsEverUserYes.setTextColor(getResources().getColor( R.color.darkGreen));
+                rbIsEverUserNo.setTextColor(getResources().getColor( R.color.darkGreen));
+            }
+
+            if(!rbNotInUseMore.isChecked() && !rbNotInUseLess.isChecked()){
+                isValid=false;
+                rbNotInUseMore.setTextColor(getResources().getColor( R.color.darkestOrange));
+                rbNotInUseLess.setTextColor(getResources().getColor( R.color.darkestOrange));
+            }else{
+                rbNotInUseMore.setTextColor(getResources().getColor( R.color.darkGreen));
+                rbNotInUseLess.setTextColor(getResources().getColor( R.color.darkGreen));
+            }
+        }
+
+        if(spServiceType.getSelectedItemId()==0) {
+
+            View view = spServiceType.getSelectedView();
+            (view).setBackgroundColor(getResources().getColor(R.color.darkestOrange));
+            isValid = false;
+        }else{
+            View view = spServiceType.getSelectedView();
+            (view).setBackgroundColor(getResources().getColor(R.color.whiteColor));
+        }
+
+        if(spTimingFPService.getSelectedItemId()==0) {
+            View view = spTimingFPService.getSelectedView();
+            ( view).setBackgroundColor(getResources().getColor(R.color.darkestOrange));
+            isValid = false;
+        }else{
+            View view = spTimingFPService.getSelectedView();
+            ( view).setBackgroundColor(getResources().getColor(R.color.whiteColor));
         }
 
         return isValid;
@@ -404,19 +492,30 @@ public class CRBFormActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
-        if(group.getId()==R.id.rgIsEverUser){
+        if(group.getId()==R.id.rgIsCurrentUser){
+            if(rbIsCurrentUserYes.isChecked()){
+                trPeriodOfCurrentYears.setVisibility(View.VISIBLE);
+                trCurrentMethod.setVisibility(View.VISIBLE);
+
+                trEverUsed.setVisibility(View.GONE);
+                rgIsEverUser.clearCheck();
+                trNotInUse.setVisibility(View.GONE);
+                rgNotInUse.clearCheck();
+            }else{
+                trPeriodOfCurrentYears.setVisibility(View.GONE);
+                etCurrentUseYear.setText("0");
+                trCurrentMethod.setVisibility(View.GONE);
+                spCurrentMethod.setSelection(0);
+
+                trEverUsed.setVisibility(View.VISIBLE);
+                trNotInUse.setVisibility(View.VISIBLE);
+            }
+        } else if(group.getId()==R.id.rgIsEverUser){
             if(rbIsEverUserYes.isChecked()){
                 trNotInUse.setVisibility(View.VISIBLE);
             }else{
                 trNotInUse.setVisibility(View.GONE);
-            }
-        }else if(group.getId() == R.id.rgIsCurrentUser){
-            if(rbIsCurrentUserYes.isChecked()){
-                trPeriodOfCurrentYears.setVisibility(View.VISIBLE);
-                trCurrentMethod.setVisibility(View.VISIBLE);
-            }else{
-                trPeriodOfCurrentYears.setVisibility(View.GONE);
-                trCurrentMethod.setVisibility(View.GONE);
+                rgNotInUse.clearCheck();
             }
         }
     }
@@ -431,12 +530,13 @@ public class CRBFormActivity extends AppCompatActivity implements View.OnClickLi
                 trIPCReferralStatus.setVisibility(View.VISIBLE);
             }else{
                 trIPCReferralStatus.setVisibility(View.GONE);
+                rgIPCReferralStatus.clearCheck();
             }
         }else if(dropdownCRBData.getDetailEnglish()!=null){
             if(dropdownCRBData.getDetailEnglish().equals("Service taken on this visit")){
-                trIsMethodUseIn12Months.setVisibility(View.GONE);
+                //trIsMethodUseIn12Months.setVisibility(View.GONE);
             }else{
-                trIsMethodUseIn12Months.setVisibility(View.VISIBLE);
+                //trIsMethodUseIn12Months.setVisibility(View.VISIBLE);
             }
         }
     }
@@ -444,5 +544,19 @@ public class CRBFormActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
+    }
+
+    @Override
+    public void onFocusChange(View v, boolean hasFocus) {
+        EditText editText = (EditText) v;
+        if (hasFocus) {
+            if ("0".equals(editText.getText().toString())) {
+                editText.setText("");
+            }
+        } else {
+            if ("".equals(editText.getText().toString())) {
+                editText.setText("0");
+            }
+        }
     }
 }

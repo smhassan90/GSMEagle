@@ -46,7 +46,13 @@ public class Util {
         }
 
         if(Codes.ALL_OK.equals(status)){
-            CRBData dataObj = new Gson().fromJson(data, CRBData.class) ;
+            CRBData dataObj = null;
+            try{
+                dataObj = new Gson().fromJson(data, CRBData.class) ;
+            }catch(Exception e ){
+                Toast.makeText(activity,"Error parsing : "+e.getMessage().toString(), Toast.LENGTH_LONG).show();
+            }
+
 
             SharedPreferences.Editor editor =  activity.getSharedPreferences(Codes.PREF_NAME, MODE_PRIVATE).edit();
             editor.putString("name", dataObj.getName());

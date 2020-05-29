@@ -88,7 +88,6 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
                     staffName = response.get("staffName").toString();
                     staffCode = response.get("staffCode").toString();
                     baseID = response.getLong("baseID");
-
                     params.put("token",token);
                     params.put("message", message);
                     params.put("data", data);

@@ -14,7 +14,7 @@ import com.greenstar.mecwheel.crb.model.Providers;
 
 
 @Database(entities = {Providers.class, CRBForm.class, DropdownCRBData.class},
-        version = 1)
+        version = 2)
 public abstract class AppDatabase extends RoomDatabase {
     private static final String DATABASE_NAME = "dbgreenstar";
     private static AppDatabase INSTANCE;

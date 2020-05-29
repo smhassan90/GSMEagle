@@ -108,6 +108,7 @@
                             android:textColor="@color/black"
                             android:gravity="center_vertical"
                             android:layout_weight="5"
+                            android:id="@+id/tvClientName"
                             android:text="Client Name"/>
                         <EditText
                             android:layout_width="0dp"
@@ -141,6 +142,31 @@
                             android:textColor="@color/darkGreen"
                             android:layout_weight="5"
                             android:id="@+id/etHusbandName"/>
+                    </TableRow>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/form_field_padding"
+                        android:background="@drawable/customborder"
+                        android:padding="@dimen/padding_10"
+                        android:weightSum="10">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            style="@style/text_style"
+                            android:textColor="@color/black"
+                            android:gravity="center_vertical"
+                            android:layout_weight="5"
+                            android:text="Duration of Marriage"/>
+                        <EditText
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            style="@style/text_style"
+                            android:textStyle="bold"
+                            android:textColor="@color/darkGreen"
+                            android:layout_weight="5"
+                            android:inputType="number"
+                            android:id="@+id/etMarriageDuration"/>
                     </TableRow>
                     <TableRow
                         android:layout_width="match_parent"
@@ -197,6 +223,7 @@
                             android:textColor="@color/black"
                             android:gravity="center_vertical"
                             android:layout_weight="5"
+                            android:id="@+id/tvContactNumber"
                             android:text="Contact Number"/>
                         <EditText
                             android:layout_width="0dp"
@@ -267,7 +294,7 @@
                             android:textColor="@color/black"
                             android:gravity="center_vertical"
                             android:layout_weight="5"
-                            android:text="Duration of Marriage"/>
+                            android:text="Number of alive Sons?"/>
                         <EditText
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -276,7 +303,7 @@
                             android:textColor="@color/darkGreen"
                             android:layout_weight="5"
                             android:inputType="number"
-                            android:id="@+id/etMarriageDuration"/>
+                            android:id="@+id/etNoOfCurrentSons"/>
                     </TableRow>
                     <TableRow
                         android:layout_width="match_parent"
@@ -292,7 +319,7 @@
                             android:textColor="@color/black"
                             android:gravity="center_vertical"
                             android:layout_weight="5"
-                            android:text="Number of Alive Children"/>
+                            android:text="Number of alive Daughters?"/>
                         <EditText
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -301,7 +328,7 @@
                             android:textColor="@color/darkGreen"
                             android:layout_weight="5"
                             android:inputType="number"
-                            android:id="@+id/etNoOfCurrentChildren"/>
+                            android:id="@+id/etNoOfCurrentDaughter"/>
                     </TableRow>
                     <TableRow
                         android:layout_width="match_parent"
@@ -409,95 +436,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/form_field_padding"
                         android:background="@drawable/customborder"
-                        android:id="@+id/trEverUsed"
-                        android:weightSum="10">
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            style="@style/text_style"
-                            android:textColor="@color/black"
-                            android:gravity="center_vertical"
-                            android:layout_weight="7"
-                            android:text="Have you ever used a family planning method in your life?"/>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="3"
-                            android:orientation="vertical" >
-
-                            <RadioGroup
-                                android:id="@+id/rgIsEverUser"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" >
-
-                                <RadioButton
-                                    android:id="@+id/rbIsEverUserYes"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Yes"
-                                    style="@style/text_style"/>
-
-                                <RadioButton
-                                    android:id="@+id/rbIsEverUserNo"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    style="@style/text_style"
-                                    android:text="No" />
-                            </RadioGroup>
-                        </LinearLayout>
-                    </TableRow>
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/form_field_padding"
-                        android:background="@drawable/customborder"
-                        android:id="@+id/trNotInUse"
-                        android:visibility="gone"
-                        android:weightSum="10">
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            style="@style/text_style"
-                            android:textColor="@color/black"
-                            android:gravity="center_vertical"
-                            android:layout_weight="7"
-                            android:text="How long has a family planning method not in use?"/>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="3"
-                            android:orientation="vertical" >
-
-                            <RadioGroup
-                                android:id="@+id/rgNotInUse"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" >
-
-                                <RadioButton
-                                    android:id="@+id/rbNotInUseMore"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="More than 12 Months"
-                                    style="@style/text_style"/>
-
-                                <RadioButton
-                                    android:id="@+id/rbNotInUseLess"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    style="@style/text_style"
-                                    android:text="Less than 12 Months" />
-
-                            </RadioGroup>
-
-                        </LinearLayout>
-                    </TableRow>
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/form_field_padding"
-                        android:background="@drawable/customborder"
                         android:id="@+id/trCurrentUser"
                         android:weightSum="10">
                         <TextView
@@ -561,7 +499,7 @@
                             android:textStyle="bold"
                             android:textColor="@color/darkGreen"
                             android:layout_weight="5"
-                            android:inputType="number"
+                            android:inputType="numberDecimal"
                             android:id="@+id/etCurrentMethodYears"/>
                     </TableRow>
                     <TableRow
@@ -585,20 +523,92 @@
                     </TableRow>
                     <TableRow
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/form_field_padding"
                         android:background="@drawable/customborder"
-                        android:padding="@dimen/padding_10"
+                        android:id="@+id/trEverUsed"
                         android:weightSum="10">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            style="@style/text_style"
+                            android:textColor="@color/black"
+                            android:gravity="center_vertical"
+                            android:layout_weight="7"
+                            android:text="Have you ever used a family planning method in your life?"/>
 
-                        <Spinner
-                            android:id="@+id/spTimingFPService"
-                            android:prompt="@string/timingFPService"
-                            android:layout_width="match_parent"
-                            style="@style/spinner_style"
-                            android:layout_weight="10"
-                            android:layout_height="@dimen/spinner_height"
-                            android:autofillHints="@string/timingFPService"/>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:orientation="vertical" >
+
+                            <RadioGroup
+                                android:id="@+id/rgIsEverUser"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" >
+
+                                <RadioButton
+                                    android:id="@+id/rbIsEverUserYes"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Yes"
+                                    style="@style/text_style"/>
+
+                                <RadioButton
+                                    android:id="@+id/rbIsEverUserNo"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    style="@style/text_style"
+                                    android:text="No" />
+                            </RadioGroup>
+                        </LinearLayout>
+                    </TableRow>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/form_field_padding"
+                        android:background="@drawable/customborder"
+                        android:id="@+id/trNotInUse"
+                        android:visibility="gone"
+                        android:weightSum="10">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            style="@style/text_style"
+                            android:textColor="@color/black"
+                            android:gravity="center_vertical"
+                            android:layout_weight="7"
+                            android:text="How long has the family planning method not been in use?"/>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:orientation="vertical" >
+
+                            <RadioGroup
+                                android:id="@+id/rgNotInUse"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" >
+
+                                <RadioButton
+                                    android:id="@+id/rbNotInUseMore"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="More than 12 Months"
+                                    style="@style/text_style"/>
+
+                                <RadioButton
+                                    android:id="@+id/rbNotInUseLess"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    style="@style/text_style"
+                                    android:text="Less than 12 Months" />
+
+                            </RadioGroup>
+
+                        </LinearLayout>
                     </TableRow>
                     <TableRow
                         android:layout_width="match_parent"
@@ -617,6 +627,27 @@
                             android:layout_height="@dimen/spinner_height"
                             android:autofillHints="@string/ServiceType"/>
                     </TableRow>
+
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/form_field_padding"
+                        android:background="@drawable/customborder"
+                        android:padding="@dimen/padding_10"
+                        android:weightSum="10">
+
+                        <Spinner
+                            android:id="@+id/spTimingFPService"
+                            android:prompt="@string/timingFPService"
+                            android:layout_width="match_parent"
+                            style="@style/spinner_style"
+                            android:layout_weight="10"
+                            android:layout_height="@dimen/spinner_height"
+                            android:autofillHints="@string/timingFPService"/>
+                    </TableRow>
+
+                    <!--
                     <TableRow
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -663,6 +694,7 @@
 
                         </LinearLayout>
                     </TableRow>
+                    -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/table_header_size"

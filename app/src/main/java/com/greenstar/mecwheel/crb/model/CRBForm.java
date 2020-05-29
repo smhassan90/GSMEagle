@@ -26,7 +26,9 @@ public class CRBForm {
 
     private double durationOfMarriage;
 
-    private int noOfChildren;
+    private int noOfSons;
+
+    private int noOfDaughters;
 
     private int numberOfAbortion;
 
@@ -123,20 +125,20 @@ public class CRBForm {
         this.canWeContact = canWeContact;
     }
 
-    public double getDurationOfMarriage() {
-        return durationOfMarriage;
+    public int getNoOfDaughters() {
+        return noOfDaughters;
     }
 
-    public void setDurationOfMarriage(double durationOfMarriage) {
-        this.durationOfMarriage = durationOfMarriage;
+    public void setNoOfDaughters(int noOfDaughters) {
+        this.noOfDaughters = noOfDaughters;
     }
 
-    public int getNoOfChildren() {
-        return noOfChildren;
+    public int getNoOfSons() {
+        return noOfSons;
     }
 
-    public void setNoOfChildren(int noOfChildren) {
-        this.noOfChildren = noOfChildren;
+    public void setNoOfSons(int noOfSons) {
+        this.noOfSons = noOfSons;
     }
 
     public int getNumberOfAbortion() {
@@ -250,4 +252,13 @@ public class CRBForm {
     public void setStatus(int status) {
         this.status = status;
     }
+
+    public double getDurationOfMarriage() {
+        return durationOfMarriage;
+    }
+
+    public void setDurationOfMarriage(double durationOfMarriage) {
+        this.durationOfMarriage = durationOfMarriage;
+    }
 }
+

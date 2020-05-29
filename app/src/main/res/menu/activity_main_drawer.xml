@@ -4,7 +4,11 @@
     tools:showIn="navigation_view">
 
     <group  android:checkableBehavior="single">
-
+        <item
+            android:id="@+id/corona_virus"
+            android:iconTint="@color/maroon"
+            android:icon="@drawable/corona_icon"
+            android:title="Corona Alert! **(NEW)" />
         <item
             android:id="@+id/btnMecWheel"
             android:iconTint="@color/darkGreen"
@@ -21,11 +25,17 @@
             android:iconTint="@color/darkGreen"
             android:icon="@drawable/cards_icon"
             android:title="Counseling Cards (English)" />
+
         <item
             android:id="@+id/dosage_card"
             android:iconTint="@color/darkGreen"
             android:icon="@drawable/cards_icon"
             android:title="FIGO Dosage Card" />
+        <item
+            android:id="@+id/enofer"
+            android:iconTint="@color/darkGreen"
+            android:icon="@drawable/cards_icon"
+            android:title="Enofer" />
         <item
             android:id="@+id/PharmaProducts"
             android:iconTint="@color/darkGreen"

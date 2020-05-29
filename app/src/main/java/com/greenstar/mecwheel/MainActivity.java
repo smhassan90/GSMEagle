@@ -82,6 +82,8 @@ public class MainActivity extends AppCompatActivity
             fragment = new CounselingCardsFragment();
         }else if (id == R.id.cards_urdu) {
             fragment = new CounselingUrduCardsFragment();
+        }else if (id == R.id.corona_virus) {
+            fragment = new CoronaVirus();
         }else if (id == R.id.patient_entry) {
             SharedPreferences shared = getSharedPreferences(Codes.PREF_NAME, MODE_PRIVATE);
             boolean isLoggedIn = (shared.getBoolean("isLoggedIn", false));
@@ -94,7 +96,10 @@ public class MainActivity extends AppCompatActivity
             }
         }else if (id == R.id.dosage_card) {
             fragment = new DosageCard();
-        }else if (id == R.id.PharmaProducts) {
+        }else if (id == R.id.enofer) {
+            fragment = new Enofer();
+        }
+        else if (id == R.id.PharmaProducts) {
             fragment = new PharmaProducts();
         }else if (id == R.id.btnHome) {
             fragment = new HomeFragment();

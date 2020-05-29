@@ -40,19 +40,19 @@ public class DropdownCRBData {
         this.detailEnglish = detailEnglish;
     }
 
-    public String getDetailUrdu() {
-        return detailUrdu;
-    }
-
-    public void setDetailUrdu(String detailUrdu) {
-        this.detailUrdu = detailUrdu;
-    }
-
     public int getStatus() {
         return status;
     }
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public String getDetailUrdu() {
+        return detailUrdu;
+    }
+
+    public void setDetailUrdu(String detailUrdu) {
+        this.detailUrdu = detailUrdu;
     }
 }
