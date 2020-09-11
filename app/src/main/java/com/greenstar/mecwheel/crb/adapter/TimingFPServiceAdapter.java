@@ -47,7 +47,29 @@ public class TimingFPServiceAdapter extends ArrayAdapter<DropdownCRBData> {
         TextView lbl = (TextView) v.findViewById(R.id.tvNames);
         DropdownCRBData temp = list.get(position);
 
-        lbl.setText(temp.getDetailEnglish());
+        String desc = "";
+
+        if(temp.getDetailEnglish().equals("Interval")){
+            desc = "وقفہ";
+        }else if(temp.getDetailEnglish().equals("Intraceasarian")){
+            desc = "آپریشن کے دوران";
+        }else if(temp.getDetailEnglish().equals("Post Placental Within 10mins")){
+            desc = "آنول نکلنے کے دس منٹ کے اندر";
+        }else if(temp.getDetailEnglish().equals("Post Partum 10mins to 48 hours")){
+            desc = "بچے کی پیدائش کے بعد 10منٹ سے 48گھنٹے کے دوران";
+        }else if(temp.getDetailEnglish().equals("Post Partum 48 hours to 40 days")){
+            desc = "بچے کی پیدائش کے 48گھنٹے سے 40دن کے اندر";
+        }else if(temp.getDetailEnglish().equals("Post Partum 40 Days to 1 Year")){
+            desc = "بچے کی پیدائش کے 40دن سے ایک سال کے دوران";
+        }else if(temp.getDetailEnglish().equals("Post Abortion (Within 24 Hours)")){
+            desc = "اسقاطِ حمل کے 24گھنٹے کے اندر";
+        }else if(temp.getDetailEnglish().equals("Post Abortion (Within 7 Days)")){
+            desc = "اسقاطِ حمل کے بعد 7 دن کے دوران";
+        }else if(temp.getDetailEnglish().equals("Emergency FP")){
+            desc = "ایمرجنسی مانع حمل  طریقہ";
+        }
+
+        lbl.setText(temp.getDetailEnglish() + " / "+ desc);
         return v;
     }
 

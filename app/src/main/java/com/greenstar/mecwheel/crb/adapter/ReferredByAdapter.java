@@ -46,8 +46,15 @@ public class ReferredByAdapter extends ArrayAdapter<DropdownCRBData> {
         }
         TextView lbl = (TextView) v.findViewById(R.id.tvNames);
         DropdownCRBData temp = list.get(position);
-
-        lbl.setText(temp.getDetailEnglish());
+        String desc="";
+        if(temp.getDetailEnglish().equals("IPC-Community Educator")){
+            desc = "آئی پی سی";
+        }else if(temp.getDetailEnglish().equals("Helpline")){
+            desc = "ہیلپ لائین";
+        } else if(temp.getDetailEnglish().equals("Others")){
+            desc = "کوئی اور ۔";
+        }
+        lbl.setText(temp.getDetailEnglish() + " / "+ desc);
         return v;
     }
 

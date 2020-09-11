@@ -27,17 +27,32 @@
                         android:background="@drawable/customborder"
                         android:padding="@dimen/padding_10"
                         android:weightSum="10">
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="0dp"
+                            android:layout_weight="5"
+                            android:layout_height="wrap_content"
+                            >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+
+                                android:text="Provider Code"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+                                android:layout_weight="5"
+                                android:text="ڈاکٹر کا کوڈ"/>
+                        </LinearLayout>
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            style="@style/text_style"
-                            android:textColor="@color/black"
-                            android:gravity="center_vertical"
-                            android:layout_weight="5"
-                            android:text="Provider Code"/>
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
                             style="@style/text_style"
                             android:textColor="@color/black"
                             android:gravity="center_vertical"
@@ -52,17 +67,32 @@
                         android:background="@drawable/customborder"
                         android:padding="@dimen/padding_10"
                         android:weightSum="10">
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+
+                                android:text="Provider Name"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+                                android:layout_weight="5"
+                                android:text="ڈاکٹر کا نام"/>
+                        </LinearLayout>
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            style="@style/text_style"
-                            android:textColor="@color/black"
-                            android:gravity="center_vertical"
-                            android:layout_weight="5"
-                            android:text="Provider Name"/>
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
                             style="@style/text_style"
                             android:textColor="@color/black"
                             android:gravity="center_vertical"
@@ -76,14 +106,29 @@
                         android:layout_marginTop="@dimen/form_field_padding"
                         android:background="@drawable/customborder"
                         android:weightSum="10">
-                        <TextView
+                        <LinearLayout
+                            android:orientation="vertical"
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            style="@style/text_style"
-                            android:textColor="@color/black"
-                            android:gravity="center_vertical"
+                            android:layout_height="wrap_content"
                             android:layout_weight="5"
-                            android:text="Visit Date"/>
+                            >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+
+                                android:text="Visit Date"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+                                android:layout_weight="5"
+                                android:text="دورے کی تاریخ"/>
+                        </LinearLayout>
                         <EditText
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -101,15 +146,29 @@
                         android:background="@drawable/customborder"
                         android:padding="@dimen/padding_10"
                         android:weightSum="10">
-                        <TextView
+                        <LinearLayout
+                            android:orientation="vertical"
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            style="@style/text_style"
-                            android:textColor="@color/black"
-                            android:gravity="center_vertical"
+                            android:layout_height="wrap_content"
                             android:layout_weight="5"
-                            android:id="@+id/tvClientName"
-                            android:text="Client Name"/>
+                            >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+                                android:id="@+id/tvClientName"
+                                android:text="Client Name"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+                                android:layout_weight="5"
+                                android:text="مریض کا نام"/>
+                        </LinearLayout>
                         <EditText
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -126,14 +185,29 @@
                         android:background="@drawable/customborder"
                         android:padding="@dimen/padding_10"
                         android:weightSum="10">
-                        <TextView
+                        <LinearLayout
+                            android:orientation="vertical"
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            style="@style/text_style"
-                            android:textColor="@color/black"
-                            android:gravity="center_vertical"
+                            android:layout_height="wrap_content"
                             android:layout_weight="5"
-                            android:text="Husband Name"/>
+                            >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+
+                                android:text="Husband Name"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+                                android:layout_weight="5"
+                                android:text="شوہر کا نام"/>
+                        </LinearLayout>
                         <EditText
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -150,14 +224,29 @@
                         android:background="@drawable/customborder"
                         android:padding="@dimen/padding_10"
                         android:weightSum="10">
-                        <TextView
+                        <LinearLayout
+                            android:orientation="vertical"
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            style="@style/text_style"
-                            android:textColor="@color/black"
-                            android:gravity="center_vertical"
+                            android:layout_height="wrap_content"
                             android:layout_weight="5"
-                            android:text="Duration of Marriage"/>
+                            >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+
+                                android:text="Duration of Marriage"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+                                android:layout_weight="5"
+                                android:text="شادی کا دورانیہ"/>
+                        </LinearLayout>
                         <EditText
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -192,14 +281,29 @@
                         android:background="@drawable/customborder"
                         android:padding="@dimen/padding_10"
                         android:weightSum="10">
-                        <TextView
+                        <LinearLayout
+                            android:orientation="vertical"
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            style="@style/text_style"
-                            android:textColor="@color/black"
-                            android:gravity="center_vertical"
+                            android:layout_height="wrap_content"
                             android:layout_weight="5"
-                            android:text="Address"/>
+                            >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+
+                                android:text="Address"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+                                android:layout_weight="5"
+                                android:text="پتہ"/>
+                        </LinearLayout>
                         <EditText
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -216,15 +320,29 @@
                         android:background="@drawable/customborder"
                         android:padding="@dimen/padding_10"
                         android:weightSum="10">
-                        <TextView
+                        <LinearLayout
+                            android:orientation="vertical"
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            style="@style/text_style"
-                            android:textColor="@color/black"
-                            android:gravity="center_vertical"
+                            android:layout_height="wrap_content"
                             android:layout_weight="5"
-                            android:id="@+id/tvContactNumber"
-                            android:text="Contact Number"/>
+                            >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+                                android:id="@+id/tvContactNumber"
+                                android:text="Contact Number"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+                                android:layout_weight="5"
+                                android:text="رابطہ نمبر"/>
+                        </LinearLayout>
                         <EditText
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -242,14 +360,29 @@
                         android:background="@drawable/customborder"
                         android:id="@+id/trUseContactNumber"
                         android:weightSum="10">
-                        <TextView
+                        <LinearLayout
+                            android:orientation="vertical"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            style="@style/text_style"
-                            android:textColor="@color/black"
                             android:gravity="center_vertical"
                             android:layout_weight="7"
-                            android:text="Can we contact you on this number?"/>
+                            >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+
+                                android:text="Can we contact you on this number?"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+                                android:text="کیا ہم آپ سے اس نمبر پر رابطہ کرسکتے ہیں؟"/>
+                        </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -266,7 +399,7 @@
                                     android:id="@+id/rbCanWeContactYes"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Yes"
+                                    android:text="Yes / ہاں"
                                     style="@style/text_style"/>
 
                                 <RadioButton
@@ -274,7 +407,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     style="@style/text_style"
-                                    android:text="No" />
+                                    android:text="No / نہیں" />
 
                             </RadioGroup>
 
@@ -287,21 +420,35 @@
                         android:background="@drawable/customborder"
                         android:padding="@dimen/padding_10"
                         android:weightSum="10">
-                        <TextView
+                        <LinearLayout
+                            android:orientation="vertical"
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            style="@style/text_style"
-                            android:textColor="@color/black"
-                            android:gravity="center_vertical"
-                            android:layout_weight="5"
-                            android:text="Number of alive Sons?"/>
+                            android:layout_height="wrap_content"
+                            android:layout_weight="7"
+                            >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+
+                                android:text="Number of alive Sons?"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+                                android:text="زندہ بیٹوں کی تعداد؟"/>
+                        </LinearLayout>
                         <EditText
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             style="@style/text_style"
                             android:textStyle="bold"
                             android:textColor="@color/darkGreen"
-                            android:layout_weight="5"
+                            android:layout_weight="3"
                             android:inputType="number"
                             android:id="@+id/etNoOfCurrentSons"/>
                     </TableRow>
@@ -312,21 +459,35 @@
                         android:background="@drawable/customborder"
                         android:padding="@dimen/padding_10"
                         android:weightSum="10">
-                        <TextView
+                        <LinearLayout
+                            android:orientation="vertical"
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            style="@style/text_style"
-                            android:textColor="@color/black"
-                            android:gravity="center_vertical"
-                            android:layout_weight="5"
-                            android:text="Number of alive Daughters?"/>
+                            android:layout_height="wrap_content"
+                            android:layout_weight="7"
+                            >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+
+                                android:text="Number of alive Daughters?"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+                                android:text="زندہ بیٹیوں کی تعداد؟"/>
+                        </LinearLayout>
                         <EditText
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             style="@style/text_style"
                             android:textStyle="bold"
                             android:textColor="@color/darkGreen"
-                            android:layout_weight="5"
+                            android:layout_weight="3"
                             android:inputType="number"
                             android:id="@+id/etNoOfCurrentDaughter"/>
                     </TableRow>
@@ -337,21 +498,35 @@
                         android:background="@drawable/customborder"
                         android:padding="@dimen/padding_10"
                         android:weightSum="10">
-                        <TextView
+                        <LinearLayout
+                            android:orientation="vertical"
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            style="@style/text_style"
-                            android:textColor="@color/black"
-                            android:gravity="center_vertical"
-                            android:layout_weight="5"
-                            android:text="Number of Abortion"/>
+                            android:layout_height="wrap_content"
+                            android:layout_weight="7"
+                            >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+
+                                android:text="Number of Abortion?"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+                                android:text="اسقاط حمل کی تعداد؟"/>
+                        </LinearLayout>
                         <EditText
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             style="@style/text_style"
                             android:textStyle="bold"
                             android:textColor="@color/darkGreen"
-                            android:layout_weight="5"
+                            android:layout_weight="3"
                             android:inputType="number"
                             android:id="@+id/etNoOfAbortions"/>
                     </TableRow>
@@ -380,14 +555,28 @@
                         android:id="@+id/trIPCReferralStatus"
                         android:visibility="gone"
                         android:weightSum="10">
-                        <TextView
+                        <LinearLayout
+                            android:orientation="vertical"
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            style="@style/text_style"
-                            android:textColor="@color/black"
-                            android:gravity="center_vertical"
+                            android:layout_height="wrap_content"
                             android:layout_weight="7"
-                            android:text="IPC referral status?"/>
+                            >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+
+                                android:text="IPC Referral status?"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+                                android:text="اس میں حوالہ کی حیثیت"/>
+                        </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -404,7 +593,7 @@
                                     android:id="@+id/rbIPCReferralStatusFirst"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="First Registration"
+                                    android:text="First Registration / پہلی رجسٹریشن"
                                     style="@style/text_style"/>
 
                                 <RadioButton
@@ -412,7 +601,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     style="@style/text_style"
-                                    android:text="Follow-up" />
+                                    android:text="Follow-up / موجودہ" />
 
                             </RadioGroup>
 
@@ -429,24 +618,38 @@
                             style="@style/medium_text_style"
                             android:textStyle="bold"
                             android:textColor="@color/black"
-                            android:text="Family Planning Section"/>
+                            android:text="Family Planning Section فیملی پلاننگ سیکشن"/>
                     </LinearLayout>
                     <TableRow
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/form_field_padding"
+                        android:gravity="center_vertical"
                         android:background="@drawable/customborder"
                         android:id="@+id/trCurrentUser"
                         android:weightSum="10">
-                        <TextView
+                        <LinearLayout
+                            android:orientation="vertical"
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            style="@style/text_style"
-                            android:textColor="@color/black"
-                            android:gravity="center_vertical"
+                            android:layout_height="wrap_content"
                             android:layout_weight="7"
-                            android:text="Is this client currently using any contraceptive method?"/>
+                            >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
 
+                                android:text="Is this client currently using any contraceptive method?"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+                                android:text="کیا یہ مریض فی الحال کوئی مانع حمل طریقہ استعمال کررہا ہے؟"/>
+                        </LinearLayout>
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -462,7 +665,7 @@
                                     android:id="@+id/rbIsCurrentUserYes"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Yes"
+                                    android:text="Yes/ ہاں"
                                     style="@style/text_style"/>
 
                                 <RadioButton
@@ -470,7 +673,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     style="@style/text_style"
-                                    android:text="No" />
+                                    android:text="No / نہیں" />
 
                             </RadioGroup>
                         </LinearLayout>
@@ -484,21 +687,35 @@
                         android:visibility="gone"
                         android:id="@+id/trPeriodOfCurrentYears"
                         android:weightSum="10">
-                        <TextView
+                        <LinearLayout
+                            android:orientation="vertical"
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            style="@style/text_style"
-                            android:textColor="@color/black"
-                            android:gravity="center_vertical"
-                            android:layout_weight="5"
-                            android:text="Period of current use (Years)"/>
+                            android:layout_height="wrap_content"
+                            android:layout_weight="7"
+                            >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+
+                                android:text="Period of current use (Years)"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+                                android:text="موجودہ استعمال کی مدت (سال)"/>
+                        </LinearLayout>
                         <EditText
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             style="@style/text_style"
                             android:textStyle="bold"
                             android:textColor="@color/darkGreen"
-                            android:layout_weight="5"
+                            android:layout_weight="3"
                             android:inputType="numberDecimal"
                             android:id="@+id/etCurrentMethodYears"/>
                     </TableRow>
@@ -528,14 +745,27 @@
                         android:background="@drawable/customborder"
                         android:id="@+id/trEverUsed"
                         android:weightSum="10">
-                        <TextView
+                        <LinearLayout
+                            android:orientation="vertical"
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            style="@style/text_style"
-                            android:textColor="@color/black"
-                            android:gravity="center_vertical"
+                            android:layout_height="wrap_content"
                             android:layout_weight="7"
-                            android:text="Have you ever used a family planning method in your life?"/>
+                            >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+                                android:text="Have you ever used a family planning method in your life?"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+                                android:text="کیا آپ نے اپنی زندگی میں کبھی خاندانی منصوبہ بندی کا طریقہ استعمال کیا ہے؟"/>
+                        </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -552,7 +782,7 @@
                                     android:id="@+id/rbIsEverUserYes"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Yes"
+                                    android:text="Yes / ہاں"
                                     style="@style/text_style"/>
 
                                 <RadioButton
@@ -560,7 +790,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     style="@style/text_style"
-                                    android:text="No" />
+                                    android:text="No / نہیں" />
                             </RadioGroup>
                         </LinearLayout>
                     </TableRow>
@@ -572,14 +802,28 @@
                         android:id="@+id/trNotInUse"
                         android:visibility="gone"
                         android:weightSum="10">
-                        <TextView
+                        <LinearLayout
+                            android:orientation="vertical"
                             android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            style="@style/text_style"
-                            android:textColor="@color/black"
-                            android:gravity="center_vertical"
+                            android:layout_height="wrap_content"
                             android:layout_weight="7"
-                            android:text="How long has the family planning method not been in use?"/>
+                            >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+
+                                android:text="How long has the family planning method not been in use?"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+                                android:text="خاندانی منصوبہ بندی کا طریقہ کار کتنے عرصے سے استعمال میں نہیں آرہا ہے؟"/>
+                        </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -705,7 +949,7 @@
                             style="@style/medium_text_style"
                             android:textStyle="bold"
                             android:textColor="@color/black"
-                            android:text="Remarks"/>
+                            android:text="Remarks تبصرہ"/>
                     </LinearLayout>
                 </TableLayout>
                 <LinearLayout
@@ -731,7 +975,7 @@
                         android:id="@+id/btnSubmit"
                         style="@style/text_style"
                         android:layout_marginTop="5dp"
-                        android:text="@string/submit"/>
+                        android:text="Submit جمع کرائیں"/>
                 </LinearLayout>
 
 

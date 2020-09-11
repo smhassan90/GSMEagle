@@ -10,6 +10,15 @@ public class CRBData {
 
     List<CRBForm> crbForms;
     List<DropdownCRBData> dropdownCRBData;
+    Dashboard dashboard;
+
+    public Dashboard getDashboard() {
+        return dashboard;
+    }
+
+    public void setDashboard(Dashboard dashboard) {
+        this.dashboard = dashboard;
+    }
 
     public String getName() {
         return name;

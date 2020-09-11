@@ -47,7 +47,41 @@ public class ServiceTypeAdapter extends ArrayAdapter<DropdownCRBData> {
         TextView lbl = (TextView) v.findViewById(R.id.tvNames);
         DropdownCRBData temp = list.get(position);
 
-        lbl.setText(temp.getDetailEnglish());
+        String desc = "";
+
+        if(temp.getDetailEnglish().equals("FP Counseling")){
+            desc = "فیملی پلاننگ کے متعلق مشورہ";
+        }else if(temp.getDetailEnglish().equals("Condom")){
+            desc = "کنڈوم";
+        }else if(temp.getDetailEnglish().equals("OCP")){
+            desc = "مانع حمل گولیاں";
+        }else if(temp.getDetailEnglish().equals("Injectable")){
+            desc = "انجیکشن";
+        }else if(temp.getDetailEnglish().equals("IUCD")){
+            desc = "چھلہ";
+        }else if(temp.getDetailEnglish().equals("Implant")){
+            desc = "بازو میں رکھا جانے والا کیپسول";
+        }else if(temp.getDetailEnglish().equals("Tubal Ligation")){
+            desc = "نل بندی";
+        }else if(temp.getDetailEnglish().equals("Vasectomy")){
+            desc = "نس بندی";
+        }else if(temp.getDetailEnglish().equals("ECP")){
+            desc = "ایمرجنسی مانع حمل گولیاں";
+        }else if(temp.getDetailEnglish().equals("PAC-MVA")){
+            desc = "اسقاطِ حمل کے بعد  انجیکشن کے ذریعے صفائی";
+        }else if(temp.getDetailEnglish().equals("PAC-MISO")){
+            desc = "اسقاطِ حمل کے لئے  MISO  کا استعمال";
+        }else if(temp.getDetailEnglish().equals("PAC-D&C")){
+            desc = "اسقاطِ حمل اوزاروں کے ذریعے";
+        }else if(temp.getDetailEnglish().equals("Antenatal")){
+            desc = "قبل از پیدائش";
+        }else if(temp.getDetailEnglish().equals("Delivery")){
+            desc = "پیدائش";
+        }else if(temp.getDetailEnglish().equals("Post Natal")){
+            desc = "بعد از پیدائش";
+        }
+
+        lbl.setText(temp.getDetailEnglish()+" / "+desc);
         return v;
     }
 

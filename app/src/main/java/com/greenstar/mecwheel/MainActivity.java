@@ -2,6 +2,7 @@ package com.greenstar.mecwheel;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -18,13 +19,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.greenstar.mecwheel.crb.controller.CRBFormActivity;
 import com.greenstar.mecwheel.crb.controller.Codes;
 import com.greenstar.mecwheel.crb.controller.LoginScreen;
 import com.greenstar.mecwheel.crb.controller.Menu;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    public static String FACEBOOK_URL = "https://www.facebook.com/greenstarsm/";
+    public static String FACEBOOK_PAGE_ID = "greenstarsm";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,24 +78,19 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         Fragment fragment = null;
+        Intent intent = null;
         if (id == R.id.btnMecWheel) {
             fragment = new MECWheelFragment();
 
         } else if (id == R.id.cards) {
             fragment = new CounselingCardsFragment();
-        }else if (id == R.id.cards_urdu) {
-            fragment = new CounselingUrduCardsFragment();
-        }else if (id == R.id.corona_virus) {
-            fragment = new CoronaVirus();
         }else if (id == R.id.patient_entry) {
             SharedPreferences shared = getSharedPreferences(Codes.PREF_NAME, MODE_PRIVATE);
             boolean isLoggedIn = (shared.getBoolean("isLoggedIn", false));
             if(isLoggedIn){
-                Intent myIntent = new Intent(this, Menu.class);
-                startActivity(myIntent);
+                intent = new Intent(this, Menu.class);
             }else{
-                Intent myIntent = new Intent(this, LoginScreen.class);
-                startActivity(myIntent);
+                intent = new Intent(this, LoginScreen.class);
             }
         }else if (id == R.id.dosage_card) {
             fragment = new DosageCard();
@@ -103,15 +101,45 @@ public class MainActivity extends AppCompatActivity
             fragment = new PharmaProducts();
         }else if (id == R.id.btnHome) {
             fragment = new HomeFragment();
+        }else if (id == R.id.btnYoutubeChannel) {
+            intent = new Intent(Intent.ACTION_VIEW,   Uri.parse("http://www.youtube.com/channel/UCngBt6z8vVjtDje70Xw7v8Q"));
+        }else if (id == R.id.btnFacebook) {
+            intent = new Intent(Intent.ACTION_VIEW);
+            String facebookUrl = getFacebookPageURL();
+            intent.setData(Uri.parse(facebookUrl));
         }
 
         if (fragment != null) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.replace(R.id.content_frame, fragment);
             ft.commit();
+        }else{
+            startActivity(intent);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public String getFacebookPageURL() {
+        PackageManager packageManager = getPackageManager();
+        try {
+            int versionCode = packageManager.getPackageInfo("com.facebook.katana", 0).versionCode;
+            if (versionCode >= 3002850) { //newer versions of fb app
+                return "fb://facewebmodal/f?href=" + FACEBOOK_URL;
+            } else { //older versions of fb app
+                return "fb://page/" + FACEBOOK_PAGE_ID;
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            return FACEBOOK_URL; //normal web url
+        }
+    }
+
+    public Intent getYoutubeChannel() {
+        try {
+            return new Intent(Intent.ACTION_VIEW, Uri.parse("fb://page/426253597411506"));
+        } catch (Exception e) {
+            return new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/appetizerandroid"));
+        }
     }
 }

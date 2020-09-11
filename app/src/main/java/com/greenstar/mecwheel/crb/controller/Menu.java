@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 import com.greenstar.mecwheel.R;
 import com.greenstar.mecwheel.crb.db.AppDatabase;
+import com.greenstar.mecwheel.crb.model.Dashboard;
 import com.greenstar.mecwheel.crb.utils.Util;
 import com.greenstar.mecwheel.crb.utils.WebserviceResponse;
 
@@ -66,7 +67,8 @@ public class Menu extends AppCompatActivity implements View.OnClickListener, Web
             Intent myIntent = new Intent(this, CRBFormActivity.class);
             startActivity(myIntent);
         }else if(v.getId()==R.id.llDashboard){
-            Toast.makeText(this,"Feature is under development",Toast.LENGTH_SHORT).show();
+            Intent myIntent = new Intent(this, DashboardController.class);
+            startActivity(myIntent);
         }else if(v.getId()==R.id.llBasket){
             Intent myIntent = new Intent(this, SubmittedForms.class);
             startActivity(myIntent);

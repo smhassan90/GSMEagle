@@ -22,6 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".CounselingCardDescription"
             android:label="@string/title_activity_counseling_card_description"
@@ -38,11 +39,14 @@
         <activity
             android:name=".crb.controller.LoginScreen"
             android:label="@string/Login"
+
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".crb.controller.Menu"
             android:label="@string/Menu"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" >
+
+        </activity>
         <activity
             android:name=".crb.controller.SubmittedForms"
             android:label="@string/SubmittedForms" />
@@ -50,18 +54,11 @@
             android:name=".crb.controller.CRBFormActivity"
             android:label="@string/CRBForm" >
 
-        </activity>
-        <activity
-            android:name=".CoronaVirusDetailPDF"
-            android:label="@string/CoronaVirus"
-            android:theme="@style/AppTheme.NoActionBar" >
 
         </activity>
         <activity
-            android:name=".CoronaVirusStats"
-            android:label="@string/CoronaVirus"
-            android:theme="@style/AppTheme.NoActionBar" >
-
+            android:name=".crb.controller.DashboardController"
+            android:label="@string/dashboard" >
         </activity>
         <activity
             android:name=".ProductDescription"

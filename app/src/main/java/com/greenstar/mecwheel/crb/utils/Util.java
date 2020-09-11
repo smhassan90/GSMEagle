@@ -13,6 +13,7 @@ import com.greenstar.mecwheel.crb.controller.Codes;
 import com.greenstar.mecwheel.crb.db.AppDatabase;
 import com.greenstar.mecwheel.crb.model.CRBData;
 import com.greenstar.mecwheel.crb.model.CRBForm;
+import com.greenstar.mecwheel.crb.model.Dashboard;
 import com.greenstar.mecwheel.crb.model.DropdownCRBData;
 import com.greenstar.mecwheel.crb.model.SyncObject;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -61,10 +62,15 @@ public class Util {
             try{
                 db = AppDatabase.getAppDatabase(activity);
                 List<CRBForm> crbForms = dataObj.getCrbForms();
+                Dashboard dashboard = dataObj.getDashboard();
                 List<DropdownCRBData> dropdownCRBData = dataObj.getDropdownCRBData();
                 if(crbForms!=null && crbForms.size()>0){
                     db.getCRBFormDAO().nukeTable();
                     db.getCRBFormDAO().insertMultiple(crbForms);
+                }
+                if(dashboard!=null){
+                    db.getDashboardDAO().nukeTable();
+                    db.getDashboardDAO().insertMultiple(dashboard);
                 }
 
                 if(dropdownCRBData!=null && dropdownCRBData.size()>0){

@@ -61,11 +61,12 @@ public class CRBFormActivity extends AppCompatActivity implements View.OnClickLi
 
     RadioGroup rgIsCurrentUser;
     RadioButton rbIsCurrentUserYes, rbIsCurrentUserNo;
+/*
 
-    /*
     RadioGroup rgIsWithin12Months;
     RadioButton rbIsWithin12MonthsYes, rbIsWithin12MonthsNo;
-    */
+ */
+
 
     Button btnSubmit;
 
@@ -291,11 +292,35 @@ public class CRBFormActivity extends AppCompatActivity implements View.OnClickLi
         }else{
             form.setCanWeContact(2);
         }
+        double marriageDuration = 0;
+        int currentSons =0;
+        int currentDaughters = 0;
+        int abortions = 0;
 
-        form.setDurationOfMarriage(Double.valueOf(etMarriageDuration.getText().toString()));
-        form.setNoOfSons(Integer.valueOf(etNoOfCurrentSons.getText().toString()));
-        form.setNoOfDaughters(Integer.valueOf(etNoOfCurrentDaughter.getText().toString()));
-        form.setNumberOfAbortion(Integer.valueOf(etNumberOfAbortions.getText().toString()));
+        if("".equals(etMarriageDuration.getText().toString())){
+            marriageDuration = 0;
+        }else{
+            marriageDuration = Double.valueOf(etMarriageDuration.getText().toString());
+        }
+        if("".equals(etNoOfCurrentSons.getText().toString())){
+            currentSons = 0;
+        }else{
+            currentSons = Integer.valueOf(etNoOfCurrentSons.getText().toString());
+        }
+        if("".equals(etNoOfCurrentDaughter.getText().toString())){
+            currentDaughters = 0;
+        }else{
+            currentDaughters = Integer.valueOf(etNoOfCurrentDaughter.getText().toString());
+        }
+        if("".equals(etNumberOfAbortions.getText().toString())){
+            abortions = 0;
+        }else{
+            abortions = Integer.valueOf(etNumberOfAbortions.getText().toString());
+        }
+        form.setDurationOfMarriage(marriageDuration);
+        form.setNoOfSons(currentSons);
+        form.setNoOfDaughters(currentDaughters);
+        form.setNumberOfAbortion(abortions);
 
         if(rbIPCReferralStatusFirst.isChecked()){
             form.setIpcReferralStatus(1);
@@ -320,7 +345,14 @@ public class CRBFormActivity extends AppCompatActivity implements View.OnClickLi
         }else{
             form.setIsCurrentUser(0);
         }
-        form.setCurrentUseYear(Double.valueOf(etCurrentUseYear.getText().toString()));
+        double currentUseYear = 0;
+
+        if("".equals(etCurrentUseYear.getText().toString())){
+            currentUseYear = 0;
+        }else{
+            currentUseYear = Double.valueOf(etCurrentUseYear.getText().toString());
+        }
+        form.setCurrentUseYear(currentUseYear);
         form.setVisitDate(etVisitDate.getText().toString());
 
         form.setId(Util.getNextCRBFormID(this));
@@ -333,15 +365,17 @@ public class CRBFormActivity extends AppCompatActivity implements View.OnClickLi
     private boolean isValid(){
         boolean isValid=true;
         if("".equals(etClientName.getText().toString()) ||
-                spCurrentMethod.getSelectedItemId()==0 ||
                 spTimingFPService.getSelectedItemId()==0 ||
                 spServiceType.getSelectedItemId() ==0 ||
                 "".equals(etContact.getText().toString()) ){
 
             isValid = false;
         }
-
-        if("".equals(etContact.getText().toString())){
+        if(isValid && spCurrentMethod.getSelectedItemId()==0  && rbIsCurrentUserYes.isChecked()){
+            isValid=false;
+        }
+        DropdownCRBData dataReferredBy = (DropdownCRBData)spReferredBy.getSelectedItem();
+        if("".equals(etContact.getText().toString()) && dataReferredBy.getDetailEnglish().equals("IPC-Community Educator")){
             tvContactNumber.setTextColor(getResources().getColor(R.color.darkestOrange));
         }else{
             tvContactNumber.setTextColor(getResources().getColor(R.color.whiteColor));

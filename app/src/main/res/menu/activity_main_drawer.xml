@@ -4,21 +4,12 @@
     tools:showIn="navigation_view">
 
     <group  android:checkableBehavior="single">
-        <item
-            android:id="@+id/corona_virus"
-            android:iconTint="@color/maroon"
-            android:icon="@drawable/corona_icon"
-            android:title="Corona Alert! **(NEW)" />
+
         <item
             android:id="@+id/btnMecWheel"
             android:iconTint="@color/darkGreen"
             android:icon="@drawable/wheel_icon"
             android:title="MEC Wheel" />
-        <item
-            android:id="@+id/cards_urdu"
-            android:icon="@drawable/cards_icon"
-            android:iconTint="@color/darkGreen"
-            android:title="Counseling Cards (Urdu)" />
         <item
             android:id="@+id/cards"
 
@@ -53,6 +44,14 @@
             android:iconTint="@color/darkGreen"
             android:icon="@drawable/about_us_icons"
             android:title="About Us" />
+        <item
+            android:id="@+id/btnYoutubeChannel"
+            android:icon="@drawable/youtube_icon"
+            android:title="Our Youtube Channel" />
+        <item
+            android:id="@+id/btnFacebook"
+            android:icon="@drawable/facebook_icon"
+            android:title="Our Facebook Group" />
 
     </group>
 </menu>

@@ -6,8 +6,8 @@ android {
         applicationId "com.greenstar.mecwheel"
         minSdkVersion 17
         targetSdkVersion 28
-        versionCode 16
-        versionName "4.3"
+        versionCode 18
+        versionName "5.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

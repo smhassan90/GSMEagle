@@ -47,7 +47,19 @@ public class CurrentMethodAdapter extends ArrayAdapter<DropdownCRBData> {
         TextView lbl = (TextView) v.findViewById(R.id.tvNames);
         DropdownCRBData temp = list.get(position);
 
-        lbl.setText(temp.getDetailEnglish());
+        String desc="";
+        if(temp.getDetailEnglish().equals("Condom")){
+            desc = "کنڈوم";
+        }else if(temp.getDetailEnglish().equals("Oral Contraceptil Pill")){
+            desc = "مانع حمل گولیاں";
+        }else if(temp.getDetailEnglish().equals("Injectable")){
+            desc = "انجیکشن";
+        }else if(temp.getDetailEnglish().equals("IUCD")){
+            desc = "چھلہ";
+        }else if(temp.getDetailEnglish().equals("Implant")){
+            desc = "بازو میں رکھا جانے والا کیپسول";
+        }
+        lbl.setText(temp.getDetailEnglish() + " / "+ desc);
         return v;
     }
 

@@ -6,20 +6,23 @@ import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
 import com.greenstar.mecwheel.crb.dao.CRBFormDAO;
+import com.greenstar.mecwheel.crb.dao.DashboardDAO;
 import com.greenstar.mecwheel.crb.dao.DropdownCRBDataDAO;
 import com.greenstar.mecwheel.crb.dao.ProvidersDAO;
 import com.greenstar.mecwheel.crb.model.CRBForm;
+import com.greenstar.mecwheel.crb.model.Dashboard;
 import com.greenstar.mecwheel.crb.model.DropdownCRBData;
 import com.greenstar.mecwheel.crb.model.Providers;
 
 
-@Database(entities = {Providers.class, CRBForm.class, DropdownCRBData.class},
-        version = 2)
+@Database(entities = {Providers.class, CRBForm.class, DropdownCRBData.class, Dashboard.class},
+        version = 4)
 public abstract class AppDatabase extends RoomDatabase {
     private static final String DATABASE_NAME = "dbgreenstar";
     private static AppDatabase INSTANCE;
 
     public abstract ProvidersDAO getProvidersDAO();
+    public abstract DashboardDAO getDashboardDAO();
     public abstract CRBFormDAO getCRBFormDAO();
     public abstract DropdownCRBDataDAO getDropdownCRBDataDAO();
 

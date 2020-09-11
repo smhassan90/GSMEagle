@@ -47,7 +47,12 @@ public class ClientAgeAdapter extends ArrayAdapter<DropdownCRBData> {
         TextView lbl = (TextView) v.findViewById(R.id.tvNames);
         DropdownCRBData temp = list.get(position);
 
-        lbl.setText(temp.getDetailEnglish());
+        String desc="";
+        if(temp.getDetailEnglish().equals("More than 50")){
+            desc = "پچاس سال سے زائد عمر";
+        }
+
+        lbl.setText(temp.getDetailEnglish() + " "+ desc);
         return v;
     }
 
