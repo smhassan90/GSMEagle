@@ -9,9 +9,9 @@ import com.loopj.android.http.RequestParams;
 import java.util.UUID;
 
 public class HttpUtils {
-    //private static final String BASE_URL = "http://203.101.170.211:8081/mis/";
+    private static final String BASE_URL = "http://203.101.170.211:8081/mis/";
     //private static final String BASE_URL = "http://172.16.16.118:8080/";
-    private static final String BASE_URL = "http://192.168.0.104:8080/";
+    //private static final String BASE_URL = "http://192.168.0.104:8080/";
     //private static final String BASE_URL = "http://192.168.8.101:8080/";
 
     private static AsyncHttpClient client = new AsyncHttpClient();

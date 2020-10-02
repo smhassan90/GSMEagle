@@ -423,7 +423,7 @@ public class CRBFormActivity extends AppCompatActivity implements View.OnClickLi
                 rbIsEverUserNo.setTextColor(getResources().getColor( R.color.darkGreen));
             }
 
-            if(!rbNotInUseMore.isChecked() && !rbNotInUseLess.isChecked()){
+            if(!rbNotInUseMore.isChecked() && !rbNotInUseLess.isChecked() && rbIsEverUserYes.isChecked()){
                 isValid=false;
                 rbNotInUseMore.setTextColor(getResources().getColor( R.color.darkestOrange));
                 rbNotInUseLess.setTextColor(getResources().getColor( R.color.darkestOrange));
@@ -431,6 +431,7 @@ public class CRBFormActivity extends AppCompatActivity implements View.OnClickLi
                 rbNotInUseMore.setTextColor(getResources().getColor( R.color.darkGreen));
                 rbNotInUseLess.setTextColor(getResources().getColor( R.color.darkGreen));
             }
+
         }
 
         if(spServiceType.getSelectedItemId()==0) {
