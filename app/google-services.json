@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1034750269358",
+    "firebase_url": "https://mecwheel-3d36b.firebaseio.com",
+    "project_id": "mecwheel-3d36b",
+    "storage_bucket": "mecwheel-3d36b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1034750269358:android:551e5a9f8e0df8be045a3f",
+        "android_client_info": {
+          "package_name": "com.greenstar.mecwheel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1034750269358-cocaqpnalkpm196u8f21hdgpushmllhi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCj9EK243SDJhMyRPUp41pBsfjGh5Rvoq8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1034750269358-cocaqpnalkpm196u8f21hdgpushmllhi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
