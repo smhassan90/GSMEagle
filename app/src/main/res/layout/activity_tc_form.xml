@@ -1,0 +1,1382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@color/lightBlue"
+                android:padding="@dimen/form_field_padding">
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/form_field_padding"
+                        android:background="@drawable/customborder"
+                        android:weightSum="10">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            style="@style/text_style"
+                            android:textColor="@color/black"
+                            android:gravity="center_vertical"
+                            android:layout_weight="7"
+                            android:text="Date of Assessment"/>
+                        <EditText
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            style="@style/text_style"
+                            android:textStyle="bold"
+                            android:textColor="@color/darkGreen"
+                            android:layout_weight="3"
+                            android:focusable="false"
+                            android:id="@+id/etDateOFAssessment"/>
+                    </TableRow>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/form_field_padding"
+                        android:background="@drawable/customborder"
+                        android:padding="@dimen/padding_10"
+                        android:weightSum="10">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            style="@style/text_style"
+                            android:textColor="@color/black"
+                            android:gravity="center_vertical"
+                            android:layout_weight="7"
+                            android:text="QAM Code"/>
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            style="@style/text_style"
+                            android:textColor="@color/black"
+                            android:gravity="center_vertical"
+                            android:layout_weight="7"
+                            android:id="@+id/tvQAMCode"
+                            android:text=""/>
+                    </TableRow>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/form_field_padding"
+                        android:background="@drawable/customborder"
+                        android:padding="@dimen/padding_10"
+                        android:weightSum="10">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            style="@style/text_style"
+                            android:textColor="@color/black"
+                            android:gravity="center_vertical"
+                            android:layout_weight="7"
+                            android:text="QAM Name"/>
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            style="@style/text_style"
+                            android:textColor="@color/black"
+                            android:gravity="center_vertical"
+                            android:layout_weight="7"
+                            android:id="@+id/tvQAMName"
+                            android:text=""/>
+                    </TableRow>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/form_field_padding"
+                        android:background="@drawable/customborder"
+                        android:padding="@dimen/padding_10"
+                        android:weightSum="10">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            style="@style/text_style"
+                            android:textColor="@color/black"
+                            android:gravity="center_vertical"
+                            android:layout_weight="7"
+                            android:text="Supervisor Code"/>
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="3"
+                            android:textColor="@color/black"
+                            android:id="@+id/tvSupervisorCode"
+                            android:text="">
+                        </TextView>
+                    </TableRow>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/form_field_padding"
+                        android:background="@drawable/customborder"
+                        android:padding="@dimen/padding_10"
+                        android:weightSum="10">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            style="@style/text_style"
+                            android:textColor="@color/black"
+                            android:gravity="center_vertical"
+                            android:layout_weight="7"
+                            android:text="Supervisor Name"/>
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="3"
+                            android:textColor="@color/black"
+                            android:id="@+id/tvSupervisorName"
+                            android:text="">
+                        </TextView>
+                    </TableRow>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/form_field_padding"
+                        android:background="@drawable/customborder"
+                        android:padding="@dimen/padding_10"
+                        android:weightSum="10">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            style="@style/text_style"
+                            android:textColor="@color/black"
+                            android:gravity="center_vertical"
+                            android:layout_weight="7"
+                            android:text="Region"/>
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="3"
+                            android:textColor="@color/black"
+                            android:id="@+id/tvRegion"
+                            android:text="">
+                        </TextView>
+                    </TableRow>
+                </TableLayout>
+                <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                    android:id="@+id/spProviderCodeName"
+                    android:prompt="@string/providers"
+                    android:layout_width="fill_parent"
+                    style="@style/spinner_style"
+                    android:layout_height="@dimen/spinner_height"
+                    android:autofillHints="@string/providers"/>
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/table_header_size"
+                        android:gravity="center">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/medium_text_style"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:text="Technical Competency Questionnaire"/>
+                    </LinearLayout>
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/form_field_padding"
+                        android:background="@drawable/customborder"
+                        >
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+                                android:text="Certificates/Diplomas( In Providers File)"/>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_weight="10">
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    style="@style/text_style"
+                                    android:textColor="@color/black"
+                                    android:gravity="center_vertical"
+                                    android:layout_weight="7"
+                                    android:text="Provider File checklist"/>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:orientation="vertical" >
+
+                                    <RadioGroup
+                                        android:id="@+id/rgPCCD"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" >
+
+                                        <RadioButton
+                                            android:id="@+id/rbPCCDYes"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Yes"
+                                            style="@style/text_style"/>
+
+                                        <RadioButton
+                                            android:id="@+id/rbPCCDNo"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            style="@style/text_style"
+                                            android:checked="true"
+                                            android:text="No" />
+                                    </RadioGroup>
+                                </LinearLayout>
+                            </LinearLayout>
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:background="@color/orange"/>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_weight="10">
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    style="@style/text_style"
+                                    android:textColor="@color/black"
+                                    android:gravity="center_vertical"
+                                    android:layout_weight="7"
+                                    android:text="With Provider at facility level"/>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:orientation="vertical" >
+
+                                    <RadioGroup
+                                        android:id="@+id/rgCDPF"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" >
+
+                                        <RadioButton
+                                            android:id="@+id/rbCDPFYes"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Yes"
+                                            style="@style/text_style"/>
+
+                                        <RadioButton
+                                            android:id="@+id/rbCDPFNo"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            style="@style/text_style"
+                                            android:checked="true"
+                                            android:text="No" />
+                                    </RadioGroup>
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+
+                    </TableRow>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/form_field_padding"
+                        android:background="@drawable/customborder"
+                        >
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+                                android:text="Availability of Valid Pakistan Nursing Council Card/PMDC ( In providers File and Clinic)"/>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="10">
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    style="@style/text_style"
+                                    android:textColor="@color/black"
+                                    android:gravity="center_vertical"
+                                    android:layout_weight="7"
+                                    android:text="Provider File checklist"/>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:orientation="vertical" >
+
+                                    <RadioGroup
+                                        android:id="@+id/rgPCPNCC"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" >
+
+                                        <RadioButton
+                                            android:id="@+id/rbPCPNCCYes"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Yes"
+                                            style="@style/text_style"/>
+
+                                        <RadioButton
+                                            android:id="@+id/rbPCPNCCNo"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            style="@style/text_style"
+                                            android:checked="true"
+                                            android:text="No" />
+                                    </RadioGroup>
+                                </LinearLayout>
+                            </LinearLayout>
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:background="@color/orange"/>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_weight="10">
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    style="@style/text_style"
+                                    android:textColor="@color/black"
+                                    android:gravity="center_vertical"
+                                    android:layout_weight="7"
+                                    android:text="With Provider at facility level"/>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:orientation="vertical" >
+
+                                    <RadioGroup
+                                        android:id="@+id/rgPFPNCC"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" >
+
+                                        <RadioButton
+                                            android:id="@+id/rbPFPNCCYes"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Yes"
+                                            style="@style/text_style"/>
+
+                                        <RadioButton
+                                            android:id="@+id/rbPFPNCCNo"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            style="@style/text_style"
+                                            android:checked="true"
+                                            android:text="No" />
+                                    </RadioGroup>
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+
+                    </TableRow>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/form_field_padding"
+                        android:background="@drawable/customborder"
+                        >
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    style="@style/text_style"
+                                    android:textColor="@color/black"
+                                    android:gravity="center_vertical"
+                                    android:text="Availability of Greenstar Training Certificates ( In File and at Clinic)"/>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_weight="10">
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        style="@style/text_style"
+                                        android:textColor="@color/black"
+                                        android:gravity="center_vertical"
+                                        android:layout_weight="7"
+                                        android:text="Provider File checklist"/>
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="3"
+                                        android:orientation="vertical" >
+
+                                        <RadioGroup
+                                            android:id="@+id/rgPCGTC"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" >
+
+                                            <RadioButton
+                                                android:id="@+id/rbPCGTCYes"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="Yes"
+                                                style="@style/text_style"/>
+
+                                            <RadioButton
+                                                android:id="@+id/rbPCGTCNo"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                style="@style/text_style"
+                                                android:checked="true"
+                                                android:text="No" />
+                                        </RadioGroup>
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_weight="10">
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        style="@style/text_style"
+                                        android:textColor="@color/black"
+                                        android:gravity="center_vertical"
+                                        android:layout_weight="7"
+                                        android:text="With Provider at facility level"/>
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="3"
+                                        android:orientation="vertical" >
+
+                                        <RadioGroup
+                                            android:id="@+id/rgGTCPF"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" >
+
+                                            <RadioButton
+                                                android:id="@+id/rbGTCPFYes"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="Yes"
+                                                style="@style/text_style"/>
+
+                                            <RadioButton
+                                                android:id="@+id/rbGTCPFNo"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                style="@style/text_style"
+                                                android:checked="true"
+                                                android:text="No" />
+                                        </RadioGroup>
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:background="@color/orange"/>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    style="@style/text_style"
+                                    android:textColor="@color/black"
+                                    android:gravity="center_vertical"
+                                    android:text="AFP with Miso"/>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_weight="10">
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        style="@style/text_style"
+                                        android:textColor="@color/black"
+                                        android:gravity="center_vertical"
+                                        android:layout_weight="7"
+                                        android:text="Provider File checklist"/>
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="3"
+                                        android:orientation="vertical" >
+
+                                        <RadioGroup
+                                            android:id="@+id/rgPCMiso"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" >
+
+                                            <RadioButton
+                                                android:id="@+id/rbPCMisoYes"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="Yes"
+                                                style="@style/text_style"/>
+
+                                            <RadioButton
+                                                android:id="@+id/rbPCMisoNo"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                style="@style/text_style"
+                                                android:checked="true"
+                                                android:text="No" />
+                                        </RadioGroup>
+                                    </LinearLayout>
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_weight="10">
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        style="@style/text_style"
+                                        android:textColor="@color/black"
+                                        android:gravity="center_vertical"
+                                        android:layout_weight="7"
+                                        android:text="With Provider at facility level"/>
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="3"
+                                        android:orientation="vertical" >
+
+                                        <RadioGroup
+                                            android:id="@+id/rgMisoPF"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" >
+
+                                            <RadioButton
+                                                android:id="@+id/rbMisoPFYes"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="Yes"
+                                                style="@style/text_style"/>
+
+                                            <RadioButton
+                                                android:id="@+id/rbMisoPFNo"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                style="@style/text_style"
+                                                android:checked="true"
+                                                android:text="No" />
+                                        </RadioGroup>
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                            </LinearLayout>
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:background="@color/orange"/>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    style="@style/text_style"
+                                    android:textColor="@color/black"
+                                    android:gravity="center_vertical"
+                                    android:text="EPBM/MVA ( For Trained Providers)"/>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_weight="10">
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        style="@style/text_style"
+                                        android:textColor="@color/black"
+                                        android:gravity="center_vertical"
+                                        android:layout_weight="7"
+                                        android:text="Provider File checklist"/>
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="3"
+                                        android:orientation="vertical" >
+
+                                        <RadioGroup
+                                            android:id="@+id/rgPCMVA"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" >
+
+                                            <RadioButton
+                                                android:id="@+id/rbPCMVAYes"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="Yes"
+                                                style="@style/text_style"/>
+
+                                            <RadioButton
+                                                android:id="@+id/rbPCMVANo"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                style="@style/text_style"
+                                                android:checked="true"
+                                                android:text="No" />
+                                        </RadioGroup>
+                                    </LinearLayout>
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_weight="10">
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        style="@style/text_style"
+                                        android:textColor="@color/black"
+                                        android:gravity="center_vertical"
+                                        android:layout_weight="7"
+                                        android:text="With Provider at facility level"/>
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="3"
+                                        android:orientation="vertical" >
+
+                                        <RadioGroup
+                                            android:id="@+id/rgMVAPF"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" >
+
+                                            <RadioButton
+                                                android:id="@+id/rbMVAPFYes"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="Yes"
+                                                style="@style/text_style"/>
+
+                                            <RadioButton
+                                                android:id="@+id/rbMVAPFNo"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                style="@style/text_style"
+                                                android:checked="true"
+                                                android:text="No" />
+                                        </RadioGroup>
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                            </LinearLayout>
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:background="@color/orange"/>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    style="@style/text_style"
+                                    android:textColor="@color/black"
+                                    android:gravity="center_vertical"
+                                    android:text="PPIUCD"/>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_weight="10">
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        style="@style/text_style"
+                                        android:textColor="@color/black"
+                                        android:gravity="center_vertical"
+                                        android:layout_weight="7"
+                                        android:text="Provider File checklist"/>
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="3"
+                                        android:orientation="vertical" >
+
+                                        <RadioGroup
+                                            android:id="@+id/rgPCPPIUCD"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" >
+
+                                            <RadioButton
+                                                android:id="@+id/rbPCPPIUCDYes"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="Yes"
+                                                style="@style/text_style"/>
+
+                                            <RadioButton
+                                                android:id="@+id/rbPCPPIUCDNo"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                style="@style/text_style"
+                                                android:checked="true"
+                                                android:text="No" />
+                                        </RadioGroup>
+                                    </LinearLayout>
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_weight="10">
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        style="@style/text_style"
+                                        android:textColor="@color/black"
+                                        android:gravity="center_vertical"
+                                        android:layout_weight="7"
+                                        android:text="With Provider at facility level"/>
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="3"
+                                        android:orientation="vertical" >
+
+                                        <RadioGroup
+                                            android:id="@+id/rgPPIUCDPF"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" >
+
+                                            <RadioButton
+                                                android:id="@+id/rbPPIUCDPFYes"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="Yes"
+                                                style="@style/text_style"/>
+
+                                            <RadioButton
+                                                android:id="@+id/rbPPIUCDPFNo"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                style="@style/text_style"
+                                                android:checked="true"
+                                                android:text="No" />
+                                        </RadioGroup>
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                            </LinearLayout>
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:background="@color/orange"/>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    style="@style/text_style"
+                                    android:textColor="@color/black"
+                                    android:gravity="center_vertical"
+                                    android:text="Implant"/>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_weight="10">
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        style="@style/text_style"
+                                        android:textColor="@color/black"
+                                        android:gravity="center_vertical"
+                                        android:layout_weight="7"
+                                        android:text="Provider File checklist"/>
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="3"
+                                        android:orientation="vertical" >
+
+                                        <RadioGroup
+                                            android:id="@+id/rgPCImplant"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" >
+
+                                            <RadioButton
+                                                android:id="@+id/rbPCImplantYes"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="Yes"
+                                                style="@style/text_style"/>
+
+                                            <RadioButton
+                                                android:id="@+id/rbPCImplantNo"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                style="@style/text_style"
+                                                android:checked="true"
+                                                android:text="No" />
+                                        </RadioGroup>
+                                    </LinearLayout>
+                                </LinearLayout>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:layout_weight="10">
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        style="@style/text_style"
+                                        android:textColor="@color/black"
+                                        android:gravity="center_vertical"
+                                        android:layout_weight="7"
+                                        android:text="With Provider at facility level"/>
+
+                                    <LinearLayout
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="3"
+                                        android:orientation="vertical" >
+
+                                        <RadioGroup
+                                            android:id="@+id/rgImplantPF"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" >
+
+                                            <RadioButton
+                                                android:id="@+id/rbImplantPFYes"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="Yes"
+                                                style="@style/text_style"/>
+
+                                            <RadioButton
+                                                android:id="@+id/rbImplantPFNo"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                style="@style/text_style"
+                                                android:checked="true"
+                                                android:text="No" />
+                                        </RadioGroup>
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+
+                    </TableRow>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/form_field_padding"
+                        android:background="@drawable/customborder"
+                        >
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+                                android:text="Current Letter of Agreement with Program"/>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_weight="10">
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    style="@style/text_style"
+                                    android:textColor="@color/black"
+                                    android:gravity="center_vertical"
+                                    android:layout_weight="7"
+                                    android:text="Provider File checklist"/>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:orientation="vertical" >
+
+                                    <RadioGroup
+                                        android:id="@+id/rgPCLOA"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" >
+
+                                        <RadioButton
+                                            android:id="@+id/rbPCLOAYes"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Yes"
+                                            style="@style/text_style"/>
+
+                                        <RadioButton
+                                            android:id="@+id/rbPCLOANo"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            style="@style/text_style"
+                                            android:checked="true"
+                                            android:text="No" />
+                                    </RadioGroup>
+                                </LinearLayout>
+                            </LinearLayout>
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:background="@color/orange"/>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_weight="10">
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    style="@style/text_style"
+                                    android:textColor="@color/black"
+                                    android:gravity="center_vertical"
+                                    android:layout_weight="7"
+                                    android:text="With Provider at facility level"/>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:orientation="vertical" >
+
+                                    <RadioGroup
+                                        android:id="@+id/rgLOAPF"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" >
+
+                                        <RadioButton
+                                            android:id="@+id/rbLOAPFYes"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Yes"
+                                            style="@style/text_style"/>
+
+                                        <RadioButton
+                                            android:id="@+id/rbLOAPFNo"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            style="@style/text_style"
+                                            android:checked="true"
+                                            android:text="No" />
+                                    </RadioGroup>
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+
+                    </TableRow>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/form_field_padding"
+                        android:background="@drawable/customborder"
+                        >
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+                                android:text="PHCC certification"/>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_weight="10">
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    style="@style/text_style"
+                                    android:textColor="@color/black"
+                                    android:gravity="center_vertical"
+                                    android:layout_weight="7"
+                                    android:text="Provider File checklist"/>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:orientation="vertical" >
+
+                                    <RadioGroup
+                                        android:id="@+id/rgPCPHCC"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" >
+
+                                        <RadioButton
+                                            android:id="@+id/rbPCPHCCYes"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Yes"
+                                            style="@style/text_style"/>
+
+                                        <RadioButton
+                                            android:id="@+id/rbPCPHCCNo"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            style="@style/text_style"
+                                            android:checked="true"
+                                            android:text="No" />
+                                    </RadioGroup>
+                                </LinearLayout>
+                            </LinearLayout>
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:background="@color/orange"/>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_weight="10">
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    style="@style/text_style"
+                                    android:textColor="@color/black"
+                                    android:gravity="center_vertical"
+                                    android:layout_weight="7"
+                                    android:text="With Provider at facility level"/>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:orientation="vertical" >
+
+                                    <RadioGroup
+                                        android:id="@+id/rgPHCCPF"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" >
+
+                                        <RadioButton
+                                            android:id="@+id/rbPHCCPFYes"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Yes"
+                                            style="@style/text_style"/>
+
+                                        <RadioButton
+                                            android:id="@+id/rbPHCCPFNo"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            style="@style/text_style"
+                                            android:checked="true"
+                                            android:text="No" />
+                                    </RadioGroup>
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </TableRow>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/form_field_padding"
+                        android:background="@drawable/customborder"
+                        >
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+                                android:text="Action Plan of Quality Visit (last three)"/>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_weight="10">
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    style="@style/text_style"
+                                    android:textColor="@color/black"
+                                    android:gravity="center_vertical"
+                                    android:layout_weight="7"
+                                    android:text="Provider File checklist"/>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:orientation="vertical" >
+
+                                    <RadioGroup
+                                        android:id="@+id/rgPCQTVActionPlan"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" >
+
+                                        <RadioButton
+                                            android:id="@+id/rbPCQTVActionPlanYes"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Yes"
+                                            style="@style/text_style"/>
+
+                                        <RadioButton
+                                            android:id="@+id/rbPCQTVActionPlanNo"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            style="@style/text_style"
+                                            android:checked="true"
+                                            android:text="No" />
+                                    </RadioGroup>
+                                </LinearLayout>
+                            </LinearLayout>
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:background="@color/orange"/>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_weight="10">
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    style="@style/text_style"
+                                    android:textColor="@color/black"
+                                    android:gravity="center_vertical"
+                                    android:layout_weight="7"
+                                    android:text="With Provider at facility level"/>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:orientation="vertical" >
+
+                                    <RadioGroup
+                                        android:id="@+id/rgQTVActionPlanPF"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" >
+
+                                        <RadioButton
+                                            android:id="@+id/rbQTVActionPlanPFYes"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Yes"
+                                            style="@style/text_style"/>
+
+                                        <RadioButton
+                                            android:id="@+id/rbQTVActionPlanPFNo"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            style="@style/text_style"
+                                            android:checked="true"
+                                            android:text="No" />
+                                    </RadioGroup>
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </TableRow>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/form_field_padding"
+                        android:background="@drawable/customborder"
+                        >
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+                                android:text="Recruitment Form/Eligibility Form (provider file)"/>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_weight="10">
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    style="@style/text_style"
+                                    android:textColor="@color/black"
+                                    android:gravity="center_vertical"
+                                    android:layout_weight="7"
+                                    android:text="Provider File checklist"/>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:orientation="vertical" >
+
+                                    <RadioGroup
+                                        android:id="@+id/rgPCRecruitmentForm"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" >
+
+                                        <RadioButton
+                                            android:id="@+id/rbPCRecruitmentFormYes"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Yes"
+                                            style="@style/text_style"/>
+
+                                        <RadioButton
+                                            android:id="@+id/rbPCRecruitmentFormNo"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            style="@style/text_style"
+                                            android:checked="true"
+                                            android:text="No" />
+                                    </RadioGroup>
+                                </LinearLayout>
+                            </LinearLayout>
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="2dp"
+                                android:background="@color/orange"/>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_weight="10">
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    style="@style/text_style"
+                                    android:textColor="@color/black"
+                                    android:gravity="center_vertical"
+                                    android:layout_weight="7"
+                                    android:text="With Provider at facility level"/>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="3"
+                                    android:orientation="vertical" >
+
+                                    <RadioGroup
+                                        android:id="@+id/rgRecruitmentFormPF"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" >
+
+                                        <RadioButton
+                                            android:id="@+id/rbRecruitmentFormPFYes"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Yes"
+                                            style="@style/text_style"/>
+
+                                        <RadioButton
+                                            android:id="@+id/rbRecruitmentFormPFNo"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            style="@style/text_style"
+                                            android:checked="true"
+                                            android:text="No" />
+                                    </RadioGroup>
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+
+                    </TableRow>
+                </TableLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:background="@color/lightBlue"
+                    android:padding="@dimen/form_field_padding"
+                    >
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/spinner_height"
+                        android:background="@drawable/customborder"
+                        android:id="@+id/btnSubmit"
+                        style="@style/text_style"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/submit"/>
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>

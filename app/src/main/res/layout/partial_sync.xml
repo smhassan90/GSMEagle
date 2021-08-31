@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightGreen"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include android:id="@+id/ps_basic_info" android:layout_marginBottom="@dimen/padding_10" android:layout_marginTop="@dimen/padding_10" android:layout_width="match_parent" android:layout_height="wrap_content" layout="@layout/partial_sync_single_layout"/>
+        <include android:id="@+id/ps_providers" android:layout_marginBottom="@dimen/padding_10" android:layout_width="match_parent" android:layout_height="wrap_content" layout="@layout/partial_sync_single_layout"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/psQTV"
+            android:orientation="vertical">
+            <include android:id="@+id/ps_approval_qtv_forms" android:layout_marginBottom="@dimen/padding_10" android:layout_width="match_parent" android:layout_height="wrap_content" layout="@layout/partial_sync_single_layout"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/psQAT"
+            android:orientation="vertical">
+            <include android:id="@+id/ps_approval_qat_forms" android:layout_marginBottom="@dimen/padding_10" android:layout_width="match_parent" android:layout_height="wrap_content" layout="@layout/partial_sync_single_layout"/>
+            <include android:id="@+id/ps_questions" android:layout_marginBottom="@dimen/padding_10" android:layout_width="match_parent" android:layout_height="wrap_content" layout="@layout/partial_sync_single_layout"/>
+            <include android:id="@+id/ps_areas" android:layout_marginBottom="@dimen/padding_10" android:layout_width="match_parent" android:layout_height="wrap_content" layout="@layout/partial_sync_single_layout"/>
+            <include android:id="@+id/ps_qat_tc_forms" android:layout_marginBottom="@dimen/padding_10" android:layout_width="match_parent" android:layout_height="wrap_content" layout="@layout/partial_sync_single_layout"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
+
+
+</android.support.constraint.ConstraintLayout>

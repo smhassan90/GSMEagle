@@ -3,35 +3,35 @@
     <!-- Drop Shadow Stack -->
     <item>
         <shape>
-            <padding />
+            <padding android:top="3dp" android:right="3dp" android:bottom="3dp" android:left="3dp" />
             <corners android:radius="@dimen/custom_menu_radius" />
             <solid android:color="#00FF8C00" />
         </shape>
     </item>
     <item>
         <shape>
-            <padding  />
+            <padding android:top="3dp" android:right="3dp" android:bottom="3dp" android:left="3dp" />
             <corners android:radius="@dimen/custom_menu_radius" />
             <solid android:color="#10FF8C00" />
         </shape>
     </item>
     <item>
         <shape>
-            <padding />
+            <padding android:top="3dp" android:right="3dp" android:bottom="3dp" android:left="3dp" />
             <corners android:radius="@dimen/custom_menu_radius" />
             <solid android:color="#20FF8C00" />
         </shape>
     </item>
     <item>
         <shape>
-            <padding  />
+            <padding android:top="3dp" android:right="3dp" android:bottom="3dp" android:left="3dp" />
             <corners android:radius="@dimen/custom_menu_radius" />
             <solid android:color="#30FF8C00" />
         </shape>
     </item>
     <item>
         <shape>
-            <padding android:top="3dp" />
+            <padding android:top="3dp" android:right="3dp" android:bottom="3dp" android:left="3dp" />
             <corners android:radius="@dimen/custom_menu_radius" />
             <solid android:color="#50FF8C00" />
         </shape>

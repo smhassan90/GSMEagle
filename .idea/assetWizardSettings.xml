@@ -34,8 +34,8 @@
                                   <option name="values">
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
-                                      <entry key="imageAsset" value="E:\spinner_dd.png" />
-                                      <entry key="outputName" value="spinner_dd" />
+                                      <entry key="imageAsset" value="E:\HSTeam\app\src\main\res\drawable-v24\delete_icon.png" />
+                                      <entry key="outputName" value="delete_btn" />
                                       <entry key="theme" value="CUSTOM" />
                                       <entry key="themeColor" value="d1362e" />
                                     </map>
@@ -53,7 +53,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="scalingPercent" value="49" />
+                                                <entry key="scalingPercent" value="38" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -63,9 +63,38 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="backgroundAssetType" value="COLOR" />
-                                      <entry key="backgroundColor" value="ffffff" />
-                                      <entry key="foregroundImage" value="E:\gsmlogo.png" />
+                                      <entry key="foregroundImage" value="E:\falconSitting.jpg" />
+                                    </map>
+                                  </option>
+                                </PersistentState>
+                              </value>
+                            </entry>
+                            <entry key="launcherLegacy">
+                              <value>
+                                <PersistentState>
+                                  <option name="children">
+                                    <map>
+                                      <entry key="image">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="paddingPercent" value="25" />
+                                                <entry key="trimmed" value="true" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
+                                    </map>
+                                  </option>
+                                  <option name="values">
+                                    <map>
+                                      <entry key="assetType" value="IMAGE" />
+                                      <entry key="cropped" value="true" />
+                                      <entry key="iconShape" value="CIRCLE" />
+                                      <entry key="imageAsset" value="E:\HSTeam\app\src\main\res\mipmap-xxxhdpi\ic_launcher.png" />
+                                      <entry key="outputName" value="ic_launcher_round" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -75,7 +104,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputIconType" value="ACTIONBAR" />
+                            <entry key="outputIconType" value="LAUNCHER_LEGACY" />
                           </map>
                         </option>
                       </PersistentState>

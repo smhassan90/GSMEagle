@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".crb.controller.LoginScreen"
+    tools:context=".controller.LoginScreen"
     android:theme="@android:style/Theme.NoTitleBar"
     android:orientation="vertical"
     >
@@ -41,7 +41,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="5dp"
                 android:background="@color/darkGreen"
-                android:textColor="@color/whiteColor"
+                android:textColor="@color/white"
                 android:shadowColor="@color/lightGreen"/>
         </LinearLayout>
 

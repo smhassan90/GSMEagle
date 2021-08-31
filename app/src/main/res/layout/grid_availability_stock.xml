@@ -1,0 +1,797 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="6">
+            <LinearLayout
+                android:layout_height="@dimen/grid_height"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_margin="@dimen/grid_margin"
+                android:background="@drawable/cell_shape"
+                android:layout_column="1"
+                >
+                <TextView
+                    android:text=""
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textColor="@color/cellTextColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_height="@dimen/grid_height"
+                android:gravity="center"
+                android:layout_margin="@dimen/grid_margin"
+                android:background="@drawable/cell_shape"
+                android:layout_column="1"
+                >
+                <TextView
+                    android:text="Greenstar"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:textColor="@color/cellTextColor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_height="@dimen/grid_height"
+                android:gravity="center"
+                android:layout_margin="@dimen/grid_margin"
+                android:background="@drawable/cell_shape"
+                android:layout_column="1"
+                >
+                <TextView
+                    android:text="Govt."
+                    android:gravity="center"
+                    android:textColor="@color/cellTextColor"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_height="@dimen/grid_height"
+                android:gravity="center"
+                android:layout_margin="@dimen/grid_margin"
+                android:background="@drawable/cell_shape"
+                android:layout_column="1"
+                >
+                <TextView
+                    android:text="MSS"
+                    android:textColor="@color/cellTextColor"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_height="@dimen/grid_height"
+                android:gravity="center"
+                android:layout_margin="@dimen/grid_margin"
+                android:background="@drawable/cell_shape"
+                android:layout_column="1"
+                >
+                <TextView
+                    android:text="DKT"
+                    android:textColor="@color/cellTextColor"
+                    android:gravity="center"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_height="@dimen/grid_height"
+                android:gravity="center"
+                android:layout_margin="@dimen/grid_margin"
+                android:background="@drawable/cell_shape"
+                android:layout_column="1"
+                >
+                <TextView
+                    android:text="Other"
+                    android:gravity="center"
+                    android:textColor="@color/cellTextColor"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="6">
+            <LinearLayout
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_margin="@dimen/grid_margin"
+                android:background="@drawable/cell_shape"
+                android:layout_column="1"
+                >
+                <TextView
+                    android:text="Multiload (Nos)"
+                    android:gravity="center"
+                    android:textColor="@color/cellTextColor"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et11"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et12"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et13"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et14"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et15"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="6">
+            <LinearLayout
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_margin="@dimen/grid_margin"
+                android:background="@drawable/cell_shape"
+                android:layout_column="1"
+                >
+                <TextView
+                    android:text="Safeload (Nos)"
+                    android:gravity="center"
+                    android:textColor="@color/cellTextColor"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et21"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et22"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et23"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et24"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et25"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="6">
+            <LinearLayout
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_margin="@dimen/grid_margin"
+                android:background="@drawable/cell_shape"
+                android:layout_column="1"
+                >
+                <TextView
+                    android:text="Implant (Nos)"
+                    android:gravity="center"
+                    android:textColor="@color/cellTextColor"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et31"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et32"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et33"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et34"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et35"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="6">
+            <LinearLayout
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_margin="@dimen/grid_margin"
+                android:background="@drawable/cell_shape"
+                android:layout_column="1"
+                >
+                <TextView
+                    android:text="ECP"
+                    android:gravity="center"
+                    android:textColor="@color/cellTextColor"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et41"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et42"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et43"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et44"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et45"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="6">
+            <LinearLayout
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_margin="@dimen/grid_margin"
+                android:background="@drawable/cell_shape"
+                android:layout_column="1"
+                >
+                <TextView
+                    android:text="OCP (Novadol)"
+                    android:gravity="center"
+                    android:textColor="@color/cellTextColor"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et51"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et52"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et53"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et54"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et55"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="6">
+            <LinearLayout
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_margin="@dimen/grid_margin"
+                android:background="@drawable/cell_shape"
+                android:layout_column="1"
+                >
+                <TextView
+                    android:text="Depo"
+                    android:gravity="center"
+                    android:textColor="@color/cellTextColor"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et61"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et62"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et63"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et64"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et65"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="6">
+            <LinearLayout
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_margin="@dimen/grid_margin"
+                android:background="@drawable/cell_shape"
+                android:layout_column="1"
+                >
+                <TextView
+                    android:text="Novaject"
+                    android:gravity="center"
+                    android:textColor="@color/cellTextColor"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et71"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et72"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et73"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et74"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et75"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="6">
+            <LinearLayout
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_margin="@dimen/grid_margin"
+                android:background="@drawable/cell_shape"
+                android:layout_column="1"
+                >
+                <TextView
+                    android:text="Femiject"
+                    android:gravity="center"
+                    android:textColor="@color/cellTextColor"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et81"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et82"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et83"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et84"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et85"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="6">
+            <LinearLayout
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_margin="@dimen/grid_margin"
+                android:background="@drawable/cell_shape"
+                android:layout_column="1"
+                >
+                <TextView
+                    android:text="Miso"
+                    android:gravity="center"
+                    android:textColor="@color/cellTextColor"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et91"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et92"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et93"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et94"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et95"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="6">
+            <LinearLayout
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_margin="@dimen/grid_margin"
+                android:background="@drawable/cell_shape"
+                android:layout_column="1"
+                >
+                <TextView
+                    android:text="Condoms"
+                    android:gravity="center"
+                    android:textColor="@color/cellTextColor"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et101"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et102"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et103"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et104"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+            <EditText android:maxLength="@string/lenDigit"  android:inputType="number"
+                android:layout_column="1"
+                android:id="@+id/et105"
+                android:textColor="@color/black" android:text="0"
+                android:layout_weight="1"
+                android:layout_width="@dimen/grid_width"
+                android:layout_height="@dimen/grid_height">
+
+            </EditText>
+        </TableRow>
+    </TableLayout>
+</android.support.constraint.ConstraintLayout>

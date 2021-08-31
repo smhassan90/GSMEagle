@@ -43,6 +43,11 @@
                     android:layout_height="wrap_content"
                     style="@style/text_style"
                     android:id="@+id/tvVisitDate"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/btnSyncSingle"
+                    android:text="Sync this form"/>
             </LinearLayout>
 
             <LinearLayout

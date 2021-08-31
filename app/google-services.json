@@ -1,34 +1,42 @@
 {
   "project_info": {
-    "project_number": "1034750269358",
-    "firebase_url": "https://mecwheel-3d36b.firebaseio.com",
-    "project_id": "mecwheel-3d36b",
-    "storage_bucket": "mecwheel-3d36b.appspot.com"
+    "project_number": "811076950456",
+    "firebase_url": "https://gsmfalcon-b24cd.firebaseio.com",
+    "project_id": "gsmfalcon-b24cd",
+    "storage_bucket": "gsmfalcon-b24cd.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1034750269358:android:551e5a9f8e0df8be045a3f",
+        "mobilesdk_app_id": "1:811076950456:android:742030a780a13b4d",
         "android_client_info": {
-          "package_name": "com.greenstar.mecwheel"
+          "package_name": "com.greenstar.hsteam"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1034750269358-cocaqpnalkpm196u8f21hdgpushmllhi.apps.googleusercontent.com",
+          "client_id": "811076950456-aap8eoenss8jvap3cl1k820iaovv3so7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.greenstar.hsteam",
+            "certificate_hash": "1eb0f97ce93f1c1cdc02804e8e42cfd0761de29b"
+          }
+        },
+        {
+          "client_id": "811076950456-n3nhk6pssm47l7b5jcntpn6osgrs1v1f.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCj9EK243SDJhMyRPUp41pBsfjGh5Rvoq8"
+          "current_key": "AIzaSyC6-GXOHiZekocBJRsxzB_enWF9XvLg3PM"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1034750269358-cocaqpnalkpm196u8f21hdgpushmllhi.apps.googleusercontent.com",
+              "client_id": "811076950456-n3nhk6pssm47l7b5jcntpn6osgrs1v1f.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

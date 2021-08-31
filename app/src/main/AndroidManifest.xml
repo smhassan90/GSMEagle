@@ -1,69 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.greenstar.mecwheel">
+    package="com.greenstar.eagle">
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
-        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name="com.greenstar.eagle.controller.SplashScreen"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.greenstar.eagle.controller.LoginScreen"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.greenstar.eagle.controller.ProviderProfile"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".CounselingCardDescription"
-            android:label="@string/title_activity_counseling_card_description"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".EnoferDosageCalculator"
-            android:label="@string/title_activity_counseling_card_description"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".SignAndSymptoms"
-            android:label="@string/title_activity_counseling_card_description"
-            android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity
-            android:name=".crb.controller.LoginScreen"
-            android:label="@string/Login"
-
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".crb.controller.Menu"
-            android:label="@string/Menu"
-            android:theme="@style/AppTheme.NoActionBar" >
-
+        <activity android:name="com.greenstar.eagle.controller.FormMenu"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
         </activity>
-        <activity
-            android:name=".crb.controller.SubmittedForms"
-            android:label="@string/SubmittedForms" />
-        <activity
-            android:name=".crb.controller.CRBFormActivity"
-            android:label="@string/CRBForm" >
-
-
+        <activity android:name="com.greenstar.eagle.controller.qtv.QTVMenu"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
         </activity>
-        <activity
-            android:name=".crb.controller.DashboardController"
-            android:label="@string/dashboard" >
+        <activity android:name="com.greenstar.eagle.controller.qat.QATMenu"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+            </intent-filter>
         </activity>
-        <activity
-            android:name=".ProductDescription"
-            android:label="@string/ProductDetail"
-            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name="com.greenstar.eagle.controller.qat.QATForm"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+            </intent-filter>
+        </activity>
+        <activity android:name="com.greenstar.eagle.controller.qat.TCForm"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+            </intent-filter>
+        </activity>
+        <activity android:name="com.greenstar.eagle.controller.PartialSync"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+            </intent-filter>
+        </activity>
+        <activity android:name="com.greenstar.eagle.controller.qtv.NewQTVForm"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+            </intent-filter>
+        </activity>
+        <activity android:name="com.greenstar.eagle.controller.qtv.SubmittedForms"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.greenstar.eagle.controller.qat.QATSubmittedForms"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.greenstar.eagle.controller.qtv.ApprovalStatus"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.greenstar.eagle.controller.qtv.DashboardController"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.greenstar.eagle.controller.IPCForms.ClientRegistrationForm"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <service
+            android:name="com.greenstar.eagle.service.MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.greenstar.eagle.service.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="97a119893285344ff0fce6915930eca60abcc6cc" />
     </application>
 
 </manifest>

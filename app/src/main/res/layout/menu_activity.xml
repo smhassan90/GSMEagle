@@ -41,7 +41,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/dashboard"
+                        android:text="@string/providerProfile"
                         android:layout_gravity="center"
                         android:layout_marginTop="@dimen/padding_10"
                         style="@style/medium_text_style"/>
@@ -124,6 +124,45 @@
                 android:orientation="horizontal"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:id="@+id/llApprovalStatus">
+                <LinearLayout
+                    android:layout_width="200dp"
+                    android:background="@drawable/custom_button"
+                    android:padding="@dimen/padding_10"
+                    android:layout_height="200dp"
+                    android:orientation="vertical"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    >
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:id="@+id/imgApprovalStatus"
+                        android:src="@drawable/order_basket"
+                        android:layout_gravity="center"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/approvalStatus"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/padding_10"
+                        style="@style/medium_text_style"/>
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/orange"
+            android:weightSum="2">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:id="@+id/llForm">
                 <LinearLayout
                     android:layout_width="200dp"
@@ -143,8 +182,41 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/CRBForm"
+                        android:text="@string/QTV"
                         android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/padding_10"
+                        style="@style/medium_text_style"/>
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:id="@+id/llPartialSynchronization">
+                <LinearLayout
+                    android:layout_width="200dp"
+                    android:background="@drawable/custom_button"
+                    android:padding="@dimen/padding_10"
+                    android:layout_height="200dp"
+                    android:orientation="vertical"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    >
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:id="@+id/imgPS"
+                        android:src="@drawable/img_sync"
+                        android:layout_gravity="center"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/PartialSynchronization"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
                         android:layout_marginTop="@dimen/padding_10"
                         style="@style/medium_text_style"/>
                 </LinearLayout>
