@@ -1,4 +1,4 @@
-package com.greenstar.eagle.adapters.qat;
+package com.greenstar.eagle.adapters.crf.submittedforms;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
@@ -13,16 +13,16 @@ import android.widget.TextView;
 import com.crashlytics.android.Crashlytics;
 import com.greenstar.eagle.R;
 import com.greenstar.eagle.db.AppDatabase;
-import com.greenstar.eagle.model.QATFormHeader;
+import com.greenstar.eagle.model.CRForm;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class QATRejectedFormAdapter extends ArrayAdapter<QATFormHeader> {
+public class RejectedFormAdapter extends ArrayAdapter<CRForm> {
     private Activity mActivity;
-    private List<QATFormHeader> list = new ArrayList<>();
+    private List<CRForm> list = new ArrayList<>();
     AppDatabase db =null;
-    public QATRejectedFormAdapter(@NonNull Activity activity, List<QATFormHeader> list) {
+    public RejectedFormAdapter(@NonNull Activity activity, List<CRForm> list) {
         super(activity, 0, 0, list);
         db = AppDatabase.getAppDatabase(activity);
         mActivity = activity;
@@ -36,7 +36,7 @@ public class QATRejectedFormAdapter extends ArrayAdapter<QATFormHeader> {
 
     @Nullable
     @Override
-    public QATFormHeader getItem(int position) {
+    public CRForm getItem(int position) {
         return list.get(position);
     }
 
@@ -60,13 +60,13 @@ public class QATRejectedFormAdapter extends ArrayAdapter<QATFormHeader> {
         TextView tvProviderCode = (TextView) v.findViewById(R.id.tvProviderCode);
         TextView tvVisitDate = (TextView) v.findViewById(R.id.tvVisitDate);
         if(list!=null && list.size()>0){
-            QATFormHeader i = list.get(position);
+            CRForm i = list.get(position);
             if(i!=null){
                 try {
                     tvFormId.setText("Form ID : " + i.getId());
                     tvProviderName.setText("Provider Name : " + i.getProviderName());
                     tvProviderCode.setText("Provider Code : " + i.getProviderCode());
-                    tvVisitDate.setText("Visit Date : " + i.getDateOfAssessment());
+                    tvVisitDate.setText("Visit Date : " + i.getVisitDate());
                 }catch(Exception e){
                     Crashlytics.logException(e);
                 }

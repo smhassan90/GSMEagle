@@ -18,6 +18,7 @@
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity android:name="com.greenstar.eagle.controller.LoginScreen"
@@ -33,39 +34,13 @@
 
             </intent-filter>
         </activity>
-        <activity android:name="com.greenstar.eagle.controller.FormMenu"
+        <activity android:name="com.greenstar.eagle.controller.Menu"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-        <activity android:name="com.greenstar.eagle.controller.qtv.QTVMenu"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
-        <activity android:name="com.greenstar.eagle.controller.qat.QATMenu"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-            </intent-filter>
-        </activity>
-        <activity android:name="com.greenstar.eagle.controller.qat.QATForm"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-            </intent-filter>
-        </activity>
-        <activity android:name="com.greenstar.eagle.controller.qat.TCForm"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-            </intent-filter>
-        </activity>
         <activity android:name="com.greenstar.eagle.controller.PartialSync"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
@@ -73,44 +48,20 @@
 
             </intent-filter>
         </activity>
-        <activity android:name="com.greenstar.eagle.controller.qtv.NewQTVForm"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-            </intent-filter>
-        </activity>
-        <activity android:name="com.greenstar.eagle.controller.qtv.SubmittedForms"
+        <activity android:name="com.greenstar.eagle.controller.IPCForms.SubmittedForms"
             android:theme="@style/Theme.AppCompat.NoActionBar"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-        <activity android:name="com.greenstar.eagle.controller.qat.QATSubmittedForms"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
-        <activity android:name="com.greenstar.eagle.controller.qtv.ApprovalStatus"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
-        <activity android:name="com.greenstar.eagle.controller.qtv.DashboardController"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
+
         <activity android:name="com.greenstar.eagle.controller.IPCForms.ClientRegistrationForm"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER"/>
+
             </intent-filter>
         </activity>
         <service

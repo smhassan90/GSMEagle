@@ -5,7 +5,7 @@ import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
 @Entity
-public class CRFForm {
+public class CRForm {
     @NonNull
     @PrimaryKey
     private long id;

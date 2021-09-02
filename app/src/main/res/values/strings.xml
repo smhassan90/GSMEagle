@@ -8,8 +8,6 @@
     <string name="performSync">Perform Sync</string>
     <string name="submittedForms">Submitted Forms</string>
     <string name="profile">Profile</string>
-    <string name="QTV">QTV</string>
-    <string name="QAT">QAT</string>
     <string name="providers">Providers</string>
     <string name="submit">Submit</string>
 
@@ -22,9 +20,6 @@
 
     <string name="yes">Yes</string>
     <string name="no">No</string>
-    <string name="QTVForm">QTVForm</string>
-    <string name="QATForm">QAT Form</string>
-    <string name="TechnicalCompetence">Technical Competence</string>
     <string name="PartialSynchronization">Partial Synchronization</string>
     <string name="showProfile">Show Profile</string>
     <string name="providerProfile">Provider Profile</string>
@@ -36,4 +31,6 @@
     <string name="everMethod">Ever Method</string>
     <string name="neverUseReason">Reason of never use</string>
     <string name="discontinuationReason">Discontinuation Reason</string>
+    <string name="RegistrationLocation">Registration Location</string>
+    <string name="CRForm">Register Client</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.greenstar.eagle.adapters;
+package com.greenstar.eagle.adapters.crf.submittedforms;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
@@ -12,17 +12,18 @@ import android.widget.TextView;
 
 import com.crashlytics.android.Crashlytics;
 import com.greenstar.eagle.R;
+import com.greenstar.eagle.dao.CRFormDAO;
 import com.greenstar.eagle.db.AppDatabase;
-import com.greenstar.eagle.model.QTVForm;
+import com.greenstar.eagle.model.CRForm;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RejectedFormAdapter extends ArrayAdapter<QTVForm> {
+public class SuccessfulFormAdapter extends ArrayAdapter<CRForm>{
     private Activity mActivity;
-    private List<QTVForm> list = new ArrayList<>();
+    private List<CRForm> list = new ArrayList<>();
     AppDatabase db =null;
-    public RejectedFormAdapter(@NonNull Activity activity, List<QTVForm> list) {
+    public SuccessfulFormAdapter(@NonNull Activity activity, List<CRForm> list) {
         super(activity, 0, 0, list);
         db = AppDatabase.getAppDatabase(activity);
         mActivity = activity;
@@ -36,7 +37,7 @@ public class RejectedFormAdapter extends ArrayAdapter<QTVForm> {
 
     @Nullable
     @Override
-    public QTVForm getItem(int position) {
+    public CRForm getItem(int position) {
         return list.get(position);
     }
 
@@ -51,7 +52,7 @@ public class RejectedFormAdapter extends ArrayAdapter<QTVForm> {
         View v = convertView;
         if (v == null) {
             LayoutInflater inflater = mActivity.getLayoutInflater();
-            v = inflater.inflate(R.layout.rejected_form, null);
+            v = inflater.inflate(R.layout.successful_form, null);
         }
         LinearLayout llInnerBasket = v.findViewById(R.id.llInnerBasket);
 
@@ -60,26 +61,27 @@ public class RejectedFormAdapter extends ArrayAdapter<QTVForm> {
         TextView tvProviderCode = (TextView) v.findViewById(R.id.tvProviderCode);
         TextView tvVisitDate = (TextView) v.findViewById(R.id.tvVisitDate);
         if(list!=null && list.size()>0){
-            QTVForm i = list.get(position);
+            CRForm i = list.get(position);
             if(i!=null){
-                try {
-                    tvFormId.setText("Form ID : " + i.getId());
-                    tvProviderName.setText("Provider Name : " + i.getProviderName());
-                    tvProviderCode.setText("Provider Code : " + i.getProviderCode());
-                    tvVisitDate.setText("Visit Date : " + i.getVisitDate());
-                }catch(Exception e){
+                try{
+                    tvFormId.setText("Form ID : "+ i.getId());
+                    tvProviderName.setText("Provider Name : " +i.getProviderName());
+                    tvProviderCode.setText("Provider Code : "+i.getProviderCode());
+                    tvVisitDate.setText("Visit Date : "    + i.getVisitDate());
+                }catch (Exception e){
                     Crashlytics.logException(e);
                 }
+
             }else{
 
-                tvFormId.setText("There is no Rejected form");
+                tvFormId.setText("There is no successful form");
                 tvProviderName.setVisibility(View.GONE);
                 tvProviderCode.setVisibility(View.GONE);
                 tvVisitDate.setVisibility(View.GONE);
             }
 
         }else{
-            tvFormId.setText("There is no Rejected form");
+            tvFormId.setText("There is no successful form");
             tvProviderName.setVisibility(View.GONE);
             tvProviderCode.setVisibility(View.GONE);
             tvVisitDate.setVisibility(View.GONE);

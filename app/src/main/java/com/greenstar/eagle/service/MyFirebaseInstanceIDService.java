@@ -10,6 +10,6 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
     public void onTokenRefresh() {
         super.onTokenRefresh();
         String refreshedToken = FirebaseInstanceId.getInstance().getToken();
-        Log.d("From Falcon Service", "Refreshed token: " + refreshedToken);
+        Log.d("From Eagle Service", "Refreshed token: " + refreshedToken);
     }
 }

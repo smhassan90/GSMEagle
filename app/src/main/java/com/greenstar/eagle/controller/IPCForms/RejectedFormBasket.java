@@ -1,4 +1,4 @@
-package com.greenstar.eagle.controller.qtv;
+package com.greenstar.eagle.controller.IPCForms;
 
 import android.app.Activity;
 import android.content.Context;
@@ -11,9 +11,9 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.greenstar.eagle.R;
-import com.greenstar.eagle.adapters.RejectedFormAdapter;
+import com.greenstar.eagle.adapters.crf.submittedforms.RejectedFormAdapter;
 import com.greenstar.eagle.db.AppDatabase;
-import com.greenstar.eagle.model.QTVForm;
+import com.greenstar.eagle.model.CRForm;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ public class RejectedFormBasket extends Fragment {
     ListView lvBasket;
     RejectedFormAdapter basketAdapter;
     AppDatabase db =null;
-    List<QTVForm> qtvForms = new ArrayList<>();
+    List<CRForm> forms = new ArrayList<>();
 
     private RejectedFormBasket.OnFragmentInteractionListener mListener;
     Activity activity;
@@ -36,10 +36,10 @@ public class RejectedFormBasket extends Fragment {
         super.onCreate(savedInstanceState);
 
     }
-    private List<QTVForm> getData(){
-        List<QTVForm> qtvForms = db.getQTVFormDAO().getAllRejectedForms();
+    private List<CRForm> getData(){
+        List<CRForm> forms = db.getCrFormDAO().getAllRejectedForms();
 
-        return qtvForms ;
+        return forms ;
     }
 
     @Override
@@ -49,9 +49,10 @@ public class RejectedFormBasket extends Fragment {
         db = AppDatabase.getAppDatabase(getActivity());
         lvBasket = view.findViewById(R.id.lvBasket);
 
-        List<QTVForm> qtvForms = new ArrayList<>();
-        qtvForms = getData();
-        basketAdapter = new RejectedFormAdapter(getActivity(),qtvForms);
+        List<CRForm> forms = new ArrayList<>();
+        forms = getData();
+        basketAdapter = new RejectedFormAdapter(getActivity(),forms);
+        basketAdapter = new RejectedFormAdapter(getActivity(),forms);
         lvBasket.setAdapter(basketAdapter);
 
         // Inflate the layout for this fragment
@@ -91,9 +92,9 @@ public class RejectedFormBasket extends Fragment {
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if(isVisibleToUser) {
-            List<QTVForm> qtvForms = new ArrayList<>();
-            qtvForms = getData();
-            basketAdapter = new RejectedFormAdapter(getActivity(), qtvForms);
+            List<CRForm> forms = new ArrayList<>();
+            forms = getData();
+            basketAdapter = new RejectedFormAdapter(getActivity(), forms);
             lvBasket.setAdapter(basketAdapter);
             basketAdapter.notifyDataSetChanged();
         }

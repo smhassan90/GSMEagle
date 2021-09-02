@@ -1,4 +1,4 @@
-package com.greenstar.eagle.controller.qat;
+package com.greenstar.eagle.controller.IPCForms;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -16,29 +16,34 @@ import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
 import com.greenstar.eagle.R;
-import com.greenstar.eagle.adapters.qat.QATPendingFormAdapter;
+import com.greenstar.eagle.adapters.crf.submittedforms.PendingFormAdapter;
 import com.greenstar.eagle.controller.Codes;
 import com.greenstar.eagle.dao.FormDeleteListener;
 import com.greenstar.eagle.db.AppDatabase;
-import com.greenstar.eagle.model.QATFormHeader;
+import com.greenstar.eagle.model.CRForm;
 import com.greenstar.eagle.utils.Util;
 import com.greenstar.eagle.utils.WebserviceResponse;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class QATPendingFormsBasket extends Fragment implements FormDeleteListener, WebserviceResponse {
+/**
+ * @author Syed Muhammad Hassan
+ * 15th July, 2019
+ */
+
+public class PendingFormsBasket extends Fragment implements FormDeleteListener,WebserviceResponse {
+    ProgressDialog progressBar = null;
     View view= null;
     ListView lvBasket;
-    QATPendingFormAdapter basketAdapter;
+    PendingFormAdapter basketAdapter;
     AppDatabase db =null;
-    List<QATFormHeader> forms = new ArrayList<>();
-    ProgressDialog progressBar = null;
+    List<CRForm> forms = new ArrayList<>();
 
-    private QATPendingFormsBasket.OnFragmentInteractionListener mListener;
+    private OnFragmentInteractionListener mListener;
     Activity activity;
 
-    public QATPendingFormsBasket() {
+    public PendingFormsBasket() {
     }
 
     @Override
@@ -46,10 +51,10 @@ public class QATPendingFormsBasket extends Fragment implements FormDeleteListene
         super.onCreate(savedInstanceState);
 
     }
-    private List<QATFormHeader> getData(){
-       List<QATFormHeader> qatForms = db.getQatFormHeaderDAO().getAllPending();
+    private List<CRForm> getData(){
+        List<CRForm> forms = db.getCrFormDAO().getAllPendingForms();
 
-        return qatForms ;
+        return forms ;
     }
 
     @Override
@@ -59,9 +64,9 @@ public class QATPendingFormsBasket extends Fragment implements FormDeleteListene
         db = AppDatabase.getAppDatabase(getActivity());
         lvBasket = view.findViewById(R.id.lvBasket);
 
-        List<QATFormHeader> qatForms = new ArrayList<>();
-        qatForms = getData();
-        basketAdapter = new QATPendingFormAdapter(getActivity(),qatForms, this);
+        List<CRForm> forms = new ArrayList<>();
+        forms = getData();
+        basketAdapter = new PendingFormAdapter(getActivity(),forms, this);
         lvBasket.setAdapter(basketAdapter);
 
         // Inflate the layout for this fragment
@@ -77,8 +82,8 @@ public class QATPendingFormsBasket extends Fragment implements FormDeleteListene
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof QATPendingFormsBasket.OnFragmentInteractionListener) {
-            mListener = (QATPendingFormsBasket.OnFragmentInteractionListener) context;
+        if (context instanceof OnFragmentInteractionListener) {
+            mListener = (OnFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -91,11 +96,11 @@ public class QATPendingFormsBasket extends Fragment implements FormDeleteListene
         mListener = null;
     }
 
-    private void deleteQATForm(long orderId){
+    private void deleteQTVForm(long orderId){
         try{
-            db.getQatFormHeaderDAO().deleteFormById(orderId);
-            Toast.makeText(getActivity(),"QAT Form deleted",Toast.LENGTH_SHORT).show();
-            basketAdapter = new QATPendingFormAdapter(getActivity(),getData(), this);
+            db.getCrFormDAO().deleteFormById(orderId);
+            Toast.makeText(getActivity(),"QTV Form deleted",Toast.LENGTH_SHORT).show();
+            basketAdapter = new PendingFormAdapter(getActivity(),getData(), this);
             lvBasket.setAdapter(basketAdapter);
             basketAdapter.notifyDataSetChanged();
         }catch (Exception e){
@@ -114,7 +119,7 @@ public class QATPendingFormsBasket extends Fragment implements FormDeleteListene
                 // The dialog is automatically dismissed when a dialog button is clicked.
                 .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        deleteQATForm(orderId);
+                        deleteQTVForm(orderId);
                     }
                 })
 
@@ -128,6 +133,7 @@ public class QATPendingFormsBasket extends Fragment implements FormDeleteListene
 
     @Override
     public void SyncForm(long id) {
+
         if(Util.isNetworkAvailable(getActivity())){
             Util util = new Util();
             util.setResponseListener(this);
@@ -136,14 +142,14 @@ public class QATPendingFormsBasket extends Fragment implements FormDeleteListene
             progressBar.setMessage("Syncing this form");
             progressBar.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             progressBar.show();//displays the progress bar
-            util.performSingleFormSync(getActivity(),id, Codes.SINGLE_QAT_FORM);
+            util.performSingleFormSync(getActivity(),id, Codes.SINGLE_CR_FORM);
 
         }
     }
 
     @Override
     public void responseAlert(String response) {
-        basketAdapter = new QATPendingFormAdapter(getActivity(),getData(), this);
+        basketAdapter = new PendingFormAdapter(getActivity(),getData(), this);
         lvBasket.setAdapter(basketAdapter);
         basketAdapter.notifyDataSetChanged();
         progressBar.dismiss();

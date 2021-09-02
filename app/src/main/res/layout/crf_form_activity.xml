@@ -1098,7 +1098,55 @@
 
                         </LinearLayout>
                     </TableRow>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/form_field_padding"
+                        android:background="@drawable/customborder"
+                        android:padding="@dimen/padding_10"
+                        android:id="@+id/trRegistrationLocation"
+                        android:weightSum="10">
 
+                        <Spinner
+                            android:id="@+id/spRegistrationLocation"
+                            android:prompt="@string/currentMethod"
+                            android:layout_width="match_parent"
+                            style="@style/spinner_style"
+                            android:layout_weight="10"
+                            android:layout_height="@dimen/spinner_height"
+                            android:autofillHints="@string/RegistrationLocation"/>
+                    </TableRow>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/form_field_padding"
+                        android:background="@drawable/customborder"
+                        android:weightSum="10">
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="5"
+                            >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+
+                                android:text="Followup Date"/>
+                        </LinearLayout>
+                        <EditText
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            style="@style/text_style"
+                            android:textStyle="bold"
+                            android:textColor="@color/darkGreen"
+                            android:layout_weight="5"
+                            android:focusable="false"
+                            android:id="@+id/etFollowupDate"/>
+                    </TableRow>
 
                     <LinearLayout
                         android:layout_width="match_parent"

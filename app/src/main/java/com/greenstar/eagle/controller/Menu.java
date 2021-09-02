@@ -1,10 +1,7 @@
-package com.greenstar.eagle.controller.qtv;
+package com.greenstar.eagle.controller;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -16,9 +13,8 @@ import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
 import com.greenstar.eagle.R;
-import com.greenstar.eagle.controller.Codes;
-import com.greenstar.eagle.controller.PartialSync;
-import com.greenstar.eagle.controller.ProviderProfile;
+import com.greenstar.eagle.controller.IPCForms.ClientRegistrationForm;
+import com.greenstar.eagle.controller.IPCForms.SubmittedForms;
 import com.greenstar.eagle.db.AppDatabase;
 import com.greenstar.eagle.utils.Util;
 import com.greenstar.eagle.utils.WebserviceResponse;
@@ -28,25 +24,22 @@ import org.json.JSONObject;
 
 import java.util.Date;
 
-import io.fabric.sdk.android.Fabric;
+public class Menu extends AppCompatActivity implements View.OnClickListener, WebserviceResponse, View.OnLongClickListener {
 
-public class QTVMenu extends AppCompatActivity implements View.OnClickListener, WebserviceResponse, View.OnLongClickListener {
+    LinearLayout llCRForm;
+    LinearLayout llSync;
+    LinearLayout llBasket;
+    LinearLayout llProfile;
+    LinearLayout llDashboard;
+    LinearLayout llPartialSynchronization;
 
-        LinearLayout llSync;
-        LinearLayout llBasket;
-        LinearLayout llProfile;
-        LinearLayout llDashboard;
-        LinearLayout llQTVForm;
-        LinearLayout llPartialSynchronization;
-        ProgressDialog progressBar = null;
-        AppDatabase db =null;
-        Activity activity;
+    ProgressDialog progressBar = null;
+    AppDatabase db =null;
+    Activity activity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_activity);
-
-        Fabric.with(this, new Crashlytics());
 
         activity = this;
         db = AppDatabase.getAppDatabase(this);
@@ -64,56 +57,18 @@ public class QTVMenu extends AppCompatActivity implements View.OnClickListener, 
         llProfile = findViewById(R.id.llApprovalStatus);
         llProfile.setOnClickListener(this);
 
-        llQTVForm = findViewById(R.id.llForm);
-        llQTVForm.setOnClickListener(this);
+        llCRForm = findViewById(R.id.llForm);
+        llCRForm.setOnClickListener(this);
 
         llPartialSynchronization = findViewById(R.id.llPartialSynchronization);
         llPartialSynchronization.setOnClickListener(this);
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        SharedPreferences editor = this.getSharedPreferences(Codes.PREF_NAME, Context.MODE_PRIVATE);
-        boolean updateMapping = editor.getBoolean("updateMapping",false);
-        boolean syncAll = editor.getBoolean("syncAll",false);
-
-        if(updateMapping && Util.isNetworkAvailable(this)){
-            Util util = new Util();
-            util.setResponseListener(this);
-            progressBar = new ProgressDialog(this);
-            progressBar.setCancelable(false);//you can cancel it by pressing back button
-            progressBar.setMessage("Perform Sync ...");
-            progressBar.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-            progressBar.show();//displays the progress bar
-
-            util.pullMapping(this);
-
-            SharedPreferences.Editor edit = editor.edit();
-            edit.putBoolean("updateMapping", false);
-            edit.apply();
-        }
-        if(syncAll && Util.isNetworkAvailable(this)){
-            Util util = new Util();
-            util.setResponseListener(this);
-            progressBar = new ProgressDialog(this);
-            progressBar.setCancelable(false);//you can cancel it by pressing back button
-            progressBar.setMessage("Perform Sync ...");
-            progressBar.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-            progressBar.show();//displays the progress bar
-            util.performSync(this);
-
-            SharedPreferences.Editor edit = editor.edit();
-            edit.putBoolean("syncAll", false);
-            edit.apply();
-        }
-    }
-
-    @Override
     public void onClick(View v) {
         if(v.getId()==R.id.llDashboard){
 
-           Intent myIntent = new Intent(this, ProviderProfile.class);
+            Intent myIntent = new Intent(this, ProviderProfile.class);
             startActivity(myIntent);
 
 
@@ -139,22 +94,13 @@ public class QTVMenu extends AppCompatActivity implements View.OnClickListener, 
             Intent myIntent = new Intent(this, SubmittedForms.class);
             startActivity(myIntent);
         }else if(v.getId()==R.id.llApprovalStatus){
-            Intent myIntent = new Intent(this, ApprovalStatus.class);
-            startActivity(myIntent);
+            /*Intent myIntent = new Intent(this, ApprovalStatus.class);
+            startActivity(myIntent);*/
         }else if(v.getId()==R.id.llForm){
             if(db!=null){
-                SharedPreferences prefs = this.getSharedPreferences(Codes.PREF_NAME, MODE_PRIVATE);
-                String region = prefs.getString("AMCode", "");
-                int count = db.getProvidersDAO().getCount();
-
-                if(count==0 || region == null || region == ""){
-                    Toast.makeText(this, "Kindly Sync providers and Basic info from Partial Sync option", Toast.LENGTH_SHORT).show();
-                }else{
-                    Intent myIntent = new Intent(activity, NewQTVForm.class);
-                    startActivity(myIntent);
-                }
+                Intent myIntent = new Intent(activity, ClientRegistrationForm.class);
+                startActivity(myIntent);
             }
-
         }else if(v.getId()==R.id.llPartialSynchronization){
             Intent myIntent = new Intent(activity, PartialSync.class);
             startActivity(myIntent);
@@ -196,15 +142,10 @@ public class QTVMenu extends AppCompatActivity implements View.OnClickListener, 
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
         }
         progressBar.dismiss();
-
     }
 
     @Override
     public boolean onLongClick(View v) {
-        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-        ClipData clip = ClipData.newPlainText("syncData", Util.getCTSSyncData(this));
-        clipboard.setPrimaryClip(clip);
-        Toast.makeText(this,"All forms copied!", Toast.LENGTH_LONG).show();
         return false;
     }
 }

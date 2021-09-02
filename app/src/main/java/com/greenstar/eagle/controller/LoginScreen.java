@@ -108,8 +108,7 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
 
                         editor.putString("token", token);
                         editor.putBoolean("isLoggedIn", true);
-                        editor.putLong("qtvFormID", baseID);
-                        editor.putLong("qatFormID", baseID);
+                        editor.putLong(Codes.CRFORMID, baseID);
                         editor.putString("staffCode", staffCode);
                         editor.apply();
                         Crashlytics.setUserName(staffName);
@@ -140,7 +139,7 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
     }
     public void saveData(JSONObject params){
         Util.saveData(params,this);
-        Intent intent = new Intent(this, FormMenu.class);
+        Intent intent = new Intent(this, Menu.class);
         this.startActivity(intent);
         finish();
     }

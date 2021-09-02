@@ -24,11 +24,8 @@ import android.widget.Toast;
 import com.greenstar.eagle.R;
 import com.greenstar.eagle.adapters.crf.ClientAgeAdapter;
 import com.greenstar.eagle.adapters.crf.CurrentMethodAdapter;
-import com.greenstar.eagle.adapters.crf.ServiceTypeAdapter;
-import com.greenstar.eagle.adapters.crf.TimingFPServiceAdapter;
 import com.greenstar.eagle.controller.Codes;
 import com.greenstar.eagle.db.AppDatabase;
-import com.greenstar.eagle.model.CRFForm;
 import com.greenstar.eagle.model.DropdownCRBData;
 
 import java.text.SimpleDateFormat;

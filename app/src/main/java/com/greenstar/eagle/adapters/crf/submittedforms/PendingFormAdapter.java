@@ -1,4 +1,4 @@
-package com.greenstar.eagle.adapters.qat;
+package com.greenstar.eagle.adapters.crf.submittedforms;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;
@@ -17,17 +17,17 @@ import com.crashlytics.android.Crashlytics;
 import com.greenstar.eagle.R;
 import com.greenstar.eagle.dao.FormDeleteListener;
 import com.greenstar.eagle.db.AppDatabase;
-import com.greenstar.eagle.model.QATFormHeader;
+import com.greenstar.eagle.model.CRForm;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class QATPendingFormAdapter extends ArrayAdapter<QATFormHeader> implements View.OnClickListener {
+public class PendingFormAdapter extends ArrayAdapter<CRForm> implements View.OnClickListener {
     private Activity mActivity;
-    private List<QATFormHeader> list = new ArrayList<>();
+    private List<CRForm> list = new ArrayList<>();
     AppDatabase db =null;
     FormDeleteListener deleteForm = null;
-    public QATPendingFormAdapter(@NonNull Activity activity,  List<QATFormHeader> list, FormDeleteListener deleteForm) {
+    public PendingFormAdapter(@NonNull Activity activity,  List<CRForm> list, FormDeleteListener deleteForm) {
         super(activity, 0, 0, list);
         db = AppDatabase.getAppDatabase(activity);
         mActivity = activity;
@@ -42,7 +42,7 @@ public class QATPendingFormAdapter extends ArrayAdapter<QATFormHeader> implement
 
     @Nullable
     @Override
-    public QATFormHeader getItem(int position) {
+    public CRForm getItem(int position) {
         return list.get(position);
     }
 
@@ -68,18 +68,16 @@ public class QATPendingFormAdapter extends ArrayAdapter<QATFormHeader> implement
         TextView tvVisitDate = (TextView) v.findViewById(R.id.tvVisitDate);
         ImageView btnDelete = v.findViewById(R.id.btnDelete);
         Button btnSyncSingle = v.findViewById(R.id.btnSyncSingle);
-
         btnSyncSingle.setOnClickListener(this);
-
         btnDelete.setOnClickListener(this);
         if(list!=null && list.size()>0){
-            QATFormHeader i = list.get(position);
+            CRForm i = list.get(position);
             if(i!=null){
                 try {
                     tvFormId.setText("Form ID : " + i.getId());
                     tvProviderName.setText("Provider Name : " + i.getProviderName());
                     tvProviderCode.setText("Provider Code : " + i.getProviderCode());
-                    tvVisitDate.setText("Visit Date : " + i.getDateOfAssessment());
+                    tvVisitDate.setText("Visit Date : " + i.getVisitDate());
 
                     btnDelete.setTag(i.getId());
                     btnSyncSingle.setTag(i.getId());
@@ -118,7 +116,7 @@ public class QATPendingFormAdapter extends ArrayAdapter<QATFormHeader> implement
             }else{
                 Toast.makeText(mActivity, "Something went wrong while deleting Form",Toast.LENGTH_SHORT).show();
             }
-        }else if(v.getId() == R.id.btnSyncSingle){
+        }else if(v.getId()==R.id.btnSyncSingle){
             Object obj =  v.getTag()==null?"0":v.getTag();
             long formId = (long)obj;
             if(formId!=0){

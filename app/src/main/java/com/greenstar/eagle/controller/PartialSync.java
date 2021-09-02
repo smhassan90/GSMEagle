@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,46 +30,13 @@ public class PartialSync extends AppCompatActivity implements View.OnClickListen
     TextView tvPSLastTimeBasicInfo;
     TextView tvPSDescriptionBasicInfo;
 
-    //PS ApprovalQATForm
-    View viewPSApprovalQATForm;
-    Button btnPSApprovalQATForm;
-    TextView tvPSLastTimeApprovalQATForm;
-    TextView tvPSDescriptionApprovalQATForm;
-
-    //PS ApprovalQTVForm
-    View viewPSApprovalQTVForm;
-    Button btnPSApprovalQTVForm;
-    TextView tvPSLastTimeApprovalQTVForm;
-    TextView tvPSDescriptionApprovalQTVForm;
-
     //PS Providers
-    View viewPSProviders;
-    Button btnPSProviders;
-    TextView tvPSLastTimeProviders;
-    TextView tvPSDescriptionProviders;
-
-    //PS Question
-    View viewPSQuestion;
-    Button btnPSQuestion;
-    TextView tvPSLastTimeQuestion;
-    TextView tvPSDescriptionQuestion;
-
-    //PS Area
-    View viewPSArea;
-    Button btnPSArea;
-    TextView tvPSLastTimeArea;
-    TextView tvPSDescriptionArea;
-
-    //PS QATTCForm
-    View viewPSQATTCForm;
-    Button btnPSQATTCForm;
-    TextView tvPSLastTimeQATTCForm;
-    TextView tvPSDescriptionQATTCForm;
+    View viewPSCRForms;
+    Button btnPSCRForms;
+    TextView tvPSLastTimeCRForms;
+    TextView tvPSDescriptionCRForms;
 
     String partialSyncType = "";
-
-    LinearLayout psQAT;
-    LinearLayout psQTV;
 
     SimpleDateFormat formatter= new SimpleDateFormat("dd-MM-yyyy 'at' HH:mm:ss z");
     @Override
@@ -86,19 +52,6 @@ public class PartialSync extends AppCompatActivity implements View.OnClickListen
     }
 
     private void Initialization() {
-        psQAT = findViewById(R.id.psQAT);
-        psQTV = findViewById(R.id.psQTV);
-
-        SharedPreferences shared = getSharedPreferences(Codes.PREF_NAME, MODE_PRIVATE);
-        int isQATAllowed = (shared.getInt("isQATAllowed", 0));
-        int isQTVAllowed = (shared.getInt("isQTVAllowed", 0));
-        int isQATAMAllowed = (shared.getInt(Codes.ISQATAMALLOWED, 0));
-        if(isQATAllowed==0 && isQATAMAllowed==0){
-            psQAT.setVisibility(View.GONE);
-        }
-        if(isQTVAllowed==0){
-            psQTV.setVisibility(View.GONE);
-        }
 
         //PS Basic Info
         viewPSBasicInfo = findViewById(R.id.ps_basic_info);
@@ -115,42 +68,13 @@ public class PartialSync extends AppCompatActivity implements View.OnClickListen
         });
         tvPSDescriptionBasicInfo.setText("Sync basic information");
 
-        //PS ApprovalQATForm
-        viewPSApprovalQATForm = findViewById(R.id.ps_approval_qat_forms);
-        btnPSApprovalQATForm = (Button)viewPSApprovalQATForm.findViewById(R.id.btnPSync);
-        tvPSDescriptionApprovalQATForm = viewPSApprovalQATForm.findViewById(R.id.tvPSDescription);
-        tvPSLastTimeApprovalQATForm  = viewPSApprovalQATForm.findViewById(R.id.lastSyncDateTime);
-        btnPSApprovalQATForm.setOnClickListener(new View.OnClickListener() {
 
-            @Override
-            public void onClick(View v) {
-                partialSyncType = Codes.PS_TYPE_ApprovalQATForm;
-                callAPI(partialSyncType);
-            }
-        });
-        tvPSDescriptionApprovalQATForm.setText("Sync Approval QAT Form");
-
-        //PS ApprovalQTVForm
-        viewPSApprovalQTVForm= findViewById(R.id.ps_approval_qtv_forms);
-        btnPSApprovalQTVForm = viewPSApprovalQTVForm.findViewById(R.id.btnPSync);
-        tvPSDescriptionApprovalQTVForm = viewPSApprovalQTVForm.findViewById(R.id.tvPSDescription);
-        tvPSLastTimeApprovalQTVForm  = viewPSApprovalQTVForm.findViewById(R.id.lastSyncDateTime);
-        btnPSApprovalQTVForm.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                partialSyncType = Codes.PS_TYPE_ApprovalQTVForm;
-                callAPI(partialSyncType);
-            }
-        });
-        tvPSDescriptionApprovalQTVForm.setText("Sync QTV Approved Forms");
-
-        //PS Providers
-        viewPSProviders= findViewById(R.id.ps_providers);
-        btnPSProviders = viewPSProviders.findViewById(R.id.btnPSync);
-        tvPSDescriptionProviders = viewPSProviders.findViewById(R.id.tvPSDescription);
-        tvPSLastTimeProviders  = viewPSProviders.findViewById(R.id.lastSyncDateTime);
-        btnPSProviders.setOnClickListener(new View.OnClickListener() {
+        //PS CF Forms
+        viewPSCRForms= findViewById(R.id.ps_cr_forms);
+        btnPSCRForms = viewPSCRForms.findViewById(R.id.btnPSync);
+        tvPSDescriptionCRForms = viewPSCRForms.findViewById(R.id.tvPSDescription);
+        tvPSLastTimeCRForms  = viewPSCRForms.findViewById(R.id.lastSyncDateTime);
+        btnPSCRForms.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -158,53 +82,9 @@ public class PartialSync extends AppCompatActivity implements View.OnClickListen
                 callAPI(partialSyncType);
             }
         });
-        tvPSDescriptionProviders.setText("Sync Providers");
+        tvPSDescriptionCRForms.setText("Sync CR Forms");
 
 
-        //PS Question
-        viewPSQuestion= findViewById(R.id.ps_questions);
-        btnPSQuestion = viewPSQuestion.findViewById(R.id.btnPSync);
-        tvPSDescriptionQuestion = viewPSQuestion.findViewById(R.id.tvPSDescription);
-        tvPSLastTimeQuestion  = viewPSQuestion.findViewById(R.id.lastSyncDateTime);
-        btnPSQuestion.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                partialSyncType = Codes.PS_TYPE_Question;
-                callAPI(partialSyncType);
-            }
-        });
-        tvPSDescriptionQuestion.setText("Sync Questions");
-
-        //PS Area
-        viewPSArea= findViewById(R.id.ps_areas);
-        btnPSArea = viewPSArea.findViewById(R.id.btnPSync);
-        tvPSLastTimeArea  = viewPSArea.findViewById(R.id.lastSyncDateTime);
-        tvPSDescriptionArea = viewPSArea.findViewById(R.id.tvPSDescription);
-        btnPSArea.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                partialSyncType = Codes.PS_TYPE_Area;
-                callAPI(partialSyncType);
-            }
-        });
-        tvPSDescriptionArea.setText("Sync Areas");
-
-        //PS QATTCForm
-        viewPSQATTCForm= findViewById(R.id.ps_qat_tc_forms);
-        btnPSQATTCForm = viewPSQATTCForm.findViewById(R.id.btnPSync);
-        tvPSLastTimeQATTCForm  = viewPSQATTCForm.findViewById(R.id.lastSyncDateTime);
-        tvPSDescriptionQATTCForm = viewPSQATTCForm.findViewById(R.id.tvPSDescription);
-        btnPSQATTCForm.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                partialSyncType = Codes.PS_TYPE_QATTCForm;
-                callAPI(partialSyncType);
-            }
-        });
-        tvPSDescriptionQATTCForm.setText("Sync QAT TC Forms");
     }
 
     @Override
@@ -212,19 +92,10 @@ public class PartialSync extends AppCompatActivity implements View.OnClickListen
         String partialSyncType="";
         if(btnPSBasicInfo.getId() == v.getId()){
             partialSyncType=Codes.PS_TYPE_BASIC_INFO;
-        }else if(btnPSProviders.getId() == v.getId()){
+        }else if(btnPSCRForms.getId() == v.getId()){
             partialSyncType = Codes.PS_TYPE_Providers;
-        }else if(btnPSApprovalQATForm.getId()==v.getId()){
-            partialSyncType = Codes.PS_TYPE_ApprovalQATForm;
-        }else if(btnPSApprovalQTVForm.getId()==v.getId()){
-            partialSyncType = Codes.PS_TYPE_ApprovalQTVForm;
-        }else if(btnPSArea.getId()==v.getId()){
-            partialSyncType = Codes.PS_TYPE_Area;
-        }else if(btnPSQATTCForm.getId()==v.getId()){
-            partialSyncType = Codes.PS_TYPE_QATTCForm;
-        }else if(btnPSQuestion.getId()==v.getId()){
-            partialSyncType = Codes.PS_TYPE_Question;
         }
+
         if(Util.isNetworkAvailable(this)){
             progressBar = new ProgressDialog(this);
             progressBar.setCancelable(false);//you can cancel it by pressing back button
@@ -265,18 +136,8 @@ public class PartialSync extends AppCompatActivity implements View.OnClickListen
             SharedPreferences.Editor editor =  activity.getSharedPreferences(Codes.PREF_NAME, MODE_PRIVATE).edit();
             if(PSCode.equals(Codes.PS_TYPE_BASIC_INFO)){
                 editor.putString("lastTimeBasicInfo", dateTime);
-            }else if(PSCode.equals(Codes.PS_TYPE_ApprovalQATForm)){
-                editor.putString("lastTimeApprovalQATForm", dateTime);
-            }else if(PSCode.equals(Codes.PS_TYPE_ApprovalQTVForm)){
-                editor.putString("lastTimeApprovalQTVForm", dateTime);
-            }else if(PSCode.equals(Codes.PS_TYPE_Area)){
-                editor.putString("lastTimeArea", dateTime);
             }else if(PSCode.equals(Codes.PS_TYPE_Providers)){
                 editor.putString("lastTimeProviders", dateTime);
-            }else if(PSCode.equals(Codes.PS_TYPE_QATTCForm)){
-                editor.putString("lastTimeQATTCForm", dateTime);
-            }else if(PSCode.equals(Codes.PS_TYPE_Question)){
-                editor.putString("lastTimeQuestion", dateTime);
             }
 
             editor.apply();
@@ -295,20 +156,9 @@ public class PartialSync extends AppCompatActivity implements View.OnClickListen
     private void populateLastTime(){
         SharedPreferences prefs = this.getSharedPreferences(Codes.PREF_NAME, MODE_PRIVATE);
         String lastTimeBasicInfo = prefs.getString("lastTimeBasicInfo", "Never Synced");
-        String lastTimeApprovalQATForm = prefs.getString("lastTimeApprovalQATForm", "Never Synced");
-        String lastTimeApprovalQTVForm = prefs.getString("lastTimeApprovalQTVForm", "Never Synced");
-        String lastTimeArea = prefs.getString("lastTimeArea", "Never Synced");
         String lastTimeProviders = prefs.getString("lastTimeProviders", "Never Synced");
-        String lastTimeQATTCForm = prefs.getString("lastTimeQATTCForm", "Never Synced");
-        String lastTimeQuestion = prefs.getString("lastTimeQuestion", "Never Synced");
 
         tvPSLastTimeBasicInfo.setText("Last Sync:"+lastTimeBasicInfo);
-        tvPSLastTimeApprovalQATForm.setText("Last Sync:"+lastTimeApprovalQATForm);
-        tvPSLastTimeApprovalQTVForm.setText("Last Sync:"+lastTimeApprovalQTVForm);
-        tvPSLastTimeArea.setText("Last Sync:"+lastTimeArea);
-        tvPSLastTimeProviders.setText("Last Sync:"+lastTimeProviders);
-        tvPSLastTimeQATTCForm.setText("Last Sync:"+lastTimeQATTCForm);
-        tvPSLastTimeQuestion.setText("Last Sync:"+lastTimeQuestion);
-
+        tvPSLastTimeCRForms.setText("Last Sync:"+lastTimeProviders);
     }
 }
