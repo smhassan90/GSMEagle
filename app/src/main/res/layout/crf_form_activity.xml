@@ -176,12 +176,12 @@
                             style="@style/text_style"
                             android:textColor="@color/black" android:backgroundTint="@color/darkGreen"
                             android:gravity="center_vertical"
-                            android:layout_weight="7"
+                            android:layout_weight="5"
                             android:text="Supervisor Name"/>
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="3"
+                            android:layout_weight="5"
                             android:id="@+id/tvSupervisorName"
                             android:textColor="@color/black"
                             android:text="">
@@ -864,66 +864,6 @@
                     </TableRow>
                     <TableRow
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/form_field_padding"
-                        android:background="@drawable/customborder"
-                        android:id="@+id/trNotInUse"
-                        android:visibility="gone"
-                        android:weightSum="10">
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="7"
-                            >
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                style="@style/text_style"
-                                android:textColor="@color/black"
-                                android:gravity="center_vertical"
-
-                                android:text="How long has the family planning method not been in use?"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                style="@style/text_style"
-                                android:textColor="@color/black"
-                                android:gravity="center_vertical"
-                                android:text="خاندانی منصوبہ بندی کا طریقہ کار کتنے عرصے سے استعمال میں نہیں آرہا ہے؟"/>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="3"
-                            android:orientation="vertical" >
-
-                            <RadioGroup
-                                android:id="@+id/rgNotInUse"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" >
-
-                                <RadioButton
-                                    android:id="@+id/rbNotInUseMore"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="More than 12 Months"
-                                    style="@style/text_style"/>
-
-                                <RadioButton
-                                    android:id="@+id/rbNotInUseLess"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    style="@style/text_style"
-                                    android:text="Less than 12 Months" />
-
-                            </RadioGroup>
-
-                        </LinearLayout>
-                    </TableRow>
-                    <TableRow
-                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginTop="@dimen/form_field_padding"
                         android:background="@drawable/customborder"
@@ -1136,6 +1076,14 @@
                                 android:gravity="center_vertical"
 
                                 android:text="Followup Date"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+                                android:layout_weight="5"
+                                android:text="دورے کی تاریخ"/>
                         </LinearLayout>
                         <EditText
                             android:layout_width="0dp"

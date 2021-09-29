@@ -37,9 +37,11 @@ public class ClientRegistrationForm extends AppCompatActivity implements View.On
 
     AppDatabase db =null;
 
-    EditText etVisitDate, etClientName, etHusbandName, etAddress, etContact, etCurrentUseYear;
+    TextView tvSitarabajiCode, tvSitarabajiName, tvProviderCode, tvProviderName, tvSupervisorName, tvRegion, tvDistrict;
 
-    TextView tvProviderName, tvProviderCode, tvContactNumber, tvClientName;
+    EditText etVisitDate, etFollowupDate, etClientName, etHusbandName, etAddress, etContact, etCurrentUseYear;
+
+    TextView tvContactNumber, tvClientName;
 
     Spinner spClientAge, spCurrentMethod;
 
@@ -58,6 +60,7 @@ public class ClientRegistrationForm extends AppCompatActivity implements View.On
     Button btnSubmit;
 
     DatePickerDialog.OnDateSetListener date = null;
+    DatePickerDialog.OnDateSetListener followupDate = null;
     final Calendar myCalendar = Calendar.getInstance();
 
     TableRow trIPCReferralStatus, trNotInUse,trPeriodOfCurrentYears, trCurrentMethod, trIsMethodUseIn12Months, trEverUsed;
@@ -68,16 +71,44 @@ public class ClientRegistrationForm extends AppCompatActivity implements View.On
         setContentView(R.layout.crf_form_activity);
 
         initializeVariables();
-
+        populateFirstSection();
         populateForm();
     }
 
+    private void populateFirstSection() {
+        SharedPreferences prefs = this.getSharedPreferences(Codes.PREF_NAME, MODE_PRIVATE);
+        String sitarabajiCode = prefs.getString("sitaraBajiCode", "");;
+        String sitarabajiName = prefs.getString("sitaraBajiName", "");;
+        String providerCode = prefs.getString("providerCode", "");;
+        String providerName = prefs.getString("providerName", "");;
+        String supervisorName = prefs.getString("AMName", "");;
+        String region = prefs.getString("region", "");;
+        String district = prefs.getString("district", "");;
+
+        tvSitarabajiCode.setText(sitarabajiCode);
+        tvSitarabajiName.setText(sitarabajiName);
+        tvProviderCode.setText(providerCode);
+        tvProviderName.setText(providerName);
+        tvSupervisorName.setText(supervisorName);
+        tvRegion.setText(region);
+        tvDistrict.setText(district);
+    }
+
     private void initializeVariables(){
+        //Fixed portion
+        tvSitarabajiCode = findViewById(R.id.tvSitarabajiCode);
+        tvSitarabajiName = findViewById(R.id.tvSitarabajiName);
+        tvProviderCode = findViewById(R.id.tvProviderCode);
+        tvProviderName = findViewById(R.id.tvProviderName);
+        tvSupervisorName = findViewById(R.id.tvSupervisorName);
+        tvRegion = findViewById(R.id.tvRegion);
+        tvDistrict = findViewById(R.id.tvDistrict);
+
         etVisitDate = findViewById(R.id.etVisitDate);
         etVisitDate.setOnClickListener(this);
 
-        tvProviderCode = findViewById(R.id.tvProviderCode);
-        tvProviderName = findViewById(R.id.tvProviderName);
+        etFollowupDate = findViewById(R.id.etFollowupDate);
+        etFollowupDate.setOnClickListener(this);
 
         etClientName = findViewById(R.id.etClientName);
         etHusbandName = findViewById(R.id.etHusbandName);
@@ -124,6 +155,7 @@ public class ClientRegistrationForm extends AppCompatActivity implements View.On
     private void populateForm(){
 
         updateVisitDate();
+        updateFollowupDate();
         date = new DatePickerDialog.OnDateSetListener() {
 
             @Override
@@ -135,12 +167,27 @@ public class ClientRegistrationForm extends AppCompatActivity implements View.On
             }
 
         };
+        followupDate = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH, month);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateFollowupDate();
+            }
+
+        };
 
         SharedPreferences shared = getSharedPreferences(Codes.PREF_NAME, MODE_PRIVATE);
-        String providerName = shared.getString("name", "");
-        String providerCode = shared.getString("code", "");
+        String providerName = shared.getString("providerName", "");
+        String providerCode = shared.getString("providerCode", "");
+        String district = shared.getString("district", "");
+        String region = shared.getString("region", "");
         tvProviderName.setText(providerName);
         tvProviderCode.setText(providerCode);
+        tvRegion.setText(region);
+        tvDistrict.setText(district);
 
         List<DropdownCRBData> dropdownCRBDataClientAge = new ArrayList<>();
         List<DropdownCRBData> dropdownCRBDataCurrentMethod = new ArrayList<>();
@@ -190,6 +237,12 @@ public class ClientRegistrationForm extends AppCompatActivity implements View.On
         SimpleDateFormat sdf = new SimpleDateFormat(Codes.myFormat);
 
         etVisitDate.setText(sdf.format(myCalendar.getTime()));
+    }
+
+    private void updateFollowupDate() {
+        SimpleDateFormat sdf = new SimpleDateFormat(Codes.myFormat);
+
+        etFollowupDate.setText(sdf.format(myCalendar.getTime()));
     }
     private void submitForm(){
         Toast.makeText(this,"Saved",Toast.LENGTH_SHORT).show();
@@ -397,6 +450,11 @@ public class ClientRegistrationForm extends AppCompatActivity implements View.On
 
         }
         else if(v.getId()==R.id.etVisitDate){
+            new DatePickerDialog(this, date, myCalendar
+                    .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                    myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+        }
+        else if(v.getId()==R.id.etFollowupDate){
             new DatePickerDialog(this, date, myCalendar
                     .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                     myCalendar.get(Calendar.DAY_OF_MONTH)).show();

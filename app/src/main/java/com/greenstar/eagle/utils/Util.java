@@ -253,16 +253,13 @@ public class Util {
 
     public void performSync(final Activity context){
         SharedPreferences editor = context.getSharedPreferences(Codes.PREF_NAME, Context.MODE_PRIVATE);
-        String code = editor.getString("code","");
         String token = editor.getString("token","");
         RequestParams rp = new RequestParams();
-        rp.add("code", code);
+        rp.add("syncType", Codes.PullAllEagleData);
         rp.add("token",token);
-
-
         rp.add("data",getCTSSyncData(context));
 
-        HttpUtils.get("hssync", rp, new JsonHttpResponseHandler() {
+        HttpUtils.get("syncEagle", rp, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 String message = "";
@@ -270,11 +267,6 @@ public class Util {
                 String codeReceived = "";
                 String staffName = "";
                 JSONObject params = new JSONObject();
-                List<Integer> successfulIDs = new ArrayList<>();
-                List<Integer> rejectedIDs = new ArrayList<>();
-
-                List<Long> successfulQATIDs = new ArrayList<>();
-                List<Long> rejectedQATIDs = new ArrayList<>();
                 try {
                     message = response.get("message").toString();
                     codeReceived = response.get("status").toString();
@@ -282,19 +274,13 @@ public class Util {
                     params.put("message", message);
                     params.put("data", data);
                     params.put("status",codeReceived);
-                    for(int i=0;i<response.getJSONArray("rejectedIDs").length();i++){
-                        rejectedIDs.add(response.getJSONArray("rejectedIDs").getInt(i));
-                    }
-                    for(int i=0;i<response.getJSONArray("successfulIDs").length();i++){
-                        successfulIDs.add(response.getJSONArray("successfulIDs").getInt(i));
-                    }
+
                 }catch(Exception e){
                     Toast.makeText(context,"Something went wrong while sync",Toast.LENGTH_SHORT).show();
                     Crashlytics.log("Sync Issue at "+ new Date());
                     Crashlytics.logException(e);
                 }
                 if(Codes.ALL_OK.equals(codeReceived)){
-                    updateData(successfulIDs, rejectedIDs, context);
                     saveData(params, context);
                 }
                 responseListener.responseAlert(response.toString());

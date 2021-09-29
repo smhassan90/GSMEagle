@@ -11,6 +11,7 @@ public class HttpUtils {
     private static AsyncHttpClient client = new AsyncHttpClient();
 
     public static void get(String url, RequestParams params, AsyncHttpResponseHandler responseHandler) {
+        params.put("version","1.0");
         client.setTimeout(25000);
         client.get(getAbsoluteUrl(url), params, responseHandler);
     }
