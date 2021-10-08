@@ -222,8 +222,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             style="@style/text_style"
-                            android:textColor="@color/black"
-                            android:backgroundTint="@color/darkGreen"
+                            android:textColor="@color/black" android:backgroundTint="@color/darkGreen"
                             android:gravity="center_vertical"
                             android:layout_weight="7"
                             android:text="District"/>
@@ -277,42 +276,20 @@
                     </TableRow>
                     <TableRow
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_marginTop="@dimen/form_field_padding"
                         android:background="@drawable/customborder"
                         android:padding="@dimen/padding_10"
                         android:weightSum="10">
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="5"
-                            >
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                style="@style/text_style"
-                                android:textColor="@color/black"
-                                android:gravity="center_vertical"
-                                android:id="@+id/tvClientName"
-                                android:text="Client Name"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                style="@style/text_style"
-                                android:textColor="@color/black"
-                                android:gravity="center_vertical"
-                                android:layout_weight="5"
-                                android:text="مریض کا نام"/>
-                        </LinearLayout>
-                        <EditText
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            style="@style/text_style"
-                            android:textStyle="bold"
-                            android:textColor="@color/darkGreen"
-                            android:layout_weight="5"
-                            android:id="@+id/etClientName"/>
+
+                        <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                            android:id="@+id/spSelectParent"
+                            android:prompt="@string/SelectParent"
+                            android:layout_width="match_parent"
+                            style="@style/spinner_style"
+                            android:layout_weight="10"
+                            android:layout_height="@dimen/spinner_height"
+                            android:autofillHints="@string/SelectParent"/>
                     </TableRow>
                     <TableRow
                         android:layout_width="match_parent"
@@ -321,29 +298,15 @@
                         android:background="@drawable/customborder"
                         android:padding="@dimen/padding_10"
                         android:weightSum="10">
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="0dp"
+                        <TextView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            style="@style/text_style"
                             android:layout_weight="5"
-                            >
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                style="@style/text_style"
-                                android:textColor="@color/black"
-                                android:gravity="center_vertical"
-
-                                android:text="Husband Name"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                style="@style/text_style"
-                                android:textColor="@color/black"
-                                android:gravity="center_vertical"
-                                android:layout_weight="5"
-                                android:text="شوہر کا نام"/>
-                        </LinearLayout>
+                            android:textColor="@color/black"
+                            android:gravity="center_vertical"
+                            android:id="@+id/tvClientName"
+                            android:text="Child Name"/>
                         <EditText
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -351,7 +314,7 @@
                             android:textStyle="bold"
                             android:textColor="@color/darkGreen"
                             android:layout_weight="5"
-                            android:id="@+id/etHusbandName"/>
+                            android:id="@+id/etChildName"/>
                     </TableRow>
                     <TableRow
                         android:layout_width="match_parent"
@@ -362,152 +325,13 @@
                         android:weightSum="10">
 
                         <Spinner
-                            android:id="@+id/spClientAge"
+                            android:id="@+id/spChildAge"
                             android:prompt="@string/clientAge"
                             android:layout_width="match_parent"
                             style="@style/spinner_style"
                             android:layout_weight="10"
                             android:layout_height="@dimen/spinner_height"
                             android:autofillHints="@string/clientAge"/>
-                    </TableRow>
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/form_field_padding"
-                        android:background="@drawable/customborder"
-                        android:padding="@dimen/padding_10"
-                        android:weightSum="10">
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="5"
-                            >
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                style="@style/text_style"
-                                android:textColor="@color/black"
-                                android:gravity="center_vertical"
-
-                                android:text="Address"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                style="@style/text_style"
-                                android:textColor="@color/black"
-                                android:gravity="center_vertical"
-                                android:layout_weight="5"
-                                android:text="پتہ"/>
-                        </LinearLayout>
-                        <EditText
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            style="@style/text_style"
-                            android:textStyle="bold"
-                            android:textColor="@color/darkGreen"
-                            android:layout_weight="5"
-                            android:id="@+id/etAddress"/>
-                    </TableRow>
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/form_field_padding"
-                        android:background="@drawable/customborder"
-                        android:padding="@dimen/padding_10"
-                        android:weightSum="10">
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="5"
-                            >
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                style="@style/text_style"
-                                android:textColor="@color/black"
-                                android:gravity="center_vertical"
-                                android:id="@+id/tvContactNumber"
-                                android:text="Contact Number"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                style="@style/text_style"
-                                android:textColor="@color/black"
-                                android:gravity="center_vertical"
-                                android:layout_weight="5"
-                                android:text="رابطہ نمبر"/>
-                        </LinearLayout>
-                        <EditText
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            style="@style/text_style"
-                            android:textStyle="bold"
-                            android:textColor="@color/darkGreen"
-                            android:layout_weight="5"
-                            android:inputType="number"
-                            android:id="@+id/etContact"/>
-                    </TableRow>
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/form_field_padding"
-                        android:background="@drawable/customborder"
-                        android:id="@+id/trUseContactNumber"
-                        android:weightSum="10">
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:gravity="center_vertical"
-                            android:layout_weight="7"
-                            >
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                style="@style/text_style"
-                                android:textColor="@color/black"
-                                android:gravity="center_vertical"
-
-                                android:text="Can we contact you on this number?"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                style="@style/text_style"
-                                android:textColor="@color/black"
-                                android:gravity="center_vertical"
-                                android:text="کیا ہم آپ سے اس نمبر پر رابطہ کرسکتے ہیں؟"/>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="3"
-                            android:orientation="vertical" >
-
-                            <RadioGroup
-                                android:id="@+id/rgCanWeContact"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" >
-
-                                <RadioButton
-                                    android:id="@+id/rbCanWeContactYes"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Yes / ہاں"
-                                    style="@style/text_style"/>
-
-                                <RadioButton
-                                    android:id="@+id/rbCanWeContactNo"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    style="@style/text_style"
-                                    android:text="No / نہیں" />
-
-                            </RadioGroup>
-
-                        </LinearLayout>
                     </TableRow>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -519,311 +343,14 @@
                             style="@style/medium_text_style"
                             android:textStyle="bold"
                             android:textColor="@color/black"
-                            android:text="Family Planning Section فیملی پلاننگ سیکشن"/>
+                            android:text="Diarrhea Section"/>
                     </LinearLayout>
                     <TableRow
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/form_field_padding"
-                        android:gravity="center_vertical"
                         android:background="@drawable/customborder"
-                        android:id="@+id/trCurrentUser"
-                        android:weightSum="10">
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="7"
-                            >
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                style="@style/text_style"
-                                android:textColor="@color/black"
-                                android:gravity="center_vertical"
-
-                                android:text="Is this client currently using any contraceptive method?"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                style="@style/text_style"
-                                android:textColor="@color/black"
-                                android:gravity="center_vertical"
-                                android:text="کیا یہ مریض فی الحال کوئی مانع حمل طریقہ استعمال کررہا ہے؟"/>
-                        </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="3"
-                            android:orientation="vertical" >
-
-                            <RadioGroup
-                                android:id="@+id/rgIsCurrentUser"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" >
-
-                                <RadioButton
-                                    android:id="@+id/rbIsCurrentUserYes"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Yes/ ہاں"
-                                    style="@style/text_style"/>
-
-                                <RadioButton
-                                    android:id="@+id/rbIsCurrentUserNo"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    style="@style/text_style"
-                                    android:text="No / نہیں" />
-
-                            </RadioGroup>
-                        </LinearLayout>
-                    </TableRow>
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/form_field_padding"
-                        android:background="@drawable/customborder"
-                        android:padding="@dimen/padding_10"
-                        android:visibility="gone"
-                        android:id="@+id/trPeriodOfCurrentYears"
-                        android:weightSum="10">
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="7"
-                            >
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                style="@style/text_style"
-                                android:textColor="@color/black"
-                                android:gravity="center_vertical"
-
-                                android:text="Period of current use (Years)"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                style="@style/text_style"
-                                android:textColor="@color/black"
-                                android:gravity="center_vertical"
-                                android:text="موجودہ استعمال کی مدت (سال)"/>
-                        </LinearLayout>
-                        <EditText
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            style="@style/text_style"
-                            android:textStyle="bold"
-                            android:textColor="@color/darkGreen"
-                            android:layout_weight="3"
-                            android:inputType="numberDecimal"
-                            android:id="@+id/etCurrentMethodYears"/>
-                    </TableRow>
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="@dimen/form_field_padding"
-                        android:background="@drawable/customborder"
-                        android:padding="@dimen/padding_10"
-                        android:id="@+id/trCurrentMethod"
-                        android:visibility="gone"
-                        android:weightSum="10">
-
-                        <Spinner
-                            android:id="@+id/spCurrentMethod"
-                            android:prompt="@string/currentMethod"
-                            android:layout_width="match_parent"
-                            style="@style/spinner_style"
-                            android:layout_weight="10"
-                            android:layout_height="@dimen/spinner_height"
-                            android:autofillHints="@string/currentMethod"/>
-                    </TableRow>
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/form_field_padding"
-                        android:background="@drawable/customborder"
-                        android:id="@+id/trEverUsed"
-                        android:weightSum="10">
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="7"
-                            >
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                style="@style/text_style"
-                                android:textColor="@color/black"
-                                android:gravity="center_vertical"
-                                android:text="Have you ever used a family planning method in your life?"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                style="@style/text_style"
-                                android:textColor="@color/black"
-                                android:gravity="center_vertical"
-                                android:text="کیا آپ نے اپنی زندگی میں کبھی خاندانی منصوبہ بندی کا طریقہ استعمال کیا ہے؟"/>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="3"
-                            android:orientation="vertical" >
-
-                            <RadioGroup
-                                android:id="@+id/rgIsEverUser"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" >
-
-                                <RadioButton
-                                    android:id="@+id/rbIsEverUserYes"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Yes / ہاں"
-                                    style="@style/text_style"/>
-
-                                <RadioButton
-                                    android:id="@+id/rbIsEverUserNo"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    style="@style/text_style"
-                                    android:text="No / نہیں" />
-                            </RadioGroup>
-                        </LinearLayout>
-                    </TableRow>
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="@dimen/form_field_padding"
-                        android:background="@drawable/customborder"
-                        android:padding="@dimen/padding_10"
-                        android:id="@+id/trEverMethod"
-                        android:weightSum="10">
-
-                        <Spinner
-                            android:id="@+id/spEverMethod"
-                            android:prompt="@string/everMethod"
-                            android:layout_width="match_parent"
-                            style="@style/spinner_style"
-                            android:layout_weight="10"
-                            android:layout_height="@dimen/spinner_height"
-                            android:autofillHints="@string/everMethod"/>
-                    </TableRow>
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="@dimen/form_field_padding"
-                        android:background="@drawable/customborder"
-                        android:padding="@dimen/padding_10"
-                        android:id="@+id/trEverUseReason"
-                        android:weightSum="10">
-
-                        <Spinner
-                            android:id="@+id/spReasonForDiscontinuation"
-                            android:prompt="@string/everMethod"
-                            android:layout_width="match_parent"
-                            style="@style/spinner_style"
-                            android:layout_weight="10"
-                            android:layout_height="@dimen/spinner_height"
-                            android:autofillHints="@string/everUseReason"/>
-                    </TableRow>
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="@dimen/form_field_padding"
-                        android:background="@drawable/customborder"
-                        android:padding="@dimen/padding_10"
-                        android:id="@+id/trNeverUseReason"
-                        android:visibility="gone"
-                        android:weightSum="10">
-
-                        <Spinner
-                            android:id="@+id/spNeverUseReason"
-                            android:prompt="@string/everMethod"
-                            android:layout_width="match_parent"
-                            style="@style/spinner_style"
-                            android:layout_weight="10"
-                            android:layout_height="@dimen/spinner_height"
-                            android:autofillHints="@string/neverUseReason"/>
-                    </TableRow>
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/form_field_padding"
-                        android:background="@drawable/customborder"
-                        android:padding="@dimen/padding_10"
-                        android:visibility="gone"
-                        android:weightSum="10">
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="5"
-                            >
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                style="@style/text_style"
-                                android:textColor="@color/black"
-                                android:gravity="center_vertical"
-                                android:id="@+id/tvDiscontinuationReasonOther"
-                                android:text="Other"/>
-                        </LinearLayout>
-                        <EditText
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            style="@style/text_style"
-                            android:textStyle="bold"
-                            android:textColor="@color/darkGreen"
-                            android:layout_weight="5"
-                            android:inputType="number"
-                            android:id="@+id/etDiscontinuationReasonOther"/>
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/form_field_padding"
-                        android:background="@drawable/customborder"
-                        android:padding="@dimen/padding_10"
-                        android:visibility="gone"
-                        android:weightSum="10">
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="5"
-                            >
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                style="@style/text_style"
-                                android:textColor="@color/black"
-                                android:gravity="center_vertical"
-                                android:id="@+id/tvNeverUsedReasonOther"
-                                android:text="Other"/>
-                        </LinearLayout>
-                        <EditText
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            style="@style/text_style"
-                            android:textStyle="bold"
-                            android:textColor="@color/darkGreen"
-                            android:layout_weight="5"
-                            android:inputType="number"
-                            android:id="@+id/etNeverUsedReasonOther"/>
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/form_field_padding"
-                        android:background="@drawable/customborder"
-                        android:id="@+id/trTokenGiven"
+                        android:id="@+id/trSufferingDiarrhea"
                         android:weightSum="10">
                         <LinearLayout
                             android:orientation="vertical"
@@ -838,7 +365,7 @@
                                 style="@style/text_style"
                                 android:textColor="@color/black"
                                 android:gravity="center_vertical"
-                                android:text="Token Given?"/>
+                                android:text="Are you currently suffering from diarrhea?"/>
                         </LinearLayout>
 
                         <LinearLayout
@@ -848,19 +375,19 @@
                             android:orientation="vertical" >
 
                             <RadioGroup
-                                android:id="@+id/rgTokenGiven"
+                                android:id="@+id/rgSufferingDiarrhea"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" >
 
                                 <RadioButton
-                                    android:id="@+id/rbTokenGivenYes"
+                                    android:id="@+id/rbSufferingDiarrheaYes"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Yes / ہاں"
                                     style="@style/text_style"/>
 
                                 <RadioButton
-                                    android:id="@+id/rbTokenGivenNo"
+                                    android:id="@+id/rbSufferingDiarrheaNo"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     style="@style/text_style"
@@ -875,12 +402,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/form_field_padding"
                         android:background="@drawable/customborder"
+                        android:id="@+id/trMedicineProvided"
                         android:weightSum="10">
                         <LinearLayout
                             android:orientation="vertical"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="5"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:layout_weight="7"
                             >
                             <TextView
                                 android:layout_width="wrap_content"
@@ -888,28 +417,90 @@
                                 style="@style/text_style"
                                 android:textColor="@color/black"
                                 android:gravity="center_vertical"
+                                android:text="ORS + ZINC provided?"/>
+                        </LinearLayout>
 
-                                android:text="Followup Date"/>
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:orientation="vertical" >
+
+                            <RadioGroup
+                                android:id="@+id/rgMedicineProvided"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" >
+
+                                <RadioButton
+                                    android:id="@+id/rbMedicineProvidedYes"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Yes / ہاں"
+                                    style="@style/text_style"/>
+
+                                <RadioButton
+                                    android:id="@+id/rbMedicineProvidedNo"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    style="@style/text_style"
+                                    android:text="No / نہیں" />
+
+                            </RadioGroup>
+
+                        </LinearLayout>
+                    </TableRow>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/form_field_padding"
+                        android:background="@drawable/customborder"
+                        android:id="@+id/trCounselingDone"
+                        android:weightSum="10">
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:layout_weight="7"
+                            >
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 style="@style/text_style"
                                 android:textColor="@color/black"
                                 android:gravity="center_vertical"
-                                android:layout_weight="5"
-                                android:text="دورے کی تاریخ"/>
+                                android:text="Have you done counseling?"/>
                         </LinearLayout>
-                        <EditText
+
+                        <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            style="@style/text_style"
-                            android:textStyle="bold"
-                            android:textColor="@color/darkGreen"
-                            android:layout_weight="5"
-                            android:focusable="false"
-                            android:id="@+id/etFollowupDate"/>
-                    </TableRow>
+                            android:layout_weight="3"
+                            android:orientation="vertical" >
 
+                            <RadioGroup
+                                android:id="@+id/rgCounselingDone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" >
+
+                                <RadioButton
+                                    android:id="@+id/rbCounselingDoneYes"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Yes / ہاں"
+                                    style="@style/text_style"/>
+
+                                <RadioButton
+                                    android:id="@+id/rbCounselingDoneNo"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    style="@style/text_style"
+                                    android:text="No / نہیں" />
+
+                            </RadioGroup>
+
+                        </LinearLayout>
+                    </TableRow>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/table_header_size"
@@ -948,8 +539,6 @@
                         android:layout_marginTop="5dp"
                         android:text="Submit جمع کرائیں"/>
                 </LinearLayout>
-
-
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

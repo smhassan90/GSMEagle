@@ -29,7 +29,7 @@ public interface CRFormDAO {
     List<CRForm> getAllPendingForms();
 
     @Query("SELECT * FROM CRForm WHERE id =:formId")
-    List<CRForm> getFormByID(long formId);
+    CRForm getFormByID(long formId);
 
     @Query("DELETE FROM CRForm")
     public void nukeTable();

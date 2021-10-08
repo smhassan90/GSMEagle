@@ -10,22 +10,6 @@ public class CRForm {
     @PrimaryKey
     private long id;
 
-    private String sitaraBajiCode;
-
-    private String sitaraBajiName;
-
-    private String providerName ;
-
-    private String providerCode;
-
-    private String region;
-
-    private String district;
-
-    private String supervisorCode ;
-
-    private String supervisorName ;
-
     private String visitDate;
 
     private String clientName;
@@ -56,7 +40,6 @@ public class CRForm {
      */
 
     private int isCurrentUser;
-    private String fpClientType;
     private String currentFPMethod;
     private int periodOfUsingCurrentMethod;
     private int isEverUser;
@@ -80,70 +63,6 @@ public class CRForm {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String getSitaraBajiCode() {
-        return sitaraBajiCode;
-    }
-
-    public void setSitaraBajiCode(String sitaraBajiCode) {
-        this.sitaraBajiCode = sitaraBajiCode;
-    }
-
-    public String getSitaraBajiName() {
-        return sitaraBajiName;
-    }
-
-    public void setSitaraBajiName(String sitaraBajiName) {
-        this.sitaraBajiName = sitaraBajiName;
-    }
-
-    public String getProviderName() {
-        return providerName;
-    }
-
-    public void setProviderName(String providerName) {
-        this.providerName = providerName;
-    }
-
-    public String getProviderCode() {
-        return providerCode;
-    }
-
-    public void setProviderCode(String providerCode) {
-        this.providerCode = providerCode;
-    }
-
-    public String getRegion() {
-        return region;
-    }
-
-    public void setRegion(String region) {
-        this.region = region;
-    }
-
-    public String getDistrict() {
-        return district;
-    }
-
-    public void setDistrict(String district) {
-        this.district = district;
-    }
-
-    public String getSupervisorCode() {
-        return supervisorCode;
-    }
-
-    public void setSupervisorCode(String supervisorCode) {
-        this.supervisorCode = supervisorCode;
-    }
-
-    public String getSupervisorName() {
-        return supervisorName;
-    }
-
-    public void setSupervisorName(String supervisorName) {
-        this.supervisorName = supervisorName;
     }
 
     public String getVisitDate() {
@@ -234,14 +153,6 @@ public class CRForm {
         this.isCurrentUser = isCurrentUser;
     }
 
-    public String getFpClientType() {
-        return fpClientType;
-    }
-
-    public void setFpClientType(String fpClientType) {
-        this.fpClientType = fpClientType;
-    }
-
     public String getCurrentFPMethod() {
         return currentFPMethod;
     }
@@ -312,5 +223,10 @@ public class CRForm {
 
     public void setApprovalStatus(int approvalStatus) {
         this.approvalStatus = approvalStatus;
+    }
+
+    @Override
+    public String toString() {
+        return this.clientName+" - "+this.husbandName + " - "+this.contactNumber;
     }
 }

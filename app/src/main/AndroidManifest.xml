@@ -64,6 +64,28 @@
 
             </intent-filter>
         </activity>
+
+        <activity android:name="com.greenstar.eagle.controller.IPCForms.ChildrenRegistrationForm"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+            </intent-filter>
+        </activity>
+        <activity android:name="com.greenstar.eagle.controller.IPCForms.NeighbourhoodForm"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+            </intent-filter>
+        </activity>
+        <activity android:name="com.greenstar.eagle.controller.IPCForms.FollowupForm"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+            </intent-filter>
+        </activity>
         <service
             android:name="com.greenstar.eagle.service.MyFirebaseInstanceIDService">
             <intent-filter>

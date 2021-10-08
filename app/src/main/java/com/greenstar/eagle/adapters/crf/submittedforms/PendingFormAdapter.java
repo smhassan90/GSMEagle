@@ -75,8 +75,8 @@ public class PendingFormAdapter extends ArrayAdapter<CRForm> implements View.OnC
             if(i!=null){
                 try {
                     tvFormId.setText("Form ID : " + i.getId());
-                    tvProviderName.setText("Provider Name : " + i.getProviderName());
-                    tvProviderCode.setText("Provider Code : " + i.getProviderCode());
+//                    tvProviderName.setText("Provider Name : " + i.getProviderName());
+//                    tvProviderCode.setText("Provider Code : " + i.getProviderCode());
                     tvVisitDate.setText("Visit Date : " + i.getVisitDate());
 
                     btnDelete.setTag(i.getId());

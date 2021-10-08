@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -93,28 +93,31 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:id="@+id/llBasket">
+
                 <LinearLayout
                     android:layout_width="200dp"
-                    android:background="@drawable/custom_button"
-                    android:padding="@dimen/padding_10"
                     android:layout_height="200dp"
-                    android:orientation="vertical"
                     android:layout_gravity="center"
+                    android:background="@drawable/custom_button"
                     android:gravity="center"
-                    >
+                    android:orientation="vertical"
+                    android:padding="@dimen/padding_10">
+
                     <ImageView
+                        android:id="@+id/imgOrder"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:id="@+id/imgOrder"
-                        android:src="@drawable/order_basket"
-                        android:layout_gravity="center"/>
+                        android:layout_gravity="center"
+                        android:src="@drawable/order_basket" />
+
                     <TextView
+                        style="@style/medium_text_style"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/submittedForms"
+
                         android:layout_gravity="center"
                         android:layout_marginTop="@dimen/padding_10"
-                        style="@style/medium_text_style"/>
+                        android:text="@string/submittedForms" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -143,7 +146,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/approvalStatus"
+                        android:textAlignment="center"
+                        android:text="@string/ChildRegistrationForm"
                         android:layout_gravity="center"
                         android:layout_marginTop="@dimen/padding_10"
                         style="@style/medium_text_style"/>
@@ -223,6 +227,76 @@
 
             </LinearLayout>
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/orange"
+            android:weightSum="2">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:id="@+id/llNeighbourForm">
+                <LinearLayout
+                    android:layout_width="200dp"
+                    android:background="@drawable/custom_button"
+                    android:padding="@dimen/padding_10"
+                    android:layout_height="200dp"
+                    android:orientation="vertical"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    >
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/form"
+                        android:layout_gravity="center"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/NeighbourForm"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/padding_10"
+                        style="@style/medium_text_style"/>
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:id="@+id/llFollowupForm">
+                <LinearLayout
+                    android:layout_width="200dp"
+                    android:background="@drawable/custom_button"
+                    android:padding="@dimen/padding_10"
+                    android:layout_height="200dp"
+                    android:orientation="vertical"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    >
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/form"
+                        android:layout_gravity="center"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/FollowupForm"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:layout_marginTop="@dimen/padding_10"
+                        style="@style/medium_text_style"/>
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
 
     </LinearLayout>
-</android.support.constraint.ConstraintLayout>
+</ScrollView>

@@ -168,7 +168,9 @@ public class Util {
         AppDatabase db = AppDatabase.getAppDatabase(context);
         SyncObject syncObject = new SyncObject();
         if(syncType.equals(Codes.SINGLE_CR_FORM)){
-            List<CRForm> crForms = db.getCrFormDAO().getFormByID(formId);
+            CRForm crForm = db.getCrFormDAO().getFormByID(formId);
+            List<CRForm> crForms = new ArrayList<>();
+            crForms.add(crForm);
             List<Long> ids = new ArrayList<>();
             ids.add(formId);
             syncObject.setCrForms(crForms);

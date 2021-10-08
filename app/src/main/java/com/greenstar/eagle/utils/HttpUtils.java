@@ -8,10 +8,11 @@ import java.util.UUID;
 public class HttpUtils {
     //private static final String BASE_URL = "http://203.101.170.211:8081/mis/";
     private static final String BASE_URL = "http://172.16.16.192:8080/";
+    //private static final String BASE_URL = "http://192.168.4.44:8080/";
     private static AsyncHttpClient client = new AsyncHttpClient();
 
     public static void get(String url, RequestParams params, AsyncHttpResponseHandler responseHandler) {
-        params.put("version","1.0");
+        params.put("version","5.5");
         client.setTimeout(25000);
         client.get(getAbsoluteUrl(url), params, responseHandler);
     }

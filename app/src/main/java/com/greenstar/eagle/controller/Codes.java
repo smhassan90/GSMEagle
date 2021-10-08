@@ -19,4 +19,10 @@ public interface Codes {
     public static final String  SINGLE_CR_FORM = "1";
 
     public static final String CRFORMID = "CRForm";
+    public static final String CHILDRENREGISTRATIONFORMID = "CHILDRENREGISTRATIONFORMID";
+    public static final String TOKENFORM = "TOKENFORM";
+    public static final String NEIGHBOURHOODFORM = "NEIGHBOURHOODFORM";
+    public static final String FOLLOWUPFORM = "FOLLOWUPFORM";
+
+    final public static String MESSAGE = "No neighbourhood attendee added yet...";
 }

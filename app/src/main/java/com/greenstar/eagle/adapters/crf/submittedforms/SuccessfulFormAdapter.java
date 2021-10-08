@@ -65,8 +65,8 @@ public class SuccessfulFormAdapter extends ArrayAdapter<CRForm>{
             if(i!=null){
                 try{
                     tvFormId.setText("Form ID : "+ i.getId());
-                    tvProviderName.setText("Provider Name : " +i.getProviderName());
-                    tvProviderCode.setText("Provider Code : "+i.getProviderCode());
+//                    tvProviderName.setText("Provider Name : " +i.getProviderName());
+//                    tvProviderCode.setText("Provider Code : "+i.getProviderCode());
                     tvVisitDate.setText("Visit Date : "    + i.getVisitDate());
                 }catch (Exception e){
                     Crashlytics.logException(e);

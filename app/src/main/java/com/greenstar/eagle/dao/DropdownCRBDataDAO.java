@@ -16,21 +16,10 @@ public interface DropdownCRBDataDAO {
     @Query("SELECT * FROM DropdownCRBData")
     List<DropdownCRBData> getAll();
 
-    @Query("SELECT * FROM DropdownCRBData where category='Referred By'")
-    List<DropdownCRBData> getAllReferredBy();
-
-    @Query("SELECT * FROM DropdownCRBData where category='Client Age'")
-    List<DropdownCRBData> getAllClientAge();
-
-    @Query("SELECT * FROM DropdownCRBData where category='Current Method'")
-    List<DropdownCRBData> getAllCurrentMethod();
-
-    @Query("SELECT * FROM DropdownCRBData where category='Timing of FP Service'")
-    List<DropdownCRBData> getAllTimingFPService();
-
-    @Query("SELECT * FROM DropdownCRBData where category='Service Type'")
-    List<DropdownCRBData> getAllServiceType();
+    @Query("SELECT * FROM DropdownCRBData where category=:type")
+    List<DropdownCRBData> getDropdownData(String type);
 
     @Query("DELETE FROM DropdownCRBData")
     public void nukeTable();
+
 }

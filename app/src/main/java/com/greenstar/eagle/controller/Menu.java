@@ -13,9 +13,13 @@ import android.widget.Toast;
 
 import com.crashlytics.android.Crashlytics;
 import com.greenstar.eagle.R;
+import com.greenstar.eagle.controller.IPCForms.ChildrenRegistrationForm;
 import com.greenstar.eagle.controller.IPCForms.ClientRegistrationForm;
+import com.greenstar.eagle.controller.IPCForms.FollowupForm;
+import com.greenstar.eagle.controller.IPCForms.NeighbourhoodForm;
 import com.greenstar.eagle.controller.IPCForms.SubmittedForms;
 import com.greenstar.eagle.db.AppDatabase;
+import com.greenstar.eagle.model.ChildRegistrationForm;
 import com.greenstar.eagle.utils.Util;
 import com.greenstar.eagle.utils.WebserviceResponse;
 
@@ -32,6 +36,8 @@ public class Menu extends AppCompatActivity implements View.OnClickListener, Web
     LinearLayout llProfile;
     LinearLayout llDashboard;
     LinearLayout llPartialSynchronization;
+    LinearLayout llFollowupForm;
+    LinearLayout llNeighbourForm;
 
     ProgressDialog progressBar = null;
     AppDatabase db =null;
@@ -62,6 +68,13 @@ public class Menu extends AppCompatActivity implements View.OnClickListener, Web
 
         llPartialSynchronization = findViewById(R.id.llPartialSynchronization);
         llPartialSynchronization.setOnClickListener(this);
+
+        llFollowupForm = findViewById(R.id.llFollowupForm);
+        llFollowupForm.setOnClickListener(this);
+
+        llNeighbourForm = findViewById(R.id.llNeighbourForm);
+        llNeighbourForm.setOnClickListener(this);
+
     }
 
     @Override
@@ -94,8 +107,8 @@ public class Menu extends AppCompatActivity implements View.OnClickListener, Web
             Intent myIntent = new Intent(this, SubmittedForms.class);
             startActivity(myIntent);
         }else if(v.getId()==R.id.llApprovalStatus){
-            /*Intent myIntent = new Intent(this, ApprovalStatus.class);
-            startActivity(myIntent);*/
+            Intent myIntent = new Intent(this, ChildrenRegistrationForm.class);
+            startActivity(myIntent);
         }else if(v.getId()==R.id.llForm){
             if(db!=null){
                 Intent myIntent = new Intent(activity, ClientRegistrationForm.class);
@@ -103,6 +116,12 @@ public class Menu extends AppCompatActivity implements View.OnClickListener, Web
             }
         }else if(v.getId()==R.id.llPartialSynchronization){
             Intent myIntent = new Intent(activity, PartialSync.class);
+            startActivity(myIntent);
+        }else if(v.getId()==R.id.llNeighbourForm){
+            Intent myIntent = new Intent(activity, NeighbourhoodForm.class);
+            startActivity(myIntent);
+        }else if(v.getId()==R.id.llFollowupForm){
+            Intent myIntent = new Intent(activity, FollowupForm.class);
             startActivity(myIntent);
         }
     }

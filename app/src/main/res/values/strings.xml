@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">GSMFalcon</string>
+    <string name="app_name">GSMEagle</string>
     <string name="login">LOGIN</string>
     <string name="hintCode">Employee Code</string>
     <string name="basicInformation">Basic Information</string>
@@ -33,4 +33,14 @@
     <string name="discontinuationReason">Discontinuation Reason</string>
     <string name="RegistrationLocation">Registration Location</string>
     <string name="CRForm">Register Client</string>
+    <string name="everUseReason">Reason of ever use</string>
+    <string name="FPMethod">FP Method</string>
+    <string name="SelectParent">Select Parent</string>
+    <string name="ChildRegistrationForm">Client Registration Form</string>
+    <string name="NeighbourForm">NeighbourForm</string>
+    <string name="SelectClient">SelectClient</string>
+    <string name="ReasonForNotVisiting">ReasonForNotVisiting</string>
+    <string name="AdoptedMethod" >Adopted Method</string>
+    <string name="SideEffectsOfMethod">SideEffectsOfMethod</string>
+    <string name="FollowupForm">Followup Form</string>
 </resources>
