@@ -10,20 +10,25 @@ import com.greenstar.eagle.dao.CRFormDAO;
 import com.greenstar.eagle.dao.ChildRegistrationFormDAO;
 import com.greenstar.eagle.dao.DashboardDAO;
 import com.greenstar.eagle.dao.DropdownCRBDataDAO;
+import com.greenstar.eagle.dao.FollowupModelDAO;
 import com.greenstar.eagle.dao.NeighbourhoodAttendeesModelDAO;
 import com.greenstar.eagle.dao.NeighbourhoodFormDAO;
 import com.greenstar.eagle.dao.ProvidersDAO;
+import com.greenstar.eagle.dao.TokenModelDAO;
 import com.greenstar.eagle.model.CRForm;
 import com.greenstar.eagle.model.ChildRegistrationForm;
 import com.greenstar.eagle.model.DropdownCRBData;
 import com.greenstar.eagle.model.Dashboard;
+import com.greenstar.eagle.model.FollowupModel;
 import com.greenstar.eagle.model.NeighbourhoodAttendeesModel;
 import com.greenstar.eagle.model.NeighbourhoodFormModel;
 import com.greenstar.eagle.model.Providers;
+import com.greenstar.eagle.model.TokenModel;
 
 @Database(entities = {Providers.class, Dashboard.class,
-        DropdownCRBData.class, CRForm.class, ChildRegistrationForm.class, NeighbourhoodFormModel.class, NeighbourhoodAttendeesModel.class},
-        version = 3)
+        DropdownCRBData.class, CRForm.class, ChildRegistrationForm.class, NeighbourhoodFormModel.class, NeighbourhoodAttendeesModel.class,
+        FollowupModel.class, TokenModel.class},
+        version = 1)
 public abstract class AppDatabase extends RoomDatabase {
     private static final String DATABASE_NAME = "eagledb";
     private static AppDatabase INSTANCE;
@@ -35,6 +40,8 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract ChildRegistrationFormDAO getChildRegistrationFormDAO();
     public abstract NeighbourhoodFormDAO getNeighbourhoodFormDAO();
     public abstract NeighbourhoodAttendeesModelDAO getNeighbourhoodAttendeesModelDAO();
+    public abstract FollowupModelDAO getFollowupModelDAO();
+    public abstract TokenModelDAO getTokenModelDAO();
 
     public static AppDatabase getAppDatabase(Context context) {
 
