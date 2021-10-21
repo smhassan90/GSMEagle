@@ -14,7 +14,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TableRow;
@@ -28,7 +27,6 @@ import com.greenstar.eagle.controller.Codes;
 import com.greenstar.eagle.db.AppDatabase;
 import com.greenstar.eagle.model.CRForm;
 import com.greenstar.eagle.model.DropdownCRBData;
-import com.greenstar.eagle.model.FollowupModel;
 import com.greenstar.eagle.model.TokenModel;
 import com.greenstar.eagle.utils.Util;
 
@@ -61,6 +59,19 @@ public class TokenForm extends AppCompatActivity implements View.OnClickListener
         initializeVariables();
         populateFirstSection();
         populateForm();
+
+        Bundle extras = getIntent().getExtras();
+        long clientId = 0;
+        if (extras != null) {
+             clientId = extras.getLong("clientId");
+        }
+
+        if(clientId==0){
+            populateClientSpinner();
+        }else{
+            populateClientSpinnerWithId(clientId);
+        }
+
     }
 
     private void populateFirstSection() {
@@ -129,7 +140,6 @@ public class TokenForm extends AppCompatActivity implements View.OnClickListener
         tvRegion.setText(region);
         tvDistrict.setText(district);
 
-        populateClientSpinner();
         spReferredMethod.setAdapter(getGeneralDropdownAdapter("Referred Method", "Current Method"));
     }
 
@@ -176,6 +186,28 @@ public class TokenForm extends AppCompatActivity implements View.OnClickListener
         ClientAdapter clientAdapter = new ClientAdapter(this, R.layout.provider_town_list, R.id.tvProviderNamess, dropdownCRF);
         spClient.setAdapter(clientAdapter);
     }
+    private void populateClientSpinnerWithId(long clientId){
+        List<CRForm> dropdownCRF = new ArrayList<>();
+
+        CRForm firstItem = new CRForm();
+
+        try{
+            if(db==null){
+                db = AppDatabase.getAppDatabase(this);
+            }
+
+            firstItem = db.getCrFormDAO().getFormByID(clientId);
+        }catch(Exception e){
+
+        }
+        if(firstItem!=null){
+            dropdownCRF.add(firstItem);
+            spClient.setEnabled(false);
+        }
+
+        ClientAdapter clientAdapter = new ClientAdapter(this, R.layout.provider_town_list, R.id.tvProviderNamess, dropdownCRF);
+        spClient.setAdapter(clientAdapter);
+    }
 
     private void updateVisitDate() {
         SimpleDateFormat sdf = new SimpleDateFormat(Codes.myFormat);
@@ -205,8 +237,30 @@ public class TokenForm extends AppCompatActivity implements View.OnClickListener
     private boolean isValid(){
         boolean isValid=true;
 
+        CRForm form = (CRForm) spClient.getSelectedItem();
+        if(form.getId()==0){
+            isValid = false;
+        }else{
+            isValid = true;
+        }
+        isValid = checkSpinner(spReferredMethod, isValid);
 
         return isValid;
+    }
+
+    private boolean checkSpinner(Spinner sp, boolean valid){
+        if(
+                sp.getSelectedItemId()==0){
+            View view = sp.getSelectedView();
+            view.setBackgroundColor(getResources().getColor(R.color.darkestOrange));
+            valid = false;
+        }else {
+            View view = sp.getSelectedView();
+            if(view!=null)
+                view.setBackgroundColor(getResources().getColor(R.color.whiteColor));
+        }
+
+        return valid;
     }
 
     @Override
@@ -236,7 +290,7 @@ public class TokenForm extends AppCompatActivity implements View.OnClickListener
                 Toast.makeText(this,"Form is incomplete", Toast.LENGTH_SHORT).show();
             }
         }
-        else if(v.getId()==R.id.etVisitDate){
+        else if(v.getId()==R.id.etReferralDate){
             new DatePickerDialog(this, date, myCalendar
                     .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                     myCalendar.get(Calendar.DAY_OF_MONTH)).show();

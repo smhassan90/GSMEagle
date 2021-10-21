@@ -16,6 +16,7 @@
 
     <style name="spinner_style" >
         <item name="android:background">@drawable/spinner_bg</item>
+        <item name="android:colorBackground">@color/white</item>
         <item name="android:fontFamily">@font/lato_regular</item>
         <item name="android:paddingLeft">10dp</item>
         <item name="android:paddingTop">10dp</item>

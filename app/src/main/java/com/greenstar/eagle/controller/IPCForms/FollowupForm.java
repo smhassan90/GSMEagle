@@ -50,19 +50,25 @@ public class FollowupForm extends AppCompatActivity implements View.OnClickListe
     Button btnSubmit;
 
     DatePickerDialog.OnDateSetListener date = null;
+    DatePickerDialog.OnDateSetListener followupDate = null;
+
     final Calendar myCalendar = Calendar.getInstance();
 
     RadioGroup rgDidYouVisit;
     RadioButton rbDidYouVisitYes;
+    RadioButton rbDidYouVisitNo;
 
     RadioGroup rgAnySideEffects;
     RadioButton rbAnySideEffectsYes;
+    RadioButton rbAnySideEffectsNo;
 
     RadioGroup rgDidVisitAfterSideEffects;
     RadioButton rbDidVisitAfterSideEffectsYes;
+    RadioButton rbDidVisitAfterSideEffectsNo;
 
     RadioGroup rgHaveYouAdopted;
     RadioButton rbHaveYouAdoptedYes;
+    RadioButton rbHaveYouAdoptedNo;
 
     TableRow trReasonForNotVisiting, trAdoptedMethod, trAnySideEffects, trDidVisitAfterSideEffects, trReasonsForNotAdoptingMethod, trHaveYouAdopted;
 
@@ -108,10 +114,11 @@ public class FollowupForm extends AppCompatActivity implements View.OnClickListe
         etVisitDate = findViewById(R.id.etVisitDate);
         etVisitDate.setOnClickListener(this);
 
+        etFollowupDate = findViewById(R.id.etFollowupDate);
+        etFollowupDate.setOnClickListener(this);
+
         btnSubmit = findViewById(R.id.btnSubmit);
         btnSubmit.setOnClickListener(this);
-
-        etFollowupDate = findViewById(R.id.etFollowupDate);
 
         spClient = findViewById(R.id.spClient);
         spReasonForNotVisiting = findViewById(R.id.spReasonForNotVisiting);
@@ -120,18 +127,22 @@ public class FollowupForm extends AppCompatActivity implements View.OnClickListe
 
         rgDidYouVisit = findViewById(R.id.rgDidYouVisit);
         rbDidYouVisitYes = findViewById(R.id.rbDidYouVisitYes);
+        rbDidYouVisitNo = findViewById(R.id.rbDidYouVisitNo);
         rgDidYouVisit.setOnCheckedChangeListener(this);
 
         rgAnySideEffects = findViewById(R.id.rgAnySideEffects);
         rbAnySideEffectsYes = findViewById(R.id.rbAnySideEffectsYes);
+        rbAnySideEffectsNo = findViewById(R.id.rbAnySideEffectsNo);
         rgAnySideEffects.setOnCheckedChangeListener(this);
 
         rgDidVisitAfterSideEffects = findViewById(R.id.rgDidVisitAfterSideEffects);
         rbDidVisitAfterSideEffectsYes = findViewById(R.id.rbDidVisitAfterSideEffectsYes);
+        rbDidVisitAfterSideEffectsNo = findViewById(R.id.rbDidVisitAfterSideEffectsNo);
         rgDidVisitAfterSideEffects.setOnCheckedChangeListener(this);
 
         rgHaveYouAdopted = findViewById(R.id.rgHaveYouAdopted);
         rbHaveYouAdoptedYes = findViewById(R.id.rbHaveYouAdoptedYes);
+        rbHaveYouAdoptedNo = findViewById(R.id.rbHaveYouAdoptedNo);
         rgHaveYouAdopted.setOnCheckedChangeListener(this);
 
         trReasonForNotVisiting = findViewById(R.id.trReasonForNotVisiting);
@@ -159,6 +170,19 @@ public class FollowupForm extends AppCompatActivity implements View.OnClickListe
                 myCalendar.set(Calendar.MONTH, month);
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                 updateVisitDate();
+            }
+
+        };
+
+        updateFollowupDate();
+        followupDate = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH, month);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateFollowupDate();
             }
 
         };
@@ -229,6 +253,12 @@ public class FollowupForm extends AppCompatActivity implements View.OnClickListe
         etVisitDate.setText(sdf.format(myCalendar.getTime()));
     }
 
+    private void updateFollowupDate() {
+        SimpleDateFormat sdf = new SimpleDateFormat(Codes.myFormat);
+
+        etFollowupDate.setText(sdf.format(myCalendar.getTime()));
+    }
+
     public void submitForm(){
         FollowupModel form = new FollowupModel();
 
@@ -280,8 +310,62 @@ public class FollowupForm extends AppCompatActivity implements View.OnClickListe
     private boolean isValid(){
         boolean isValid=true;
 
+        if(!rbDidYouVisitYes.isChecked() && !rbDidYouVisitNo.isChecked()){
+            rbDidYouVisitYes.setTextColor(getResources().getColor( R.color.darkestOrange));
+            rbDidYouVisitNo.setTextColor(getResources().getColor( R.color.darkestOrange));
+            isValid = false;
+        }else{
+            rbDidYouVisitYes.setTextColor(getResources().getColor( R.color.darkGreen));
+            rbDidYouVisitNo.setTextColor(getResources().getColor( R.color.darkGreen));
+        }
+
+        if(spClient.getSelectedItemId()==0){
+            isValid = false;
+            View view = spClient.getSelectedView();
+            (view).setBackgroundColor(getResources().getColor(R.color.darkestOrange));
+        }else{
+            View view = spClient.getSelectedView();
+            (view).setBackgroundColor(getResources().getColor(R.color.whiteColor));
+        }
+
+        isValid = checkRadioButton(trHaveYouAdopted, rbHaveYouAdoptedYes, rbHaveYouAdoptedNo, isValid);
+        isValid = checkRadioButton(trAnySideEffects, rbAnySideEffectsYes, rbAnySideEffectsNo, isValid);
+        isValid = checkRadioButton(trDidVisitAfterSideEffects, rbDidVisitAfterSideEffectsYes, rbDidVisitAfterSideEffectsNo, isValid);
+        isValid = checkSpinner(trReasonForNotVisiting, spReasonForNotVisiting, isValid);
+        isValid = checkSpinner(trAdoptedMethod, spAdoptedMethod, isValid);
+        isValid = checkSpinner(trReasonsForNotAdoptingMethod, spReasonsForNotAdoptingMethod, isValid);
 
         return isValid;
+    }
+
+    private boolean checkSpinner(TableRow tr, Spinner sp, boolean valid){
+        if(tr.getVisibility() == View.VISIBLE &&
+                sp.getSelectedItemId()==0){
+            View view = sp.getSelectedView();
+            view.setBackgroundColor(getResources().getColor(R.color.darkestOrange));
+            valid = false;
+        }else {
+            View view = sp.getSelectedView();
+            if(view!=null)
+                view.setBackgroundColor(getResources().getColor(R.color.whiteColor));
+        }
+
+        return valid;
+    }
+
+    private boolean checkRadioButton(TableRow tr, RadioButton rbYes, RadioButton rbNo, boolean valid){
+        if(tr.getVisibility()==View.VISIBLE &&
+                !rbYes.isChecked() &&
+                !rbNo.isChecked()){
+            rbYes.setTextColor(getResources().getColor( R.color.darkestOrange));
+            rbNo.setTextColor(getResources().getColor( R.color.darkestOrange));
+            valid = false;
+        }else{
+            rbYes.setTextColor(getResources().getColor( R.color.darkGreen));
+            rbNo.setTextColor(getResources().getColor( R.color.darkGreen));
+        }
+
+        return valid;
     }
 
     @Override
@@ -298,7 +382,9 @@ public class FollowupForm extends AppCompatActivity implements View.OnClickListe
                         // The dialog is automatically dismissed when a dialog button is clicked.
                         .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                submitForm();
+                                    submitForm();
+
+
 
                             }
                         })
@@ -317,7 +403,7 @@ public class FollowupForm extends AppCompatActivity implements View.OnClickListe
                     myCalendar.get(Calendar.DAY_OF_MONTH)).show();
         }
         else if(v.getId()==R.id.etFollowupDate){
-            new DatePickerDialog(this, date, myCalendar
+            new DatePickerDialog(this, followupDate, myCalendar
                     .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                     myCalendar.get(Calendar.DAY_OF_MONTH)).show();
         }

@@ -17,10 +17,8 @@ import com.greenstar.eagle.controller.IPCForms.ChildrenRegistrationForm;
 import com.greenstar.eagle.controller.IPCForms.ClientRegistrationForm;
 import com.greenstar.eagle.controller.IPCForms.FollowupForm;
 import com.greenstar.eagle.controller.IPCForms.NeighbourhoodForm;
-import com.greenstar.eagle.controller.IPCForms.SubmittedForms;
+import com.greenstar.eagle.controller.IPCForms.TokenForm;
 import com.greenstar.eagle.db.AppDatabase;
-import com.greenstar.eagle.model.ChildRegistrationForm;
-import com.greenstar.eagle.utils.Util;
 import com.greenstar.eagle.utils.WebserviceResponse;
 
 import org.json.JSONException;
@@ -31,13 +29,12 @@ import java.util.Date;
 public class Menu extends AppCompatActivity implements View.OnClickListener, WebserviceResponse, View.OnLongClickListener {
 
     LinearLayout llCRForm;
-    LinearLayout llSync;
-    LinearLayout llBasket;
     LinearLayout llProfile;
     LinearLayout llDashboard;
     LinearLayout llPartialSynchronization;
     LinearLayout llFollowupForm;
     LinearLayout llNeighbourForm;
+    LinearLayout llTokenForm;
 
     ProgressDialog progressBar = null;
     AppDatabase db =null;
@@ -52,13 +49,6 @@ public class Menu extends AppCompatActivity implements View.OnClickListener, Web
 
         llDashboard = findViewById(R.id.llDashboard);
         llDashboard.setOnClickListener(this);
-
-        llSync = findViewById(R.id.llSync);
-        llSync.setOnClickListener(this);
-        llSync.setOnLongClickListener(this);
-
-        llBasket = findViewById(R.id.llBasket);
-        llBasket.setOnClickListener(this);
 
         llProfile = findViewById(R.id.llApprovalStatus);
         llProfile.setOnClickListener(this);
@@ -75,6 +65,9 @@ public class Menu extends AppCompatActivity implements View.OnClickListener, Web
         llNeighbourForm = findViewById(R.id.llNeighbourForm);
         llNeighbourForm.setOnClickListener(this);
 
+        llTokenForm = findViewById(R.id.llTokenForm);
+        llTokenForm.setOnClickListener(this);
+
     }
 
     @Override
@@ -85,27 +78,6 @@ public class Menu extends AppCompatActivity implements View.OnClickListener, Web
             startActivity(myIntent);
 
 
-        }else if(v.getId()==R.id.llSync){
-            try{
-                if(Util.isNetworkAvailable(this)){
-                    Util util = new Util();
-                    util.setResponseListener(this);
-                    progressBar = new ProgressDialog(this);
-                    progressBar.setCancelable(false);//you can cancel it by pressing back button
-                    progressBar.setMessage("Perform Sync ...");
-                    progressBar.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-                    progressBar.show();//displays the progress bar
-                    util.performSync(this);
-                }else{
-                    Toast.makeText(this,"Please connect to the internet service and try again.", Toast.LENGTH_SHORT).show();
-                }
-            }catch (Exception e){
-                Crashlytics.logException(e);
-            }
-
-        }else if(v.getId()==R.id.llBasket){
-            Intent myIntent = new Intent(this, SubmittedForms.class);
-            startActivity(myIntent);
         }else if(v.getId()==R.id.llApprovalStatus){
             Intent myIntent = new Intent(this, ChildrenRegistrationForm.class);
             startActivity(myIntent);
@@ -122,6 +94,9 @@ public class Menu extends AppCompatActivity implements View.OnClickListener, Web
             startActivity(myIntent);
         }else if(v.getId()==R.id.llFollowupForm){
             Intent myIntent = new Intent(activity, FollowupForm.class);
+            startActivity(myIntent);
+        }else if(v.getId()==R.id.llTokenForm){
+            Intent myIntent = new Intent(activity, TokenForm.class);
             startActivity(myIntent);
         }
     }

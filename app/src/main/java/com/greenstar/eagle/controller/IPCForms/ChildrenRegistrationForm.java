@@ -41,7 +41,7 @@ public class ChildrenRegistrationForm extends AppCompatActivity implements View.
 
     TextView tvSitarabajiCode, tvSitarabajiName, tvProviderCode, tvProviderName, tvSupervisorName, tvRegion, tvDistrict;
 
-    EditText etVisitDate;
+    EditText etVisitDate, etChildName;
 
     Spinner spChildAge, spSelectParent;
 
@@ -101,6 +101,8 @@ public class ChildrenRegistrationForm extends AppCompatActivity implements View.
         etVisitDate = findViewById(R.id.etVisitDate);
         etVisitDate.setOnClickListener(this);
 
+        etChildName = findViewById(R.id.etChildName);
+
         spChildAge = findViewById(R.id.spChildAge);
         spSelectParent = findViewById(R.id.spSelectParent);
 
@@ -158,12 +160,10 @@ public class ChildrenRegistrationForm extends AppCompatActivity implements View.
 
         }
 
-        spChildAge.setAdapter(getGeneralDropdownAdapter("Child Age", "Client Age"));
+        spChildAge.setAdapter(getGeneralDropdownAdapter("Child Age", "ChildAge"));
 
         ClientAdapter clientAdapter = new ClientAdapter(this, R.layout.provider_town_list, R.id.tvProviderNamess, dropdownCRF);
         spSelectParent.setAdapter(clientAdapter);
-
-
     }
 
     private GeneralDropdownAdapter getGeneralDropdownAdapter(String title, String type) {
@@ -199,6 +199,7 @@ public class ChildrenRegistrationForm extends AppCompatActivity implements View.
         selectedAge = (DropdownCRBData) spChildAge.getSelectedItem();
 
         form.setChildAge(selectedAge.getDetailEnglish());
+        form.setChildName(etChildName.getText().toString());
 
         if(rbSufferingDiarrheaYes.isChecked()){
             form.setCurrentDiarrhea(1);

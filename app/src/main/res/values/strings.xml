@@ -36,11 +36,12 @@
     <string name="everUseReason">Reason of ever use</string>
     <string name="FPMethod">FP Method</string>
     <string name="SelectParent">Select Parent</string>
-    <string name="ChildRegistrationForm">Client Registration Form</string>
+    <string name="ChildRegistrationForm">Child Registration Form</string>
     <string name="NeighbourForm">NeighbourForm</string>
     <string name="SelectClient">SelectClient</string>
     <string name="ReasonForNotVisiting">ReasonForNotVisiting</string>
     <string name="AdoptedMethod" >Adopted Method</string>
     <string name="SideEffectsOfMethod">SideEffectsOfMethod</string>
     <string name="FollowupForm">Followup Form</string>
+    <string name="TokenForm">Token Forms</string>
 </resources>

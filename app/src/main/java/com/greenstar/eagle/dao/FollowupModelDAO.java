@@ -6,13 +6,15 @@ import android.arch.persistence.room.Query;
 
 import com.greenstar.eagle.model.FollowupModel;
 
+import java.util.List;
+
 @Dao
 public interface FollowupModelDAO {
     @Insert
     void insert (FollowupModel followupModel);
 
     @Query("SELECT * FROM FollowupModel")
-    FollowupModel getAll();
+    List<FollowupModel> getAll();
 
     @Query("DELETE FROM FollowupModel")
     public void nukeTable();

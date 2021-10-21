@@ -14,6 +14,13 @@ public interface Codes {
     public static final String PS_TYPE_ALL = "699";
     public static final String PS_TYPE_BASIC_INFO = "700";
     public static final String PS_TYPE_Providers = "705";
+    public static final String PS_TYPE_Client = "710";
+    public static final String PS_TYPE_Children = "715";
+    public static final String PS_TYPE_Followup = "720";
+    public static final String PS_TYPE_Neighbour = "725";
+    public static final String PS_TYPE_Token = "730";
+    public static final String PS_TYPE_Neighbour_attendees = "735";
+
 
     public static final String PullAllEagleData = "PULLEAGLE";
     public static final String  SINGLE_CR_FORM = "1";
@@ -22,6 +29,7 @@ public interface Codes {
     public static final String CHILDRENREGISTRATIONFORMID = "CHILDRENREGISTRATIONFORMID";
     public static final String TOKENFORM = "TOKENFORM";
     public static final String NEIGHBOURHOODFORM = "NEIGHBOURHOODFORM";
+    public static final String NEIGHBOURHOODATTENDEESFORM = "NEIGHBOURHOODATTENDEESFORM";
     public static final String FOLLOWUPFORM = "FOLLOWUPFORM";
 
     final public static String MESSAGE = "No neighbourhood attendee added yet...";

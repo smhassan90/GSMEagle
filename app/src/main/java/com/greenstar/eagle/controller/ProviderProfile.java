@@ -2,6 +2,7 @@ package com.greenstar.eagle.controller;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -28,9 +29,6 @@ public class ProviderProfile  extends AppCompatActivity implements View.OnClickL
     Activity activity = null;
     WebView wvPP = null;
 
-    SearchableSpinner spProviderCodeName;
-    Button btnShowProfile;
-
 
     ProviderAdapter providerAdapter = null;
     @Override
@@ -40,24 +38,6 @@ public class ProviderProfile  extends AppCompatActivity implements View.OnClickL
         db = AppDatabase.getAppDatabase(this);
 
         setContentView(R.layout.activity_provider_profile);
-
-        spProviderCodeName = findViewById(R.id.spProviderCodeName);
-        spProviderCodeName.setOnItemSelectedListener(this);
-
-        btnShowProfile = findViewById(R.id.btnShowProfile);
-        btnShowProfile.setOnClickListener(this);
-
-        // populate provider spinner
-
-        //Providers spinner populate
-        List<Providers> providers = db.getProvidersDAO().getActiveProviders();
-
-        Providers first = new Providers();
-        first.setCode("0");
-        first.setName("Please Select");
-        providers.add(0, first);
-        providerAdapter = new ProviderAdapter(this, R.layout.provider_town_list, R.id.tvProviderNamess, providers);
-        spProviderCodeName.setAdapter(providerAdapter);
 
         wvPP = (WebView) findViewById(R.id.wvPP);
         wvPP.setWebViewClient(new MyBrowser());
@@ -75,18 +55,16 @@ public class ProviderProfile  extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View v) {
-        if(v.getId()==R.id.btnShowProfile){
-            Providers provider = (Providers) spProviderCodeName.getSelectedItem();
-            if(provider!=null){
-                CookieSyncManager cookieSyncManager = CookieSyncManager.createInstance(wvPP.getContext());
-                CookieManager cookieManager = CookieManager.getInstance();
-                cookieManager.setAcceptCookie(true);
-                cookieManager.removeSessionCookie();
-                cookieManager.setCookie("http://greenstar.ikonbusiness.com/provider/profile.html?providercode=" + provider.getCode(),"username=99998 ; Domain=.greenstar.ikonbusiness.com");
-                cookieSyncManager.sync();
-                wvPP.loadUrl("http://greenstar.ikonbusiness.com/provider/profile.html?providercode="+provider.getCode());
-            }
-        }
+        SharedPreferences prefs = this.getSharedPreferences(Codes.PREF_NAME, MODE_PRIVATE);
+        String providerCode = prefs.getString("providerCode", "");
+
+        CookieSyncManager cookieSyncManager = CookieSyncManager.createInstance(wvPP.getContext());
+        CookieManager cookieManager = CookieManager.getInstance();
+        cookieManager.setAcceptCookie(true);
+        cookieManager.removeSessionCookie();
+        cookieManager.setCookie("http://greenstar.ikonbusiness.com/provider/profile.html?providercode=" + providerCode,"username=99998 ; Domain=.greenstar.ikonbusiness.com");
+        cookieSyncManager.sync();
+        wvPP.loadUrl("http://greenstar.ikonbusiness.com/provider/profile.html?providercode="+providerCode);
     }
 
     @Override

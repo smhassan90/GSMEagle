@@ -227,6 +227,10 @@ public class CRForm {
 
     @Override
     public String toString() {
-        return this.clientName+" - "+this.husbandName + " - "+this.contactNumber;
+        if(husbandName==null && contactNumber==null){
+            return this.clientName;
+        }else {
+            return this.clientName + " - " + this.husbandName + " - " + this.contactNumber;
+        }
     }
 }

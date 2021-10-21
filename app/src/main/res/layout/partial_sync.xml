@@ -13,6 +13,11 @@
         android:orientation="vertical">
         <include android:id="@+id/ps_basic_info" android:layout_marginBottom="@dimen/padding_10" android:layout_marginTop="@dimen/padding_10" android:layout_width="match_parent" android:layout_height="wrap_content" layout="@layout/partial_sync_single_layout"/>
         <include android:id="@+id/ps_cr_forms" android:layout_marginBottom="@dimen/padding_10" android:layout_width="match_parent" android:layout_height="wrap_content" layout="@layout/partial_sync_single_layout"/>
+        <include android:id="@+id/ps_children_forms" android:layout_marginBottom="@dimen/padding_10" android:layout_width="match_parent" android:layout_height="wrap_content" layout="@layout/partial_sync_single_layout"/>
+        <include android:id="@+id/ps_token_forms" android:layout_marginBottom="@dimen/padding_10" android:layout_width="match_parent" android:layout_height="wrap_content" layout="@layout/partial_sync_single_layout"/>
+        <include android:id="@+id/ps_neighbour_forms" android:layout_marginBottom="@dimen/padding_10" android:layout_width="match_parent" android:layout_height="wrap_content" layout="@layout/partial_sync_single_layout"/>
+        <include android:id="@+id/ps_followup_forms" android:layout_marginBottom="@dimen/padding_10" android:layout_width="match_parent" android:layout_height="wrap_content" layout="@layout/partial_sync_single_layout"/>
+
     </LinearLayout>
 </ScrollView>
 </android.support.constraint.ConstraintLayout>

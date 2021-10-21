@@ -111,6 +111,7 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
                         editor.putLong(Codes.CRFORMID, baseID);
                         editor.putLong(Codes.TOKENFORM, baseID);
                         editor.putLong(Codes.NEIGHBOURHOODFORM, baseID);
+                        editor.putLong(Codes.NEIGHBOURHOODATTENDEESFORM, baseID);
                         editor.putLong(Codes.FOLLOWUPFORM, baseID);
                         editor.putString("staffCode", staffCode);
                         editor.apply();

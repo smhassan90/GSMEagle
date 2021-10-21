@@ -48,86 +48,14 @@
                 </LinearLayout>
 
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1"
-                android:id="@+id/llSync"
-                android:gravity="center">
-                <LinearLayout
-                    android:layout_width="200dp"
-                    android:background="@drawable/custom_button"
-                    android:elevation="10dp"
-                    android:padding="@dimen/padding_10"
-                    android:layout_height="200dp"
-                    android:orientation="vertical"
-                    android:layout_gravity="center"
-                    android:gravity="center">
-                    <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:id="@+id/imgSync"
-                        android:src="@drawable/img_sync"
-                        android:layout_gravity="center"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/performSync"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="@dimen/padding_10"
-                        style="@style/medium_text_style"/>
-                </LinearLayout>
 
-            </LinearLayout>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2">
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:id="@+id/llBasket">
-
-                <LinearLayout
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/custom_button"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="@dimen/padding_10">
-
-                    <ImageView
-                        android:id="@+id/imgOrder"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/order_basket" />
-
-                    <TextView
-                        style="@style/medium_text_style"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-
-                        android:layout_gravity="center"
-                        android:layout_marginTop="@dimen/padding_10"
-                        android:text="@string/submittedForms" />
-                </LinearLayout>
-
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:id="@+id/llApprovalStatus">
+                android:id="@+id/llPartialSynchronization">
                 <LinearLayout
                     android:layout_width="200dp"
                     android:background="@drawable/custom_button"
@@ -140,15 +68,15 @@
                     <ImageView
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:id="@+id/imgApprovalStatus"
-                        android:src="@drawable/order_basket"
+                        android:id="@+id/imgPS"
+                        android:src="@drawable/img_sync"
                         android:layout_gravity="center"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAlignment="center"
-                        android:text="@string/ChildRegistrationForm"
+                        android:text="@string/PartialSynchronization"
                         android:layout_gravity="center"
+                        android:textAlignment="center"
                         android:layout_marginTop="@dimen/padding_10"
                         style="@style/medium_text_style"/>
                 </LinearLayout>
@@ -199,7 +127,7 @@
                 android:orientation="horizontal"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:id="@+id/llPartialSynchronization">
+                android:id="@+id/llApprovalStatus">
                 <LinearLayout
                     android:layout_width="200dp"
                     android:background="@drawable/custom_button"
@@ -212,20 +140,21 @@
                     <ImageView
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:id="@+id/imgPS"
-                        android:src="@drawable/img_sync"
+                        android:id="@+id/imgApprovalStatus"
+                        android:src="@drawable/form"
                         android:layout_gravity="center"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/PartialSynchronization"
-                        android:layout_gravity="center"
                         android:textAlignment="center"
+                        android:text="@string/ChildRegistrationForm"
+                        android:layout_gravity="center"
                         android:layout_marginTop="@dimen/padding_10"
                         style="@style/medium_text_style"/>
                 </LinearLayout>
 
             </LinearLayout>
+
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -279,6 +208,77 @@
                     android:orientation="vertical"
                     android:layout_gravity="center"
                     android:gravity="center"
+                    >
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/form"
+                        android:layout_gravity="center"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/FollowupForm"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:layout_marginTop="@dimen/padding_10"
+                        style="@style/medium_text_style"/>
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/orange"
+            android:weightSum="2">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:id="@+id/llTokenForm">
+                <LinearLayout
+                    android:layout_width="200dp"
+                    android:background="@drawable/custom_button"
+                    android:padding="@dimen/padding_10"
+                    android:layout_height="200dp"
+                    android:orientation="vertical"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    >
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/form"
+                        android:layout_gravity="center"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/TokenForm"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/padding_10"
+                        style="@style/medium_text_style"/>
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:id="@+id/llEmpty">
+                <LinearLayout
+                    android:layout_width="200dp"
+                    android:background="@drawable/custom_button"
+                    android:padding="@dimen/padding_10"
+                    android:layout_height="200dp"
+                    android:orientation="vertical"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:visibility="invisible"
                     >
                     <ImageView
                         android:layout_width="100dp"

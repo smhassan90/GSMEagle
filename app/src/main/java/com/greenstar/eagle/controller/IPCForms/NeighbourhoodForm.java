@@ -30,6 +30,7 @@ import com.greenstar.eagle.model.DropdownCRBData;
 import com.greenstar.eagle.model.NeighbourhoodAttendeesModel;
 import com.greenstar.eagle.model.NeighbourhoodFormModel;
 import com.greenstar.eagle.utils.ScrollableNestedListview;
+import com.greenstar.eagle.utils.Util;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -40,7 +41,7 @@ public class NeighbourhoodForm extends AppCompatActivity implements View.OnClick
 
     AppDatabase db =null;
 
-    TextView tvSitarabajiCode, tvSitarabajiName, tvProviderCode, tvProviderName, tvSupervisorName, tvRegion, tvDistrict;
+    TextView tvSitarabajiCode, tvSitarabajiName, tvProviderCode, tvProviderName, tvSupervisorName, tvRegion, tvDistrict, tvCommunityName;
 
     EditText etVisitDate, etCommunityName, etOtherIECMaterial;
 
@@ -58,6 +59,7 @@ public class NeighbourhoodForm extends AppCompatActivity implements View.OnClick
     NeighbourhoodAttendeeAdapter adapter = null;
     List<NeighbourhoodAttendeesModel> neighbourhoodAttendeesModels = new ArrayList<>();
 
+    long neighbourhoodFormId = 0;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,6 +98,7 @@ public class NeighbourhoodForm extends AppCompatActivity implements View.OnClick
         tvSupervisorName = findViewById(R.id.tvSupervisorName);
         tvRegion = findViewById(R.id.tvRegion);
         tvDistrict = findViewById(R.id.tvDistrict);
+        tvCommunityName = findViewById(R.id.tvCommunityName);
 
         spClient = findViewById(R.id.spClient);
 
@@ -139,6 +142,8 @@ public class NeighbourhoodForm extends AppCompatActivity implements View.OnClick
 
         adapter = new NeighbourhoodAttendeeAdapter(this, R.layout.neighbourhood_attendee_list, R.id.tvName, neighbourhoodAttendeesModels);
         lvNeighbourhoodAttendee.setAdapter(adapter);
+
+        neighbourhoodFormId = Util.getNextID(this,Codes.NEIGHBOURHOODFORM);
     }
 
     private void populateForm(){
@@ -198,12 +203,15 @@ public class NeighbourhoodForm extends AppCompatActivity implements View.OnClick
 
     public void submitForm(){
         NeighbourhoodFormModel mainForm = new NeighbourhoodFormModel();
+        mainForm.setId(neighbourhoodFormId);
 
         mainForm.setVisitDate(etVisitDate.getText().toString());
 
         mainForm.setCommunityName(etCommunityName.getText().toString());
 
-        AppDatabase.getAppDatabase(this).getNeighbourhoodFormDAO().insert(mainForm);
+        AppDatabase db = AppDatabase.getAppDatabase(this);
+        db.getNeighbourhoodFormDAO().insert(mainForm);
+        db.getNeighbourhoodAttendeesModelDAO().insertMultiple(neighbourhoodAttendeesModels);
 
         Toast.makeText(this,"Form successfully submitted!",Toast.LENGTH_SHORT).show();
         this.finish();
@@ -212,6 +220,19 @@ public class NeighbourhoodForm extends AppCompatActivity implements View.OnClick
     private boolean isValid(){
         boolean isValid=true;
 
+        if("".equals(etCommunityName.getText().toString())){
+            tvCommunityName.setTextColor(getResources().getColor(R.color.darkestOrange));
+            isValid = false;
+        }else{
+            tvCommunityName.setTextColor(getResources().getColor(R.color.black));
+        }
+
+        if(lvNeighbourhoodAttendee.getAdapter().getCount()==0){
+            lvNeighbourhoodAttendee.setBackgroundColor(getResources().getColor(R.color.darkestOrange));
+            isValid = false;
+        }else{
+            lvNeighbourhoodAttendee.setBackgroundColor(getResources().getColor(R.color.whiteColor));
+        }
 
         return isValid;
     }
@@ -253,8 +274,19 @@ public class NeighbourhoodForm extends AppCompatActivity implements View.OnClick
                     .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                     myCalendar.get(Calendar.DAY_OF_MONTH)).show();
         }else if(v.getId() == R.id.btnAdd){
+
+
             CRForm form = (CRForm) spClient.getSelectedItem();
             long clientId = form.getId();
+
+            if(attendeeIsExist(clientId)){
+                Toast.makeText(this,"Attendee already exist in list", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if(clientId==0){
+                Toast.makeText(this,"Please select MWRA first", Toast.LENGTH_SHORT).show();
+                return;
+            }
             int isFPBrochureGiven =0;
             if(cbIsFPBrochureGiven.isChecked()){
                 isFPBrochureGiven = 1;
@@ -266,6 +298,8 @@ public class NeighbourhoodForm extends AppCompatActivity implements View.OnClick
             }
 
             NeighbourhoodAttendeesModel neighbourhoodAttendeesModel = new NeighbourhoodAttendeesModel();
+            neighbourhoodAttendeesModel.setId(Util.getNextID(this,Codes.NEIGHBOURHOODATTENDEESFORM));
+            neighbourhoodAttendeesModel.setNeighbourhoodId(neighbourhoodFormId);
             neighbourhoodAttendeesModel.setClientId(clientId);
             neighbourhoodAttendeesModel.setIsDiarrheaBrochureGiven(isDiarrheaBrochureGiven);
             neighbourhoodAttendeesModel.setIsFPBrochureGiven(isFPBrochureGiven);
@@ -276,6 +310,20 @@ public class NeighbourhoodForm extends AppCompatActivity implements View.OnClick
             adapter.setList(neighbourhoodAttendeesModels);
             adapter.notifyDataSetChanged();
         }
+    }
+
+    private boolean attendeeIsExist(long clientId) {
+        boolean isExist = false;
+
+        for(NeighbourhoodAttendeesModel neighbourhoodAttendeesModel : neighbourhoodAttendeesModels){
+            if(clientId==neighbourhoodAttendeesModel.getClientId()){
+                isExist = true;
+                break;
+            }
+        }
+
+        return isExist;
+
     }
 
     @Override

@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.crashlytics.android.Crashlytics;
 import com.google.gson.Gson;
 import com.greenstar.eagle.controller.Codes;
+import com.greenstar.eagle.dal.EagleClientToServer;
 import com.greenstar.eagle.dal.EagleData;
 import com.greenstar.eagle.db.AppDatabase;
 import com.greenstar.eagle.model.CRForm;
@@ -31,9 +32,9 @@ import static android.content.Context.MODE_PRIVATE;
 public class Util {
    WebserviceResponse responseListener;
    PartialSyncResponse PSResponse;
-
+    public static AppDatabase db =null;
     public static void saveData(JSONObject params, Context activity){
-        AppDatabase db =null;
+
 
         String data = "";
         String status = "";
@@ -165,7 +166,7 @@ public class Util {
     }
 
     public static String getSingleFormData(Activity context, long formId, String syncType){
-        AppDatabase db = AppDatabase.getAppDatabase(context);
+        db = AppDatabase.getAppDatabase(context);
         SyncObject syncObject = new SyncObject();
         if(syncType.equals(Codes.SINGLE_CR_FORM)){
             CRForm crForm = db.getCrFormDAO().getFormByID(formId);
@@ -181,7 +182,7 @@ public class Util {
     }
 
     public static String getCTSSyncData(Activity context){
-        AppDatabase db = AppDatabase.getAppDatabase(context);
+        db = AppDatabase.getAppDatabase(context);
 
         List<CRForm> crForms = db.getCrFormDAO().getAllPendingForms();
 
@@ -223,7 +224,7 @@ public class Util {
                     Toast.makeText(context,"Something went wrong while sync",Toast.LENGTH_SHORT).show();
                     Crashlytics.log("Sync Issue at "+ new Date());
                 }
-                    AppDatabase db = AppDatabase.getAppDatabase(context);
+                    db = AppDatabase.getAppDatabase(context);
                     if(syncType.equals(Codes.SINGLE_CR_FORM)){
                         if(crfSuccessfulId!=0)
                             db.getCrFormDAO().markSuccessful(crfSuccessfulId);
@@ -310,20 +311,6 @@ public class Util {
         });
     }
 
-    private void updateData(List<Integer> successfulIDs, List<Integer> rejectedIDs, Activity activity) {
-        AppDatabase db = AppDatabase.getAppDatabase(activity);
-        try {
-            for (int id : successfulIDs) {
-                db.getCrFormDAO().markSuccessful(id);
-            }
-            for (int id : rejectedIDs) {
-                db.getCrFormDAO().markRejected(id);
-            }
-        }catch(Exception e){
-            Crashlytics.logException(e);
-        }
-    }
-
     public WebserviceResponse getResponseListener() {
         return responseListener;
     }
@@ -368,7 +355,29 @@ public class Util {
         rp.add("token",token);
         rp.add("PSType",PSType);
 
-        HttpUtils.get("PSBasicInfo", rp, new JsonHttpResponseHandler() {
+        EagleClientToServer eagleClientToServer = new EagleClientToServer();
+
+        try {
+            db = AppDatabase.getAppDatabase(context);
+
+            if(PSType.equals(Codes.PS_TYPE_Client)){
+                eagleClientToServer.setCrForms(db.getCrFormDAO().getAll());
+            }else if(PSType.equals(Codes.PS_TYPE_Children)){
+                eagleClientToServer.setChildRegistrationForms(db.getChildRegistrationFormDAO().getAll());
+            }else if(PSType.equals(Codes.PS_TYPE_Followup)){
+                eagleClientToServer.setFollowupForms(db.getFollowupModelDAO().getAll());
+            }else if(PSType.equals(Codes.PS_TYPE_Neighbour)){
+                eagleClientToServer.setNeighbourAttendeesForms(db.getNeighbourhoodAttendeesModelDAO().getAll());
+                eagleClientToServer.setNeighbourForms(db.getNeighbourhoodFormDAO().getAll());
+            }else if(PSType.equals(Codes.PS_TYPE_Token)){
+                eagleClientToServer.setTokenForms(db.getTokenModelDAO().getAll());
+            }
+        } catch (Exception e) {
+            Toast.makeText(context, "Something went wrong. Please sync later", Toast.LENGTH_SHORT).show();
+        }
+        String data  = new Gson().toJson(eagleClientToServer,EagleClientToServer.class);
+        rp.add("data",data);
+        HttpUtils.get("PSEagleBasicInfo", rp, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 String message = "";

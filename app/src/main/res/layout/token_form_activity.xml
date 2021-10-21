@@ -214,6 +214,7 @@
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="5"
+                            style="@style/text_style"
                             android:id="@+id/tvSupervisorName"
                             android:textColor="@color/black"
                             android:text="">
@@ -233,12 +234,13 @@
                             android:textColor="@color/black"
                             android:backgroundTint="@color/darkGreen"
                             android:gravity="center_vertical"
-                            android:layout_weight="7"
+                            android:layout_weight="5"
                             android:text="Region"/>
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="3"
+                            android:layout_weight="5"
+                            style="@style/text_style"
                             android:textColor="@color/black"
                             android:id="@+id/tvRegion"
                             android:text="">
@@ -257,12 +259,13 @@
                             style="@style/text_style"
                             android:textColor="@color/black" android:backgroundTint="@color/darkGreen"
                             android:gravity="center_vertical"
-                            android:layout_weight="7"
+                            android:layout_weight="5"
                             android:text="District"/>
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
-                            android:layout_weight="3"
+                            android:layout_weight="5"
+                            style="@style/text_style"
                             android:textColor="@color/black"
                             android:id="@+id/tvDistrict"
                             android:text="">
@@ -316,7 +319,6 @@
                         android:background="@drawable/customborder"
                         android:padding="@dimen/padding_10"
                         android:id="@+id/trAdoptedMethod"
-                        android:visibility="gone"
                         android:weightSum="10">
 
                         <Spinner
@@ -328,6 +330,7 @@
                             android:layout_height="@dimen/spinner_height"
                             android:autofillHints="@string/AdoptedMethod"/>
                     </TableRow>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/table_header_size"

@@ -6,13 +6,15 @@ import android.arch.persistence.room.Query;
 
 import com.greenstar.eagle.model.TokenModel;
 
+import java.util.List;
+
 @Dao
 public interface TokenModelDAO {
     @Insert
     void insert (TokenModel tokenModel);
 
     @Query("SELECT * FROM TokenModel")
-    TokenModel getAll();
+    List<TokenModel> getAll();
 
     @Query("DELETE FROM TokenModel")
     public void nukeTable();

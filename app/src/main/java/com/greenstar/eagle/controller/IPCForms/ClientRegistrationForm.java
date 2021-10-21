@@ -3,6 +3,7 @@ package com.greenstar.eagle.controller.IPCForms;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -62,7 +63,8 @@ public class ClientRegistrationForm extends AppCompatActivity implements View.On
 
     DatePickerDialog.OnDateSetListener date = null;
     DatePickerDialog.OnDateSetListener followupDate = null;
-    final Calendar myCalendar = Calendar.getInstance();
+    final Calendar myCalendar1 = Calendar.getInstance();
+    final Calendar myCalendar2 = Calendar.getInstance();
 
     TableRow trNeverUseReason,trPeriodOfCurrentYears, trCurrentMethod, trEverUsed, trEverMethod, trEverUseReason;
 
@@ -168,9 +170,9 @@ public class ClientRegistrationForm extends AppCompatActivity implements View.On
 
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                myCalendar.set(Calendar.YEAR, year);
-                myCalendar.set(Calendar.MONTH, month);
-                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                myCalendar1.set(Calendar.YEAR, year);
+                myCalendar1.set(Calendar.MONTH, month);
+                myCalendar1.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                 updateVisitDate();
             }
 
@@ -179,9 +181,9 @@ public class ClientRegistrationForm extends AppCompatActivity implements View.On
 
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                myCalendar.set(Calendar.YEAR, year);
-                myCalendar.set(Calendar.MONTH, month);
-                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                myCalendar2.set(Calendar.YEAR, year);
+                myCalendar2.set(Calendar.MONTH, month);
+                myCalendar2.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                 updateFollowupDate();
             }
 
@@ -230,24 +232,27 @@ public class ClientRegistrationForm extends AppCompatActivity implements View.On
     private void updateVisitDate() {
         SimpleDateFormat sdf = new SimpleDateFormat(Codes.myFormat);
 
-        etVisitDate.setText(sdf.format(myCalendar.getTime()));
+        etVisitDate.setText(sdf.format(myCalendar1.getTime()));
     }
 
     private void updateFollowupDate() {
         SimpleDateFormat sdf = new SimpleDateFormat(Codes.myFormat);
 
-        etFollowupDate.setText(sdf.format(myCalendar.getTime()));
+        etFollowupDate.setText(sdf.format(myCalendar2.getTime()));
     }
 
     public void submitForm(){
+        long clientId = Util.getNextID(this,Codes.CRFORMID);
         CRForm form = new CRForm();
-        form.setId(Util.getNextID(this,Codes.CRFORMID));
+        form.setId(clientId);
         form.setVisitDate(etVisitDate.getText().toString());
         form.setClientName(etClientName.getText().toString());
         form.setHusbandName(etHusbandName.getText().toString());
-        form.setClientAge(spClientAge.toString());
+        DropdownCRBData dropdownCRBData = (DropdownCRBData) spClientAge.getSelectedItem();
+        form.setClientAge(dropdownCRBData.getDetailEnglish());
         form.setAddress(etAddress.getText().toString());
         form.setContactNumber(etContact.getText().toString());
+        form.setFollowUpVisitDate(etFollowupDate.getText().toString());
         if(rbCanWeContactYes.isChecked()){
             form.setCanWeContact(1);
         }else{
@@ -259,8 +264,8 @@ public class ClientRegistrationForm extends AppCompatActivity implements View.On
         }else{
             form.setIsCurrentUser(0);
         }
-
-        form.setCurrentFPMethod(spCurrentMethod.toString());
+        dropdownCRBData = (DropdownCRBData) spCurrentMethod.getSelectedItem();
+        form.setCurrentFPMethod(dropdownCRBData.getDetailEnglish());
 
         if(rbTokenGivenYes.isChecked()){
             form.setIsTokenGiven(1);
@@ -275,8 +280,8 @@ public class ClientRegistrationForm extends AppCompatActivity implements View.On
         }else{
             form.setIsEverUser(0);
         }
-
-        form.setEverMethodUsed(spEverMethod.toString());
+        dropdownCRBData = (DropdownCRBData) spEverMethod.getSelectedItem();
+        form.setEverMethodUsed(dropdownCRBData.getDetailEnglish());
         form.setReasonForDiscontinuation(etDiscontinuationReasonOther.getText().toString());
         form.setReasonForNeverUser(etNeverUsedReasonOther.getText().toString());
 
@@ -289,7 +294,14 @@ public class ClientRegistrationForm extends AppCompatActivity implements View.On
         AppDatabase.getAppDatabase(this).getCrFormDAO().insert(form);
 
         Toast.makeText(this,"Form successfully submitted!",Toast.LENGTH_SHORT).show();
+
+        if(rbTokenGivenYes.isChecked()){
+            Intent i = new Intent(this, TokenForm.class);
+            i.putExtra("clientId",clientId);
+            startActivity(i);
+        }
         this.finish();
+
     }
 
     private boolean isValid(){
@@ -299,7 +311,7 @@ public class ClientRegistrationForm extends AppCompatActivity implements View.On
 
             isValid = false;
         }
-        if(isValid && spCurrentMethod.getSelectedItemId()==0  && rbIsCurrentUserYes.isChecked()){
+        if(isValid && spClientAge.getSelectedItemId()==0){
             isValid=false;
         }
         if("".equals(etContact.getText().toString()) ){
@@ -312,6 +324,11 @@ public class ClientRegistrationForm extends AppCompatActivity implements View.On
             tvClientName.setTextColor(getResources().getColor(R.color.darkestOrange));
         }else{
             tvClientName.setTextColor(getResources().getColor(R.color.whiteColor));
+        }
+        if("".equals(etHusbandName.getText().toString())){
+            etHusbandName.setTextColor(getResources().getColor(R.color.darkestOrange));
+        }else{
+            etHusbandName.setTextColor(getResources().getColor(R.color.whiteColor));
         }
 
         if(spClientAge.getSelectedItemId()==0) {
@@ -340,6 +357,11 @@ public class ClientRegistrationForm extends AppCompatActivity implements View.On
                 View view = spCurrentMethod.getSelectedView();
                 (view).setBackgroundColor(getResources().getColor(R.color.whiteColor));
             }
+            if("".equals(etCurrentMethodYears.getText().toString())){
+                etCurrentMethodYears.setTextColor(getResources().getColor(R.color.darkestOrange));
+            }else{
+                etCurrentMethodYears.setTextColor(getResources().getColor(R.color.darkestOrange));
+            }
         }else if(rbIsCurrentUserNo.isChecked()){
             if(!rbIsEverUserYes.isChecked() && !rbIsEverUserNo.isChecked()){
                 isValid=false;
@@ -349,8 +371,37 @@ public class ClientRegistrationForm extends AppCompatActivity implements View.On
                 rbIsEverUserYes.setTextColor(getResources().getColor( R.color.darkGreen));
                 rbIsEverUserNo.setTextColor(getResources().getColor( R.color.darkGreen));
             }
+            if(rbIsEverUserNo.isChecked()){
+                if(spReasonForNeverUser.getSelectedItemId()==0){
+                    View view = spReasonForNeverUser.getSelectedView();
+                    (view).setBackgroundColor(getResources().getColor(R.color.darkestOrange));
+                    isValid = false;
+                }else{
+                    View view = spReasonForNeverUser.getSelectedView();
+                    (view).setBackgroundColor(getResources().getColor(R.color.whiteColor));
+                }
+            }else if(rbIsEverUserYes.isChecked()){
+                if(spEverMethod.getSelectedItemId()==0){
+                    View view = spEverMethod.getSelectedView();
+                    (view).setBackgroundColor(getResources().getColor(R.color.darkestOrange));
+                    isValid = false;
+                }else{
+                    View view = spEverMethod.getSelectedView();
+                    (view).setBackgroundColor(getResources().getColor(R.color.whiteColor));
+                }
 
+                if(spReasonForDiscontinuation.getSelectedItemId()==0){
+                    View view = spReasonForDiscontinuation.getSelectedView();
+                    (view).setBackgroundColor(getResources().getColor(R.color.darkestOrange));
+                    isValid = false;
+                }else{
+                    View view = spReasonForDiscontinuation.getSelectedView();
+                    (view).setBackgroundColor(getResources().getColor(R.color.whiteColor));
+                }
+
+            }
         }
+
 
         return isValid;
     }
@@ -369,7 +420,9 @@ public class ClientRegistrationForm extends AppCompatActivity implements View.On
                         // The dialog is automatically dismissed when a dialog button is clicked.
                         .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                submitForm();
+                                if(isValid()){
+                                    submitForm();
+                                }
 
                             }
                         })
@@ -386,14 +439,14 @@ public class ClientRegistrationForm extends AppCompatActivity implements View.On
 
         }
         else if(v.getId()==R.id.etVisitDate){
-            new DatePickerDialog(this, date, myCalendar
-                    .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                    myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            new DatePickerDialog(this, date, myCalendar1
+                    .get(Calendar.YEAR), myCalendar1.get(Calendar.MONTH),
+                    myCalendar1.get(Calendar.DAY_OF_MONTH)).show();
         }
         else if(v.getId()==R.id.etFollowupDate){
-            new DatePickerDialog(this, date, myCalendar
-                    .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                    myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            new DatePickerDialog(this, followupDate, myCalendar2
+                    .get(Calendar.YEAR), myCalendar2.get(Calendar.MONTH),
+                    myCalendar2.get(Calendar.DAY_OF_MONTH)).show();
         }
     }
 
