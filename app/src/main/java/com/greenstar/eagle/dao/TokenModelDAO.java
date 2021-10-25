@@ -18,4 +18,7 @@ public interface TokenModelDAO {
 
     @Query("DELETE FROM TokenModel")
     public void nukeTable();
+
+    @Query("SELECT count(*) FROM TokenModel")
+    int getCount();
 }

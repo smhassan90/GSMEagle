@@ -34,8 +34,6 @@ public class Util {
    PartialSyncResponse PSResponse;
     public static AppDatabase db =null;
     public static void saveData(JSONObject params, Context activity){
-
-
         String data = "";
         String status = "";
 
@@ -84,6 +82,10 @@ public class Util {
                     if (dataObj.getDropdownCRBData() != null && dataObj.getDropdownCRBData().size() > 0) {
                         db.getDropdownCRBDataDAO().nukeTable();
                         db.getDropdownCRBDataDAO().insertMultiple(dataObj.getDropdownCRBData());
+                    }
+                    if (dataObj.getDashboard() != null) {
+                        db.getDashboardDAO().nukeTable();
+                        db.getDashboardDAO().insert(dataObj.getDashboard());
                     }
                 } catch (Exception e) {
                     Toast.makeText(activity, "Something went wrong. Please sync later", Toast.LENGTH_SHORT).show();
@@ -277,7 +279,6 @@ public class Util {
                     params.put("message", message);
                     params.put("data", data);
                     params.put("status",codeReceived);
-
                 }catch(Exception e){
                     Toast.makeText(context,"Something went wrong while sync",Toast.LENGTH_SHORT).show();
                     Crashlytics.log("Sync Issue at "+ new Date());
@@ -359,9 +360,10 @@ public class Util {
 
         try {
             db = AppDatabase.getAppDatabase(context);
+            if(Codes.PS_TYPE_BASIC_INFO.equals(PSType)){
 
-            if(PSType.equals(Codes.PS_TYPE_Client)){
-                eagleClientToServer.setCrForms(db.getCrFormDAO().getAll());
+            }else if(PSType.equals(Codes.PS_TYPE_Client)){
+                eagleClientToServer.setCrForms(db.getCrFormDAO().getAllPending());
             }else if(PSType.equals(Codes.PS_TYPE_Children)){
                 eagleClientToServer.setChildRegistrationForms(db.getChildRegistrationFormDAO().getAll());
             }else if(PSType.equals(Codes.PS_TYPE_Followup)){

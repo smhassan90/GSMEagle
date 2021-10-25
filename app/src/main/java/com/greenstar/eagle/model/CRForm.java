@@ -57,6 +57,8 @@ public class CRForm {
 
     private int approvalStatus ;
 
+    private int isSynced;
+
     public long getId() {
         return id;
     }
@@ -225,6 +227,14 @@ public class CRForm {
         this.approvalStatus = approvalStatus;
     }
 
+    public int getIsSynced() {
+        return isSynced;
+    }
+
+    public void setIsSynced(int isSynced) {
+        this.isSynced = isSynced;
+    }
+
     @Override
     public String toString() {
         if(husbandName==null && contactNumber==null){
@@ -234,3 +244,4 @@ public class CRForm {
         }
     }
 }
+

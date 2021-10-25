@@ -18,4 +18,7 @@ public interface FollowupModelDAO {
 
     @Query("DELETE FROM FollowupModel")
     public void nukeTable();
+
+    @Query("SELECT count(*) FROM FollowupModel")
+    int getCount();
 }

@@ -31,6 +31,15 @@
             android:layout_height="wrap_content"
             style="@style/text_style"
             android:textColor="@color/black"
+            android:textStyle="bold"
+            android:gravity="center_vertical"
+            android:id="@+id/tvPendingForms"
+            android:text=""/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/text_style"
+            android:textColor="@color/black"
             android:gravity="center_vertical"
             android:id="@+id/lastSyncDateTime"
             android:text="Last Sync Time: Never Synced"/>

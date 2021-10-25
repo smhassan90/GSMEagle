@@ -356,6 +356,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/customborder"
                         android:padding="@dimen/padding_10"
+                        android:textColor="@color/black"
                         android:id="@+id/etPersonalMinutes"
                         android:hint="Personal Minutes"
                         android:text="">

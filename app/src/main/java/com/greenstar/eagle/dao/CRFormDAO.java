@@ -19,6 +19,12 @@ public interface CRFormDAO {
     @Query("SELECT * FROM CRForm")
     List<CRForm> getAll();
 
+    @Query("SELECT count(*) FROM CRForm where isSynced=0")
+    int getCount();
+
+    @Query("SELECT * FROM CRForm")
+    List<CRForm> getAllPending();
+
     @Query("SELECT * FROM CRForm WHERE approvalStatus = 1")
     List<CRForm> getAllSuccessfulForms();
 
@@ -42,4 +48,8 @@ public interface CRFormDAO {
 
     @Query("UPDATE CRForm SET approvalStatus=20 WHERE id=:id")
     public void markRejected(long id);
+
+    @Query("UPDATE CRForm SET isSynced=1")
+    public void markSynced();
+
 }

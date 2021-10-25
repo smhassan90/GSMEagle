@@ -35,36 +35,43 @@ public class PartialSync extends AppCompatActivity implements View.OnClickListen
     Button btnPSBasicInfo;
     TextView tvPSLastTimeBasicInfo;
     TextView tvPSDescriptionBasicInfo;
+    TextView tvPendingFormsBasicInfo;
 
     //PS Providers
     View viewPSCRForms;
     Button btnPSCRForms;
     TextView tvPSLastTimeCRForms;
     TextView tvPSDescriptionCRForms;
+    TextView tvPendingFormsCRForms;
+
 
     //PS Children
     View viewPSChildrenForms;
     Button btnPSChildrenForms;
     TextView tvPSLastTimeChildrenForms;
     TextView tvPSDescriptionChildrenForms;
+    TextView tvPendingFormsChildrenForms;
 
     //PS Followup
     View viewPSFollowupForms;
     Button btnPSFollowupForms;
     TextView tvPSLastTimeFollowupForms;
     TextView tvPSDescriptionFollowupForms;
+    TextView tvPendingFormsFollowupForms;
 
     //PS Neighbour
     View viewPSNeighbourForms;
     Button btnPSNeighbourForms;
     TextView tvPSLastTimeNeighbourForms;
     TextView tvPSDescriptionNeighbourForms;
+    TextView tvPendingFormsNeighbourForms;
 
     //PS Token
     View viewPSTokenForms;
     Button btnPSTokenForms;
     TextView tvPSLastTimeTokenForms;
     TextView tvPSDescriptionTokenForms;
+    TextView tvPendingFormsTokenForms;
 
     String partialSyncType = "";
 
@@ -97,6 +104,7 @@ public class PartialSync extends AppCompatActivity implements View.OnClickListen
             }
         });
         tvPSDescriptionBasicInfo.setText("Sync basic information");
+        tvPendingFormsBasicInfo = viewPSBasicInfo.findViewById(R.id.tvPendingForms);
 
 
         //PS CF Forms
@@ -113,6 +121,7 @@ public class PartialSync extends AppCompatActivity implements View.OnClickListen
             }
         });
         tvPSDescriptionCRForms.setText("Sync Client Forms");
+        tvPendingFormsCRForms = viewPSCRForms.findViewById(R.id.tvPendingForms);
 
 
         //PS ps_children_forms
@@ -129,7 +138,7 @@ public class PartialSync extends AppCompatActivity implements View.OnClickListen
             }
         });
         tvPSDescriptionChildrenForms.setText("Sync Children Forms");
-
+        tvPendingFormsChildrenForms = viewPSChildrenForms.findViewById(R.id.tvPendingForms);
 
 
         //PS ps_token_forms
@@ -146,6 +155,7 @@ public class PartialSync extends AppCompatActivity implements View.OnClickListen
             }
         });
         tvPSDescriptionTokenForms.setText("Sync Token Forms");
+        tvPendingFormsTokenForms = viewPSTokenForms.findViewById(R.id.tvPendingForms);
 
         //PS ps_neighbour_forms
         viewPSNeighbourForms= findViewById(R.id.ps_neighbour_forms);
@@ -161,6 +171,7 @@ public class PartialSync extends AppCompatActivity implements View.OnClickListen
             }
         });
         tvPSDescriptionNeighbourForms.setText("Sync Neighbour Forms");
+        tvPendingFormsNeighbourForms = viewPSNeighbourForms.findViewById(R.id.tvPendingForms);
 
         //PS ps_followup_forms
         viewPSFollowupForms= findViewById(R.id.ps_followup_forms);
@@ -176,6 +187,7 @@ public class PartialSync extends AppCompatActivity implements View.OnClickListen
             }
         });
         tvPSDescriptionFollowupForms.setText("Sync Followup Forms");
+        tvPendingFormsFollowupForms = viewPSFollowupForms.findViewById(R.id.tvPendingForms);
     }
 
     @Override
@@ -245,23 +257,29 @@ public class PartialSync extends AppCompatActivity implements View.OnClickListen
     public void response(String responseCode, String PSCode, String message) {
         Date date = new Date(System.currentTimeMillis());
         String dateTime=formatter.format(date);
-
+        if (db == null) {
+            db = AppDatabase.getAppDatabase(this);
+        }
         progressBar.dismiss();
         if(responseCode.equals(Codes.ALL_OK)) {
             SharedPreferences.Editor editor =  activity.getSharedPreferences(Codes.PREF_NAME, MODE_PRIVATE).edit();
             if(PSCode.equals(Codes.PS_TYPE_BASIC_INFO)){
                 editor.putString("lastTimeBasicInfo", dateTime);
             }else if(PSCode.equals(Codes.PS_TYPE_Client)){
-                editor.putString("lastTimeProviders", dateTime);
-            }else if(PSCode.equals(Codes.PS_TYPE_Client)){
+                db.getCrFormDAO().markSynced();
                 editor.putString("lastTimeClient", dateTime);
             }else if(PSCode.equals(Codes.PS_TYPE_Children)){
+                db.getChildRegistrationFormDAO().nukeTable();
                 editor.putString("lastTimeChildren", dateTime);
             }else if(PSCode.equals(Codes.PS_TYPE_Followup)){
+                db.getFollowupModelDAO().nukeTable();
                 editor.putString("lastTimeFollowup", dateTime);
             }else if(PSCode.equals(Codes.PS_TYPE_Neighbour)){
+                db.getNeighbourhoodFormDAO().nukeTable();
+                db.getNeighbourhoodAttendeesModelDAO().nukeTable();
                 editor.putString("lastTimeNeighbour", dateTime);
             }else if(PSCode.equals(Codes.PS_TYPE_Token)){
+                db.getTokenModelDAO().nukeTable();
                 editor.putString("lastTimeToken", dateTime);
             }
 
@@ -291,6 +309,41 @@ public class PartialSync extends AppCompatActivity implements View.OnClickListen
         tvPSLastTimeFollowupForms.setText("Last Sync:"+lastTimeFollowup);
         tvPSLastTimeNeighbourForms.setText("Last Sync:"+lastTimeNeighbour);
         tvPSLastTimeTokenForms.setText("Last Sync:"+lastTimeToken);
+
+        int count = 0;
+        if (db == null) {
+            db = AppDatabase.getAppDatabase(this);
+        }
+        count = db.getChildRegistrationFormDAO().getCount();
+        tvPendingFormsChildrenForms.setText("Pending Forms : "+String.valueOf(count));
+        if(count==0){
+            btnPSChildrenForms.setEnabled(false);
+        }
+
+        count = db.getCrFormDAO().getCount();
+        tvPendingFormsCRForms.setText("Pending Forms : "+String.valueOf(count));
+        if(count==0){
+            btnPSCRForms.setEnabled(false);
+        }
+
+        count = db.getFollowupModelDAO().getCount();
+        tvPendingFormsFollowupForms.setText("Pending Forms : "+String.valueOf(count));
+        if(count==0){
+            btnPSFollowupForms.setEnabled(false);
+        }
+
+        count = db.getNeighbourhoodFormDAO().getCount();
+        tvPendingFormsNeighbourForms.setText("Pending Forms : "+String.valueOf(count));
+        if(count==0){
+            btnPSNeighbourForms.setEnabled(false);
+        }
+
+        count = db.getTokenModelDAO().getCount();
+        tvPendingFormsTokenForms.setText("Pending Forms : "+String.valueOf(count));
+        if(count==0){
+            btnPSTokenForms.setEnabled(false);
+        }
+
     }
 
     @Override

@@ -19,6 +19,7 @@ import com.greenstar.eagle.controller.IPCForms.FollowupForm;
 import com.greenstar.eagle.controller.IPCForms.NeighbourhoodForm;
 import com.greenstar.eagle.controller.IPCForms.TokenForm;
 import com.greenstar.eagle.db.AppDatabase;
+import com.greenstar.eagle.model.Dashboard;
 import com.greenstar.eagle.utils.WebserviceResponse;
 
 import org.json.JSONException;
@@ -50,7 +51,7 @@ public class Menu extends AppCompatActivity implements View.OnClickListener, Web
         llDashboard = findViewById(R.id.llDashboard);
         llDashboard.setOnClickListener(this);
 
-        llProfile = findViewById(R.id.llApprovalStatus);
+        llProfile = findViewById(R.id.llProviderProfile);
         llProfile.setOnClickListener(this);
 
         llCRForm = findViewById(R.id.llForm);
@@ -72,20 +73,18 @@ public class Menu extends AppCompatActivity implements View.OnClickListener, Web
 
     @Override
     public void onClick(View v) {
-        if(v.getId()==R.id.llDashboard){
-
+        if(v.getId()==R.id.llProviderProfile){
             Intent myIntent = new Intent(this, ProviderProfile.class);
             startActivity(myIntent);
-
-
-        }else if(v.getId()==R.id.llApprovalStatus){
+        }else if(v.getId()==R.id.llDashboard){
+            Intent myIntent = new Intent(this, DashboardActivity.class);
+            startActivity(myIntent);
+        }else if(v.getId()==R.id.llChildrenRegForm){
             Intent myIntent = new Intent(this, ChildrenRegistrationForm.class);
             startActivity(myIntent);
         }else if(v.getId()==R.id.llForm){
-            if(db!=null){
-                Intent myIntent = new Intent(activity, ClientRegistrationForm.class);
-                startActivity(myIntent);
-            }
+            Intent myIntent = new Intent(activity, ClientRegistrationForm.class);
+            startActivity(myIntent);
         }else if(v.getId()==R.id.llPartialSynchronization){
             Intent myIntent = new Intent(activity, PartialSync.class);
             startActivity(myIntent);

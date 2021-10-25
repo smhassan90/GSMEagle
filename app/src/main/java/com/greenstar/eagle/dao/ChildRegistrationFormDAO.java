@@ -16,6 +16,9 @@ public interface ChildRegistrationFormDAO {
     @Query("SELECT * FROM ChildRegistrationForm")
     List<ChildRegistrationForm> getAll();
 
+    @Query("SELECT count(*) FROM ChildRegistrationForm")
+    int getCount();
+
     @Query("DELETE FROM ChildRegistrationForm")
     public void nukeTable();
 }

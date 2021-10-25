@@ -1,5 +1,6 @@
 package com.greenstar.eagle.dal;
 
+import com.greenstar.eagle.model.Dashboard;
 import com.greenstar.eagle.model.DropdownCRBData;
 
 import java.io.Serializable;
@@ -14,6 +15,7 @@ public class EagleData implements Serializable {
     private String district;
     private String providerCode;
     private String providerName;
+    private Dashboard dashboard;
 
     List<DropdownCRBData> dropdownCRBData;
 
@@ -87,5 +89,13 @@ public class EagleData implements Serializable {
 
     public void setDropdownCRBData(List<DropdownCRBData> dropdownCRBData) {
         this.dropdownCRBData = dropdownCRBData;
+    }
+
+    public Dashboard getDashboard() {
+        return dashboard;
+    }
+
+    public void setDashboard(Dashboard dashboard) {
+        this.dashboard = dashboard;
     }
 }
