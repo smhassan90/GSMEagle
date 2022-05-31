@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
@@ -16,7 +17,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -140,7 +140,7 @@ public class TokenForm extends AppCompatActivity implements View.OnClickListener
         tvRegion.setText(region);
         tvDistrict.setText(district);
 
-        spReferredMethod.setAdapter(getGeneralDropdownAdapter("Referred Method", "Current Method"));
+        spReferredMethod.setAdapter(getGeneralDropdownAdapter("Referred Method", "TokenList"));
     }
 
     private GeneralDropdownAdapter getGeneralDropdownAdapter(String title, String type) {
@@ -227,7 +227,11 @@ public class TokenForm extends AppCompatActivity implements View.OnClickListener
 
         DropdownCRBData dropdownCRBData = (DropdownCRBData) spReferredMethod.getSelectedItem();
         form.setReferredMethod(dropdownCRBData.getDetailEnglish());
-
+        Location location = Util.getLastKnownLocation(this);
+        if (location != null) {
+            form.setLatLong(location.getLatitude() + "," + location.getLongitude());
+        }
+        form.setMobileSystemDate(Util.sdf.format(Calendar.getInstance().getTime()));
         AppDatabase.getAppDatabase(this).getTokenModelDAO().insert(form);
 
         Toast.makeText(this,"Form successfully submitted!",Toast.LENGTH_SHORT).show();

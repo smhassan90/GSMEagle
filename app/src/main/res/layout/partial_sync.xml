@@ -17,6 +17,7 @@
         <include android:id="@+id/ps_token_forms" android:layout_marginBottom="@dimen/padding_10" android:layout_width="match_parent" android:layout_height="wrap_content" layout="@layout/partial_sync_single_layout"/>
         <include android:id="@+id/ps_neighbour_forms" android:layout_marginBottom="@dimen/padding_10" android:layout_width="match_parent" android:layout_height="wrap_content" layout="@layout/partial_sync_single_layout"/>
         <include android:id="@+id/ps_followup_forms" android:layout_marginBottom="@dimen/padding_10" android:layout_width="match_parent" android:layout_height="wrap_content" layout="@layout/partial_sync_single_layout"/>
+        <include android:id="@+id/ps_pull_clients" android:layout_marginBottom="@dimen/padding_10" android:layout_width="match_parent" android:layout_height="wrap_content" layout="@layout/partial_sync_single_layout"/>
 
     </LinearLayout>
 </ScrollView>

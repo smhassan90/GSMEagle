@@ -10,8 +10,15 @@ public class NeighbourhoodFormModel {
     @PrimaryKey
     private long id;
     private String visitDate;
+    /*
+    type = 0 Neighborhood Meeting
+    type = 1 Orientation Meeting
+     */
     private int meetingType;
     private String communityName;
+
+    private String latLong;
+    private String mobileSystemDate;
 
     public long getId() {
         return id;
@@ -43,5 +50,21 @@ public class NeighbourhoodFormModel {
 
     public void setCommunityName(String communityName) {
         this.communityName = communityName;
+    }
+
+    public String getLatLong() {
+        return latLong;
+    }
+
+    public void setLatLong(String latLong) {
+        this.latLong = latLong;
+    }
+
+    public String getMobileSystemDate() {
+        return mobileSystemDate;
+    }
+
+    public void setMobileSystemDate(String mobileSystemDate) {
+        this.mobileSystemDate = mobileSystemDate;
     }
 }

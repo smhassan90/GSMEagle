@@ -140,7 +140,7 @@
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:id="@+id/imgApprovalStatus"
-                        android:src="@drawable/form"
+                        android:src="@drawable/childregistration"
                         android:layout_gravity="center"/>
                     <TextView
                         android:layout_width="wrap_content"
@@ -180,7 +180,7 @@
                     <ImageView
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/form"
+                        android:src="@drawable/neighbor"
                         android:layout_gravity="center"/>
                     <TextView
                         android:layout_width="wrap_content"
@@ -211,7 +211,7 @@
                     <ImageView
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/form"
+                        android:src="@drawable/follows_up"
                         android:layout_gravity="center"/>
                     <TextView
                         android:layout_width="wrap_content"
@@ -250,7 +250,7 @@
                     <ImageView
                         android:layout_width="100dp"
                         android:layout_height="100dp"
-                        android:src="@drawable/form"
+                        android:src="@drawable/token"
                         android:layout_gravity="center"/>
                     <TextView
                         android:layout_width="wrap_content"

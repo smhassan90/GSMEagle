@@ -19,6 +19,7 @@ public interface Codes {
     public static final String PS_TYPE_Followup = "720";
     public static final String PS_TYPE_Neighbour = "725";
     public static final String PS_TYPE_Token = "730";
+    public static final String PS_PULL_CLIENTS = "735";
     public static final String PS_TYPE_Neighbour_attendees = "735";
 
 

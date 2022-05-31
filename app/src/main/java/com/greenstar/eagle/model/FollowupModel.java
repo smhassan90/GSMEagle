@@ -19,6 +19,9 @@ public class FollowupModel {
     private int didVisitAfterSideEffects;
     private String reasonsForNotAdoptingMethod;
 
+    private String latLong;
+    private String mobileSystemDate;
+
     public long getId() {
         return id;
     }
@@ -97,5 +100,21 @@ public class FollowupModel {
 
     public void setReasonsForNotAdoptingMethod(String reasonsForNotAdoptingMethod) {
         this.reasonsForNotAdoptingMethod = reasonsForNotAdoptingMethod;
+    }
+
+    public String getLatLong() {
+        return latLong;
+    }
+
+    public void setLatLong(String latLong) {
+        this.latLong = latLong;
+    }
+
+    public String getMobileSystemDate() {
+        return mobileSystemDate;
+    }
+
+    public void setMobileSystemDate(String mobileSystemDate) {
+        this.mobileSystemDate = mobileSystemDate;
     }
 }

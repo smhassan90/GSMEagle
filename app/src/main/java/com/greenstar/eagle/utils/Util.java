@@ -1,13 +1,17 @@
 package com.greenstar.eagle.utils;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.support.v4.app.ActivityCompat;
 import android.widget.Toast;
 
-import com.crashlytics.android.Crashlytics;
 import com.google.gson.Gson;
 import com.greenstar.eagle.controller.Codes;
 import com.greenstar.eagle.dal.EagleClientToServer;
@@ -21,17 +25,20 @@ import com.loopj.android.http.RequestParams;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
 
+import static android.content.Context.LOCATION_SERVICE;
 import static android.content.Context.MODE_PRIVATE;
 
 public class Util {
    WebserviceResponse responseListener;
    PartialSyncResponse PSResponse;
+   public static SimpleDateFormat sdf = new SimpleDateFormat(Codes.myFormat);
     public static AppDatabase db =null;
     public static void saveData(JSONObject params, Context activity){
         String data = "";
@@ -42,7 +49,6 @@ public class Util {
             data = (String) params.get("data");
             status = (String) params.get("status");
         }catch(Exception e){
-            Crashlytics.logException(e);
         }
 
         if(Codes.ALL_OK.equals(status)){
@@ -86,6 +92,11 @@ public class Util {
                     if (dataObj.getDashboard() != null) {
                         db.getDashboardDAO().nukeTable();
                         db.getDashboardDAO().insert(dataObj.getDashboard());
+                    }
+
+                    if (dataObj.getCrForms() != null && dataObj.getCrForms().size()>0) {
+                        db.getCrFormDAO().nukeTable();
+                        db.getCrFormDAO().insertMultiple(dataObj.getCrForms());
                     }
                 } catch (Exception e) {
                     Toast.makeText(activity, "Something went wrong. Please sync later", Toast.LENGTH_SHORT).show();
@@ -135,8 +146,7 @@ public class Util {
                     }
                 }catch(Exception e){
                     Toast.makeText(context,"Something went wrong while sync",Toast.LENGTH_SHORT).show();
-                    Crashlytics.logException(e);
-                    Crashlytics.log("Sync Issue on pulling mapping at "+ new Date());
+
                 }
                 if(Codes.ALL_OK.equals(codeReceived)){
                     saveData(params, context);
@@ -146,7 +156,6 @@ public class Util {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray timeline) {
-                Crashlytics.log("Sync successful but not handled  "+ new Date());
 
             }
 
@@ -154,14 +163,12 @@ public class Util {
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 super.onFailure(statusCode, headers, responseString, throwable);
                 responseListener.responseAlert(Codes.SOMETHINGWENTWRONG);
-                Crashlytics.log("Sync Issue in pulling mapping on Failure "+ new Date());
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
                 responseListener.responseAlert(Codes.TIMEOUT);
-                Crashlytics.log("Sync Issue on pulling mapping on Timeout  "+ new Date());
             }
         });
 
@@ -224,7 +231,7 @@ public class Util {
                     }
                 }catch(Exception e){
                     Toast.makeText(context,"Something went wrong while sync",Toast.LENGTH_SHORT).show();
-                    Crashlytics.log("Sync Issue at "+ new Date());
+
                 }
                     db = AppDatabase.getAppDatabase(context);
                     if(syncType.equals(Codes.SINGLE_CR_FORM)){
@@ -281,8 +288,7 @@ public class Util {
                     params.put("status",codeReceived);
                 }catch(Exception e){
                     Toast.makeText(context,"Something went wrong while sync",Toast.LENGTH_SHORT).show();
-                    Crashlytics.log("Sync Issue at "+ new Date());
-                    Crashlytics.logException(e);
+
                 }
                 if(Codes.ALL_OK.equals(codeReceived)){
                     saveData(params, context);
@@ -292,7 +298,6 @@ public class Util {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONArray timeline) {
-                Crashlytics.log("Sync Successful but not handled at "+ new Date());
 
             }
 
@@ -300,14 +305,12 @@ public class Util {
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 super.onFailure(statusCode, headers, responseString, throwable);
                 responseListener.responseAlert(Codes.SOMETHINGWENTWRONG);
-                Crashlytics.log("Sync failed and got Something went wrong at  "+ new Date());
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                 super.onFailure(statusCode, headers, throwable, errorResponse);
                 responseListener.responseAlert(Codes.TIMEOUT);
-                Crashlytics.log("Sync failed and Timeout at "+ new Date());
             }
         });
     }
@@ -401,7 +404,7 @@ public class Util {
                     params.put("PSType",PSType);
                 }catch(Exception e){
                     Toast.makeText(context,"Something went wrong while sync",Toast.LENGTH_SHORT).show();
-                    Crashlytics.log("Sync Issue at "+ new Date());
+
                     codeReceived=Codes.SOMETHINGWENTWRONG;
                 }
                 if(codeReceived.equals(Codes.ALL_OK))
@@ -426,5 +429,32 @@ public class Util {
                 PSResponse.response(Codes.TIMEOUT,"","");
             }
         });
+    }
+
+    public static Location getLastKnownLocation(Activity activity) {
+        LocationManager mLocationManager = (LocationManager) activity.getApplicationContext().getSystemService(LOCATION_SERVICE);
+        List<String> providers = mLocationManager.getProviders(true);
+        Location bestLocation = null;
+        for (String provider : providers) {
+            if (ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+                continue;
+            }
+            Location l = mLocationManager.getLastKnownLocation(provider);
+            if (l == null) {
+                continue;
+            }
+            if (bestLocation == null || l.getAccuracy() < bestLocation.getAccuracy()) {
+                // Found best last known location: %s", l);
+                bestLocation = l;
+            }
+        }
+        return bestLocation;
     }
 }

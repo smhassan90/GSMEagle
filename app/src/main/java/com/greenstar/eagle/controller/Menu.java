@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.crashlytics.android.Crashlytics;
 import com.greenstar.eagle.R;
 import com.greenstar.eagle.controller.IPCForms.ChildrenRegistrationForm;
 import com.greenstar.eagle.controller.IPCForms.ClientRegistrationForm;
@@ -19,15 +18,20 @@ import com.greenstar.eagle.controller.IPCForms.FollowupForm;
 import com.greenstar.eagle.controller.IPCForms.NeighbourhoodForm;
 import com.greenstar.eagle.controller.IPCForms.TokenForm;
 import com.greenstar.eagle.db.AppDatabase;
+import com.greenstar.eagle.model.CRForm;
+import com.greenstar.eagle.model.ChildRegistrationForm;
 import com.greenstar.eagle.model.Dashboard;
+import com.greenstar.eagle.utils.PartialSyncResponse;
+import com.greenstar.eagle.utils.Util;
 import com.greenstar.eagle.utils.WebserviceResponse;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Date;
+import java.util.List;
 
-public class Menu extends AppCompatActivity implements View.OnClickListener, WebserviceResponse, View.OnLongClickListener {
+public class Menu extends AppCompatActivity implements View.OnClickListener, WebserviceResponse, View.OnLongClickListener, PartialSyncResponse {
 
     LinearLayout llCRForm;
     LinearLayout llProfile;
@@ -36,6 +40,7 @@ public class Menu extends AppCompatActivity implements View.OnClickListener, Web
     LinearLayout llFollowupForm;
     LinearLayout llNeighbourForm;
     LinearLayout llTokenForm;
+    LinearLayout llChildrenRegForm;
 
     ProgressDialog progressBar = null;
     AppDatabase db =null;
@@ -68,6 +73,57 @@ public class Menu extends AppCompatActivity implements View.OnClickListener, Web
 
         llTokenForm = findViewById(R.id.llTokenForm);
         llTokenForm.setOnClickListener(this);
+
+        llChildrenRegForm = findViewById(R.id.llChildrenRegForm);
+        llChildrenRegForm.setOnClickListener(this);
+
+        syncPendingForms();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        syncPendingForms();
+    }
+
+    private void syncPendingForms() {
+        Util util = new Util();
+        util.setPSResponse(this);
+        if(Util.isNetworkAvailable(this)){
+            if(db==null){
+                db = AppDatabase.getAppDatabase(this);
+            }
+            int count=0;
+            count = db.getCrFormDAO().getCount();
+            if(count!=0){
+                util.performPSync(this,Codes.PS_TYPE_Client);
+                return;
+            }
+
+            count = db.getChildRegistrationFormDAO().getCount();
+            if(count!=0){
+                util.performPSync(this,Codes.PS_TYPE_Children);
+                return;
+            }
+
+            count = db.getTokenModelDAO().getCount();
+            if(count!=0){
+                util.performPSync(this,Codes.PS_TYPE_Token);
+                return;
+            }
+
+            count = db.getNeighbourhoodFormDAO().getCount();
+            if(count!=0){
+                util.performPSync(this,Codes.PS_TYPE_Neighbour);
+                return;
+            }
+
+            count = db.getFollowupModelDAO().getCount();
+            if(count!=0){
+                util.performPSync(this,Codes.PS_TYPE_Followup);
+                return;
+            }
+        }
 
     }
 
@@ -109,10 +165,8 @@ public class Menu extends AppCompatActivity implements View.OnClickListener, Web
             name="";
         }
         if(response.equals(Codes.TIMEOUT)){
-            Crashlytics.log(Log.ERROR, name,  " Timeout session at "+new Date());
             Toast.makeText(this, "Timeout Session - Could not connect to server. Please contact Admin",Toast.LENGTH_LONG).show();
         }else if(response.equals(Codes.SOMETHINGWENTWRONG)){
-            Crashlytics.log(Log.ERROR, name," Something went wrong at "+new Date());
             Toast.makeText(this, "Something went wrong. Please contact Admin",Toast.LENGTH_LONG).show();
         }else{
             JSONObject responseObj=null;
@@ -126,12 +180,10 @@ public class Menu extends AppCompatActivity implements View.OnClickListener, Web
                 message=responseObj.get("message").toString();
                 data=responseObj.get("data").toString();
             } catch (JSONException e) {
-                Crashlytics.logException(e);
             }
             if(Codes.ALL_OK.equals(status)){
                 // db.getProvidersDAO().nukeTable();
             }
-            Crashlytics.log(Log.ERROR, name, " Sync Successful at "+new Date());
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
         }
         progressBar.dismiss();
@@ -140,5 +192,32 @@ public class Menu extends AppCompatActivity implements View.OnClickListener, Web
     @Override
     public boolean onLongClick(View v) {
         return false;
+    }
+
+    @Override
+    public void response(String responseCode, String PSCode, String message) {
+        if (db == null) {
+            db = AppDatabase.getAppDatabase(this);
+        }
+        if(responseCode.equals(Codes.ALL_OK)) {
+           if(PSCode.equals(Codes.PS_TYPE_Client)){
+                db.getCrFormDAO().markSynced();
+
+            }else if(PSCode.equals(Codes.PS_TYPE_Children)){
+                db.getChildRegistrationFormDAO().nukeTable();
+
+            }else if(PSCode.equals(Codes.PS_TYPE_Followup)){
+                db.getFollowupModelDAO().nukeTable();
+
+            }else if(PSCode.equals(Codes.PS_TYPE_Neighbour)){
+                db.getNeighbourhoodFormDAO().nukeTable();
+                db.getNeighbourhoodAttendeesModelDAO().nukeTable();
+
+            }else if(PSCode.equals(Codes.PS_TYPE_Token)){
+                db.getTokenModelDAO().nukeTable();
+
+            }
+            Toast.makeText(this,"Auto Sync Successful", Toast.LENGTH_SHORT).show();
+        }
     }
 }

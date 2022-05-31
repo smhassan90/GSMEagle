@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
@@ -301,6 +302,11 @@ public class FollowupForm extends AppCompatActivity implements View.OnClickListe
 
         form.setReasonsForNotAdoptingMethod(dropdownCRBData.getDetailEnglish());
 
+        Location location = Util.getLastKnownLocation(this);
+        if (location != null) {
+            form.setLatLong(location.getLatitude() + "," + location.getLongitude());
+        }
+        form.setMobileSystemDate(Util.sdf.format(Calendar.getInstance().getTime()));
         AppDatabase.getAppDatabase(this).getFollowupModelDAO().insert(form);
 
         Toast.makeText(this,"Form successfully submitted!",Toast.LENGTH_SHORT).show();

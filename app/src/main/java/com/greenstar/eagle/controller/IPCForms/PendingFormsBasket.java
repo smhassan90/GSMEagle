@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.crashlytics.android.Crashlytics;
 import com.greenstar.eagle.R;
 import com.greenstar.eagle.adapters.crf.submittedforms.PendingFormAdapter;
 import com.greenstar.eagle.controller.Codes;
@@ -104,7 +103,6 @@ public class PendingFormsBasket extends Fragment implements FormDeleteListener,W
             lvBasket.setAdapter(basketAdapter);
             basketAdapter.notifyDataSetChanged();
         }catch (Exception e){
-            Crashlytics.logException(e);
         }
 
     }

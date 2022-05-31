@@ -32,16 +32,16 @@
     <string name="neverUseReason">Reason of never use</string>
     <string name="discontinuationReason">Discontinuation Reason</string>
     <string name="RegistrationLocation">Registration Location</string>
-    <string name="CRForm">Register Client</string>
+    <string name="CRForm">2.Register MWRA</string>
     <string name="everUseReason">Reason of ever use</string>
     <string name="FPMethod">FP Method</string>
     <string name="SelectParent">Select Parent</string>
-    <string name="ChildRegistrationForm">Child Registration Form</string>
-    <string name="NeighbourForm">NeighbourForm</string>
+    <string name="ChildRegistrationForm">3.Child Registration Form</string>
+    <string name="NeighbourForm">1.NHM/OHM</string>
     <string name="SelectClient">SelectClient</string>
     <string name="ReasonForNotVisiting">ReasonForNotVisiting</string>
     <string name="AdoptedMethod" >Adopted Method</string>
     <string name="SideEffectsOfMethod">SideEffectsOfMethod</string>
-    <string name="FollowupForm">Followup Form</string>
-    <string name="TokenForm">Token Forms</string>
+    <string name="FollowupForm">5.Followup Form</string>
+    <string name="TokenForm">4.Token Forms</string>
 </resources>

@@ -59,6 +59,9 @@ public class CRForm {
 
     private int isSynced;
 
+    private String latLong;
+    private String mobileSystemDate;
+
     public long getId() {
         return id;
     }
@@ -235,6 +238,22 @@ public class CRForm {
         this.isSynced = isSynced;
     }
 
+    public String getLatLong() {
+        return latLong;
+    }
+
+    public void setLatLong(String latLong) {
+        this.latLong = latLong;
+    }
+
+    public String getMobileSystemDate() {
+        return mobileSystemDate;
+    }
+
+    public void setMobileSystemDate(String mobileSystemDate) {
+        this.mobileSystemDate = mobileSystemDate;
+    }
+
     @Override
     public String toString() {
         if(husbandName==null && contactNumber==null){
@@ -243,5 +262,7 @@ public class CRForm {
             return this.clientName + " - " + this.husbandName + " - " + this.contactNumber;
         }
     }
+
+
 }
 

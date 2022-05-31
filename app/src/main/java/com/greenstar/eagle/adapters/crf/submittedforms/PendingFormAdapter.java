@@ -13,7 +13,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.crashlytics.android.Crashlytics;
 import com.greenstar.eagle.R;
 import com.greenstar.eagle.dao.FormDeleteListener;
 import com.greenstar.eagle.db.AppDatabase;
@@ -82,7 +81,6 @@ public class PendingFormAdapter extends ArrayAdapter<CRForm> implements View.OnC
                     btnDelete.setTag(i.getId());
                     btnSyncSingle.setTag(i.getId());
                 }catch(Exception e){
-                    Crashlytics.logException(e);
                 }
             }else{
 

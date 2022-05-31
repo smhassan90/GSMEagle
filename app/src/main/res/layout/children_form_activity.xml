@@ -529,6 +529,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/customborder"
                         android:padding="@dimen/padding_10"
+                        style="@style/text_style"
                         android:id="@+id/etPersonalMinutes"
                         android:hint="Personal Minutes"
                         android:text="">

@@ -301,6 +301,45 @@
                             android:layout_weight="5"
                             android:id="@+id/etCommunityName"/>
                     </TableRow>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/form_field_padding"
+                        android:background="@drawable/customborder"
+                        android:id="@+id/trDidYouVisit"
+                        android:weightSum="10">
+
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="10"
+                            android:gravity="center"
+                            android:orientation="vertical" >
+
+                            <RadioGroup
+                                android:id="@+id/rgIsNeighborhood"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" >
+
+                                <RadioButton
+                                    android:id="@+id/rbNeighborhood"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Neighborhood Meeting"
+                                    style="@style/text_style"/>
+
+                                <RadioButton
+                                    android:id="@+id/rbOrientation"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    style="@style/text_style"
+                                    android:text="Orientation Meeting" />
+
+                            </RadioGroup>
+
+                        </LinearLayout>
+                    </TableRow>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/table_header_size"
@@ -355,6 +394,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/spinner_height"
                                 android:textColor="@color/black"
+                                android:buttonTint="@color/black"
                                 android:text="Is FP Brochure Given"/>
                             <CheckBox
                                 android:layout_gravity="center"
@@ -362,6 +402,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/spinner_height"
                                 android:textColor="@color/black"
+                                android:buttonTint="@color/black"
                                 android:text="Is Diarrhea Brochure Given"/>
                             <LinearLayout
                                 android:orientation="horizontal"
@@ -381,8 +422,6 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     style="@style/text_style"
-                                    android:textStyle="bold"
-                                    android:textColor="@color/darkGreen"
                                     android:layout_weight="5"
                                     android:id="@+id/etOtherIECMaterial"/>
                             </LinearLayout>

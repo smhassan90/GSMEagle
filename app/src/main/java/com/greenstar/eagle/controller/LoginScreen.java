@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.crashlytics.android.Crashlytics;
 import com.greenstar.eagle.R;
 import com.greenstar.eagle.db.AppDatabase;
 import com.greenstar.eagle.utils.HttpUtils;
@@ -96,7 +95,6 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
                     params.put("status",codeReceived);
 
                 }catch(Exception e){
-                    Crashlytics.logException(e);
                 }finally {
                     dialog.dismiss();
                 }
@@ -109,17 +107,15 @@ public class LoginScreen extends AppCompatActivity implements View.OnClickListen
                         editor.putString("token", token);
                         editor.putBoolean("isLoggedIn", true);
                         editor.putLong(Codes.CRFORMID, baseID);
+                        editor.putLong(Codes.CHILDRENREGISTRATIONFORMID, baseID);
                         editor.putLong(Codes.TOKENFORM, baseID);
                         editor.putLong(Codes.NEIGHBOURHOODFORM, baseID);
                         editor.putLong(Codes.NEIGHBOURHOODATTENDEESFORM, baseID);
                         editor.putLong(Codes.FOLLOWUPFORM, baseID);
                         editor.putString("staffCode", staffCode);
                         editor.apply();
-                        Crashlytics.setUserName(staffName);
-                        Crashlytics.setUserIdentifier(staffCode);
                         saveData(params);
                     }catch(Exception e){
-                        Crashlytics.logException(e);
                     }
                 }
             }

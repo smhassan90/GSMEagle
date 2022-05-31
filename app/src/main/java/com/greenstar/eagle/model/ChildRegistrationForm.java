@@ -27,6 +27,8 @@ public class ChildRegistrationForm {
     /*
     Diarrhea Section Ends
      */
+    private String latLong;
+    private String mobileSystemDate;
 
     public long getId() {
         return id;
@@ -92,4 +94,19 @@ public class ChildRegistrationForm {
         this.isCounseling = isCounseling;
     }
 
+    public String getLatLong() {
+        return latLong;
+    }
+
+    public void setLatLong(String latLong) {
+        this.latLong = latLong;
+    }
+
+    public String getMobileSystemDate() {
+        return mobileSystemDate;
+    }
+
+    public void setMobileSystemDate(String mobileSystemDate) {
+        this.mobileSystemDate = mobileSystemDate;
+    }
 }

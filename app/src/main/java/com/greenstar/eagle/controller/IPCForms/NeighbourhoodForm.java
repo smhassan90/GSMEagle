@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
@@ -16,6 +17,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -60,6 +62,10 @@ public class NeighbourhoodForm extends AppCompatActivity implements View.OnClick
     List<NeighbourhoodAttendeesModel> neighbourhoodAttendeesModels = new ArrayList<>();
 
     long neighbourhoodFormId = 0;
+
+    RadioButton rbNeighborhood;
+    RadioButton rbOrientation;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -144,6 +150,10 @@ public class NeighbourhoodForm extends AppCompatActivity implements View.OnClick
         lvNeighbourhoodAttendee.setAdapter(adapter);
 
         neighbourhoodFormId = Util.getNextID(this,Codes.NEIGHBOURHOODFORM);
+
+        rbNeighborhood = findViewById(R.id.rbNeighborhood);
+        rbOrientation = findViewById(R.id.rbOrientation);
+        rbNeighborhood.setChecked(true);
     }
 
     private void populateForm(){
@@ -208,7 +218,16 @@ public class NeighbourhoodForm extends AppCompatActivity implements View.OnClick
         mainForm.setVisitDate(etVisitDate.getText().toString());
 
         mainForm.setCommunityName(etCommunityName.getText().toString());
-
+        if(rbOrientation.isChecked()){
+            mainForm.setMeetingType(1);
+        }else{
+            mainForm.setMeetingType(0);
+        }
+        Location location = Util.getLastKnownLocation(this);
+        if (location != null) {
+            mainForm.setLatLong(location.getLatitude() + "," + location.getLongitude());
+        }
+        mainForm.setMobileSystemDate(Util.sdf.format(Calendar.getInstance().getTime()));
         AppDatabase db = AppDatabase.getAppDatabase(this);
         db.getNeighbourhoodFormDAO().insert(mainForm);
         db.getNeighbourhoodAttendeesModelDAO().insertMultiple(neighbourhoodAttendeesModels);

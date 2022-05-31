@@ -13,4 +13,11 @@
         <item name="tabIndicatorColor">#FF4081</item>
     </style>
 
+    <style name="text_style">
+        <item name="android:fontFamily">@font/robotobold</item>
+        <item name="android:textSize">@dimen/small_text_size</item>
+        <item name="android:textColor">@color/darkGreen</item>
+        <item name="android:buttonTint">@color/radioButtonSelected</item>
+    </style>
+
 </resources>

@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.crashlytics.android.Crashlytics;
 import com.greenstar.eagle.R;
 import com.greenstar.eagle.db.AppDatabase;
 import com.greenstar.eagle.utils.PartialSyncResponse;
@@ -72,6 +71,11 @@ public class PartialSync extends AppCompatActivity implements View.OnClickListen
     TextView tvPSLastTimeTokenForms;
     TextView tvPSDescriptionTokenForms;
     TextView tvPendingFormsTokenForms;
+
+    //PS Token
+    View viewPSPullClients;
+    Button btnPSPullClients;
+    TextView tvPSDescriptionPullClients;
 
     String partialSyncType = "";
 
@@ -188,6 +192,26 @@ public class PartialSync extends AppCompatActivity implements View.OnClickListen
         });
         tvPSDescriptionFollowupForms.setText("Sync Followup Forms");
         tvPendingFormsFollowupForms = viewPSFollowupForms.findViewById(R.id.tvPendingForms);
+
+        //PS ps_pull_clients
+        viewPSPullClients= findViewById(R.id.ps_pull_clients);
+        btnPSPullClients = viewPSPullClients.findViewById(R.id.btnPSync);
+        tvPSDescriptionPullClients = viewPSPullClients.findViewById(R.id.tvPSDescription);
+        btnPSPullClients.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                partialSyncType = Codes.PS_PULL_CLIENTS;
+                int count = db.getCrFormDAO().getCount();
+                if(count==0){
+                    callAPI(partialSyncType);
+                }else{
+                    Toast.makeText(activity,"First Sync Client registration forms",Toast.LENGTH_LONG).show();
+                }
+
+            }
+        });
+        tvPSDescriptionPullClients.setText("Pull all clients");
     }
 
     @Override
@@ -208,7 +232,6 @@ public class PartialSync extends AppCompatActivity implements View.OnClickListen
                     Toast.makeText(this,"Please connect to the internet service and try again.", Toast.LENGTH_SHORT).show();
                 }
             }catch (Exception e){
-                Crashlytics.logException(e);
             }
             return;
         }else if(btnPSCRForms.getId() == v.getId()){
@@ -355,10 +378,8 @@ public class PartialSync extends AppCompatActivity implements View.OnClickListen
             name="";
         }
         if(response.equals(Codes.TIMEOUT)){
-            Crashlytics.log(Log.ERROR, name,  " Timeout session at "+new Date());
             Toast.makeText(this, "Timeout Session - Could not connect to server. Please contact Admin",Toast.LENGTH_LONG).show();
         }else if(response.equals(Codes.SOMETHINGWENTWRONG)){
-            Crashlytics.log(Log.ERROR, name," Something went wrong at "+new Date());
             Toast.makeText(this, "Something went wrong. Please contact Admin",Toast.LENGTH_LONG).show();
         }else{
             JSONObject responseObj=null;
@@ -372,12 +393,10 @@ public class PartialSync extends AppCompatActivity implements View.OnClickListen
                 message=responseObj.get("message").toString();
                 data=responseObj.get("data").toString();
             } catch (JSONException e) {
-                Crashlytics.logException(e);
             }
             if(Codes.ALL_OK.equals(status)){
                 // db.getProvidersDAO().nukeTable();
             }
-            Crashlytics.log(Log.ERROR, name, " Sync Successful at "+new Date());
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
         }
         progressBar.dismiss();

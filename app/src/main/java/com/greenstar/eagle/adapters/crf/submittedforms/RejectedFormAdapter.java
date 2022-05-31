@@ -10,7 +10,6 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.crashlytics.android.Crashlytics;
 import com.greenstar.eagle.R;
 import com.greenstar.eagle.db.AppDatabase;
 import com.greenstar.eagle.model.CRForm;
@@ -68,7 +67,6 @@ public class RejectedFormAdapter extends ArrayAdapter<CRForm> {
 //                    tvProviderCode.setText("Provider Code : " + i.getProviderCode());
                     tvVisitDate.setText("Visit Date : " + i.getVisitDate());
                 }catch(Exception e){
-                    Crashlytics.logException(e);
                 }
             }else{
 

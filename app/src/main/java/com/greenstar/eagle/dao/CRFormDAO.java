@@ -22,7 +22,7 @@ public interface CRFormDAO {
     @Query("SELECT count(*) FROM CRForm where isSynced=0")
     int getCount();
 
-    @Query("SELECT * FROM CRForm")
+    @Query("SELECT * FROM CRForm where isSynced=0")
     List<CRForm> getAllPending();
 
     @Query("SELECT * FROM CRForm WHERE approvalStatus = 1")

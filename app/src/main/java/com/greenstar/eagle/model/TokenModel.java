@@ -15,6 +15,9 @@ public class TokenModel {
     private String providerCode;
     private String sitarabajiCode;
 
+    private String latLong;
+    private String mobileSystemDate;
+
     public long getId() {
         return id;
     }
@@ -61,5 +64,21 @@ public class TokenModel {
 
     public void setSitarabajiCode(String sitarabajiCode) {
         this.sitarabajiCode = sitarabajiCode;
+    }
+
+    public String getLatLong() {
+        return latLong;
+    }
+
+    public void setLatLong(String latLong) {
+        this.latLong = latLong;
+    }
+
+    public String getMobileSystemDate() {
+        return mobileSystemDate;
+    }
+
+    public void setMobileSystemDate(String mobileSystemDate) {
+        this.mobileSystemDate = mobileSystemDate;
     }
 }

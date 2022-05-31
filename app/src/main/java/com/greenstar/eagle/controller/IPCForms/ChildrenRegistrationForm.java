@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
@@ -220,7 +221,11 @@ public class ChildrenRegistrationForm extends AppCompatActivity implements View.
         }
         CRForm clientForm = (CRForm) spSelectParent.getSelectedItem();
         form.setParentId(clientForm.getId());
-
+        Location location = Util.getLastKnownLocation(this);
+        if (location != null) {
+            form.setLatLong(location.getLatitude() + "," + location.getLongitude());
+        }
+        form.setMobileSystemDate(Util.sdf.format(Calendar.getInstance().getTime()));
         AppDatabase.getAppDatabase(this).getChildRegistrationFormDAO().insert(form);
 
         Toast.makeText(this,"Form successfully submitted!",Toast.LENGTH_SHORT).show();

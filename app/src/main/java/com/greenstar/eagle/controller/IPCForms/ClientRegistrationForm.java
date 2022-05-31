@@ -5,6 +5,7 @@ import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
@@ -291,6 +292,11 @@ public class ClientRegistrationForm extends AppCompatActivity implements View.On
             form.setIsTokenGiven(0);
         }
 
+        Location location = Util.getLastKnownLocation(this);
+        if (location != null) {
+            form.setLatLong(location.getLatitude() + "," + location.getLongitude());
+        }
+        form.setMobileSystemDate(Util.sdf.format(Calendar.getInstance().getTime()));
         AppDatabase.getAppDatabase(this).getCrFormDAO().insert(form);
 
         Toast.makeText(this,"Form successfully submitted!",Toast.LENGTH_SHORT).show();
