@@ -89,6 +89,7 @@
                         android:layout_marginTop="@dimen/form_field_padding"
                         android:background="@drawable/customborder"
                         android:padding="@dimen/padding_10"
+                        android:visibility="gone"
                         android:weightSum="10">
                         <LinearLayout
                             android:orientation="vertical"
@@ -129,6 +130,7 @@
                         android:layout_marginTop="@dimen/form_field_padding"
                         android:background="@drawable/customborder"
                         android:padding="@dimen/padding_10"
+                        android:visibility="gone"
                         android:weightSum="10">
                         <LinearLayout
                             android:orientation="vertical"
@@ -169,6 +171,7 @@
                         android:layout_marginTop="@dimen/form_field_padding"
                         android:background="@drawable/customborder"
                         android:padding="@dimen/padding_10"
+                        android:visibility="gone"
                         android:weightSum="10">
                         <TextView
                             android:layout_width="0dp"
@@ -336,16 +339,8 @@
                                 style="@style/text_style"
                                 android:textColor="@color/black"
                                 android:gravity="center_vertical"
-
-                                android:text="Husband Name"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                style="@style/text_style"
-                                android:textColor="@color/black"
-                                android:gravity="center_vertical"
-                                android:layout_weight="5"
-                                android:text="شوہر کا نام"/>
+                                android:id="@+id/tvHusbandName"
+                                android:text="Father / Husband Name"/>
                         </LinearLayout>
                         <EditText
                             android:layout_width="0dp"
@@ -393,7 +388,7 @@
                                 style="@style/text_style"
                                 android:textColor="@color/black"
                                 android:gravity="center_vertical"
-
+android:id="@+id/tvAddress"
                                 android:text="Address"/>
                             <TextView
                                 android:layout_width="wrap_content"
@@ -514,31 +509,19 @@
 
                         </LinearLayout>
                     </TableRow>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/table_header_size"
-                        android:gravity="center">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            style="@style/medium_text_style"
-                            android:textStyle="bold"
-                            android:textColor="@color/black"
-                            android:text="Family Planning Section فیملی پلاننگ سیکشن"/>
-                    </LinearLayout>
                     <TableRow
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/form_field_padding"
-                        android:gravity="center_vertical"
                         android:background="@drawable/customborder"
-                        android:id="@+id/trCurrentUser"
+                        android:id="@+id/trRegisteredAt"
                         android:weightSum="10">
                         <LinearLayout
                             android:orientation="vertical"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="7"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:layout_weight="5"
                             >
                             <TextView
                                 android:layout_width="wrap_content"
@@ -547,42 +530,72 @@
                                 android:textColor="@color/black"
                                 android:gravity="center_vertical"
 
-                                android:text="Is this client currently using any contraceptive method?"/>
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                style="@style/text_style"
-                                android:textColor="@color/black"
-                                android:gravity="center_vertical"
-                                android:text="کیا یہ مریض فی الحال کوئی مانع حمل طریقہ استعمال کررہا ہے؟"/>
+                                android:text="Registered At : "/>
                         </LinearLayout>
+
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight="3"
+                            android:layout_weight="5"
                             android:orientation="vertical" >
 
                             <RadioGroup
-                                android:id="@+id/rgIsCurrentUser"
+                                android:id="@+id/rgRegisteredAt"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" >
 
                                 <RadioButton
-                                    android:id="@+id/rbIsCurrentUserYes"
+                                    android:id="@+id/rbNHM"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Yes/ ہاں"
+                                    android:text="Neighbourhood Meeting"
+                                    android:checked="true"
+                                    style="@style/text_style"/>
+
+
+                                <RadioButton
+                                    android:id="@+id/rbHHV"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+                                    style="@style/text_style"
+                                    android:text="Household Visit" />
+                                <RadioButton
+                                    android:id="@+id/rbOM"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Orientation Meeting"
                                     style="@style/text_style"/>
 
                                 <RadioButton
-                                    android:id="@+id/rbIsCurrentUserNo"
+                                    android:id="@+id/rbSH"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+
                                     style="@style/text_style"
-                                    android:text="No / نہیں" />
+                                    android:text="Sitara House" />
 
                             </RadioGroup>
+
                         </LinearLayout>
+                    </TableRow>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/form_field_padding"
+                        android:background="@drawable/customborder"
+                        android:padding="@dimen/padding_10"
+                        android:weightSum="10">
+
+                        <Spinner
+                            android:id="@+id/spHistory"
+                            android:prompt="@string/clientAge"
+                            android:layout_width="match_parent"
+                            style="@style/spinner_style"
+                            android:layout_weight="10"
+                            android:layout_height="@dimen/spinner_height"
+
+                            android:autofillHints="@string/history"/>
                     </TableRow>
                     <TableRow
                         android:layout_width="match_parent"
@@ -883,6 +896,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/form_field_padding"
                         android:background="@drawable/customborder"
+                        android:id="@+id/trFollowupDate"
                         android:weightSum="10">
                         <LinearLayout
                             android:orientation="vertical"

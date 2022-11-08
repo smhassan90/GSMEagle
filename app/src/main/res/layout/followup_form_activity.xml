@@ -89,6 +89,7 @@
                         android:layout_marginTop="@dimen/form_field_padding"
                         android:background="@drawable/customborder"
                         android:padding="@dimen/padding_10"
+                        android:visibility="gone"
                         android:weightSum="10">
                         <LinearLayout
                             android:orientation="vertical"
@@ -129,6 +130,7 @@
                         android:layout_marginTop="@dimen/form_field_padding"
                         android:background="@drawable/customborder"
                         android:padding="@dimen/padding_10"
+                        android:visibility="gone"
                         android:weightSum="10">
                         <LinearLayout
                             android:orientation="vertical"
@@ -169,6 +171,7 @@
                         android:layout_marginTop="@dimen/form_field_padding"
                         android:background="@drawable/customborder"
                         android:padding="@dimen/padding_10"
+                        android:visibility="gone"
                         android:weightSum="10">
                         <TextView
                             android:layout_width="0dp"
@@ -327,7 +330,7 @@
                                 style="@style/text_style"
                                 android:textColor="@color/black"
                                 android:gravity="center_vertical"
-                                android:text="Did you visit Provider?"/>
+                                android:text="Were you provided services at Sitara House?"/>
                         </LinearLayout>
 
                         <LinearLayout
@@ -337,19 +340,19 @@
                             android:orientation="vertical" >
 
                             <RadioGroup
-                                android:id="@+id/rgDidYouVisit"
+                                android:id="@+id/rgSupportSitaraHouse"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" >
 
                                 <RadioButton
-                                    android:id="@+id/rbDidYouVisitYes"
+                                    android:id="@+id/rbSupportSitaraHouseYes"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Yes / ہاں"
                                     style="@style/text_style"/>
 
                                 <RadioButton
-                                    android:id="@+id/rbDidYouVisitNo"
+                                    android:id="@+id/rbSupportSitaraHouseNo"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     style="@style/text_style"
@@ -359,32 +362,12 @@
 
                         </LinearLayout>
                     </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="@dimen/form_field_padding"
-                        android:background="@drawable/customborder"
-                        android:padding="@dimen/padding_10"
-                        android:id="@+id/trReasonForNotVisiting"
-                        android:visibility="gone"
-                        android:weightSum="10">
-
-                        <Spinner
-                            android:id="@+id/spReasonForNotVisiting"
-                            android:prompt="@string/clientAge"
-                            android:layout_width="match_parent"
-                            style="@style/spinner_style"
-                            android:layout_weight="10"
-                            android:layout_height="@dimen/spinner_height"
-                            android:autofillHints="@string/ReasonForNotVisiting"/>
-                    </TableRow>
                     <TableRow
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/form_field_padding"
                         android:background="@drawable/customborder"
-                        android:id="@+id/trHaveYouAdopted"
+                        android:id="@+id/trSupportProvider"
                         android:visibility="gone"
                         android:weightSum="10">
                         <LinearLayout
@@ -400,7 +383,60 @@
                                 style="@style/text_style"
                                 android:textColor="@color/black"
                                 android:gravity="center_vertical"
-                                android:text="Have You Adopted Any Method?"/>
+                                android:text="Were you provided services at Provider"/>
+                        </LinearLayout>
+w
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:orientation="vertical" >
+
+                            <RadioGroup
+                                android:id="@+id/rgSupportProvider"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" >
+
+                                <RadioButton
+                                    android:id="@+id/rbSupportProviderYes"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Yes / ہاں"
+                                    style="@style/text_style"/>
+
+                                <RadioButton
+                                    android:id="@+id/rbSupportProviderNo"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    style="@style/text_style"
+                                    android:text="No / نہیں" />
+
+                            </RadioGroup>
+
+                        </LinearLayout>
+                    </TableRow>
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/form_field_padding"
+                        android:background="@drawable/customborder"
+                        android:id="@+id/trSupportCompleted"
+                        android:visibility="gone"
+                        android:weightSum="10">
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:layout_weight="7"
+                            >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+                                android:text="Was the service completed?"/>
                         </LinearLayout>
 
                         <LinearLayout
@@ -410,19 +446,19 @@
                             android:orientation="vertical" >
 
                             <RadioGroup
-                                android:id="@+id/rgHaveYouAdopted"
+                                android:id="@+id/rgSupportCompleted"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" >
 
                                 <RadioButton
-                                    android:id="@+id/rbHaveYouAdoptedYes"
+                                    android:id="@+id/rbSupportCompletedYes"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Yes / ہاں"
                                     style="@style/text_style"/>
 
                                 <RadioButton
-                                    android:id="@+id/rbHaveYouAdoptedNo"
+                                    android:id="@+id/rbSupportCompletedNo"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     style="@style/text_style"
@@ -456,7 +492,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/form_field_padding"
                         android:background="@drawable/customborder"
-                        android:id="@+id/trAnySideEffects"
+                        android:id="@+id/trTokenGiven"
                         android:visibility="gone"
                         android:weightSum="10">
                         <LinearLayout
@@ -472,7 +508,7 @@
                                 style="@style/text_style"
                                 android:textColor="@color/black"
                                 android:gravity="center_vertical"
-                                android:text="Any side effects?"/>
+                                android:text="Token Given?"/>
                         </LinearLayout>
 
                         <LinearLayout
@@ -482,19 +518,19 @@
                             android:orientation="vertical" >
 
                             <RadioGroup
-                                android:id="@+id/rgAnySideEffects"
+                                android:id="@+id/rgTokenGiven"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" >
 
                                 <RadioButton
-                                    android:id="@+id/rbAnySideEffectsYes"
+                                    android:id="@+id/rbTokenGivenYes"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Yes / ہاں"
                                     style="@style/text_style"/>
 
                                 <RadioButton
-                                    android:id="@+id/rbAnySideEffectsNo"
+                                    android:id="@+id/rbTokenGivenNo"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     style="@style/text_style"
@@ -504,103 +540,49 @@
 
                         </LinearLayout>
                     </TableRow>
-                    <TableRow
-                        android:layout_width="match_parent"
+                    <LinearLayout
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/form_field_padding"
                         android:background="@drawable/customborder"
-                        android:id="@+id/trDidVisitAfterSideEffects"
-                        android:visibility="gone"
-                        android:weightSum="10">
-                        <LinearLayout
-                            android:orientation="vertical"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:gravity="center_vertical"
-                            android:layout_weight="7"
-                            >
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                style="@style/text_style"
-                                android:textColor="@color/black"
-                                android:gravity="center_vertical"
-                                android:text="Did you visit after side effects?"/>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="3"
-                            android:orientation="vertical" >
-
-                            <RadioGroup
-                                android:id="@+id/rgDidVisitAfterSideEffects"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" >
-
-                                <RadioButton
-                                    android:id="@+id/rbDidVisitAfterSideEffectsYes"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Yes / ہاں"
-                                    style="@style/text_style"/>
-
-                                <RadioButton
-                                    android:id="@+id/rbDidVisitAfterSideEffectsNo"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    style="@style/text_style"
-                                    android:text="No / نہیں" />
-
-                            </RadioGroup>
-
-                        </LinearLayout>
-                    </TableRow>
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:orientation="vertical"
                         android:layout_marginTop="@dimen/form_field_padding"
-                        android:background="@drawable/customborder"
-                        android:padding="@dimen/padding_10"
-                        android:id="@+id/trReasonsForNotAdoptingMethod"
-                        android:visibility="gone"
-                        android:weightSum="10">
-
-                        <Spinner
-                            android:id="@+id/spReasonsForNotAdoptingMethod"
-                            android:prompt="@string/currentMethod"
-                            android:layout_width="match_parent"
-                            style="@style/spinner_style"
-                            android:layout_weight="10"
-                            android:layout_height="@dimen/spinner_height"
-                            android:autofillHints="@string/ReasonForNotVisiting"/>
-                    </TableRow>
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/form_field_padding"
-                        android:weightSum="10"
-                        android:background="@drawable/customborder"
                         >
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/form_field_padding"
+                            android:weightSum="10"
+                            android:id="@+id/trFollowupDate"
+                            >
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+                                android:layout_weight="5"
+                                android:text="Followup Date"/>
+                            <EditText
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                style="@style/text_style"
+                                android:textStyle="bold"
+                                android:textColor="@color/darkGreen"
+                                android:layout_weight="5"
+                                android:focusable="false"
+                                android:id="@+id/etFollowupDate"/>
+
+
+                        </TableRow>
                         <TextView
-                            android:layout_width="0dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            style="@style/text_style"
-                            android:textColor="@color/black"
-                            android:gravity="center_vertical"
-                            android:layout_weight="5"
-                            android:text="Followup Date"/>
-                        <EditText
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            style="@style/text_style"
+                            style="@style/medium_text_style"
                             android:textStyle="bold"
-                            android:textColor="@color/darkGreen"
-                            android:layout_weight="5"
-                            android:focusable="false"
-                            android:id="@+id/etFollowupDate"/>
-                    </TableRow>
+                            android:textColor="@color/black"
+                            android:text="In case of any complications, refer to provider."/>
+                    </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/table_header_size"
@@ -611,7 +593,7 @@
                             style="@style/medium_text_style"
                             android:textStyle="bold"
                             android:textColor="@color/black"
-                            android:text="Remarks تبصرہ"/>
+                            android:text="Remarks"/>
                     </LinearLayout>
                 </TableLayout>
                 <LinearLayout
@@ -628,7 +610,8 @@
                         android:padding="@dimen/padding_10"
                         style="@style/text_style"
                         android:id="@+id/etPersonalMinutes"
-                        android:hint="Personal Minutes"
+                        android:maxLength="250"
+                        android:hint="Remarks"
                         android:text="">
                     </EditText>
                     <Button

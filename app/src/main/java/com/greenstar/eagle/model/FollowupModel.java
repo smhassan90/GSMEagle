@@ -11,13 +11,11 @@ public class FollowupModel {
     private long id;
     private String visitDate;
     private long clientId;
-    private int didYouVisit;
-    private String reasonForNotVisiting;
-    private int haveYouAdopted;
-    private String adoptedMethod;
-    private int anySideEffects;
-    private int didVisitAfterSideEffects;
-    private String reasonsForNotAdoptingMethod;
+    private int isSupportSitaraHouse;
+    private int isSupportProvider;
+    private int isSupportCompleted;
+    private String service;
+    private String followupDate;
 
     private String latLong;
     private String mobileSystemDate;
@@ -46,60 +44,44 @@ public class FollowupModel {
         this.clientId = clientId;
     }
 
-    public int getDidYouVisit() {
-        return didYouVisit;
+    public int getIsSupportSitaraHouse() {
+        return isSupportSitaraHouse;
     }
 
-    public void setDidYouVisit(int didYouVisit) {
-        this.didYouVisit = didYouVisit;
+    public void setIsSupportSitaraHouse(int isSupportSitaraHouse) {
+        this.isSupportSitaraHouse = isSupportSitaraHouse;
     }
 
-    public String getReasonForNotVisiting() {
-        return reasonForNotVisiting;
+    public int getIsSupportProvider() {
+        return isSupportProvider;
     }
 
-    public void setReasonForNotVisiting(String reasonForNotVisiting) {
-        this.reasonForNotVisiting = reasonForNotVisiting;
+    public void setIsSupportProvider(int isSupportProvider) {
+        this.isSupportProvider = isSupportProvider;
     }
 
-    public int getHaveYouAdopted() {
-        return haveYouAdopted;
+    public int getIsSupportCompleted() {
+        return isSupportCompleted;
     }
 
-    public void setHaveYouAdopted(int haveYouAdopted) {
-        this.haveYouAdopted = haveYouAdopted;
+    public void setIsSupportCompleted(int isSupportCompleted) {
+        this.isSupportCompleted = isSupportCompleted;
     }
 
-    public String getAdoptedMethod() {
-        return adoptedMethod;
+    public String getService() {
+        return service;
     }
 
-    public void setAdoptedMethod(String adoptedMethod) {
-        this.adoptedMethod = adoptedMethod;
+    public void setService(String service) {
+        this.service = service;
     }
 
-    public int getAnySideEffects() {
-        return anySideEffects;
+    public String getFollowupDate() {
+        return followupDate;
     }
 
-    public void setAnySideEffects(int anySideEffects) {
-        this.anySideEffects = anySideEffects;
-    }
-
-    public int getDidVisitAfterSideEffects() {
-        return didVisitAfterSideEffects;
-    }
-
-    public void setDidVisitAfterSideEffects(int didVisitAfterSideEffects) {
-        this.didVisitAfterSideEffects = didVisitAfterSideEffects;
-    }
-
-    public String getReasonsForNotAdoptingMethod() {
-        return reasonsForNotAdoptingMethod;
-    }
-
-    public void setReasonsForNotAdoptingMethod(String reasonsForNotAdoptingMethod) {
-        this.reasonsForNotAdoptingMethod = reasonsForNotAdoptingMethod;
+    public void setFollowupDate(String followupDate) {
+        this.followupDate = followupDate;
     }
 
     public String getLatLong() {

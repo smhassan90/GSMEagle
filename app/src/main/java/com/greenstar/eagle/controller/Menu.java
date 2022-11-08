@@ -16,6 +16,7 @@ import com.greenstar.eagle.controller.IPCForms.ChildrenRegistrationForm;
 import com.greenstar.eagle.controller.IPCForms.ClientRegistrationForm;
 import com.greenstar.eagle.controller.IPCForms.FollowupForm;
 import com.greenstar.eagle.controller.IPCForms.NeighbourhoodForm;
+import com.greenstar.eagle.controller.IPCForms.Notification;
 import com.greenstar.eagle.controller.IPCForms.TokenForm;
 import com.greenstar.eagle.db.AppDatabase;
 import com.greenstar.eagle.model.CRForm;
@@ -40,7 +41,7 @@ public class Menu extends AppCompatActivity implements View.OnClickListener, Web
     LinearLayout llFollowupForm;
     LinearLayout llNeighbourForm;
     LinearLayout llTokenForm;
-    LinearLayout llChildrenRegForm;
+    LinearLayout llTokenRedemption;
 
     ProgressDialog progressBar = null;
     AppDatabase db =null;
@@ -74,8 +75,8 @@ public class Menu extends AppCompatActivity implements View.OnClickListener, Web
         llTokenForm = findViewById(R.id.llTokenForm);
         llTokenForm.setOnClickListener(this);
 
-        llChildrenRegForm = findViewById(R.id.llChildrenRegForm);
-        llChildrenRegForm.setOnClickListener(this);
+        llTokenRedemption = findViewById(R.id.llTokenRedemption);
+        llTokenRedemption.setOnClickListener(this);
 
         syncPendingForms();
     }
@@ -133,11 +134,10 @@ public class Menu extends AppCompatActivity implements View.OnClickListener, Web
             Intent myIntent = new Intent(this, ProviderProfile.class);
             startActivity(myIntent);
         }else if(v.getId()==R.id.llDashboard){
-            Intent myIntent = new Intent(this, DashboardActivity.class);
+            Intent myIntent = new Intent(this, Notification.class);
             startActivity(myIntent);
-        }else if(v.getId()==R.id.llChildrenRegForm){
-            Intent myIntent = new Intent(this, ChildrenRegistrationForm.class);
-            startActivity(myIntent);
+        }else if(v.getId()==R.id.llTokenRedemption){
+            Toast.makeText(this,"Under development",Toast.LENGTH_LONG).show();
         }else if(v.getId()==R.id.llForm){
             Intent myIntent = new Intent(activity, ClientRegistrationForm.class);
             startActivity(myIntent);

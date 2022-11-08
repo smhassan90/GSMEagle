@@ -291,7 +291,7 @@
                             android:gravity="center_vertical"
                             android:layout_weight="5"
                             android:id="@+id/tvCommunityName"
-                            android:text="Community Name"/>
+                            android:text="Topic of Meeting"/>
                         <EditText
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -318,23 +318,39 @@
                             android:orientation="vertical" >
 
                             <RadioGroup
-                                android:id="@+id/rgIsNeighborhood"
+                                android:id="@+id/rgRegisteredAt"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content" >
 
                                 <RadioButton
-                                    android:id="@+id/rbNeighborhood"
+                                    android:id="@+id/rbNHM"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Neighborhood Meeting"
+                                    android:text="Neighbourhood Meeting"
+                                    android:checked="true"
                                     style="@style/text_style"/>
 
                                 <RadioButton
-                                    android:id="@+id/rbOrientation"
+                                    android:id="@+id/rbHHV"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+
                                     style="@style/text_style"
-                                    android:text="Orientation Meeting" />
+                                    android:text="Household Visit" />
+                                <RadioButton
+                                    android:id="@+id/rbOM"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Orientation Meeting"
+                                    style="@style/text_style"/>
+
+                                <RadioButton
+                                    android:id="@+id/rbSH"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+                                    style="@style/text_style"
+                                    android:text="Sitara House" />
 
                             </RadioGroup>
 
@@ -395,12 +411,13 @@
                                 android:layout_height="@dimen/spinner_height"
                                 android:textColor="@color/black"
                                 android:buttonTint="@color/black"
-                                android:text="Is FP Brochure Given"/>
+                                android:text="Is IEC Material Given"/>
                             <CheckBox
                                 android:layout_gravity="center"
                                 android:id="@+id/cbIsDiarrheaBrochureGiven"
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/spinner_height"
+                                android:visibility="gone"
                                 android:textColor="@color/black"
                                 android:buttonTint="@color/black"
                                 android:text="Is Diarrhea Brochure Given"/>
@@ -408,6 +425,7 @@
                                 android:orientation="horizontal"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:visibility="gone"
                                 android:layout_weight="10"
                                 >
                                 <TextView
@@ -443,6 +461,29 @@
                     android:background="@color/lightBlue"
                     android:padding="@dimen/form_field_padding"
                     >
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/table_header_size"
+                        android:gravity="center">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/medium_text_style"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:text="Remarks"/>
+                    </LinearLayout>
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/customborder"
+                        android:padding="@dimen/padding_10"
+                        style="@style/text_style"
+                        android:id="@+id/etRemarks"
+                        android:maxLength="250"
+                        android:hint="Remarks"
+                        android:text="">
+                    </EditText>
                     <Button
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/spinner_height"

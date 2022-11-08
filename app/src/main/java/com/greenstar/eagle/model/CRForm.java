@@ -25,29 +25,6 @@ public class CRForm {
     private int canWeContact;
 
     /*
-    Diarrhea Section
-     */
-    private int currentDiarrhea;
-    private int isMedicineProvided;
-    private int isCounseling;
-
-    /*
-    Diarrhea Section Ends
-     */
-
-    /*
-    FP Planning Category
-     */
-
-    private int isCurrentUser;
-    private String currentFPMethod;
-    private int periodOfUsingCurrentMethod;
-    private int isEverUser;
-    private String everMethodUsed;
-    private String reasonForDiscontinuation;
-    private String reasonForNeverUser;
-
-    /*
     FP Ends
      */
 
@@ -58,6 +35,10 @@ public class CRForm {
     private int approvalStatus ;
 
     private int isSynced;
+
+    private String registeredAt;
+
+    private String reproductiveHistory;
 
     private String latLong;
     private String mobileSystemDate;
@@ -126,86 +107,6 @@ public class CRForm {
         this.canWeContact = canWeContact;
     }
 
-    public int getCurrentDiarrhea() {
-        return currentDiarrhea;
-    }
-
-    public void setCurrentDiarrhea(int currentDiarrhea) {
-        this.currentDiarrhea = currentDiarrhea;
-    }
-
-    public int getIsMedicineProvided() {
-        return isMedicineProvided;
-    }
-
-    public void setIsMedicineProvided(int isMedicineProvided) {
-        this.isMedicineProvided = isMedicineProvided;
-    }
-
-    public int getIsCounseling() {
-        return isCounseling;
-    }
-
-    public void setIsCounseling(int isCounseling) {
-        this.isCounseling = isCounseling;
-    }
-
-    public int getIsCurrentUser() {
-        return isCurrentUser;
-    }
-
-    public void setIsCurrentUser(int isCurrentUser) {
-        this.isCurrentUser = isCurrentUser;
-    }
-
-    public String getCurrentFPMethod() {
-        return currentFPMethod;
-    }
-
-    public void setCurrentFPMethod(String currentFPMethod) {
-        this.currentFPMethod = currentFPMethod;
-    }
-
-    public int getPeriodOfUsingCurrentMethod() {
-        return periodOfUsingCurrentMethod;
-    }
-
-    public void setPeriodOfUsingCurrentMethod(int periodOfUsingCurrentMethod) {
-        this.periodOfUsingCurrentMethod = periodOfUsingCurrentMethod;
-    }
-
-    public int getIsEverUser() {
-        return isEverUser;
-    }
-
-    public void setIsEverUser(int isEverUser) {
-        this.isEverUser = isEverUser;
-    }
-
-    public String getEverMethodUsed() {
-        return everMethodUsed;
-    }
-
-    public void setEverMethodUsed(String everMethodUsed) {
-        this.everMethodUsed = everMethodUsed;
-    }
-
-    public String getReasonForDiscontinuation() {
-        return reasonForDiscontinuation;
-    }
-
-    public void setReasonForDiscontinuation(String reasonForDiscontinuation) {
-        this.reasonForDiscontinuation = reasonForDiscontinuation;
-    }
-
-    public String getReasonForNeverUser() {
-        return reasonForNeverUser;
-    }
-
-    public void setReasonForNeverUser(String reasonForNeverUser) {
-        this.reasonForNeverUser = reasonForNeverUser;
-    }
-
     public int getIsTokenGiven() {
         return isTokenGiven;
     }
@@ -252,6 +153,22 @@ public class CRForm {
 
     public void setMobileSystemDate(String mobileSystemDate) {
         this.mobileSystemDate = mobileSystemDate;
+    }
+
+    public String getRegisteredAt() {
+        return registeredAt;
+    }
+
+    public void setRegisteredAt(String registeredAt) {
+        this.registeredAt = registeredAt;
+    }
+
+    public String getReproductiveHistory() {
+        return reproductiveHistory;
+    }
+
+    public void setReproductiveHistory(String reproductiveHistory) {
+        this.reproductiveHistory = reproductiveHistory;
     }
 
     @Override

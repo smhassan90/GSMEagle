@@ -457,4 +457,50 @@ public class Util {
         }
         return bestLocation;
     }
+
+    public void getNotification(final Activity context,String followupDate){
+        SharedPreferences editor = context.getSharedPreferences(Codes.PREF_NAME, Context.MODE_PRIVATE);
+        String token = editor.getString("token","");
+        RequestParams rp = new RequestParams();
+        rp.add("token",token);
+        rp.add("followupDate",followupDate);
+
+        HttpUtils.get("getNotification", rp, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                String message = "";
+                String codeReceived = "";
+                String data = "";
+                JSONObject params = new JSONObject();
+                try {
+                    message = response.get("message").toString();
+                    codeReceived = response.get("status").toString();
+                    data = response.get("data").toString();
+                }catch(Exception e){
+                    Toast.makeText(context,"Something went wrong while sync",Toast.LENGTH_SHORT).show();
+
+                    codeReceived=Codes.SOMETHINGWENTWRONG;
+                }
+
+                PSResponse.response(codeReceived, codeReceived, data);
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONArray timeline) {
+                PSResponse.response(Codes.SOMETHINGWENTWRONG,"","");
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+                PSResponse.response(Codes.SOMETHINGWENTWRONG,"","");
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+                PSResponse.response(Codes.TIMEOUT,"","");
+            }
+        });
+    }
 }

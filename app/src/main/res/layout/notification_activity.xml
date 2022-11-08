@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/lightBlue"
+        android:padding="@dimen/form_field_padding"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/form_field_padding"
+            android:background="@drawable/customborder"
+            android:id="@+id/llSelectDate"
+            android:weightSum="10"
+            android:layout_marginBottom="@dimen/padding_10">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:layout_gravity="center"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/text_style"
+                    android:textColor="@color/black"
+                    android:gravity="center_vertical"
+
+                    android:text="Select Date"/>
+            </LinearLayout>
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                style="@style/text_style"
+                android:textStyle="bold"
+                android:textColor="@color/darkGreen"
+                android:layout_weight="5"
+                android:focusable="false"
+                android:id="@+id/etSelectDate"/>
+        </LinearLayout>
+        <WebView  xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/wvNotification"
+            android:background="@drawable/customborder"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            />
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

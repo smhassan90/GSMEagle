@@ -43,5 +43,9 @@
     <string name="AdoptedMethod" >Adopted Method</string>
     <string name="SideEffectsOfMethod">SideEffectsOfMethod</string>
     <string name="FollowupForm">5.Followup Form</string>
-    <string name="TokenForm">4.Token Forms</string>
+    <string name="TokenForm">4.Referral Token</string>
+    <string name="history">Reproductive History</string>
+    <string name="TokenRedemption">Token Redemption</string>
+    <string name="ReasonForNoSupport">Reason for no support</string>
+    <string name="notification">Notification</string>
 </resources>

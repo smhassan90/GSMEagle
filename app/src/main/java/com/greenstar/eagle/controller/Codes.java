@@ -7,6 +7,7 @@ public interface Codes {
     final public static String TIMEOUT = "Timeout";
     final public static String SOMETHINGWENTWRONG = "2001";
     final public static String myFormat = "MM/dd/yy";
+    final public static String notificationFormat = "dd-MMM-yy";
     //Partial Sync
     public static final String ALL_OK_PS_BASICINFO = "2001";
     public static final String ERROR_PS_BASICINFO = "5021";

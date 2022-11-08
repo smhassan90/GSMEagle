@@ -99,6 +99,13 @@
 
             </intent-filter>
         </activity>
+        <activity android:name="com.greenstar.eagle.controller.IPCForms.Notification"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+            </intent-filter>
+        </activity>
 
         <meta-data
             android:name="io.fabric.ApiKey"

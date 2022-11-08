@@ -11,11 +11,14 @@ public class NeighbourhoodFormModel {
     private long id;
     private String visitDate;
     /*
-    type = 0 Neighborhood Meeting
-    type = 1 Orientation Meeting
+    type = 1 Neighborhood Meeting
+    type = 2 Household Visit
+    type = 3 Orientation Meeting
+    type = 4 Sitara House
      */
     private int meetingType;
     private String communityName;
+    private String remarks;
 
     private String latLong;
     private String mobileSystemDate;
@@ -66,5 +69,13 @@ public class NeighbourhoodFormModel {
 
     public void setMobileSystemDate(String mobileSystemDate) {
         this.mobileSystemDate = mobileSystemDate;
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
     }
 }

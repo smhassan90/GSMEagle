@@ -14,6 +14,7 @@ public class TokenModel {
     private String referredMethod;
     private String providerCode;
     private String sitarabajiCode;
+    private String registeredAt;
 
     private String latLong;
     private String mobileSystemDate;
@@ -80,5 +81,13 @@ public class TokenModel {
 
     public void setMobileSystemDate(String mobileSystemDate) {
         this.mobileSystemDate = mobileSystemDate;
+    }
+
+    public String getRegisteredAt() {
+        return registeredAt;
+    }
+
+    public void setRegisteredAt(String registeredAt) {
+        this.registeredAt = registeredAt;
     }
 }

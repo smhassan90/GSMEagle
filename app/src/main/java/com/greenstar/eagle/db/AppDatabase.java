@@ -28,7 +28,7 @@ import com.greenstar.eagle.model.TokenModel;
 @Database(entities = {Providers.class, Dashboard.class,
         DropdownCRBData.class, CRForm.class, ChildRegistrationForm.class, NeighbourhoodFormModel.class, NeighbourhoodAttendeesModel.class,
         FollowupModel.class, TokenModel.class},
-        version = 1)
+        version = 2)
 public abstract class AppDatabase extends RoomDatabase {
     private static final String DATABASE_NAME = "eagledb";
     private static AppDatabase INSTANCE;

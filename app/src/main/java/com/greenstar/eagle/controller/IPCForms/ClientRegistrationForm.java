@@ -42,20 +42,17 @@ public class ClientRegistrationForm extends AppCompatActivity implements View.On
 
     TextView tvSitarabajiCode, tvSitarabajiName, tvProviderCode, tvProviderName, tvSupervisorName, tvRegion, tvDistrict;
 
-    EditText etVisitDate, etFollowupDate, etClientName, etHusbandName, etAddress, etContact, etCurrentMethodYears, etDiscontinuationReasonOther, etNeverUsedReasonOther;
+    EditText etVisitDate, etFollowupDate, etClientName, etHusbandName, etAddress, etContact;
 
-    TextView tvContactNumber, tvClientName;
+    TextView tvContactNumber, tvClientName, tvHusbandName, tvAddress;
 
-    Spinner spClientAge, spCurrentMethod, spReasonForDiscontinuation, spEverMethod, spReasonForNeverUser;
+    Spinner spClientAge, spHistory;
 
     RadioGroup rgCanWeContact;
     RadioButton rbCanWeContactYes, rbCanWeContactNo;
 
-    RadioGroup rgIsEverUser;
-    RadioButton rbIsEverUserYes, rbIsEverUserNo;
-
-    RadioGroup rgIsCurrentUser;
-    RadioButton rbIsCurrentUserYes, rbIsCurrentUserNo;
+    RadioGroup rgRegisteredAt;
+    RadioButton rbNHM, rbHHV, rbOM, rbSH;
 
     RadioGroup rgTokenGiven;
     RadioButton rbTokenGivenYes, rbTokenGivenNo;
@@ -65,9 +62,8 @@ public class ClientRegistrationForm extends AppCompatActivity implements View.On
     DatePickerDialog.OnDateSetListener date = null;
     DatePickerDialog.OnDateSetListener followupDate = null;
     final Calendar myCalendar1 = Calendar.getInstance();
-    final Calendar myCalendar2 = Calendar.getInstance();
 
-    TableRow trNeverUseReason,trPeriodOfCurrentYears, trCurrentMethod, trEverUsed, trEverMethod, trEverUseReason;
+    TableRow trNeverUseReason,trPeriodOfCurrentYears, trCurrentMethod, trEverUsed, trEverMethod, trEverUseReason, trFollowupDate;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -116,11 +112,11 @@ public class ClientRegistrationForm extends AppCompatActivity implements View.On
 
         etClientName = findViewById(R.id.etClientName);
         etHusbandName = findViewById(R.id.etHusbandName);
+        tvHusbandName = findViewById(R.id.tvHusbandName);
+        tvAddress = findViewById(R.id.tvAddress);
 
         spClientAge = findViewById(R.id.spClientAge);
-        spReasonForDiscontinuation = findViewById(R.id.spReasonForDiscontinuation);
-        spEverMethod = findViewById(R.id.spEverMethod);
-        spReasonForNeverUser = findViewById(R.id.spNeverUseReason);
+        spHistory = findViewById(R.id.spHistory);
 
         etAddress = findViewById(R.id.etAddress);
         etContact = findViewById(R.id.etContact);
@@ -131,24 +127,15 @@ public class ClientRegistrationForm extends AppCompatActivity implements View.On
         rbCanWeContactYes = findViewById(R.id.rbCanWeContactYes);
         rbCanWeContactNo = findViewById(R.id.rbCanWeContactNo);
 
-        rgIsEverUser = findViewById(R.id.rgIsEverUser);
-        rbIsEverUserYes = findViewById(R.id.rbIsEverUserYes);
-        rbIsEverUserNo = findViewById(R.id.rbIsEverUserNo);
-
-        rgIsCurrentUser = findViewById(R.id.rgIsCurrentUser);
-        rbIsCurrentUserYes = findViewById(R.id.rbIsCurrentUserYes);
-        rbIsCurrentUserNo = findViewById(R.id.rbIsCurrentUserNo);
-        rgIsCurrentUser.setOnCheckedChangeListener(this);
+        rgRegisteredAt = findViewById(R.id.rgRegisteredAt);
+        rbHHV = findViewById(R.id.rbHHV);
+        rbNHM = findViewById(R.id.rbNHM);
+        rbOM = findViewById(R.id.rbOM);
+        rbSH = findViewById(R.id.rbSH);
 
         rgTokenGiven = findViewById(R.id.rgTokenGiven);
         rbTokenGivenYes = findViewById(R.id.rbTokenGivenYes);
         rbTokenGivenNo = findViewById(R.id.rbTokenGivenNo);
-
-        etCurrentMethodYears = findViewById(R.id.etCurrentMethodYears);
-        etDiscontinuationReasonOther = findViewById(R.id.etDiscontinuationReasonOther);
-        etNeverUsedReasonOther = findViewById(R.id.etNeverUsedReasonOther);
-
-        spCurrentMethod = findViewById(R.id.spCurrentMethod);
 
         btnSubmit = findViewById(R.id.btnSubmit);
         btnSubmit.setOnClickListener(this);
@@ -160,13 +147,14 @@ public class ClientRegistrationForm extends AppCompatActivity implements View.On
         trCurrentMethod = findViewById(R.id.trCurrentMethod);
         trNeverUseReason = findViewById(R.id.trNeverUseReason);
 
-        rgIsEverUser.setOnCheckedChangeListener(this);
+        trFollowupDate = findViewById(R.id.trFollowupDate);
+        trFollowupDate.setOnClickListener(this);
     }
 
     private void populateForm(){
 
         updateVisitDate();
-        updateFollowupDate();
+       // updateFollowupDate();
         date = new DatePickerDialog.OnDateSetListener() {
 
             @Override
@@ -182,9 +170,9 @@ public class ClientRegistrationForm extends AppCompatActivity implements View.On
 
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                myCalendar2.set(Calendar.YEAR, year);
-                myCalendar2.set(Calendar.MONTH, month);
-                myCalendar2.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                myCalendar1.set(Calendar.YEAR, year);
+                myCalendar1.set(Calendar.MONTH, month);
+                myCalendar1.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                 updateFollowupDate();
             }
 
@@ -200,16 +188,8 @@ public class ClientRegistrationForm extends AppCompatActivity implements View.On
         tvRegion.setText(region);
         tvDistrict.setText(district);
 
-        etCurrentMethodYears.setText("");
-        etDiscontinuationReasonOther.setText("");
-        etNeverUsedReasonOther.setText("");
-        etCurrentMethodYears.setOnFocusChangeListener(this);
-
         spClientAge.setAdapter(getGeneralDropdownAdapter("Client Age", "Client Age"));
-        spCurrentMethod.setAdapter(getGeneralDropdownAdapter("Current Method","Current Method"));
-        spReasonForDiscontinuation.setAdapter(getGeneralDropdownAdapter("Reasons of Discontinuation","Reasons for discontinuation"));
-        spEverMethod.setAdapter(getGeneralDropdownAdapter("Ever Method","CurrentEverMethod"));
-        spReasonForNeverUser.setAdapter(getGeneralDropdownAdapter("Reasons of Never Use","Reasons of never use"));
+        spHistory.setAdapter(getGeneralDropdownAdapter("Reproductive History","EagleHistory"));
     }
 
 
@@ -239,7 +219,7 @@ public class ClientRegistrationForm extends AppCompatActivity implements View.On
     private void updateFollowupDate() {
         SimpleDateFormat sdf = new SimpleDateFormat(Codes.myFormat);
 
-        etFollowupDate.setText(sdf.format(myCalendar2.getTime()));
+        etFollowupDate.setText(sdf.format(myCalendar1.getTime()));
     }
 
     public void submitForm(){
@@ -260,13 +240,11 @@ public class ClientRegistrationForm extends AppCompatActivity implements View.On
             form.setCanWeContact(0);
         }
 
-        if(rbIsCurrentUserYes.isChecked()){
-            form.setIsCurrentUser(1);
+        if(rbTokenGivenYes.isChecked()){
+            form.setIsTokenGiven(1);
         }else{
-            form.setIsCurrentUser(0);
+            form.setIsTokenGiven(0);
         }
-        dropdownCRBData = (DropdownCRBData) spCurrentMethod.getSelectedItem();
-        form.setCurrentFPMethod(dropdownCRBData.getDetailEnglish());
 
         if(rbTokenGivenYes.isChecked()){
             form.setIsTokenGiven(1);
@@ -274,23 +252,18 @@ public class ClientRegistrationForm extends AppCompatActivity implements View.On
             form.setIsTokenGiven(0);
         }
 
-        form.setPeriodOfUsingCurrentMethod(Integer.valueOf(etCurrentMethodYears.getText().toString()));
-
-        if(rbIsEverUserYes.isChecked()){
-            form.setIsEverUser(1);
-        }else{
-            form.setIsEverUser(0);
+        if(rbHHV.isChecked()){
+            form.setRegisteredAt("HHV");
+        }else if(rbNHM.isChecked()){
+            form.setRegisteredAt("NHM");
+        }else  if (rbOM.isChecked()){
+            form.setRegisteredAt("OM");
+        }else if(rbSH.isChecked()){
+            form.setRegisteredAt("SH");
         }
-        dropdownCRBData = (DropdownCRBData) spEverMethod.getSelectedItem();
-        form.setEverMethodUsed(dropdownCRBData.getDetailEnglish());
-        form.setReasonForDiscontinuation(etDiscontinuationReasonOther.getText().toString());
-        form.setReasonForNeverUser(etNeverUsedReasonOther.getText().toString());
 
-        if(rbTokenGivenYes.isChecked()){
-            form.setIsTokenGiven(1);
-        }else{
-            form.setIsTokenGiven(0);
-        }
+        DropdownCRBData dropdown = (DropdownCRBData) spHistory.getSelectedItem();
+        form.setReproductiveHistory(dropdown.getDetailEnglish());
 
         Location location = Util.getLastKnownLocation(this);
         if (location != null) {
@@ -313,7 +286,9 @@ public class ClientRegistrationForm extends AppCompatActivity implements View.On
     private boolean isValid(){
         boolean isValid=true;
         if("".equals(etClientName.getText().toString()) ||
-                "".equals(etContact.getText().toString()) ){
+                "".equals(etContact.getText().toString()) ||
+                        "".equals(etAddress.getText().toString()) ||
+                        "".equals(etHusbandName.getText().toString())){
 
             isValid = false;
         }
@@ -323,18 +298,24 @@ public class ClientRegistrationForm extends AppCompatActivity implements View.On
         if("".equals(etContact.getText().toString()) ){
             tvContactNumber.setTextColor(getResources().getColor(R.color.darkestOrange));
         }else{
-            tvContactNumber.setTextColor(getResources().getColor(R.color.whiteColor));
+            tvContactNumber.setTextColor(getResources().getColor(R.color.black));
         }
 
         if("".equals(etClientName.getText().toString())){
             tvClientName.setTextColor(getResources().getColor(R.color.darkestOrange));
         }else{
-            tvClientName.setTextColor(getResources().getColor(R.color.whiteColor));
+            tvClientName.setTextColor(getResources().getColor(R.color.black));
         }
         if("".equals(etHusbandName.getText().toString())){
-            etHusbandName.setTextColor(getResources().getColor(R.color.darkestOrange));
+            tvHusbandName.setTextColor(getResources().getColor(R.color.darkestOrange));
         }else{
-            etHusbandName.setTextColor(getResources().getColor(R.color.whiteColor));
+            tvHusbandName.setTextColor(getResources().getColor(R.color.black));
+        }
+
+        if("".equals(etAddress.getText().toString())){
+            tvAddress.setTextColor(getResources().getColor(R.color.darkestOrange));
+        }else{
+            tvAddress.setTextColor(getResources().getColor(R.color.black));
         }
 
         if(spClientAge.getSelectedItemId()==0) {
@@ -346,67 +327,6 @@ public class ClientRegistrationForm extends AppCompatActivity implements View.On
             ( view).setBackgroundColor(getResources().getColor(R.color.whiteColor));
         }
 
-        if(!rbIsCurrentUserYes.isChecked() && !rbIsCurrentUserNo.isChecked() ){
-            rbIsCurrentUserYes.setTextColor(getResources().getColor( R.color.darkestOrange));
-            rbIsCurrentUserNo.setTextColor(getResources().getColor( R.color.darkestOrange));
-            isValid = false;
-        }else{
-            rbIsCurrentUserYes.setTextColor(getResources().getColor( R.color.darkGreen));
-            rbIsCurrentUserNo.setTextColor(getResources().getColor( R.color.darkGreen));
-        }
-        if(rbIsCurrentUserYes.isChecked()){
-            if(spCurrentMethod.getSelectedItemId()==0) {
-                View view = spCurrentMethod.getSelectedView();
-                (view).setBackgroundColor(getResources().getColor(R.color.darkestOrange));
-                isValid = false;
-            }else{
-                View view = spCurrentMethod.getSelectedView();
-                (view).setBackgroundColor(getResources().getColor(R.color.whiteColor));
-            }
-            if("".equals(etCurrentMethodYears.getText().toString())){
-                etCurrentMethodYears.setTextColor(getResources().getColor(R.color.darkestOrange));
-            }else{
-                etCurrentMethodYears.setTextColor(getResources().getColor(R.color.darkestOrange));
-            }
-        }else if(rbIsCurrentUserNo.isChecked()){
-            if(!rbIsEverUserYes.isChecked() && !rbIsEverUserNo.isChecked()){
-                isValid=false;
-                rbIsEverUserYes.setTextColor(getResources().getColor( R.color.darkestOrange));
-                rbIsEverUserNo.setTextColor(getResources().getColor( R.color.darkestOrange));
-            }else{
-                rbIsEverUserYes.setTextColor(getResources().getColor( R.color.darkGreen));
-                rbIsEverUserNo.setTextColor(getResources().getColor( R.color.darkGreen));
-            }
-            if(rbIsEverUserNo.isChecked()){
-                if(spReasonForNeverUser.getSelectedItemId()==0){
-                    View view = spReasonForNeverUser.getSelectedView();
-                    (view).setBackgroundColor(getResources().getColor(R.color.darkestOrange));
-                    isValid = false;
-                }else{
-                    View view = spReasonForNeverUser.getSelectedView();
-                    (view).setBackgroundColor(getResources().getColor(R.color.whiteColor));
-                }
-            }else if(rbIsEverUserYes.isChecked()){
-                if(spEverMethod.getSelectedItemId()==0){
-                    View view = spEverMethod.getSelectedView();
-                    (view).setBackgroundColor(getResources().getColor(R.color.darkestOrange));
-                    isValid = false;
-                }else{
-                    View view = spEverMethod.getSelectedView();
-                    (view).setBackgroundColor(getResources().getColor(R.color.whiteColor));
-                }
-
-                if(spReasonForDiscontinuation.getSelectedItemId()==0){
-                    View view = spReasonForDiscontinuation.getSelectedView();
-                    (view).setBackgroundColor(getResources().getColor(R.color.darkestOrange));
-                    isValid = false;
-                }else{
-                    View view = spReasonForDiscontinuation.getSelectedView();
-                    (view).setBackgroundColor(getResources().getColor(R.color.whiteColor));
-                }
-
-            }
-        }
 
 
         return isValid;
@@ -449,10 +369,11 @@ public class ClientRegistrationForm extends AppCompatActivity implements View.On
                     .get(Calendar.YEAR), myCalendar1.get(Calendar.MONTH),
                     myCalendar1.get(Calendar.DAY_OF_MONTH)).show();
         }
-        else if(v.getId()==R.id.etFollowupDate){
-            new DatePickerDialog(this, followupDate, myCalendar2
-                    .get(Calendar.YEAR), myCalendar2.get(Calendar.MONTH),
-                    myCalendar2.get(Calendar.DAY_OF_MONTH)).show();
+        else if(v.getId()==R.id.etFollowupDate ||
+                v.getId()==R.id.trFollowupDate){
+            new DatePickerDialog(this, followupDate, myCalendar1
+                    .get(Calendar.YEAR), myCalendar1.get(Calendar.MONTH),
+                    myCalendar1.get(Calendar.DAY_OF_MONTH)).show();
         }
     }
 
@@ -490,40 +411,7 @@ public class ClientRegistrationForm extends AppCompatActivity implements View.On
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
-        if(group.getId()==R.id.rgIsCurrentUser){
-            if(rbIsCurrentUserYes.isChecked()){
-                trPeriodOfCurrentYears.setVisibility(View.VISIBLE);
-                trCurrentMethod.setVisibility(View.VISIBLE);
 
-                trEverUsed.setVisibility(View.GONE);
-                rgIsEverUser.clearCheck();
-
-                trNeverUseReason.setVisibility(View.GONE);
-            }else{
-                trPeriodOfCurrentYears.setVisibility(View.GONE);
-                etCurrentMethodYears.setText("0");
-                trCurrentMethod.setVisibility(View.GONE);
-                spCurrentMethod.setSelection(0);
-
-                trEverUsed.setVisibility(View.VISIBLE);
-            }
-            etDiscontinuationReasonOther.setText("");
-            etNeverUsedReasonOther.setText("");
-        } else if(group.getId()==R.id.rgIsEverUser){
-            if(rbIsEverUserYes.isChecked()){
-                trEverMethod.setVisibility(View.VISIBLE);
-                trEverUseReason.setVisibility(View.VISIBLE);
-
-                trNeverUseReason.setVisibility(View.GONE);
-            }else{
-                trEverMethod.setVisibility(View.GONE);
-                trEverUseReason.setVisibility(View.GONE);
-
-                trNeverUseReason.setVisibility(View.VISIBLE);
-            }
-            etDiscontinuationReasonOther.setText("");
-            etNeverUsedReasonOther.setText("");
-        }
     }
 
     @Override

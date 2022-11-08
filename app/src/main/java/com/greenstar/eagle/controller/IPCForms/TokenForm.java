@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -50,6 +51,9 @@ public class TokenForm extends AppCompatActivity implements View.OnClickListener
     DatePickerDialog.OnDateSetListener date = null;
     final Calendar myCalendar = Calendar.getInstance();
     long tokenId;
+
+    RadioGroup rgRegisteredAt;
+    RadioButton rbNHM, rbHHV, rbOM, rbSH;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -112,6 +116,12 @@ public class TokenForm extends AppCompatActivity implements View.OnClickListener
 
         spClient = findViewById(R.id.spClient);
         spReferredMethod = findViewById(R.id.spReferredMethod);
+
+        rgRegisteredAt = findViewById(R.id.rgRegisteredAt);
+        rbHHV = findViewById(R.id.rbHHV);
+        rbNHM = findViewById(R.id.rbNHM);
+        rbOM = findViewById(R.id.rbOM);
+        rbSH = findViewById(R.id.rbSH);
     }
 
     private void populateForm(){
@@ -140,7 +150,7 @@ public class TokenForm extends AppCompatActivity implements View.OnClickListener
         tvRegion.setText(region);
         tvDistrict.setText(district);
 
-        spReferredMethod.setAdapter(getGeneralDropdownAdapter("Referred Method", "TokenList"));
+        spReferredMethod.setAdapter(getGeneralDropdownAdapter("Referred Method", "ProviderMethod"));
     }
 
     private GeneralDropdownAdapter getGeneralDropdownAdapter(String title, String type) {
@@ -221,6 +231,15 @@ public class TokenForm extends AppCompatActivity implements View.OnClickListener
         form.setId(tokenId);
         form.setSitarabajiCode(tvSitarabajiCode.getText().toString());
         form.setReferralDate(etReferralDate.getText().toString());
+        if(rbHHV.isChecked()){
+            form.setRegisteredAt("HHV");
+        }else if(rbNHM.isChecked()){
+            form.setRegisteredAt("NHM");
+        }else  if (rbOM.isChecked()){
+            form.setRegisteredAt("OM");
+        }else if(rbSH.isChecked()){
+            form.setRegisteredAt("SH");
+        }
 
         CRForm clientForm = (CRForm) spClient.getSelectedItem();
         form.setClientId(clientForm.getId());

@@ -45,7 +45,7 @@ public class NeighbourhoodForm extends AppCompatActivity implements View.OnClick
 
     TextView tvSitarabajiCode, tvSitarabajiName, tvProviderCode, tvProviderName, tvSupervisorName, tvRegion, tvDistrict, tvCommunityName;
 
-    EditText etVisitDate, etCommunityName, etOtherIECMaterial;
+    EditText etVisitDate, etCommunityName, etOtherIECMaterial, etRemarks;
 
     Spinner spClient;
 
@@ -63,8 +63,7 @@ public class NeighbourhoodForm extends AppCompatActivity implements View.OnClick
 
     long neighbourhoodFormId = 0;
 
-    RadioButton rbNeighborhood;
-    RadioButton rbOrientation;
+    RadioButton rbNHM, rbHHV, rbOM, rbSH ;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -110,6 +109,7 @@ public class NeighbourhoodForm extends AppCompatActivity implements View.OnClick
 
         etCommunityName = findViewById(R.id.etCommunityName);
         etOtherIECMaterial = findViewById(R.id.etOtherIECMaterial);
+        etRemarks = findViewById(R.id.etRemarks);
 
         etVisitDate = findViewById(R.id.etVisitDate);
         etVisitDate.setOnClickListener(this);
@@ -151,9 +151,11 @@ public class NeighbourhoodForm extends AppCompatActivity implements View.OnClick
 
         neighbourhoodFormId = Util.getNextID(this,Codes.NEIGHBOURHOODFORM);
 
-        rbNeighborhood = findViewById(R.id.rbNeighborhood);
-        rbOrientation = findViewById(R.id.rbOrientation);
-        rbNeighborhood.setChecked(true);
+        rbHHV = findViewById(R.id.rbHHV);
+        rbNHM = findViewById(R.id.rbNHM);
+        rbOM = findViewById(R.id.rbOM);
+        rbSH = findViewById(R.id.rbSH);
+        rbNHM.setChecked(true);
     }
 
     private void populateForm(){
@@ -218,11 +220,17 @@ public class NeighbourhoodForm extends AppCompatActivity implements View.OnClick
         mainForm.setVisitDate(etVisitDate.getText().toString());
 
         mainForm.setCommunityName(etCommunityName.getText().toString());
-        if(rbOrientation.isChecked()){
+        if(rbNHM.isChecked()){
             mainForm.setMeetingType(1);
-        }else{
-            mainForm.setMeetingType(0);
+        }else if(rbHHV.isChecked()){
+            mainForm.setMeetingType(2);
+        }else if(rbOM.isChecked()){
+            mainForm.setMeetingType(3);
+        }else if(rbSH.isChecked()){
+            mainForm.setMeetingType(4);
         }
+        mainForm.setRemarks(etRemarks.getText().toString());
+
         Location location = Util.getLastKnownLocation(this);
         if (location != null) {
             mainForm.setLatLong(location.getLatitude() + "," + location.getLongitude());

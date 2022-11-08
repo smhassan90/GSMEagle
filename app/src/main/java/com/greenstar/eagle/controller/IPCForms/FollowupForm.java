@@ -3,6 +3,7 @@ package com.greenstar.eagle.controller.IPCForms;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.Location;
 import android.os.Bundle;
@@ -46,7 +47,7 @@ public class FollowupForm extends AppCompatActivity implements View.OnClickListe
 
     EditText etVisitDate, etFollowupDate;
 
-    Spinner spClient, spReasonForNotVisiting, spAdoptedMethod, spReasonsForNotAdoptingMethod;
+    Spinner spClient, spAdoptedMethod;
 
     Button btnSubmit;
 
@@ -55,23 +56,19 @@ public class FollowupForm extends AppCompatActivity implements View.OnClickListe
 
     final Calendar myCalendar = Calendar.getInstance();
 
-    RadioGroup rgDidYouVisit;
-    RadioButton rbDidYouVisitYes;
-    RadioButton rbDidYouVisitNo;
+    TableRow trSupportProvider, trSupportCompleted, trAdoptedMethod, trFollowupDate;
 
-    RadioGroup rgAnySideEffects;
-    RadioButton rbAnySideEffectsYes;
-    RadioButton rbAnySideEffectsNo;
+    RadioGroup rgSupportSitaraHouse;
+    RadioButton rbSupportSitaraHouseYes,rbSupportSitaraHouseNo;
 
-    RadioGroup rgDidVisitAfterSideEffects;
-    RadioButton rbDidVisitAfterSideEffectsYes;
-    RadioButton rbDidVisitAfterSideEffectsNo;
+    RadioGroup rgSupportProvider;
+    RadioButton rbSupportProviderYes,rbSupportProviderNo;
 
-    RadioGroup rgHaveYouAdopted;
-    RadioButton rbHaveYouAdoptedYes;
-    RadioButton rbHaveYouAdoptedNo;
+    RadioGroup rgSupportCompleted;
+    RadioButton rbSupportCompletedYes,rbSupportCompletedNo;
 
-    TableRow trReasonForNotVisiting, trAdoptedMethod, trAnySideEffects, trDidVisitAfterSideEffects, trReasonsForNotAdoptingMethod, trHaveYouAdopted;
+    RadioGroup rgTokenGiven;
+    RadioButton rbTokenGivenYes, rbTokenGivenNo;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -122,36 +119,36 @@ public class FollowupForm extends AppCompatActivity implements View.OnClickListe
         btnSubmit.setOnClickListener(this);
 
         spClient = findViewById(R.id.spClient);
-        spReasonForNotVisiting = findViewById(R.id.spReasonForNotVisiting);
-        spAdoptedMethod = findViewById(R.id.spAdoptedMethod);
-        spReasonsForNotAdoptingMethod = findViewById(R.id.spReasonsForNotAdoptingMethod);
 
-        rgDidYouVisit = findViewById(R.id.rgDidYouVisit);
-        rbDidYouVisitYes = findViewById(R.id.rbDidYouVisitYes);
-        rbDidYouVisitNo = findViewById(R.id.rbDidYouVisitNo);
-        rgDidYouVisit.setOnCheckedChangeListener(this);
-
-        rgAnySideEffects = findViewById(R.id.rgAnySideEffects);
-        rbAnySideEffectsYes = findViewById(R.id.rbAnySideEffectsYes);
-        rbAnySideEffectsNo = findViewById(R.id.rbAnySideEffectsNo);
-        rgAnySideEffects.setOnCheckedChangeListener(this);
-
-        rgDidVisitAfterSideEffects = findViewById(R.id.rgDidVisitAfterSideEffects);
-        rbDidVisitAfterSideEffectsYes = findViewById(R.id.rbDidVisitAfterSideEffectsYes);
-        rbDidVisitAfterSideEffectsNo = findViewById(R.id.rbDidVisitAfterSideEffectsNo);
-        rgDidVisitAfterSideEffects.setOnCheckedChangeListener(this);
-
-        rgHaveYouAdopted = findViewById(R.id.rgHaveYouAdopted);
-        rbHaveYouAdoptedYes = findViewById(R.id.rbHaveYouAdoptedYes);
-        rbHaveYouAdoptedNo = findViewById(R.id.rbHaveYouAdoptedNo);
-        rgHaveYouAdopted.setOnCheckedChangeListener(this);
-
-        trReasonForNotVisiting = findViewById(R.id.trReasonForNotVisiting);
         trAdoptedMethod = findViewById(R.id.trAdoptedMethod);
-        trDidVisitAfterSideEffects = findViewById(R.id.trDidVisitAfterSideEffects);
-        trAnySideEffects = findViewById(R.id.trAnySideEffects);
-        trReasonsForNotAdoptingMethod = findViewById(R.id.trReasonsForNotAdoptingMethod);
-        trHaveYouAdopted = findViewById(R.id.trHaveYouAdopted);
+        trSupportCompleted = findViewById(R.id.trSupportCompleted);
+        trSupportProvider = findViewById(R.id.trSupportProvider);
+
+        rgSupportCompleted = findViewById(R.id.rgSupportCompleted);
+        rbSupportCompletedYes = findViewById(R.id.rbSupportCompletedYes);
+        rbSupportCompletedNo = findViewById(R.id.rbSupportCompletedNo);
+        rgSupportCompleted.setOnCheckedChangeListener(this);
+
+        rgSupportProvider = findViewById(R.id.rgSupportProvider);
+        rbSupportProviderYes = findViewById(R.id.rbSupportProviderYes);
+        rbSupportProviderNo = findViewById(R.id.rbSupportProviderNo);
+        rgSupportProvider.setOnCheckedChangeListener(this);
+
+        rgSupportSitaraHouse = findViewById(R.id.rgSupportSitaraHouse);
+        rbSupportSitaraHouseYes = findViewById(R.id.rbSupportSitaraHouseYes);
+        rbSupportSitaraHouseNo = findViewById(R.id.rbSupportCompletedNo);
+        rgSupportSitaraHouse.setOnCheckedChangeListener(this);
+
+        spAdoptedMethod = findViewById(R.id.spAdoptedMethod);
+
+        rgTokenGiven = findViewById(R.id.rgTokenGiven);
+        rbTokenGivenYes = findViewById(R.id.rbTokenGivenYes);
+        rbTokenGivenNo = findViewById(R.id.rbTokenGivenNo);
+
+        trFollowupDate = findViewById(R.id.trFollowupDate);
+        trFollowupDate.setOnClickListener(this);
+
+
     }
 
     private void clearCheck(RadioGroup radioGroup){
@@ -175,7 +172,7 @@ public class FollowupForm extends AppCompatActivity implements View.OnClickListe
 
         };
 
-        updateFollowupDate();
+       // updateFollowupDate();
         followupDate = new DatePickerDialog.OnDateSetListener() {
 
             @Override
@@ -199,9 +196,8 @@ public class FollowupForm extends AppCompatActivity implements View.OnClickListe
         tvDistrict.setText(district);
 
         populateClientSpinner();
-        spAdoptedMethod.setAdapter(getGeneralDropdownAdapter("Adopted Method", "Current Method"));
-        spReasonForNotVisiting.setAdapter(getGeneralDropdownAdapter("Reasons For Not Visiting", "ReasonsNotVisitingProvider"));
-        spReasonsForNotAdoptingMethod.setAdapter(getGeneralDropdownAdapter("Reasons For Not Adopting Method", "ReasonsForNotAdopting"));
+
+
     }
 
     private GeneralDropdownAdapter getGeneralDropdownAdapter(String title, String type) {
@@ -247,6 +243,32 @@ public class FollowupForm extends AppCompatActivity implements View.OnClickListe
         ClientAdapter clientAdapter = new ClientAdapter(this, R.layout.provider_town_list, R.id.tvProviderNamess, dropdownCRF);
         spClient.setAdapter(clientAdapter);
     }
+    private void populateSpinner(){
+        List<CRForm> dropdownCRF = new ArrayList<>();
+
+        CRForm clientDummy = new CRForm();
+        clientDummy.setClientName("Select Method");
+        clientDummy.setId(0);
+
+        try{
+            if(db==null){
+                db = AppDatabase.getAppDatabase(this);
+            }
+
+            dropdownCRF = db.getCrFormDAO().getAll();
+        }catch(Exception e){
+
+        }
+
+        if(dropdownCRF.size()==0){
+            dropdownCRF.add(clientDummy);
+        }else{
+            dropdownCRF.add(0,clientDummy);
+        }
+
+        ClientAdapter clientAdapter = new ClientAdapter(this, R.layout.provider_town_list, R.id.tvProviderNamess, dropdownCRF);
+        spClient.setAdapter(clientAdapter);
+    }
 
     private void updateVisitDate() {
         SimpleDateFormat sdf = new SimpleDateFormat(Codes.myFormat);
@@ -267,40 +289,40 @@ public class FollowupForm extends AppCompatActivity implements View.OnClickListe
         form.setVisitDate(etVisitDate.getText().toString());
 
         CRForm clientForm = (CRForm) spClient.getSelectedItem();
-        form.setClientId(clientForm.getId());
-        if(rbDidYouVisitYes.isChecked()){
-            form.setDidYouVisit(1);
+        if(clientForm!=null){
+            form.setClientId(clientForm.getId());
         }else{
-            form.setDidYouVisit(0);
+            form.setClientId(0);
         }
-        DropdownCRBData dropdownCRBData = (DropdownCRBData) spReasonForNotVisiting.getSelectedItem();
 
-        form.setReasonForNotVisiting(dropdownCRBData.getDetailEnglish());
-        if(rbHaveYouAdoptedYes.isChecked()){
-            form.setHaveYouAdopted(1);
-        }else{
-            form.setHaveYouAdopted(0);
-        }
+
+        DropdownCRBData dropdownCRBData = null;
+
         dropdownCRBData = new DropdownCRBData();
         dropdownCRBData = (DropdownCRBData) spAdoptedMethod.getSelectedItem();
-
-        form.setAdoptedMethod(dropdownCRBData.getDetailEnglish());
-
-        if(rbAnySideEffectsYes.isChecked()){
-            form.setAnySideEffects(1);
+        if(dropdownCRBData!=null){
+            form.setService(dropdownCRBData.getDetailEnglish());
         }else{
-            form.setAnySideEffects(0);
-        }
-        if(rbDidYouVisitYes.isChecked()){
-            form.setDidYouVisit(1);
-        }else{
-            form.setDidYouVisit(0);
+            form.setService("");
         }
 
-        dropdownCRBData = new DropdownCRBData();
-        dropdownCRBData = (DropdownCRBData) spReasonsForNotAdoptingMethod.getSelectedItem();
+        form.setFollowupDate(etFollowupDate.getText().toString());
+        if(rbSupportCompletedYes.isChecked()){
+            form.setIsSupportCompleted(1);
+        }else{
+            form.setIsSupportCompleted(0);
+        }
+        if(rbSupportSitaraHouseYes.isChecked()){
+            form.setIsSupportSitaraHouse(1);
+        }else{
+            form.setIsSupportSitaraHouse(0);
+        }
+        if(rbSupportProviderYes.isChecked()){
+            form.setIsSupportProvider(1);
+        }else{
+            form.setIsSupportProvider(0);
+        }
 
-        form.setReasonsForNotAdoptingMethod(dropdownCRBData.getDetailEnglish());
 
         Location location = Util.getLastKnownLocation(this);
         if (location != null) {
@@ -310,20 +332,18 @@ public class FollowupForm extends AppCompatActivity implements View.OnClickListe
         AppDatabase.getAppDatabase(this).getFollowupModelDAO().insert(form);
 
         Toast.makeText(this,"Form successfully submitted!",Toast.LENGTH_SHORT).show();
+
+        if(rbTokenGivenYes.isChecked()){
+            Intent i = new Intent(this, TokenForm.class);
+            i.putExtra("clientId",clientForm.getId());
+            startActivity(i);
+        }
+
         this.finish();
     }
 
     private boolean isValid(){
         boolean isValid=true;
-
-        if(!rbDidYouVisitYes.isChecked() && !rbDidYouVisitNo.isChecked()){
-            rbDidYouVisitYes.setTextColor(getResources().getColor( R.color.darkestOrange));
-            rbDidYouVisitNo.setTextColor(getResources().getColor( R.color.darkestOrange));
-            isValid = false;
-        }else{
-            rbDidYouVisitYes.setTextColor(getResources().getColor( R.color.darkGreen));
-            rbDidYouVisitNo.setTextColor(getResources().getColor( R.color.darkGreen));
-        }
 
         if(spClient.getSelectedItemId()==0){
             isValid = false;
@@ -333,13 +353,6 @@ public class FollowupForm extends AppCompatActivity implements View.OnClickListe
             View view = spClient.getSelectedView();
             (view).setBackgroundColor(getResources().getColor(R.color.whiteColor));
         }
-
-        isValid = checkRadioButton(trHaveYouAdopted, rbHaveYouAdoptedYes, rbHaveYouAdoptedNo, isValid);
-        isValid = checkRadioButton(trAnySideEffects, rbAnySideEffectsYes, rbAnySideEffectsNo, isValid);
-        isValid = checkRadioButton(trDidVisitAfterSideEffects, rbDidVisitAfterSideEffectsYes, rbDidVisitAfterSideEffectsNo, isValid);
-        isValid = checkSpinner(trReasonForNotVisiting, spReasonForNotVisiting, isValid);
-        isValid = checkSpinner(trAdoptedMethod, spAdoptedMethod, isValid);
-        isValid = checkSpinner(trReasonsForNotAdoptingMethod, spReasonsForNotAdoptingMethod, isValid);
 
         return isValid;
     }
@@ -408,7 +421,8 @@ public class FollowupForm extends AppCompatActivity implements View.OnClickListe
                     .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                     myCalendar.get(Calendar.DAY_OF_MONTH)).show();
         }
-        else if(v.getId()==R.id.etFollowupDate){
+        else if(v.getId()==R.id.trFollowupDate ||
+                v.getId()==R.id.etFollowupDate){
             new DatePickerDialog(this, followupDate, myCalendar
                     .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                     myCalendar.get(Calendar.DAY_OF_MONTH)).show();
@@ -475,60 +489,52 @@ public class FollowupForm extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
-
-        if(rgDidYouVisit.getId() == group.getId()){
-            hideAll();
-            clearAll();
-            if(rbDidYouVisitYes.isChecked()){
-                trHaveYouAdopted.setVisibility(View.VISIBLE);
-
+        if(group.getId()==R.id.rgSupportSitaraHouse){
+            if(rbSupportSitaraHouseYes.isChecked()){
+                //Was support completed?
+                hideAll();
+                clearAll();
+                trSupportCompleted.setVisibility(View.VISIBLE);
             }else{
-                trReasonForNotVisiting.setVisibility(View.VISIBLE);
+                hideAll();
+                clearAll();
+                trSupportProvider.setVisibility(View.VISIBLE);
             }
-        }else if(rgHaveYouAdopted.getId()==group.getId()){
-            if(rbHaveYouAdoptedYes.isChecked()){
-                trReasonsForNotAdoptingMethod.setVisibility(View.GONE);
-                spReasonsForNotAdoptingMethod.setSelection(0);
-                trAnySideEffects.setVisibility(View.GONE);
-                clearCheck(rgAnySideEffects);
-                trDidVisitAfterSideEffects.setVisibility(View.GONE);
-                clearCheck(rgDidVisitAfterSideEffects);
-
+        }else if(group.getId()==R.id.rgSupportProvider){
+            if(rbSupportProviderYes.isChecked()){
+                trSupportCompleted.setVisibility(View.VISIBLE);
+            }else{
+                trSupportCompleted.setVisibility(View.GONE);
+                clearCheck(rgSupportCompleted);
+                trAdoptedMethod.setVisibility(View.GONE);
+            }
+        }else if(group.getId()==R.id.rgSupportCompleted){
+            if(rbSupportCompletedYes.isChecked()){
                 trAdoptedMethod.setVisibility(View.VISIBLE);
-                trAnySideEffects.setVisibility(View.VISIBLE);
+                if(rbSupportSitaraHouseYes.isChecked()){
+                    spAdoptedMethod.setAdapter(getGeneralDropdownAdapter("Select Method", "SitaraHouseMethod"));
+                }else{
+                    spAdoptedMethod.setAdapter(getGeneralDropdownAdapter("Select Method", "ProviderMethod"));
+                }
+
             }else{
                 trAdoptedMethod.setVisibility(View.GONE);
-                spAdoptedMethod.setSelection(0);
-                trAnySideEffects.setVisibility(View.GONE);
-
-                trReasonsForNotAdoptingMethod.setVisibility(View.VISIBLE);
-            }
-        }else if(rgAnySideEffects.getId()==group.getId()){
-            if(rbAnySideEffectsYes.isChecked()){
-                trDidVisitAfterSideEffects.setVisibility(View.VISIBLE);
-            }else{
-                trDidVisitAfterSideEffects.setVisibility(View.GONE);
-                clearCheck(rgDidVisitAfterSideEffects);
             }
         }
+
     }
 
     private void clearAll() {
-        spReasonForNotVisiting.setSelection(0);
-        clearCheck(rgHaveYouAdopted);
-        spAdoptedMethod.setSelection(0);
-        clearCheck(rgDidVisitAfterSideEffects);
-        spReasonsForNotAdoptingMethod.setSelection(0);
-        clearCheck(rgAnySideEffects);
-        clearCheck(rgDidVisitAfterSideEffects);
+        clearCheck(rgSupportCompleted);
+        clearCheck(rgSupportProvider);
+
     }
 
     private void hideAll(){
-        trReasonForNotVisiting.setVisibility(View.GONE);
-        trReasonsForNotAdoptingMethod.setVisibility(View.GONE);
-        trHaveYouAdopted.setVisibility(View.GONE);
         trAdoptedMethod.setVisibility(View.GONE);
-        trDidVisitAfterSideEffects.setVisibility(View.GONE);
-        trAnySideEffects.setVisibility(View.GONE);
+        trSupportProvider.setVisibility(View.GONE);
+        trSupportCompleted.setVisibility(View.GONE);
     }
+
+
 }
