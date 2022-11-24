@@ -42,7 +42,7 @@ public class TokenForm extends AppCompatActivity implements View.OnClickListener
 
     TextView tvTokenId, tvSitarabajiCode, tvSitarabajiName, tvProviderCode, tvProviderName, tvSupervisorName, tvRegion, tvDistrict;
 
-    EditText etReferralDate;
+    EditText etReferralDate, etPersonalMinutes;
 
     Spinner spClient, spReferredMethod;
 
@@ -110,6 +110,8 @@ public class TokenForm extends AppCompatActivity implements View.OnClickListener
 
         etReferralDate = findViewById(R.id.etReferralDate);
         etReferralDate.setOnClickListener(this);
+
+        etPersonalMinutes = findViewById(R.id.etPersonalMinutes);
 
         btnSubmit = findViewById(R.id.btnSubmit);
         btnSubmit.setOnClickListener(this);
@@ -231,6 +233,7 @@ public class TokenForm extends AppCompatActivity implements View.OnClickListener
         form.setId(tokenId);
         form.setSitarabajiCode(tvSitarabajiCode.getText().toString());
         form.setReferralDate(etReferralDate.getText().toString());
+        form.setRemarks(etPersonalMinutes.getText().toString());
         if(rbHHV.isChecked()){
             form.setRegisteredAt("HHV");
         }else if(rbNHM.isChecked()){

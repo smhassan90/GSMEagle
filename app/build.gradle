@@ -15,13 +15,13 @@ repositories {
 }
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
     defaultConfig {
         applicationId "com.greenstar.eagle"
         minSdkVersion 17
-        targetSdkVersion 30
-        versionCode 6
-        versionName "2.1"
+        targetSdkVersion 31
+        versionCode 7
+        versionName "2.2"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

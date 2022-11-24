@@ -32,7 +32,7 @@
     <string name="neverUseReason">Reason of never use</string>
     <string name="discontinuationReason">Discontinuation Reason</string>
     <string name="RegistrationLocation">Registration Location</string>
-    <string name="CRForm">2.Register MWRA</string>
+    <string name="CRForm">2.Register Client</string>
     <string name="everUseReason">Reason of ever use</string>
     <string name="FPMethod">FP Method</string>
     <string name="SelectParent">Select Parent</string>

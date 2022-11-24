@@ -9,7 +9,6 @@ public class DropdownCRBData {
     @NonNull
     @PrimaryKey
     private long id;
-
     private String category;
     private String detailEnglish;
     private String detailUrdu;

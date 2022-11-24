@@ -32,6 +32,8 @@ public class CRForm {
 
     private String followUpVisitDate;
 
+    private String remarks;
+
     private int approvalStatus ;
 
     private int isSynced;
@@ -169,6 +171,14 @@ public class CRForm {
 
     public void setReproductiveHistory(String reproductiveHistory) {
         this.reproductiveHistory = reproductiveHistory;
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
     }
 
     @Override

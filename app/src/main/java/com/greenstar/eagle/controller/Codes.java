@@ -3,6 +3,7 @@ package com.greenstar.eagle.controller;
 public interface Codes {
     public static final String PREF_NAME = "Eagle";
     public static final String ALL_OK = "200";
+    public static final String INVALID_VERSION = "303";
     final public static String STAFFTYPE = "5";
     final public static String TIMEOUT = "Timeout";
     final public static String SOMETHINGWENTWRONG = "2001";

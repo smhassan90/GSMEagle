@@ -16,6 +16,7 @@ public class FollowupModel {
     private int isSupportCompleted;
     private String service;
     private String followupDate;
+    private String remarks;
 
     private String latLong;
     private String mobileSystemDate;
@@ -98,5 +99,13 @@ public class FollowupModel {
 
     public void setMobileSystemDate(String mobileSystemDate) {
         this.mobileSystemDate = mobileSystemDate;
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
     }
 }

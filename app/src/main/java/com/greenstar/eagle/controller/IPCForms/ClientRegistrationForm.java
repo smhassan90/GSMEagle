@@ -42,7 +42,7 @@ public class ClientRegistrationForm extends AppCompatActivity implements View.On
 
     TextView tvSitarabajiCode, tvSitarabajiName, tvProviderCode, tvProviderName, tvSupervisorName, tvRegion, tvDistrict;
 
-    EditText etVisitDate, etFollowupDate, etClientName, etHusbandName, etAddress, etContact;
+    EditText etVisitDate, etFollowupDate, etClientName, etHusbandName, etAddress, etContact, etPersonalMinutes;
 
     TextView tvContactNumber, tvClientName, tvHusbandName, tvAddress;
 
@@ -120,6 +120,7 @@ public class ClientRegistrationForm extends AppCompatActivity implements View.On
 
         etAddress = findViewById(R.id.etAddress);
         etContact = findViewById(R.id.etContact);
+        etPersonalMinutes = findViewById(R.id.etPersonalMinutes);
         tvClientName = findViewById(R.id.tvClientName);
         tvContactNumber = findViewById(R.id.tvContactNumber);
 
@@ -233,6 +234,7 @@ public class ClientRegistrationForm extends AppCompatActivity implements View.On
         form.setClientAge(dropdownCRBData.getDetailEnglish());
         form.setAddress(etAddress.getText().toString());
         form.setContactNumber(etContact.getText().toString());
+        form.setRemarks(etPersonalMinutes.getText().toString());
         form.setFollowUpVisitDate(etFollowupDate.getText().toString());
         if(rbCanWeContactYes.isChecked()){
             form.setCanWeContact(1);
@@ -295,6 +297,9 @@ public class ClientRegistrationForm extends AppCompatActivity implements View.On
         if(isValid && spClientAge.getSelectedItemId()==0){
             isValid=false;
         }
+        if(isValid && spHistory.getSelectedItemId()==0){
+            isValid=false;
+        }
         if("".equals(etContact.getText().toString()) ){
             tvContactNumber.setTextColor(getResources().getColor(R.color.darkestOrange));
         }else{
@@ -324,6 +329,15 @@ public class ClientRegistrationForm extends AppCompatActivity implements View.On
             isValid = false;
         }else{
             View view = spClientAge.getSelectedView();
+            ( view).setBackgroundColor(getResources().getColor(R.color.whiteColor));
+        }
+
+        if(spHistory.getSelectedItemId()==0) {
+            View view = spHistory.getSelectedView();
+            (view).setBackgroundColor(getResources().getColor(R.color.darkestOrange));
+            isValid = false;
+        }else{
+            View view = spHistory.getSelectedView();
             ( view).setBackgroundColor(getResources().getColor(R.color.whiteColor));
         }
 

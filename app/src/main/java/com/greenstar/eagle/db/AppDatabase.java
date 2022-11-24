@@ -1,8 +1,10 @@
 package com.greenstar.eagle.db;
 
+import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
+import android.arch.persistence.room.migration.Migration;
 import android.content.Context;
 
 import com.greenstar.eagle.controller.IPCForms.NeighbourhoodForm;
@@ -28,7 +30,7 @@ import com.greenstar.eagle.model.TokenModel;
 @Database(entities = {Providers.class, Dashboard.class,
         DropdownCRBData.class, CRForm.class, ChildRegistrationForm.class, NeighbourhoodFormModel.class, NeighbourhoodAttendeesModel.class,
         FollowupModel.class, TokenModel.class},
-        version = 2)
+        version = 3)
 public abstract class AppDatabase extends RoomDatabase {
     private static final String DATABASE_NAME = "eagledb";
     private static AppDatabase INSTANCE;
@@ -49,11 +51,23 @@ public abstract class AppDatabase extends RoomDatabase {
             INSTANCE =
                     Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, DATABASE_NAME)
                             .allowMainThreadQueries()
-                            .fallbackToDestructiveMigration()
+                            .addMigrations(MIGRATION_2_3)
                             .build();
         }
         return INSTANCE;
     }
+
+    static final Migration MIGRATION_2_3 = new Migration(2, 3) {
+        @Override
+        public void migrate(SupportSQLiteDatabase database) {
+            database.execSQL("ALTER TABLE TokenModel "
+                    + " ADD COLUMN remarks TEXT");
+            database.execSQL("ALTER TABLE CRForm "
+                    + " ADD COLUMN remarks TEXT");
+            database.execSQL("ALTER TABLE FollowupModel "
+                    + " ADD COLUMN remarks TEXT");
+        }
+    };
 
     public static void destroyInstance() {
         INSTANCE = null;

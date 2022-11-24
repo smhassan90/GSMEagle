@@ -312,6 +312,8 @@ public class PartialSync extends AppCompatActivity implements View.OnClickListen
         }
         else if (Codes.TIMEOUT.equals(responseCode)){
             Toast.makeText(this,"Session Timeout", Toast.LENGTH_SHORT).show();
+        }else if (Codes.INVALID_VERSION.equals(responseCode)){
+            Toast.makeText(this,message, Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(this,"Something went wrong", Toast.LENGTH_SHORT).show();
         }

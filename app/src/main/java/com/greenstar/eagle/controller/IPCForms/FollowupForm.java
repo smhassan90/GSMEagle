@@ -45,7 +45,7 @@ public class FollowupForm extends AppCompatActivity implements View.OnClickListe
 
     TextView tvSitarabajiCode, tvSitarabajiName, tvProviderCode, tvProviderName, tvSupervisorName, tvRegion, tvDistrict;
 
-    EditText etVisitDate, etFollowupDate;
+    EditText etVisitDate, etFollowupDate, etPersonalMinutes;
 
     Spinner spClient, spAdoptedMethod;
 
@@ -111,6 +111,8 @@ public class FollowupForm extends AppCompatActivity implements View.OnClickListe
 
         etVisitDate = findViewById(R.id.etVisitDate);
         etVisitDate.setOnClickListener(this);
+
+        etPersonalMinutes = findViewById(R.id.etPersonalMinutes);
 
         etFollowupDate = findViewById(R.id.etFollowupDate);
         etFollowupDate.setOnClickListener(this);
@@ -243,32 +245,6 @@ public class FollowupForm extends AppCompatActivity implements View.OnClickListe
         ClientAdapter clientAdapter = new ClientAdapter(this, R.layout.provider_town_list, R.id.tvProviderNamess, dropdownCRF);
         spClient.setAdapter(clientAdapter);
     }
-    private void populateSpinner(){
-        List<CRForm> dropdownCRF = new ArrayList<>();
-
-        CRForm clientDummy = new CRForm();
-        clientDummy.setClientName("Select Method");
-        clientDummy.setId(0);
-
-        try{
-            if(db==null){
-                db = AppDatabase.getAppDatabase(this);
-            }
-
-            dropdownCRF = db.getCrFormDAO().getAll();
-        }catch(Exception e){
-
-        }
-
-        if(dropdownCRF.size()==0){
-            dropdownCRF.add(clientDummy);
-        }else{
-            dropdownCRF.add(0,clientDummy);
-        }
-
-        ClientAdapter clientAdapter = new ClientAdapter(this, R.layout.provider_town_list, R.id.tvProviderNamess, dropdownCRF);
-        spClient.setAdapter(clientAdapter);
-    }
 
     private void updateVisitDate() {
         SimpleDateFormat sdf = new SimpleDateFormat(Codes.myFormat);
@@ -284,7 +260,7 @@ public class FollowupForm extends AppCompatActivity implements View.OnClickListe
 
     public void submitForm(){
         FollowupModel form = new FollowupModel();
-
+        form.setRemarks(etPersonalMinutes.getText().toString());
         form.setId(Util.getNextID(this,Codes.FOLLOWUPFORM));
         form.setVisitDate(etVisitDate.getText().toString());
 
@@ -512,9 +488,9 @@ public class FollowupForm extends AppCompatActivity implements View.OnClickListe
             if(rbSupportCompletedYes.isChecked()){
                 trAdoptedMethod.setVisibility(View.VISIBLE);
                 if(rbSupportSitaraHouseYes.isChecked()){
-                    spAdoptedMethod.setAdapter(getGeneralDropdownAdapter("Select Method", "SitaraHouseMethod"));
+                    spAdoptedMethod.setAdapter(getGeneralDropdownAdapter("Select Product", "SitaraHouseMethod"));
                 }else{
-                    spAdoptedMethod.setAdapter(getGeneralDropdownAdapter("Select Method", "ProviderMethod"));
+                    spAdoptedMethod.setAdapter(getGeneralDropdownAdapter("Select Product", "ProviderMethod"));
                 }
 
             }else{
