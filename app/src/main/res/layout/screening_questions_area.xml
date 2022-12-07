@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/lightBlue"
+    android:id="@+id/llAreaQuestion"
+    android:orientation="vertical"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/llArea">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/orange"
+            android:layout_marginTop="@dimen/padding_10">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                style="@style/medium_text_style"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:text="@string/basicInformation"
+                android:gravity="center"
+                android:id="@+id/tvAreaHeading"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/lightBlue"
+        android:layout_marginTop="@dimen/padding_10"
+        android:id="@+id/llQuestionSeries">
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_10"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/medium_text_style"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:text="Total Points : "/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/medium_text_style"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:id="@+id/tvTotalPoints"
+                android:text="0"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/medium_text_style"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:text="Total Indicators : "/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/medium_text_style"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:id="@+id/tvTotalIndicators"
+                android:text=""/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/medium_text_style"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:id="@+id/tvAreaId"
+                android:visibility="gone"
+                android:text="200"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/medium_text_style"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:text="Total Critical Indicators : "/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/medium_text_style"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:id="@+id/tvTotalCriticalIndicators"
+                android:text=""/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/medium_text_style"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:text="Total non-critical Indicators : "/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/medium_text_style"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:id="@+id/tvTotalNonCriticalIndicators"
+                android:text=""/>
+
+        </LinearLayout>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:id="@+id/etComments"
+            style="@style/medium_text_style"
+            android:backgroundTint="@android:color/holo_green_light"
+            android:textStyle="bold"
+            android:textColorHint="@color/darkGreen"
+            android:hint="Comments"
+            android:text=""/>
+    </LinearLayout>
+
+</LinearLayout>

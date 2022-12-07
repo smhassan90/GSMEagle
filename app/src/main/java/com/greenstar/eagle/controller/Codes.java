@@ -22,6 +22,9 @@ public interface Codes {
     public static final String PS_TYPE_Neighbour = "725";
     public static final String PS_TYPE_Token = "730";
     public static final String PS_PULL_CLIENTS = "735";
+    public static final String PS_TYPE_SCREENING = "740";
+    public static final String PS_TYPE_INITIAL_SCREENING_FORMS = "745";
+    public static final String PS_EAGLE_TYPE_PULL_QUESTIONS_AREAS = "780";
     public static final String PS_TYPE_Neighbour_attendees = "735";
 
 
@@ -34,6 +37,8 @@ public interface Codes {
     public static final String NEIGHBOURHOODFORM = "NEIGHBOURHOODFORM";
     public static final String NEIGHBOURHOODATTENDEESFORM = "NEIGHBOURHOODATTENDEESFORM";
     public static final String FOLLOWUPFORM = "FOLLOWUPFORM";
+    public static final String INITIALSCREENINGFORM = "INITIALSCREENINGFORM";
+    public static final String INITIALSCREENINGAREA = "INITIALSCREENINGAREA";
 
     final public static String MESSAGE = "No neighbourhood attendee added yet...";
 }

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/customborder"
+    android:orientation="horizontal"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:id="@+id/llQuestion"
+    android:padding="@dimen/padding_10"
+    android:weightSum="10">
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/text_style"
+        android:textColor="@color/black"
+        android:gravity="center_vertical"
+        android:layout_weight="7"
+        android:id="@+id/tvQuestionText"
+        android:text=""/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:orientation="vertical" >
+
+        <RadioGroup
+            android:id="@+id/rgAnswer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <RadioButton
+                android:id="@+id/rbAnswerYes"
+                android:buttonTint="@color/darkGreen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yes"
+                style="@style/text_style"
+                android:checked="true" />
+
+            <RadioButton
+                android:id="@+id/rbAnswerNo"
+                android:buttonTint="@color/darkGreen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/text_style"
+                android:text="No" />
+
+        </RadioGroup>
+
+    </LinearLayout>
+</LinearLayout>

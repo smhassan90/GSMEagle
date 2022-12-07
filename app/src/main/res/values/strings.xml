@@ -48,4 +48,5 @@
     <string name="TokenRedemption">Token Redemption</string>
     <string name="ReasonForNoSupport">Reason for no support</string>
     <string name="notification">Notification</string>
+    <string name="InitialScreening">Initial Screening</string>
 </resources>

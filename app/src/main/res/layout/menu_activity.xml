@@ -126,7 +126,7 @@
                 android:orientation="horizontal"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:id="@+id/llTokenRedemption">
+                android:id="@+id/llInitialScreening">
                 <LinearLayout
                     android:layout_width="200dp"
                     android:background="@drawable/custom_button"
@@ -140,13 +140,13 @@
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:id="@+id/imgApprovalStatus"
-                        android:src="@drawable/token"
+                        android:src="@drawable/oncology"
                         android:layout_gravity="center"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textAlignment="center"
-                        android:text="@string/TokenRedemption"
+                        android:text="@string/InitialScreening"
                         android:layout_gravity="center"
                         android:layout_marginTop="@dimen/padding_10"
                         style="@style/medium_text_style"/>

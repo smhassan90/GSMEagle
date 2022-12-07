@@ -93,6 +93,15 @@ public class Util {
                         db.getDashboardDAO().nukeTable();
                         db.getDashboardDAO().insert(dataObj.getDashboard());
                     }
+                    if (dataObj.getQuestions() != null) {
+                        db.getQuestionsDAO().nukeTable();
+                        db.getQuestionsDAO().insertMultiple(dataObj.getQuestions());
+                    }
+
+                    if (dataObj.getAreas() != null) {
+                        db.getAreasDAO().nukeTable();
+                        db.getAreasDAO().insertMultiple(dataObj.getAreas());
+                    }
 
                     if (dataObj.getCrForms() != null && dataObj.getCrForms().size()>0) {
                         db.getCrFormDAO().nukeTable();
@@ -336,7 +345,7 @@ public class Util {
 
         long id = 0;
 
-        id = editor.getLong(type,0);
+        id = editor.getLong(type,editor.getLong(Codes.FOLLOWUPFORM,0));
         id++;
         SharedPreferences.Editor edit =editor.edit();
         edit.putLong(type,id);
@@ -374,8 +383,14 @@ public class Util {
             }else if(PSType.equals(Codes.PS_TYPE_Neighbour)){
                 eagleClientToServer.setNeighbourAttendeesForms(db.getNeighbourhoodAttendeesModelDAO().getAll());
                 eagleClientToServer.setNeighbourForms(db.getNeighbourhoodFormDAO().getAll());
+            }else if(PSType.equals(Codes.PS_EAGLE_TYPE_PULL_QUESTIONS_AREAS)) {
+                eagleClientToServer.setNeighbourAttendeesForms(db.getNeighbourhoodAttendeesModelDAO().getAll());
+                eagleClientToServer.setNeighbourForms(db.getNeighbourhoodFormDAO().getAll());
             }else if(PSType.equals(Codes.PS_TYPE_Token)){
                 eagleClientToServer.setTokenForms(db.getTokenModelDAO().getAll());
+            }else if(PSType.equals(Codes.PS_TYPE_SCREENING)){
+                eagleClientToServer.setScreeningAreaDetails(db.getScreeningAreaDetailDAO().getAll());
+                eagleClientToServer.setScreeningFormHeaders(db.getScreeningFormHeaderDAO().getAll());
             }
         } catch (Exception e) {
             Toast.makeText(context, "Something went wrong. Please sync later", Toast.LENGTH_SHORT).show();

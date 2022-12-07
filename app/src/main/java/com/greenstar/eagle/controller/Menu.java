@@ -18,6 +18,7 @@ import com.greenstar.eagle.controller.IPCForms.FollowupForm;
 import com.greenstar.eagle.controller.IPCForms.NeighbourhoodForm;
 import com.greenstar.eagle.controller.IPCForms.Notification;
 import com.greenstar.eagle.controller.IPCForms.TokenForm;
+import com.greenstar.eagle.controller.oncology.InitialScreening;
 import com.greenstar.eagle.db.AppDatabase;
 import com.greenstar.eagle.model.CRForm;
 import com.greenstar.eagle.model.ChildRegistrationForm;
@@ -41,7 +42,7 @@ public class Menu extends AppCompatActivity implements View.OnClickListener, Web
     LinearLayout llFollowupForm;
     LinearLayout llNeighbourForm;
     LinearLayout llTokenForm;
-    LinearLayout llTokenRedemption;
+    LinearLayout llInitialScreening;
 
     ProgressDialog progressBar = null;
     AppDatabase db =null;
@@ -75,8 +76,8 @@ public class Menu extends AppCompatActivity implements View.OnClickListener, Web
         llTokenForm = findViewById(R.id.llTokenForm);
         llTokenForm.setOnClickListener(this);
 
-        llTokenRedemption = findViewById(R.id.llTokenRedemption);
-        llTokenRedemption.setOnClickListener(this);
+        llInitialScreening = findViewById(R.id.llInitialScreening);
+        llInitialScreening.setOnClickListener(this);
 
         syncPendingForms();
     }
@@ -124,6 +125,12 @@ public class Menu extends AppCompatActivity implements View.OnClickListener, Web
                 util.performPSync(this,Codes.PS_TYPE_Followup);
                 return;
             }
+
+            count = db.getScreeningFormHeaderDAO().getAllPendingCount();
+            if(count!=0){
+                util.performPSync(this,Codes.PS_TYPE_SCREENING);
+                return;
+            }
         }
 
     }
@@ -136,8 +143,9 @@ public class Menu extends AppCompatActivity implements View.OnClickListener, Web
         }else if(v.getId()==R.id.llDashboard){
             Intent myIntent = new Intent(this, Notification.class);
             startActivity(myIntent);
-        }else if(v.getId()==R.id.llTokenRedemption){
-            Toast.makeText(this,"Under development",Toast.LENGTH_LONG).show();
+        }else if(v.getId()==R.id.llInitialScreening){
+            Intent myIntent = new Intent(activity, InitialScreening.class);
+            startActivity(myIntent);
         }else if(v.getId()==R.id.llForm){
             Intent myIntent = new Intent(activity, ClientRegistrationForm.class);
             startActivity(myIntent);
@@ -216,7 +224,11 @@ public class Menu extends AppCompatActivity implements View.OnClickListener, Web
             }else if(PSCode.equals(Codes.PS_TYPE_Token)){
                 db.getTokenModelDAO().nukeTable();
 
-            }
+            }else if(PSCode.equals(Codes.PS_TYPE_SCREENING)){
+               db.getScreeningFormHeaderDAO().nukeTable();
+               db.getScreeningAreaDetailDAO().nukeTable();
+
+           }
             Toast.makeText(this,"Auto Sync Successful", Toast.LENGTH_SHORT).show();
         }
     }

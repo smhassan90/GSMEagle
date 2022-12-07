@@ -1,8 +1,10 @@
 package com.greenstar.eagle.dal;
 
+import com.greenstar.eagle.model.Areas;
 import com.greenstar.eagle.model.CRForm;
 import com.greenstar.eagle.model.Dashboard;
 import com.greenstar.eagle.model.DropdownCRBData;
+import com.greenstar.eagle.model.Questions;
 
 import java.io.Serializable;
 import java.util.List;
@@ -19,6 +21,8 @@ public class EagleData implements Serializable {
     private Dashboard dashboard;
 
     List<DropdownCRBData> dropdownCRBData;
+    List<Questions> questions;
+    List<Areas> areas;
     List<CRForm> crForms;
 
     public String getSitaraBajiName() {
@@ -107,5 +111,21 @@ public class EagleData implements Serializable {
 
     public void setCrForms(List<CRForm> crForms) {
         this.crForms = crForms;
+    }
+
+    public List<Questions> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(List<Questions> questions) {
+        this.questions = questions;
+    }
+
+    public List<Areas> getAreas() {
+        return areas;
+    }
+
+    public void setAreas(List<Areas> areas) {
+        this.areas = areas;
     }
 }

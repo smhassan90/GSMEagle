@@ -12,7 +12,7 @@ public class HttpUtils {
     private static AsyncHttpClient client = new AsyncHttpClient();
 
     public static void get(String url, RequestParams params, AsyncHttpResponseHandler responseHandler) {
-        params.put("version","2.2");
+        params.put("version","2.3");
         client.setTimeout(25000);
         client.get(getAbsoluteUrl(url), params, responseHandler);
     }

@@ -77,6 +77,18 @@ public class PartialSync extends AppCompatActivity implements View.OnClickListen
     Button btnPSPullClients;
     TextView tvPSDescriptionPullClients;
 
+    //PS Areas and questions
+    View viewPSPullAreasQuestions;
+    Button btnPSPullAreasQuestions;
+    TextView tvPSPullAreasQuestions;
+
+    //PS Screening forms
+    View viewInitialScreeningForms;
+    Button btnPSInitialScreeningForms;
+    TextView tvPSLastTimeInitialScreeningForms;
+    TextView tvPSDescriptionInitialScreeningForms;
+    TextView tvPendingFormsInitialScreeningForms;
+
     String partialSyncType = "";
 
     SimpleDateFormat formatter= new SimpleDateFormat("dd-MM-yyyy 'at' HH:mm:ss z");
@@ -212,6 +224,38 @@ public class PartialSync extends AppCompatActivity implements View.OnClickListen
             }
         });
         tvPSDescriptionPullClients.setText("Pull all clients");
+
+        //PS ps_pull_areasquestions
+        viewPSPullAreasQuestions= findViewById(R.id.ps_pull_areasquestions);
+        tvPSPullAreasQuestions = viewPSPullAreasQuestions.findViewById(R.id.tvPSDescription);
+        btnPSPullAreasQuestions = viewPSPullAreasQuestions.findViewById(R.id.btnPSync);
+        tvPSPullAreasQuestions = viewPSPullAreasQuestions.findViewById(R.id.tvPSDescription);
+        btnPSPullAreasQuestions.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                partialSyncType = Codes.PS_EAGLE_TYPE_PULL_QUESTIONS_AREAS;
+                callAPI(partialSyncType);
+            }
+        });
+        tvPSPullAreasQuestions.setText("Pull all screening Areas and its Questions");
+
+
+        //PS Initial Screening Forms
+        viewInitialScreeningForms= findViewById(R.id.ps_initial_screening_forms);
+        btnPSInitialScreeningForms = viewInitialScreeningForms.findViewById(R.id.btnPSync);
+        tvPSDescriptionInitialScreeningForms = viewInitialScreeningForms.findViewById(R.id.tvPSDescription);
+        tvPSLastTimeInitialScreeningForms  = viewInitialScreeningForms.findViewById(R.id.lastSyncDateTime);
+        btnPSInitialScreeningForms.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                partialSyncType = Codes.PS_TYPE_SCREENING;
+                callAPI(partialSyncType);
+            }
+        });
+        tvPSDescriptionInitialScreeningForms.setText("Sync Initial Screening Forms");
+        tvPendingFormsInitialScreeningForms = viewInitialScreeningForms.findViewById(R.id.tvPendingForms);
     }
 
     @Override
@@ -304,7 +348,12 @@ public class PartialSync extends AppCompatActivity implements View.OnClickListen
             }else if(PSCode.equals(Codes.PS_TYPE_Token)){
                 db.getTokenModelDAO().nukeTable();
                 editor.putString("lastTimeToken", dateTime);
+            }else if(PSCode.equals(Codes.PS_TYPE_SCREENING)){
+                db.getScreeningAreaDetailDAO().nukeTable();
+                db.getScreeningFormHeaderDAO().nukeTable();
+                editor.putString("lastTimeInitialScreeningForm", dateTime);
             }
+
 
             editor.apply();
             populateLastTime();
@@ -327,6 +376,7 @@ public class PartialSync extends AppCompatActivity implements View.OnClickListen
         String lastTimeFollowup = prefs.getString("lastTimeFollowup", "Never Synced");
         String lastTimeNeighbour = prefs.getString("lastTimeNeighbour", "Never Synced");
         String lastTimeToken = prefs.getString("lastTimeToken", "Never Synced");
+        String lastTimeInitialScreeningForm = prefs.getString("lastTimeInitialScreeningForm", "Never Synced");
 
         tvPSLastTimeBasicInfo.setText("Last Sync:"+lastTimeBasicInfo);
         tvPSLastTimeCRForms.setText("Last Sync:"+lastTimeProviders);
@@ -334,6 +384,7 @@ public class PartialSync extends AppCompatActivity implements View.OnClickListen
         tvPSLastTimeFollowupForms.setText("Last Sync:"+lastTimeFollowup);
         tvPSLastTimeNeighbourForms.setText("Last Sync:"+lastTimeNeighbour);
         tvPSLastTimeTokenForms.setText("Last Sync:"+lastTimeToken);
+        tvPSLastTimeInitialScreeningForms.setText("Last Sync:"+lastTimeInitialScreeningForm);
 
         int count = 0;
         if (db == null) {
@@ -367,6 +418,12 @@ public class PartialSync extends AppCompatActivity implements View.OnClickListen
         tvPendingFormsTokenForms.setText("Pending Forms : "+String.valueOf(count));
         if(count==0){
             btnPSTokenForms.setEnabled(false);
+        }
+
+        count = db.getScreeningFormHeaderDAO().getAllPendingCount();
+        tvPendingFormsInitialScreeningForms.setText("Pending Forms : "+String.valueOf(count));
+        if(count==0){
+            btnPSInitialScreeningForms.setEnabled(false);
         }
 
     }
