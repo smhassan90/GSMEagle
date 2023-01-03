@@ -18,6 +18,7 @@ import com.greenstar.eagle.controller.IPCForms.FollowupForm;
 import com.greenstar.eagle.controller.IPCForms.NeighbourhoodForm;
 import com.greenstar.eagle.controller.IPCForms.Notification;
 import com.greenstar.eagle.controller.IPCForms.TokenForm;
+import com.greenstar.eagle.controller.oncology.AdvanceScreening;
 import com.greenstar.eagle.controller.oncology.InitialScreening;
 import com.greenstar.eagle.db.AppDatabase;
 import com.greenstar.eagle.model.CRForm;
@@ -43,6 +44,7 @@ public class Menu extends AppCompatActivity implements View.OnClickListener, Web
     LinearLayout llNeighbourForm;
     LinearLayout llTokenForm;
     LinearLayout llInitialScreening;
+    LinearLayout llAdvanceScreening;
 
     ProgressDialog progressBar = null;
     AppDatabase db =null;
@@ -78,6 +80,9 @@ public class Menu extends AppCompatActivity implements View.OnClickListener, Web
 
         llInitialScreening = findViewById(R.id.llInitialScreening);
         llInitialScreening.setOnClickListener(this);
+
+        llAdvanceScreening = findViewById(R.id.llAdvanceScreening);
+        llAdvanceScreening.setOnClickListener(this);
 
         syncPendingForms();
     }
@@ -145,6 +150,9 @@ public class Menu extends AppCompatActivity implements View.OnClickListener, Web
             startActivity(myIntent);
         }else if(v.getId()==R.id.llInitialScreening){
             Intent myIntent = new Intent(activity, InitialScreening.class);
+            startActivity(myIntent);
+        }else if(v.getId()==R.id.llAdvanceScreening){
+            Intent myIntent = new Intent(activity, AdvanceScreening.class);
             startActivity(myIntent);
         }else if(v.getId()==R.id.llForm){
             Intent myIntent = new Intent(activity, ClientRegistrationForm.class);

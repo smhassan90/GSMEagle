@@ -13,7 +13,7 @@ public interface QuestionsDAO {
     @Insert
     void insert (Questions questions);
 
-    @Query("SELECT * FROM Questions where status=1 AND areaId=:areaId")
+    @Query("SELECT * FROM Questions where status=1 AND points!=0 AND areaId=:areaId")
     List<Questions> getActiveQuestionsOfArea(int areaId);
 
     @Insert
@@ -27,4 +27,7 @@ public interface QuestionsDAO {
 
     @Query("SELECT count(*) FROM Questions")
     int getCount();
+
+    @Query("SELECT * FROM Questions where status=1 AND points=0 AND areaId=:areaId")
+    List<Questions> getAreaTest(int areaId);
 }

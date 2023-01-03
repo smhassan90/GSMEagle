@@ -17,6 +17,8 @@
     <string name="rejectedForms">Rejected</string>
     <string name="successfulForms">Successful</string>
     <string name="approvalStatus">Approval Status</string>
+    <string name="areaViewRow">areaViewRow</string>
+    <string name="areaViewRowParent">areaViewRowParent</string>
 
     <string name="yes">Yes</string>
     <string name="no">No</string>
@@ -41,6 +43,7 @@
     <string name="SelectClient">SelectClient</string>
     <string name="ReasonForNotVisiting">ReasonForNotVisiting</string>
     <string name="AdoptedMethod" >Adopted Method</string>
+    <string name="areaTestView" >areaTestView</string>
     <string name="SideEffectsOfMethod">SideEffectsOfMethod</string>
     <string name="FollowupForm">5.Followup Form</string>
     <string name="TokenForm">4.Referral Token</string>
@@ -49,4 +52,6 @@
     <string name="ReasonForNoSupport">Reason for no support</string>
     <string name="notification">Notification</string>
     <string name="InitialScreening">Initial Screening</string>
+    <string name="AdvanceScreening">Advance Screening</string>
+    <string name="SelectTest">Select Test</string>
 </resources>

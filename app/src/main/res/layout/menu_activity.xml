@@ -167,6 +167,66 @@
                 android:orientation="horizontal"
                 android:layout_weight="1"
                 android:gravity="center"
+                >
+                <LinearLayout
+                    android:layout_width="200dp"
+                    android:background="@drawable/custom_button"
+                    android:padding="@dimen/padding_10"
+                    android:layout_height="200dp"
+                    android:orientation="vertical"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    >
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:id="@+id/llAdvanceScreening">
+                <LinearLayout
+                    android:layout_width="200dp"
+                    android:background="@drawable/custom_button"
+                    android:padding="@dimen/padding_10"
+                    android:layout_height="200dp"
+                    android:orientation="vertical"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    >
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/oncology"
+                        android:layout_gravity="center"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:text="@string/AdvanceScreening"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/padding_10"
+                        style="@style/medium_text_style"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/orange"
+            android:weightSum="2">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_weight="1"
+                android:gravity="center"
                 android:id="@+id/llNeighbourForm">
                 <LinearLayout
                     android:layout_width="200dp"

@@ -114,74 +114,6 @@ public class Util {
         }
     }
 
-    public void pullMapping(final Context context){
-        SharedPreferences editor = context.getSharedPreferences(Codes.PREF_NAME, Context.MODE_PRIVATE);
-        String code = editor.getString("code","");
-        String token = editor.getString("token","");
-        RequestParams rp = new RequestParams();
-        rp.add("code", code);
-        rp.add("token",token);
-
-        SyncObject syncObject = new SyncObject();
-
-        final String data = new Gson().toJson(syncObject);
-        rp.add("data",data);
-
-        HttpUtils.get("hssync", rp, new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                String message = "";
-                String data = "";
-                String codeReceived = "";
-                String staffName = "";
-                JSONObject params = new JSONObject();
-                List<Integer> successfulIDs = new ArrayList<>();
-                List<Integer> rejectedIDs = new ArrayList<>();
-                try {
-                    message = response.get("message").toString();
-                    codeReceived = response.get("status").toString();
-                    data =  response.get("data").toString();
-                    staffName = response.get("staffName").toString();
-                    params.put("message", message);
-                    params.put("data", data);
-                    params.put("staffName",staffName);
-                    params.put("status",codeReceived);
-
-                    for(int i=0;i<response.getJSONArray("rejectedIDs").length();i++){
-                        rejectedIDs.add(response.getJSONArray("rejectedIDs").getInt(i));
-                    }
-                    for(int i=0;i<response.getJSONArray("successfulIDs").length();i++){
-                        successfulIDs.add(response.getJSONArray("successfulIDs").getInt(i));
-                    }
-                }catch(Exception e){
-                    Toast.makeText(context,"Something went wrong while sync",Toast.LENGTH_SHORT).show();
-
-                }
-                if(Codes.ALL_OK.equals(codeReceived)){
-                    saveData(params, context);
-                }
-                responseListener.responseAlert(response.toString());
-            }
-
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONArray timeline) {
-
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                super.onFailure(statusCode, headers, responseString, throwable);
-                responseListener.responseAlert(Codes.SOMETHINGWENTWRONG);
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                super.onFailure(statusCode, headers, throwable, errorResponse);
-                responseListener.responseAlert(Codes.TIMEOUT);
-            }
-        });
-
-    }
 
     public static String getSingleFormData(Activity context, long formId, String syncType){
         db = AppDatabase.getAppDatabase(context);
@@ -518,4 +450,51 @@ public class Util {
             }
         });
     }
+
+    public void getClients(final Activity context){
+        SharedPreferences editor = context.getSharedPreferences(Codes.PREF_NAME, Context.MODE_PRIVATE);
+        String token = editor.getString("token","");
+        RequestParams rp = new RequestParams();
+        rp.add("token",token);
+
+        HttpUtils.get("getClients", rp, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                String message = "";
+                String codeReceived = "";
+                String data = "";
+                JSONObject params = new JSONObject();
+                try {
+                    message = response.get("message").toString();
+                    codeReceived = response.get("status").toString();
+                    data = response.get("data").toString();
+                }catch(Exception e){
+                    Toast.makeText(context,"Something went wrong while sync",Toast.LENGTH_SHORT).show();
+
+                    codeReceived=Codes.SOMETHINGWENTWRONG;
+                }
+
+                PSResponse.response(codeReceived, codeReceived, data);
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONArray timeline) {
+                PSResponse.response(Codes.SOMETHINGWENTWRONG,"","");
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+                PSResponse.response(Codes.SOMETHINGWENTWRONG,"","");
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                super.onFailure(statusCode, headers, throwable, errorResponse);
+                PSResponse.response(Codes.TIMEOUT,"","");
+            }
+        });
+    }
+
+
 }

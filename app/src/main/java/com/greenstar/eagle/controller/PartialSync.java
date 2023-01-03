@@ -354,7 +354,6 @@ public class PartialSync extends AppCompatActivity implements View.OnClickListen
                 editor.putString("lastTimeInitialScreeningForm", dateTime);
             }
 
-
             editor.apply();
             populateLastTime();
             Toast.makeText(this,"Sync Successful", Toast.LENGTH_SHORT).show();

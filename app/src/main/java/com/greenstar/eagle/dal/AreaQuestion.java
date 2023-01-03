@@ -11,6 +11,7 @@ public class AreaQuestion {
     int areaId;
     String areaName;
     View areaView;
+    View areaTestView;
     Map<RadioButton, Questions> questionRadioButtons;
 
     public int getAreaId() {
@@ -43,5 +44,13 @@ public class AreaQuestion {
 
     public void setQuestionRadioButtons(Map<RadioButton, Questions> questionRadioButtons) {
         this.questionRadioButtons = questionRadioButtons;
+    }
+
+    public View getAreaTestView() {
+        return areaTestView;
+    }
+
+    public void setAreaTestView(View areaTestView) {
+        this.areaTestView = areaTestView;
     }
 }

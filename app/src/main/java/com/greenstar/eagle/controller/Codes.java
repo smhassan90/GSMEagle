@@ -26,6 +26,7 @@ public interface Codes {
     public static final String PS_TYPE_INITIAL_SCREENING_FORMS = "745";
     public static final String PS_EAGLE_TYPE_PULL_QUESTIONS_AREAS = "780";
     public static final String PS_TYPE_Neighbour_attendees = "735";
+    public static final String PS_TYPE_GET_Client = "800";
 
 
     public static final String PullAllEagleData = "PULLEAGLE";
@@ -41,4 +42,6 @@ public interface Codes {
     public static final String INITIALSCREENINGAREA = "INITIALSCREENINGAREA";
 
     final public static String MESSAGE = "No neighbourhood attendee added yet...";
+
+    final public static int testAreaView = 1;
 }

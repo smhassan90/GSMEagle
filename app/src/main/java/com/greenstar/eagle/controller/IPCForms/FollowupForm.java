@@ -329,7 +329,42 @@ public class FollowupForm extends AppCompatActivity implements View.OnClickListe
             View view = spClient.getSelectedView();
             (view).setBackgroundColor(getResources().getColor(R.color.whiteColor));
         }
+/*
+        if(rbSupportSitaraHouseYes.isChecked() && rbSupportProviderYes.isChecked() && spAdoptedMethod.getSelectedItemId()==0){
+            isValid = false;
+            View view = spAdoptedMethod.getSelectedView();
+            (view).setBackgroundColor(getResources().getColor(R.color.darkestOrange));
+        }else{
+            View view = spAdoptedMethod.getSelectedView();
+            (view).setBackgroundColor(getResources().getColor(R.color.whiteColor));
+        }
 
+        if(rbSupportProviderYes.isChecked() && rbSupportProviderYes.isChecked() && spAdoptedMethod.getSelectedItemId()==0){
+            isValid = false;
+            View view = spAdoptedMethod.getSelectedView();
+            (view).setBackgroundColor(getResources().getColor(R.color.darkestOrange));
+        }else{
+            View view = spAdoptedMethod.getSelectedView();
+            (view).setBackgroundColor(getResources().getColor(R.color.whiteColor));
+        }
+        
+*/
+
+        if(spAdoptedMethod.getVisibility()==View.VISIBLE){
+            View view = spAdoptedMethod.getSelectedView();
+            if(spAdoptedMethod.getSelectedItemId()==0){
+
+                if(view!=null){
+                    isValid = false;
+                    (view).setBackgroundColor(getResources().getColor(R.color.darkestOrange));
+                }
+
+            }else{
+                if(view!=null){
+                    (view).setBackgroundColor(getResources().getColor(R.color.whiteColor));
+                }
+            }
+        }
         return isValid;
     }
 

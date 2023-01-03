@@ -62,4 +62,12 @@ public class Questions {
     public void setAreaId(int areaId) {
         this.areaId = areaId;
     }
+    @Override
+    public String toString() {
+        if(detail==null){
+            return this.detail;
+        }else {
+            return this.detail ;
+        }
+    }
 }
