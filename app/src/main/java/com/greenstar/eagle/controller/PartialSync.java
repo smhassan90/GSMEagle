@@ -351,6 +351,7 @@ public class PartialSync extends AppCompatActivity implements View.OnClickListen
             }else if(PSCode.equals(Codes.PS_TYPE_SCREENING)){
                 db.getScreeningAreaDetailDAO().nukeTable();
                 db.getScreeningFormHeaderDAO().nukeTable();
+                db.getScreeningTestDAO().nukeTable();
                 editor.putString("lastTimeInitialScreeningForm", dateTime);
             }
 

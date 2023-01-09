@@ -51,7 +51,8 @@
     <string name="TokenRedemption">Token Redemption</string>
     <string name="ReasonForNoSupport">Reason for no support</string>
     <string name="notification">Notification</string>
-    <string name="InitialScreening">Initial Screening</string>
+    <string name="InitialScreening">Oncology Screening</string>
     <string name="AdvanceScreening">Advance Screening</string>
     <string name="SelectTest">Select Test</string>
+    <string name="areaId">areaId</string>
 </resources>

@@ -30,6 +30,7 @@
                 android:layout_height="@dimen/spinner_height"
                 android:layout_gravity="center_horizontal"
                 style="@style/text_style"
+                android:maxLength="15"
                 android:hint="@string/hintCode"/>
 
             <Button

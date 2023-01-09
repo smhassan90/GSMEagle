@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:text="Yes"
                 style="@style/text_style"
-                android:checked="true" />
+                 />
 
             <RadioButton
                 android:id="@+id/rbAnswerNo"
@@ -46,7 +46,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/text_style"
-                android:text="No" />
+                android:text="No"
+                android:checked="true"/>
 
         </RadioGroup>
 

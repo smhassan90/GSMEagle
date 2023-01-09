@@ -20,8 +20,8 @@ android {
         applicationId "com.greenstar.eagle"
         minSdkVersion 17
         targetSdkVersion 31
-        versionCode 9
-        versionName "2.4"
+        versionCode 10
+        versionName "2.5"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

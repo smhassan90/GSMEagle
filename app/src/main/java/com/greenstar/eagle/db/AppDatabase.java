@@ -22,6 +22,7 @@ import com.greenstar.eagle.dao.ProvidersDAO;
 import com.greenstar.eagle.dao.QuestionsDAO;
 import com.greenstar.eagle.dao.ScreeningAreaDetailDAO;
 import com.greenstar.eagle.dao.ScreeningFormHeaderDAO;
+import com.greenstar.eagle.dao.ScreeningTestDAO;
 import com.greenstar.eagle.dao.TokenModelDAO;
 import com.greenstar.eagle.model.Areas;
 import com.greenstar.eagle.model.CRForm;
@@ -35,14 +36,15 @@ import com.greenstar.eagle.model.Providers;
 import com.greenstar.eagle.model.Questions;
 import com.greenstar.eagle.model.ScreeningAreaDetail;
 import com.greenstar.eagle.model.ScreeningFormHeader;
+import com.greenstar.eagle.model.ScreeningTest;
 import com.greenstar.eagle.model.TokenModel;
 
 import static android.content.Context.MODE_PRIVATE;
 
 @Database(entities = {Providers.class, Dashboard.class,
         DropdownCRBData.class, CRForm.class, ChildRegistrationForm.class, NeighbourhoodFormModel.class, NeighbourhoodAttendeesModel.class,
-        FollowupModel.class, TokenModel.class, Questions.class, Areas.class, ScreeningFormHeader.class, ScreeningAreaDetail.class},
-        version = 4)
+        FollowupModel.class, TokenModel.class, Questions.class, Areas.class, ScreeningFormHeader.class, ScreeningAreaDetail.class, ScreeningTest.class},
+        version = 5)
 public abstract class AppDatabase extends RoomDatabase {
     private static final String DATABASE_NAME = "eagledb";
     private static AppDatabase INSTANCE;
@@ -60,6 +62,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract AreasDAO getAreasDAO();
     public abstract ScreeningFormHeaderDAO getScreeningFormHeaderDAO();
     public abstract ScreeningAreaDetailDAO getScreeningAreaDetailDAO();
+    public abstract ScreeningTestDAO getScreeningTestDAO();
 
     public static AppDatabase getAppDatabase(Context context) {
 
@@ -67,7 +70,7 @@ public abstract class AppDatabase extends RoomDatabase {
             INSTANCE =
                     Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, DATABASE_NAME)
                             .allowMainThreadQueries()
-                            .addMigrations(MIGRATION_2_3,MIGRATION_3_4)
+                            .addMigrations(MIGRATION_2_3,MIGRATION_3_4, MIGRATION_4_5)
                             .build();
         }
         return INSTANCE;
@@ -91,6 +94,17 @@ public abstract class AppDatabase extends RoomDatabase {
             database.execSQL("CREATE TABLE IF NOT EXISTS `Questions` (`id` INTEGER,  'detail' TEXT, 'status' INTEGER, 'type' INTEGER, 'points' INTEGER, 'areaId' INTEGER, PRIMARY KEY(`id`))");
             database.execSQL("CREATE TABLE IF NOT EXISTS `ScreeningAreaDetail` (`id` INTEGER, 'formId' INTEGER, 'areaId' INTEGER, 'totalIndicators' INTEGER, 'totalIndicatorsAchieved' INTEGER, 'totalCriticalIndicators' INTEGER, 'totalCriticalIndicatorsAchieved' INTEGER, 'totalPoints' INTEGER, 'comments' TEXT,  PRIMARY KEY(`id`))");
             database.execSQL("CREATE TABLE IF NOT EXISTS `ScreeningFormHeader` (`id` INTEGER, 'clientId' INTEGER, 'type' INTEGER, 'approvalStatus' INTEGER, 'mobileDate' TEXT, 'remarks' TEXT,  PRIMARY KEY(`id`))");
+
+        }
+    };
+    static final Migration MIGRATION_4_5 = new Migration(4, 5) {
+        @Override
+        public void migrate(SupportSQLiteDatabase database) {
+            database.execSQL("CREATE TABLE IF NOT EXISTS `Areas` (`id` INTEGER, 'detail' TEXT, status INTEGER, type INTEGER, PRIMARY KEY(`id`))");
+            database.execSQL("CREATE TABLE IF NOT EXISTS `Questions` (`id` INTEGER,  'detail' TEXT, 'status' INTEGER, 'type' INTEGER, 'points' INTEGER, 'areaId' INTEGER, PRIMARY KEY(`id`))");
+            database.execSQL("CREATE TABLE IF NOT EXISTS `ScreeningAreaDetail` (`id` INTEGER, 'formId' INTEGER, 'areaId' INTEGER, 'totalIndicators' INTEGER, 'totalIndicatorsAchieved' INTEGER, 'totalCriticalIndicators' INTEGER, 'totalCriticalIndicatorsAchieved' INTEGER, 'totalPoints' INTEGER, 'comments' TEXT, 'finalOutcome' TEXT,'referred' TEXT, PRIMARY KEY(`id`))");
+            database.execSQL("CREATE TABLE IF NOT EXISTS `ScreeningFormHeader` (`id` INTEGER, 'clientId' INTEGER, 'type' INTEGER, 'visitDate' TEXT, 'approvalStatus' INTEGER, 'mobileSystemDate' TEXT, 'remarks' TEXT,  PRIMARY KEY(`id`))");
+            database.execSQL("CREATE TABLE IF NOT EXISTS `ScreeningTest` (`id` INTEGER, 'areaId' INTEGER, 'testId' INTEGER,'formId' INTEGER, 'testOutcome' TEXT, 'referred' TEXT, 'testDetail' TEXT, PRIMARY KEY(`id`))");
 
         }
     };

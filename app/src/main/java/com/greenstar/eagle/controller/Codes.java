@@ -27,6 +27,8 @@ public interface Codes {
     public static final String PS_EAGLE_TYPE_PULL_QUESTIONS_AREAS = "780";
     public static final String PS_TYPE_Neighbour_attendees = "735";
     public static final String PS_TYPE_GET_Client = "800";
+    public static final int CLIENTS_FOR_PROVIDERS = 2;
+    public static final int CLIENTS_FOR_SITARABAJI = 1;
 
 
     public static final String PullAllEagleData = "PULLEAGLE";
@@ -39,6 +41,7 @@ public interface Codes {
     public static final String NEIGHBOURHOODATTENDEESFORM = "NEIGHBOURHOODATTENDEESFORM";
     public static final String FOLLOWUPFORM = "FOLLOWUPFORM";
     public static final String INITIALSCREENINGFORM = "INITIALSCREENINGFORM";
+    public static final String SCREENINGTEST = "SCREENINGTEST";
     public static final String INITIALSCREENINGAREA = "INITIALSCREENINGAREA";
 
     final public static String MESSAGE = "No neighbourhood attendee added yet...";

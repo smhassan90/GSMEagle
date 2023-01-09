@@ -328,12 +328,16 @@ public class InitialScreening extends AppCompatActivity implements View.OnClickL
     }
 
     private void saveForm(){
+        SharedPreferences prefs = this.getSharedPreferences(Codes.PREF_NAME, MODE_PRIVATE);
+        int type = prefs.getInt("type", 0);
+
         CRForm crForm = (CRForm) spClient.getSelectedItem();
 
         String ids = "";
         long formId = Util.getNextID(this,Codes.INITIALSCREENINGFORM);
         ScreeningFormHeader screeningFormHeader = new ScreeningFormHeader();
         screeningFormHeader.setId(formId);
+        screeningFormHeader.setType(type);
         screeningFormHeader.setApprovalStatus(0);
         screeningFormHeader.setMobileSystemDate(Util.sdf.format(Calendar.getInstance().getTime()));
         screeningFormHeader.setVisitDate(etVisitDate.getText().toString());

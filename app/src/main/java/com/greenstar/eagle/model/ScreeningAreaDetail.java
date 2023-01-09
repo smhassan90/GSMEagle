@@ -17,6 +17,8 @@ public class ScreeningAreaDetail {
     private int totalCriticalIndicators;
     private int totalCriticalIndicatorsAchieved;
     private int totalPoints;
+    private String finalOutcome;
+    private String referred;
     private String comments;
 
     public long getId() {
@@ -89,5 +91,21 @@ public class ScreeningAreaDetail {
 
     public void setTotalCriticalIndicatorsAchieved(int totalCriticalIndicatorsAchieved) {
         this.totalCriticalIndicatorsAchieved = totalCriticalIndicatorsAchieved;
+    }
+
+    public String getFinalOutcome() {
+        return finalOutcome;
+    }
+
+    public void setFinalOutcome(String finalOutcome) {
+        this.finalOutcome = finalOutcome;
+    }
+
+    public String getReferred() {
+        return referred;
+    }
+
+    public void setReferred(String referred) {
+        this.referred = referred;
     }
 }

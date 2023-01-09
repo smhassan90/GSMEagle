@@ -6,6 +6,7 @@ import com.greenstar.eagle.model.NeighbourhoodAttendeesModel;
 import com.greenstar.eagle.model.NeighbourhoodFormModel;
 import com.greenstar.eagle.model.ScreeningAreaDetail;
 import com.greenstar.eagle.model.ScreeningFormHeader;
+import com.greenstar.eagle.model.ScreeningTest;
 import com.greenstar.eagle.model.TokenModel;
 
 import java.util.List;
@@ -19,6 +20,7 @@ public class EagleClientToServer {
     List<TokenModel> tokenForms;
     List<ScreeningAreaDetail> screeningAreaDetails;
     List<ScreeningFormHeader> screeningFormHeaders;
+    List<ScreeningTest> screeningTests;
 
     public List<CRForm> getCrForms() {
         return crForms;
@@ -82,5 +84,13 @@ public class EagleClientToServer {
 
     public void setScreeningFormHeaders(List<ScreeningFormHeader> screeningFormHeaders) {
         this.screeningFormHeaders = screeningFormHeaders;
+    }
+
+    public List<ScreeningTest> getScreeningTests() {
+        return screeningTests;
+    }
+
+    public void setScreeningTests(List<ScreeningTest> screeningTests) {
+        this.screeningTests = screeningTests;
     }
 }

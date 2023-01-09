@@ -19,6 +19,7 @@ public class EagleData implements Serializable {
     private String providerCode;
     private String providerName;
     private Dashboard dashboard;
+    private int type;
 
     List<DropdownCRBData> dropdownCRBData;
     List<Questions> questions;
@@ -127,5 +128,13 @@ public class EagleData implements Serializable {
 
     public void setAreas(List<Areas> areas) {
         this.areas = areas;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 }

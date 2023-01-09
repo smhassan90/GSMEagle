@@ -318,6 +318,7 @@
                             android:textStyle="bold"
                             android:textColor="@color/darkGreen"
                             android:layout_weight="5"
+                            android:maxLength="@integer/two_hundred"
                             android:id="@+id/etClientName"/>
                     </TableRow>
                     <TableRow
@@ -349,6 +350,7 @@
                             android:textStyle="bold"
                             android:textColor="@color/darkGreen"
                             android:layout_weight="5"
+                            android:maxLength="@integer/two_hundred"
                             android:id="@+id/etHusbandName"/>
                     </TableRow>
                     <TableRow
@@ -406,6 +408,7 @@ android:id="@+id/tvAddress"
                             android:textStyle="bold"
                             android:textColor="@color/darkGreen"
                             android:layout_weight="5"
+                            android:maxLength="@integer/two_hundred"
                             android:id="@+id/etAddress"/>
                     </TableRow>
                     <TableRow
@@ -446,6 +449,7 @@ android:id="@+id/tvAddress"
                             android:textColor="@color/darkGreen"
                             android:layout_weight="5"
                             android:inputType="number"
+                            android:maxLength="@integer/phone_number"
                             android:id="@+id/etContact"/>
                     </TableRow>
                     <TableRow
@@ -960,6 +964,7 @@ android:id="@+id/tvAddress"
                         style="@style/text_style"
                         android:id="@+id/etPersonalMinutes"
                         android:hint="Personal Minutes"
+                        android:maxLength="@integer/max_text"
                         android:text="">
                     </EditText>
                     <Button

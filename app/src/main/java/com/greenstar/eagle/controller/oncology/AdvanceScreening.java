@@ -8,6 +8,8 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.text.Spanned;
 import android.view.LayoutInflater;
@@ -27,14 +29,17 @@ import android.widget.Toast;
 import com.greenstar.eagle.R;
 import com.greenstar.eagle.adapters.ClientAdapter;
 import com.greenstar.eagle.adapters.TestAdapter;
+import com.greenstar.eagle.adapters.TestSpinnerAdapter;
 import com.greenstar.eagle.controller.Codes;
 import com.greenstar.eagle.dal.AreaQuestion;
+import com.greenstar.eagle.dao.DeleteListener;
 import com.greenstar.eagle.db.AppDatabase;
 import com.greenstar.eagle.model.Areas;
 import com.greenstar.eagle.model.CRForm;
 import com.greenstar.eagle.model.Questions;
 import com.greenstar.eagle.model.ScreeningAreaDetail;
 import com.greenstar.eagle.model.ScreeningFormHeader;
+import com.greenstar.eagle.model.ScreeningTest;
 import com.greenstar.eagle.utils.PartialSyncResponse;
 import com.greenstar.eagle.utils.Util;
 import com.greenstar.eagle.utils.WebserviceResponse;
@@ -46,10 +51,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class AdvanceScreening extends AppCompatActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener, AdapterView.OnItemSelectedListener, PartialSyncResponse, WebserviceResponse {
+public class AdvanceScreening extends AppCompatActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener, AdapterView.OnItemSelectedListener, PartialSyncResponse, WebserviceResponse, DeleteListener {
 
     ProgressDialog progressBar = null;
     LayoutInflater inflater =null;
@@ -57,7 +63,7 @@ public class AdvanceScreening extends AppCompatActivity implements View.OnClickL
     LinearLayout llQuestion = null;
     LinearLayout llQuestionBank = null;
     LinearLayout llAreaTests = null;
-    LinearLayout llTestDetails = null;
+   // LinearLayout llTestDetails = null;
     TextView tvAreaHeading = null;
     TextView tvAreaTestHeading = null;
     TextView tvTotalIndicators = null;
@@ -65,6 +71,7 @@ public class AdvanceScreening extends AppCompatActivity implements View.OnClickL
     TextView tvAreaId = null;
     TextView tvTotalCriticalIndicators = null;
     TextView tvTotalNonCriticalIndicators = null;
+    HashMap<Integer, List<ScreeningTest>> screeningHashMap = new HashMap<>();
 
     /*
     Test details
@@ -74,6 +81,8 @@ public class AdvanceScreening extends AppCompatActivity implements View.OnClickL
     RadioGroup rgOutcomeAnswer;
     RadioGroup rgReferredAnswer;
     Button btnAdd;
+
+    TestAdapter testAdapter = null;
 
     List<AreaQuestion> areaQuestions = new ArrayList<>();
 
@@ -128,6 +137,7 @@ public class AdvanceScreening extends AppCompatActivity implements View.OnClickL
         tvSitarabajiCode.setText(sitarabajiCode);
         tvSitarabajiName.setText(sitarabajiName);
         tvRegion.setText(region);
+
         updateVisitDate();
     }
 
@@ -180,7 +190,7 @@ public class AdvanceScreening extends AppCompatActivity implements View.OnClickL
 
         llQuestionBank = findViewById(R.id.llQuestionBank);
         llAreaTests = findViewById(R.id.llAreaTests);
-        llTestDetails = findViewById(R.id.llTestDetails);
+       // llTestDetails = findViewById(R.id.llTestDetails);
 
         if(llQuestionBank.getChildCount() > 0)
             llQuestionBank.removeAllViews();
@@ -201,7 +211,7 @@ public class AdvanceScreening extends AppCompatActivity implements View.OnClickL
 
         for(Areas area : areas){
 
-            View areaView = inflater.inflate(R.layout.screening_questions_area, null);
+            View areaView = inflater.inflate(R.layout.advance_screening_questions_area, null);
 
             LinearLayout combineAreaQuestion = areaView.findViewById(R.id.llQuestionSeries);
             areaQuestion = new AreaQuestion();
@@ -253,6 +263,8 @@ public class AdvanceScreening extends AppCompatActivity implements View.OnClickL
             calculateArea(areaQuestion);
             llQuestionBank.addView(areaView);
             btnAdd.setTag(R.string.areaTestView, areaView);
+            btnAdd.setTag(R.string.areaId, area.getId());
+            screeningHashMap.put(area.getId(), new ArrayList<ScreeningTest>());
         }
     }
     private void populateTests(int areaId, Spinner spTest){
@@ -278,7 +290,7 @@ public class AdvanceScreening extends AppCompatActivity implements View.OnClickL
             dropdownCRF.add(0,dummy);
         }
 
-        TestAdapter adapter = new TestAdapter(this, R.layout.provider_town_list, R.id.tvProviderNamess, dropdownCRF);
+        TestSpinnerAdapter adapter = new TestSpinnerAdapter(this, R.layout.provider_town_list, R.id.tvProviderNamess, dropdownCRF);
         spTest.setAdapter(adapter);
     }
 
@@ -364,30 +376,42 @@ public class AdvanceScreening extends AppCompatActivity implements View.OnClickL
         }else if(v.getId()==R.id.btnAdd){
 
             View view = (View) v.getTag(R.string.areaTestView);
-            llTestDetails = view.findViewById(R.id.llTestDetails);
-            View testDetails = inflater.inflate(R.layout.layout_test_detail_row, null);
-            RadioGroup rgFinalOutcome = view.findViewById(R.id.rgOutcomeAnswer);
-            RadioGroup rgReferred = view.findViewById(R.id.rgReferredAnswer);
-            RadioButton rbOutcome = view.findViewById(rgFinalOutcome.getCheckedRadioButtonId());
-            RadioButton rbReferred = view.findViewById(rgReferred.getCheckedRadioButtonId());
+            int areaId = (int) v.getTag(R.string.areaId);
+            RecyclerView rvTestDetails = view.findViewById(R.id.rvTestDetails);
+            RadioGroup rgTestOutcome = view.findViewById(R.id.rgTestOutcomeAnswer);
+            RadioButton rbTestOutcome = view.findViewById(rgTestOutcome.getCheckedRadioButtonId());
             Spinner spTest = view.findViewById(R.id.spTest);
             Questions question = (Questions) spTest.getSelectedItem();
             if("Select Test".equals(question.getDetail())){
                 Toast.makeText(this, "Please select test..", Toast.LENGTH_SHORT).show();
             }else {
-                TextView tvTestDetail = testDetails.findViewById(R.id.tvTestDetail);
-                TextView tvFinalOutcome = testDetails.findViewById(R.id.tvFinalOutcome);
-                TextView tvReferredTest = testDetails.findViewById(R.id.tvReferredTest);
-                Button btnDelete = testDetails.findViewById(R.id.btnDelete);
-                btnDelete.setOnClickListener(this);
-                btnDelete.setTag(R.string.areaTestView, testDetails);
+                boolean isContains = false;
+                List<ScreeningTest> screeningTests = screeningHashMap.get(areaId);
+                if(screeningTests!=null && screeningTests.size()>0){
+                    for(ScreeningTest screeningTest : screeningTests){
+                        if(screeningTest.getTestId()==question.getId()){
+                            isContains = true;
+                            break;
+                        }
+                    }
+                }
+                if(isContains){
+                    Toast.makeText(this, "Test already added... ", Toast.LENGTH_LONG ).show();
+                }else{
+                    ScreeningTest screeningTest = new ScreeningTest();
+                    screeningTest.setAreaId(areaId);
+                    screeningTest.setTestDetail(question.getDetail());
+                    screeningTest.setTestId(question.getId());
+                    screeningTest.setTestOutcome(rbTestOutcome.getText().toString());
+                    screeningTests.add(screeningTest);
+                    screeningHashMap.put(areaId, screeningTests);
+                    testAdapter = new TestAdapter(screeningTests, this, rvTestDetails);
+                    rvTestDetails.setLayoutManager(new LinearLayoutManager(this));
+                    rvTestDetails.setAdapter(testAdapter);
 
+                    testAdapter.notifyDataSetChanged();
+                }
 
-                tvTestDetail.setText(question.getDetail());
-                tvFinalOutcome.setText(tvFinalOutcome.getText().toString() + rbOutcome.getText().toString());
-                tvReferredTest.setText(tvReferredTest.getText().toString() + rbReferred.getText().toString());
-                llTestDetails.addView(testDetails);
-                btnDelete.setTag(R.string.areaViewRowParent, llTestDetails);
             }
 
         }else if(v.getId()==R.id.btnDelete){
@@ -409,12 +433,15 @@ public class AdvanceScreening extends AppCompatActivity implements View.OnClickL
     }
 
     private void saveForm(){
+        SharedPreferences prefs = this.getSharedPreferences(Codes.PREF_NAME, MODE_PRIVATE);
+        int type = prefs.getInt("type", 0);
         CRForm crForm = (CRForm) spClient.getSelectedItem();
 
         String ids = "";
         long formId = Util.getNextID(this,Codes.INITIALSCREENINGFORM);
         ScreeningFormHeader screeningFormHeader = new ScreeningFormHeader();
         screeningFormHeader.setId(formId);
+        screeningFormHeader.setType(type);
         screeningFormHeader.setApprovalStatus(0);
         screeningFormHeader.setMobileSystemDate(Util.sdf.format(Calendar.getInstance().getTime()));
         screeningFormHeader.setVisitDate(etVisitDate.getText().toString());
@@ -439,6 +466,10 @@ public class AdvanceScreening extends AppCompatActivity implements View.OnClickL
             EditText etComments = areaView.findViewById(R.id.etComments);
             TextView tvAreaIdInner = areaView.findViewById(R.id.tvAreaId);
             TextView tvTotalPoints = areaView.findViewById(R.id.tvTotalPoints);
+            rgOutcomeAnswer = areaView.findViewById(R.id.rgOutcomeAnswer);
+            rgReferredAnswer = areaView.findViewById(R.id.rgReferredAnswer);
+            RadioButton rbFinalOutcome = areaView.findViewById(rgOutcomeAnswer.getCheckedRadioButtonId());
+            RadioButton rbReferred = areaView.findViewById(rgReferredAnswer.getCheckedRadioButtonId());
 
             int totalIndicators, totalAchievedIndicators;
             String[] totalIndicatorsArr = tvTotalIndicators.getText().toString().split(" / ");
@@ -461,12 +492,29 @@ public class AdvanceScreening extends AppCompatActivity implements View.OnClickL
             areaDetail.setTotalIndicatorsAchieved(totalAchievedIndicators);
             areaDetail.setTotalCriticalIndicators(totalCriticalIndicators);
             areaDetail.setTotalCriticalIndicatorsAchieved(totalCriticalAchievedIndicators);
-
+            areaDetail.setFinalOutcome(rbFinalOutcome.getText().toString());
+            areaDetail.setReferred(rbReferred.getText().toString());
             areaDetail.setComments(etComments.getText().toString());
             areaDetails.add(areaDetail);
             int questionLoop=0;
 
         }
+        List<ScreeningTest> screeningTestsToSave = new ArrayList<>();
+        Iterator iter = screeningHashMap.entrySet().iterator();
+        while (iter.hasNext()) {
+            Map.Entry entry = (Map.Entry) iter.next();
+
+            List<ScreeningTest> screeningTestList = (List<ScreeningTest>) entry.getValue();
+            if(screeningTestList!=null && screeningTestList.size()>0){
+                for(ScreeningTest screeningTest : screeningTestList){
+                    screeningTest.setId(Util.getNextID(this, Codes.SCREENINGTEST));
+                    screeningTest.setFormId(formId);
+                    screeningTestsToSave.add(screeningTest);
+                }
+            }
+        }
+
+        db.getScreeningTestDAO().insertMultiple(screeningTestsToSave);
         db.getScreeningFormHeaderDAO().insert(screeningFormHeader);
         db.getScreeningAreaDetailDAO().insertMultiple(areaDetails);
 
@@ -582,5 +630,21 @@ public class AdvanceScreening extends AppCompatActivity implements View.OnClickL
 
         ClientAdapter clientAdapter = new ClientAdapter(this, R.layout.provider_town_list, R.id.tvProviderNamess, dropdownCRF);
         spClient.setAdapter(clientAdapter);
+    }
+
+    @Override
+    public void delete(int id, int areaId, long testId, RecyclerView rvTestDetails) {
+        List<ScreeningTest> newScreeningTest = new ArrayList<>();
+        List<ScreeningTest> screeningTests =  screeningHashMap.get(areaId);
+        for(ScreeningTest screeningTest : screeningTests){
+            if(screeningTest.getTestId()!=testId){
+                newScreeningTest.add(screeningTest);
+            }
+        }
+        screeningHashMap.put(areaId, newScreeningTest);
+        testAdapter = new TestAdapter(newScreeningTest, this, rvTestDetails);
+        rvTestDetails.setLayoutManager(new LinearLayoutManager(this));
+        rvTestDetails.setAdapter(testAdapter);
+        testAdapter.notifyDataSetChanged();
     }
 }

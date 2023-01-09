@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/lightBlue"
+    android:id="@+id/llAreaQuestion"
+    android:orientation="vertical"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/llArea">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/orange"
+            android:layout_marginTop="@dimen/padding_10">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                style="@style/medium_text_style"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:text="@string/basicInformation"
+                android:gravity="center"
+                android:id="@+id/tvAreaHeading"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/lightBlue"
+        android:layout_marginTop="@dimen/padding_10"
+        android:id="@+id/llQuestionSeries">
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_10"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/medium_text_style"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:text="Total Points : "/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/medium_text_style"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:id="@+id/tvTotalPoints"
+                android:text="0"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/medium_text_style"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:text="Total Indicators : "/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/medium_text_style"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:id="@+id/tvTotalIndicators"
+                android:text=""/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/medium_text_style"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:id="@+id/tvAreaId"
+                android:visibility="gone"
+                android:text="200"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/medium_text_style"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:text="Total Critical Indicators : "/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/medium_text_style"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:id="@+id/tvTotalCriticalIndicators"
+                android:text=""/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/medium_text_style"
+                android:textStyle="bold"
+                android:textColor="@color/darkOrange"
+                android:text="Initial tests if the above risks are High or with at least one symptom with score (2)"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/medium_text_style"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:text="Total non-critical Indicators : "/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/medium_text_style"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:id="@+id/tvTotalNonCriticalIndicators"
+                android:text=""/>
+
+        </LinearLayout>
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/padding_10"
+            android:orientation="vertical"
+            android:id="@+id/rvTestDetails">
+        </android.support.v7.widget.RecyclerView>
+        <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+            android:id="@+id/spTest"
+            android:prompt="@string/SelectParent"
+            android:layout_width="match_parent"
+            style="@style/spinner_style"
+            android:layout_weight="10"
+            android:layout_height="@dimen/spinner_height"
+            android:autofillHints="@string/SelectTest"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:padding="@dimen/padding_10"
+            android:weightSum="10"
+            >
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                style="@style/text_style"
+                android:textColor="@color/black"
+                android:gravity="center_vertical"
+                android:layout_weight="7"
+                android:text="Test Outcome:"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:orientation="vertical" >
+
+                <RadioGroup
+                    android:id="@+id/rgTestOutcomeAnswer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <RadioButton
+                        android:id="@+id/rbTestOutcomeAnswerYes"
+                        android:buttonTint="@color/darkGreen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Positive"
+                        style="@style/text_style"/>
+
+                    <RadioButton
+                        android:id="@+id/rbTestOutcomeAnswerNo"
+                        android:buttonTint="@color/darkGreen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/text_style"
+                        android:text="Negative" />
+                    <RadioButton
+                        android:id="@+id/rbTestOutcomeAnswerNA"
+                        android:buttonTint="@color/darkGreen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/text_style"
+                        android:text="NA"
+                        android:checked="true"/>
+
+                </RadioGroup>
+
+            </LinearLayout>
+        </LinearLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/customborder"
+            android:id="@+id/btnAdd"
+            style="@style/text_style"
+            android:layout_marginTop="5dp"
+            android:text="Add"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:padding="@dimen/padding_10"
+            android:weightSum="10"
+            >
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                style="@style/text_style"
+                android:textColor="@color/black"
+                android:gravity="center_vertical"
+                android:layout_weight="7"
+                android:id="@+id/tvTestName"
+                android:text="Final Outcome:"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:orientation="vertical" >
+
+                <RadioGroup
+                    android:id="@+id/rgOutcomeAnswer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <RadioButton
+                        android:id="@+id/rbOutcomeAnswerYes"
+                        android:buttonTint="@color/darkGreen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Positive"
+                        style="@style/text_style"/>
+
+                    <RadioButton
+                        android:id="@+id/rbOutcomeAnswerNo"
+                        android:buttonTint="@color/darkGreen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/text_style"
+                        android:text="Negative" />
+                    <RadioButton
+                        android:id="@+id/rbOutcomeAnswerNA"
+                        android:buttonTint="@color/darkGreen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/text_style"
+                        android:text="NA"
+                        android:checked="true"/>
+
+                </RadioGroup>
+
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:padding="@dimen/padding_10"
+            android:weightSum="10"
+            >
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                style="@style/text_style"
+                android:textColor="@color/black"
+                android:gravity="center_vertical"
+                android:layout_weight="7"
+                android:text="Referred:"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:orientation="vertical" >
+
+                <RadioGroup
+                    android:id="@+id/rgReferredAnswer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+
+                    <RadioButton
+                        android:id="@+id/rbReferredAnswerYes"
+                        android:buttonTint="@color/darkGreen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Yes"
+                        style="@style/text_style"/>
+
+                    <RadioButton
+                        android:id="@+id/rbReferredAnswerNo"
+                        android:buttonTint="@color/darkGreen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/text_style"
+                        android:text="No" />
+                    <RadioButton
+                        android:id="@+id/rbReferredAnswerNA"
+                        android:buttonTint="@color/darkGreen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/text_style"
+                        android:text="NA"
+                        android:checked="true"/>
+
+                </RadioGroup>
+
+
+            </LinearLayout>
+        </LinearLayout>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:id="@+id/etComments"
+            android:maxLength="@integer/max_text"
+            style="@style/medium_text_style"
+            android:backgroundTint="@android:color/holo_green_light"
+            android:textStyle="bold"
+            android:textColorHint="@color/darkGreen"
+            android:hint="Comments"
+            android:text=""/>
+    </LinearLayout>
+
+</LinearLayout>

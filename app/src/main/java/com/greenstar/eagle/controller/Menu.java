@@ -81,9 +81,6 @@ public class Menu extends AppCompatActivity implements View.OnClickListener, Web
         llInitialScreening = findViewById(R.id.llInitialScreening);
         llInitialScreening.setOnClickListener(this);
 
-        llAdvanceScreening = findViewById(R.id.llAdvanceScreening);
-        llAdvanceScreening.setOnClickListener(this);
-
         syncPendingForms();
     }
 
@@ -149,11 +146,19 @@ public class Menu extends AppCompatActivity implements View.OnClickListener, Web
             Intent myIntent = new Intent(this, Notification.class);
             startActivity(myIntent);
         }else if(v.getId()==R.id.llInitialScreening){
-            Intent myIntent = new Intent(activity, InitialScreening.class);
-            startActivity(myIntent);
-        }else if(v.getId()==R.id.llAdvanceScreening){
-            Intent myIntent = new Intent(activity, AdvanceScreening.class);
-            startActivity(myIntent);
+            SharedPreferences prefs = this.getSharedPreferences(Codes.PREF_NAME, MODE_PRIVATE);
+            int type = prefs.getInt("type", 0);
+            Intent myIntent = null;
+            if(type==Codes.CLIENTS_FOR_PROVIDERS){
+                myIntent=new Intent(activity, AdvanceScreening.class);
+                startActivity(myIntent);
+            }else if(type==Codes.CLIENTS_FOR_SITARABAJI){
+                myIntent=new Intent(activity, InitialScreening.class);
+                startActivity(myIntent);
+            }else{
+                Toast.makeText(this, "Please do Basic sync from Partial Sync and then try again.", Toast.LENGTH_LONG).show();
+            }
+
         }else if(v.getId()==R.id.llForm){
             Intent myIntent = new Intent(activity, ClientRegistrationForm.class);
             startActivity(myIntent);
@@ -235,7 +240,7 @@ public class Menu extends AppCompatActivity implements View.OnClickListener, Web
             }else if(PSCode.equals(Codes.PS_TYPE_SCREENING)){
                db.getScreeningFormHeaderDAO().nukeTable();
                db.getScreeningAreaDetailDAO().nukeTable();
-
+                db.getScreeningTestDAO().nukeTable();
            }
             Toast.makeText(this,"Auto Sync Successful", Toast.LENGTH_SHORT).show();
         }

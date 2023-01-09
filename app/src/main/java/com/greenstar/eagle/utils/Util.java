@@ -81,6 +81,10 @@ public class Util {
                 if(dataObj.getProviderName()!=null && !"".equals(dataObj.getProviderName()))
                     editor.putString("providerName", dataObj.getProviderName());
 
+                if(dataObj.getType()!=0)
+                    editor.putInt("type", dataObj.getType());
+
+
                 editor.apply();
                 try {
                     db = AppDatabase.getAppDatabase(activity);
@@ -323,6 +327,7 @@ public class Util {
             }else if(PSType.equals(Codes.PS_TYPE_SCREENING)){
                 eagleClientToServer.setScreeningAreaDetails(db.getScreeningAreaDetailDAO().getAll());
                 eagleClientToServer.setScreeningFormHeaders(db.getScreeningFormHeaderDAO().getAll());
+                eagleClientToServer.setScreeningTests(db.getScreeningTestDAO().getAll());
             }
         } catch (Exception e) {
             Toast.makeText(context, "Something went wrong. Please sync later", Toast.LENGTH_SHORT).show();

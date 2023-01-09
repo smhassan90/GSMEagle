@@ -33,16 +33,8 @@
             android:textColor="@color/black"
             android:textStyle="bold"
             android:gravity="center_vertical"
-            android:id="@+id/tvFinalOutcome"
-            android:text="Final Outcome : "/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/text_style"
-            android:textColor="@color/black"
-            android:gravity="center_vertical"
-            android:id="@+id/tvReferredTest"
-            android:text="Referred Test : "/>
+            android:id="@+id/tvTestOutcome"
+            android:text="Test Outcome : "/>
 
     </LinearLayout>
 
