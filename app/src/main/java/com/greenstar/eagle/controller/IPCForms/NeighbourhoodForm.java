@@ -246,6 +246,10 @@ public class NeighbourhoodForm extends AppCompatActivity implements View.OnClick
 
     private boolean isValid(){
         boolean isValid=true;
+        if(neighbourhoodAttendeesModels!=null && neighbourhoodAttendeesModels.size()<8){
+            isValid = false;
+            Toast.makeText(this,"Attendees should be at least 8", Toast.LENGTH_LONG).show();
+        }
 
         if("".equals(etCommunityName.getText().toString())){
             tvCommunityName.setTextColor(getResources().getColor(R.color.darkestOrange));

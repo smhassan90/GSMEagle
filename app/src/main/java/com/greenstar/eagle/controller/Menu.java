@@ -44,11 +44,11 @@ public class Menu extends AppCompatActivity implements View.OnClickListener, Web
     LinearLayout llNeighbourForm;
     LinearLayout llTokenForm;
     LinearLayout llInitialScreening;
-    LinearLayout llAdvanceScreening;
 
     ProgressDialog progressBar = null;
     AppDatabase db =null;
     Activity activity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

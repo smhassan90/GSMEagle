@@ -7,12 +7,12 @@ import java.util.UUID;
 
 public class HttpUtils {
     private static final String BASE_URL = "http://203.101.170.211:8081/mis/";
- //   private static final String BASE_URL = "http://172.16.16.196:8080/";
+  //  private static final String BASE_URL = "http://172.16.16.196:8080/";
     //private static final String BASE_URL = "http://192.168.8.110:8080/";
     private static AsyncHttpClient client = new AsyncHttpClient();
 
     public static void get(String url, RequestParams params, AsyncHttpResponseHandler responseHandler) {
-        params.put("version","2.3");
+        params.put("version","3.1");
         client.setTimeout(25000);
         client.get(getAbsoluteUrl(url), params, responseHandler);
     }

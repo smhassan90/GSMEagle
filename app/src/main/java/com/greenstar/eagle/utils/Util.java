@@ -27,7 +27,6 @@ import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
@@ -83,7 +82,6 @@ public class Util {
 
                 if(dataObj.getType()!=0)
                     editor.putInt("type", dataObj.getType());
-
 
                 editor.apply();
                 try {
@@ -316,6 +314,7 @@ public class Util {
                 eagleClientToServer.setChildRegistrationForms(db.getChildRegistrationFormDAO().getAll());
             }else if(PSType.equals(Codes.PS_TYPE_Followup)){
                 eagleClientToServer.setFollowupForms(db.getFollowupModelDAO().getAll());
+                eagleClientToServer.setProductServices(db.getProductServiceDAO().getAllPending());
             }else if(PSType.equals(Codes.PS_TYPE_Neighbour)){
                 eagleClientToServer.setNeighbourAttendeesForms(db.getNeighbourhoodAttendeesModelDAO().getAll());
                 eagleClientToServer.setNeighbourForms(db.getNeighbourhoodFormDAO().getAll());

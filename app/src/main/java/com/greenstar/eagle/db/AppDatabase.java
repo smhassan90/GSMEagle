@@ -18,6 +18,7 @@ import com.greenstar.eagle.dao.DropdownCRBDataDAO;
 import com.greenstar.eagle.dao.FollowupModelDAO;
 import com.greenstar.eagle.dao.NeighbourhoodAttendeesModelDAO;
 import com.greenstar.eagle.dao.NeighbourhoodFormDAO;
+import com.greenstar.eagle.dao.ProductServiceDAO;
 import com.greenstar.eagle.dao.ProvidersDAO;
 import com.greenstar.eagle.dao.QuestionsDAO;
 import com.greenstar.eagle.dao.ScreeningAreaDetailDAO;
@@ -32,6 +33,7 @@ import com.greenstar.eagle.model.Dashboard;
 import com.greenstar.eagle.model.FollowupModel;
 import com.greenstar.eagle.model.NeighbourhoodAttendeesModel;
 import com.greenstar.eagle.model.NeighbourhoodFormModel;
+import com.greenstar.eagle.model.ProductService;
 import com.greenstar.eagle.model.Providers;
 import com.greenstar.eagle.model.Questions;
 import com.greenstar.eagle.model.ScreeningAreaDetail;
@@ -43,8 +45,8 @@ import static android.content.Context.MODE_PRIVATE;
 
 @Database(entities = {Providers.class, Dashboard.class,
         DropdownCRBData.class, CRForm.class, ChildRegistrationForm.class, NeighbourhoodFormModel.class, NeighbourhoodAttendeesModel.class,
-        FollowupModel.class, TokenModel.class, Questions.class, Areas.class, ScreeningFormHeader.class, ScreeningAreaDetail.class, ScreeningTest.class},
-        version = 5)
+        FollowupModel.class, TokenModel.class, Questions.class, Areas.class, ScreeningFormHeader.class, ScreeningAreaDetail.class, ScreeningTest.class, ProductService.class},
+        version = 6)
 public abstract class AppDatabase extends RoomDatabase {
     private static final String DATABASE_NAME = "eagledb";
     private static AppDatabase INSTANCE;
@@ -63,6 +65,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract ScreeningFormHeaderDAO getScreeningFormHeaderDAO();
     public abstract ScreeningAreaDetailDAO getScreeningAreaDetailDAO();
     public abstract ScreeningTestDAO getScreeningTestDAO();
+    public abstract ProductServiceDAO getProductServiceDAO();
 
     public static AppDatabase getAppDatabase(Context context) {
 
@@ -70,7 +73,7 @@ public abstract class AppDatabase extends RoomDatabase {
             INSTANCE =
                     Room.databaseBuilder(context.getApplicationContext(), AppDatabase.class, DATABASE_NAME)
                             .allowMainThreadQueries()
-                            .addMigrations(MIGRATION_2_3,MIGRATION_3_4, MIGRATION_4_5)
+                            .addMigrations(MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5,MIGRATION_5_6)
                             .build();
         }
         return INSTANCE;
@@ -106,6 +109,15 @@ public abstract class AppDatabase extends RoomDatabase {
             database.execSQL("CREATE TABLE IF NOT EXISTS `ScreeningFormHeader` (`id` INTEGER, 'clientId' INTEGER, 'type' INTEGER, 'visitDate' TEXT, 'approvalStatus' INTEGER, 'mobileSystemDate' TEXT, 'remarks' TEXT,  PRIMARY KEY(`id`))");
             database.execSQL("CREATE TABLE IF NOT EXISTS `ScreeningTest` (`id` INTEGER, 'areaId' INTEGER, 'testId' INTEGER,'formId' INTEGER, 'testOutcome' TEXT, 'referred' TEXT, 'testDetail' TEXT, PRIMARY KEY(`id`))");
 
+        }
+    };
+
+    static final Migration MIGRATION_5_6 = new Migration(5, 6) {
+        @Override
+        public void migrate(SupportSQLiteDatabase database) {
+            database.execSQL("CREATE TABLE IF NOT EXISTS `ProductService` (`id` INTEGER  NOT NULL DEFAULT 0, 'text' TEXT, formId INTEGER NOT NULL DEFAULT 0, type INTEGER  NOT NULL DEFAULT 0, price INTEGER  NOT NULL DEFAULT 0, status INTEGER  NOT NULL DEFAULT 0, PRIMARY KEY(`id`))");
+            database.execSQL("ALTER TABLE FollowupModel "
+                    + " ADD COLUMN price INTEGER NOT NULL DEFAULT 0");
         }
     };
 

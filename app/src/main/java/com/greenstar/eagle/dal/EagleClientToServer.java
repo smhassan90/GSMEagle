@@ -1,9 +1,11 @@
 package com.greenstar.eagle.dal;
+import com.greenstar.eagle.controller.IPCForms.FollowupForm;
 import com.greenstar.eagle.model.CRForm;
 import com.greenstar.eagle.model.ChildRegistrationForm;
 import com.greenstar.eagle.model.FollowupModel;
 import com.greenstar.eagle.model.NeighbourhoodAttendeesModel;
 import com.greenstar.eagle.model.NeighbourhoodFormModel;
+import com.greenstar.eagle.model.ProductService;
 import com.greenstar.eagle.model.ScreeningAreaDetail;
 import com.greenstar.eagle.model.ScreeningFormHeader;
 import com.greenstar.eagle.model.ScreeningTest;
@@ -21,6 +23,7 @@ public class EagleClientToServer {
     List<ScreeningAreaDetail> screeningAreaDetails;
     List<ScreeningFormHeader> screeningFormHeaders;
     List<ScreeningTest> screeningTests;
+    List<ProductService> productServices;
 
     public List<CRForm> getCrForms() {
         return crForms;
@@ -92,5 +95,13 @@ public class EagleClientToServer {
 
     public void setScreeningTests(List<ScreeningTest> screeningTests) {
         this.screeningTests = screeningTests;
+    }
+
+    public List<ProductService> getProductServices() {
+        return productServices;
+    }
+
+    public void setProductServices(List<ProductService> productServices) {
+        this.productServices = productServices;
     }
 }

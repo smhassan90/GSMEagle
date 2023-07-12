@@ -17,6 +17,7 @@ public class FollowupModel {
     private String service;
     private String followupDate;
     private String remarks;
+    private int price;
 
     private String latLong;
     private String mobileSystemDate;
@@ -107,5 +108,13 @@ public class FollowupModel {
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 }

@@ -10,12 +10,15 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -27,11 +30,13 @@ import com.greenstar.eagle.R;
 import com.greenstar.eagle.adapters.ClientAdapter;
 import com.greenstar.eagle.adapters.GeneralDropdownAdapter;
 import com.greenstar.eagle.controller.Codes;
+import com.greenstar.eagle.controller.oncology.InitialScreening;
 import com.greenstar.eagle.db.AppDatabase;
 import com.greenstar.eagle.model.CRForm;
 import com.greenstar.eagle.model.ChildRegistrationForm;
 import com.greenstar.eagle.model.DropdownCRBData;
 import com.greenstar.eagle.model.FollowupModel;
+import com.greenstar.eagle.model.ProductService;
 import com.greenstar.eagle.utils.Util;
 
 import java.text.SimpleDateFormat;
@@ -45,9 +50,11 @@ public class FollowupForm extends AppCompatActivity implements View.OnClickListe
 
     TextView tvSitarabajiCode, tvSitarabajiName, tvProviderCode, tvProviderName, tvSupervisorName, tvRegion, tvDistrict;
 
-    EditText etVisitDate, etFollowupDate, etPersonalMinutes;
+    EditText etVisitDate, etFollowupDate, etPersonalMinutes, etTotalPrice;
 
-    Spinner spClient, spAdoptedMethod;
+    Spinner spClient;
+
+    LinearLayout llMethod, llService;
 
     Button btnSubmit;
 
@@ -100,6 +107,8 @@ public class FollowupForm extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initializeVariables(){
+        etTotalPrice = findViewById(R.id.etTotalPrice);
+        etTotalPrice.setOnFocusChangeListener(this);
         //Fixed portion
         tvSitarabajiCode = findViewById(R.id.tvSitarabajiCode);
         tvSitarabajiName = findViewById(R.id.tvSitarabajiName);
@@ -141,7 +150,8 @@ public class FollowupForm extends AppCompatActivity implements View.OnClickListe
         rbSupportSitaraHouseNo = findViewById(R.id.rbSupportCompletedNo);
         rgSupportSitaraHouse.setOnCheckedChangeListener(this);
 
-        spAdoptedMethod = findViewById(R.id.spAdoptedMethod);
+        llMethod = findViewById(R.id.llMethod);
+        llService = findViewById(R.id.llService);
 
         rgTokenGiven = findViewById(R.id.rgTokenGiven);
         rbTokenGivenYes = findViewById(R.id.rbTokenGivenYes);
@@ -149,8 +159,6 @@ public class FollowupForm extends AppCompatActivity implements View.OnClickListe
 
         trFollowupDate = findViewById(R.id.trFollowupDate);
         trFollowupDate.setOnClickListener(this);
-
-
     }
 
     private void clearCheck(RadioGroup radioGroup){
@@ -198,8 +206,32 @@ public class FollowupForm extends AppCompatActivity implements View.OnClickListe
         tvDistrict.setText(district);
 
         populateClientSpinner();
+    }
 
+    private void populateCheckBoxes(String title, String methodType, String serviceType){
+        List<DropdownCRBData> dropdownData = new ArrayList<>();
 
+        LayoutInflater inflater = LayoutInflater.from(FollowupForm.this);
+
+        dropdownData = db.getDropdownCRBDataDAO().getDropdownData(methodType);
+        if(dropdownData!=null && dropdownData.size()>0){
+            for(DropdownCRBData dropdownCRBData : dropdownData){
+                View checkboxView = inflater.inflate(R.layout.layout_checkbox, null);
+                CheckBox checkBox = checkboxView.findViewById(R.id.checkboxId);
+                checkBox.setText(dropdownCRBData.getDetailEnglish());
+                llMethod.addView(checkboxView);
+            }
+        }
+
+        dropdownData = db.getDropdownCRBDataDAO().getDropdownData(serviceType);
+        if(dropdownData!=null && dropdownData.size()>0){
+            for(DropdownCRBData dropdownCRBData : dropdownData){
+                View checkboxView = inflater.inflate(R.layout.layout_checkbox, null);
+                CheckBox checkBox = checkboxView.findViewById(R.id.checkboxId);
+                checkBox.setText(dropdownCRBData.getDetailEnglish());
+                llService.addView(checkboxView);
+            }
+        }
     }
 
     private GeneralDropdownAdapter getGeneralDropdownAdapter(String title, String type) {
@@ -259,9 +291,17 @@ public class FollowupForm extends AppCompatActivity implements View.OnClickListe
     }
 
     public void submitForm(){
+        long formId = Util.getNextID(this,Codes.FOLLOWUPFORM);
         FollowupModel form = new FollowupModel();
+        int price = 0;
+        if("".equals(etTotalPrice.getText().toString())){
+            price = 0;
+        }else{
+            price=Integer.valueOf(etTotalPrice.getText().toString());
+        }
+        form.setPrice(price);
         form.setRemarks(etPersonalMinutes.getText().toString());
-        form.setId(Util.getNextID(this,Codes.FOLLOWUPFORM));
+        form.setId(formId);
         form.setVisitDate(etVisitDate.getText().toString());
 
         CRForm clientForm = (CRForm) spClient.getSelectedItem();
@@ -271,16 +311,44 @@ public class FollowupForm extends AppCompatActivity implements View.OnClickListe
             form.setClientId(0);
         }
 
+        ProductService productService = new ProductService();
+        List<ProductService> productServices = new ArrayList<>();
+        final int childCount = llMethod.getChildCount();
+        final int childCountService = llService.getChildCount();
+        for (int i = 0; i < childCount; i++) {
+            LinearLayout linearLayout = (LinearLayout) llMethod.getChildAt(i);
+            CheckBox checkBox = linearLayout.findViewById(R.id.checkboxId);
+            if(checkBox.isChecked()){
+                productService = new ProductService();
+                productService.setId(Util.getNextID(this,Codes.PRODUCTSERVICE));
+                productService.setFormId(formId);
+                productService.setText(checkBox.getText().toString());
+                productService.setType(Codes.METHOD);
+                productServices.add(productService);
+            }
 
-        DropdownCRBData dropdownCRBData = null;
 
-        dropdownCRBData = new DropdownCRBData();
-        dropdownCRBData = (DropdownCRBData) spAdoptedMethod.getSelectedItem();
-        if(dropdownCRBData!=null){
-            form.setService(dropdownCRBData.getDetailEnglish());
-        }else{
-            form.setService("");
         }
+
+        for (int i = 0; i < childCountService; i++) {
+            LinearLayout linearLayoutService = (LinearLayout) llService.getChildAt(i);
+            CheckBox checkBoxService = linearLayoutService.findViewById(R.id.checkboxId);
+
+            if(checkBoxService.isChecked()){
+                productService = new ProductService();
+                productService.setId(Util.getNextID(this,Codes.PRODUCTSERVICE));
+                productService.setFormId(formId);
+                productService.setText(checkBoxService.getText().toString());
+                productService.setType(Codes.SERVICE);
+                productServices.add(productService);
+            }
+
+
+        }
+        if(productServices!=null && productServices.size()>0){
+           db.getProductServiceDAO().insertMultiple(productServices);
+        }
+
 
         form.setFollowupDate(etFollowupDate.getText().toString());
         if(rbSupportCompletedYes.isChecked()){
@@ -304,6 +372,7 @@ public class FollowupForm extends AppCompatActivity implements View.OnClickListe
         if (location != null) {
             form.setLatLong(location.getLatitude() + "," + location.getLongitude());
         }
+
         form.setMobileSystemDate(Util.sdf.format(Calendar.getInstance().getTime()));
         AppDatabase.getAppDatabase(this).getFollowupModelDAO().insert(form);
 
@@ -320,6 +389,36 @@ public class FollowupForm extends AppCompatActivity implements View.OnClickListe
 
     private boolean isValid(){
         boolean isValid=true;
+        if(rbSupportCompletedYes.isChecked()){
+            boolean isCheckedMethod = false;
+            boolean isCheckedService = false;
+            final int childCount = llMethod.getChildCount();
+            final int childCountService = llService.getChildCount();
+            for (int i = 0; i < childCount; i++) {
+                LinearLayout linearLayout = (LinearLayout) llMethod.getChildAt(i);
+                CheckBox checkBox = linearLayout.findViewById(R.id.checkboxId);
+                if(checkBox.isChecked()){
+                    isCheckedMethod = true;
+                    break;
+                }
+
+
+            }
+
+            for (int i = 0; i < childCountService; i++) {
+                LinearLayout linearLayoutService = (LinearLayout) llService.getChildAt(i);
+                CheckBox checkBoxService = linearLayoutService.findViewById(R.id.checkboxId);
+
+                if(checkBoxService.isChecked()){
+                    isCheckedService = true;
+                    break;
+                }
+            }
+            if(!isCheckedMethod && !isCheckedService){
+                isValid = false;
+            }
+
+        }
 
         if(spClient.getSelectedItemId()==0){
             isValid = false;
@@ -329,42 +428,7 @@ public class FollowupForm extends AppCompatActivity implements View.OnClickListe
             View view = spClient.getSelectedView();
             (view).setBackgroundColor(getResources().getColor(R.color.whiteColor));
         }
-/*
-        if(rbSupportSitaraHouseYes.isChecked() && rbSupportProviderYes.isChecked() && spAdoptedMethod.getSelectedItemId()==0){
-            isValid = false;
-            View view = spAdoptedMethod.getSelectedView();
-            (view).setBackgroundColor(getResources().getColor(R.color.darkestOrange));
-        }else{
-            View view = spAdoptedMethod.getSelectedView();
-            (view).setBackgroundColor(getResources().getColor(R.color.whiteColor));
-        }
 
-        if(rbSupportProviderYes.isChecked() && rbSupportProviderYes.isChecked() && spAdoptedMethod.getSelectedItemId()==0){
-            isValid = false;
-            View view = spAdoptedMethod.getSelectedView();
-            (view).setBackgroundColor(getResources().getColor(R.color.darkestOrange));
-        }else{
-            View view = spAdoptedMethod.getSelectedView();
-            (view).setBackgroundColor(getResources().getColor(R.color.whiteColor));
-        }
-        
-*/
-
-        if(spAdoptedMethod.getVisibility()==View.VISIBLE){
-            View view = spAdoptedMethod.getSelectedView();
-            if(spAdoptedMethod.getSelectedItemId()==0){
-
-                if(view!=null){
-                    isValid = false;
-                    (view).setBackgroundColor(getResources().getColor(R.color.darkestOrange));
-                }
-
-            }else{
-                if(view!=null){
-                    (view).setBackgroundColor(getResources().getColor(R.color.whiteColor));
-                }
-            }
-        }
         return isValid;
     }
 
@@ -506,10 +570,14 @@ public class FollowupForm extends AppCompatActivity implements View.OnClickListe
                 hideAll();
                 clearAll();
                 trSupportCompleted.setVisibility(View.VISIBLE);
+
+
             }else{
                 hideAll();
                 clearAll();
                 trSupportProvider.setVisibility(View.VISIBLE);
+                
+                
             }
         }else if(group.getId()==R.id.rgSupportProvider){
             if(rbSupportProviderYes.isChecked()){
@@ -518,18 +586,26 @@ public class FollowupForm extends AppCompatActivity implements View.OnClickListe
                 trSupportCompleted.setVisibility(View.GONE);
                 clearCheck(rgSupportCompleted);
                 trAdoptedMethod.setVisibility(View.GONE);
+                llMethod.removeAllViews();
+                llService.removeAllViews();
+                
             }
         }else if(group.getId()==R.id.rgSupportCompleted){
             if(rbSupportCompletedYes.isChecked()){
                 trAdoptedMethod.setVisibility(View.VISIBLE);
                 if(rbSupportSitaraHouseYes.isChecked()){
-                    spAdoptedMethod.setAdapter(getGeneralDropdownAdapter("Select Product", "SitaraHouseMethod"));
+                    populateCheckBoxes("Select Product", "SitaraHouseMethod", "SitaraHouseService");
+                  //  spAdoptedMethod.setAdapter(getGeneralDropdownAdapter("Select Product", "SitaraHouseMethod"));
                 }else{
-                    spAdoptedMethod.setAdapter(getGeneralDropdownAdapter("Select Product", "ProviderMethod"));
+                 //   spAdoptedMethod.setAdapter(getGeneralDropdownAdapter("Select Product", "ProviderMethod"));
+                    populateCheckBoxes("Select Product", "ProviderMethod", "ProviderService");
                 }
 
             }else{
                 trAdoptedMethod.setVisibility(View.GONE);
+                etTotalPrice.setText("0");
+                llMethod.removeAllViews();
+                llService.removeAllViews();
             }
         }
 
@@ -538,7 +614,8 @@ public class FollowupForm extends AppCompatActivity implements View.OnClickListe
     private void clearAll() {
         clearCheck(rgSupportCompleted);
         clearCheck(rgSupportProvider);
-
+        llMethod.removeAllViews();
+        llService.removeAllViews();
     }
 
     private void hideAll(){

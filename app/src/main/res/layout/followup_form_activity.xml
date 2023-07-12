@@ -475,17 +475,65 @@ w
                         android:background="@drawable/customborder"
                         android:padding="@dimen/padding_10"
                         android:id="@+id/trAdoptedMethod"
-                        android:visibility="gone"
-                        android:weightSum="10">
-
-                        <Spinner
-                            android:id="@+id/spAdoptedMethod"
-                            android:prompt="@string/currentMethod"
+                        android:visibility="gone">
+                        <LinearLayout
+                            android:layout_height="wrap_content"
                             android:layout_width="match_parent"
-                            style="@style/spinner_style"
-                            android:layout_weight="10"
-                            android:layout_height="@dimen/spinner_height"
-                            android:autofillHints="@string/AdoptedMethod"/>
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+                                android:text="Select Method"/>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:id="@+id/llMethod">
+                            </LinearLayout>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                style="@style/text_style"
+                                android:textColor="@color/black"
+                                android:gravity="center_vertical"
+                                android:text="Select Services"/>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:id="@+id/llService">
+                            </LinearLayout>
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                >
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    style="@style/text_style"
+                                    android:textColor="@color/black"
+                                    android:gravity="center_vertical"
+                                    android:text="Income Earned"/>
+                            </LinearLayout>
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/customborder"
+                                android:padding="@dimen/padding_10"
+                                style="@style/text_style"
+                                android:id="@+id/etTotalPrice"
+                                android:inputType="number"
+                                android:maxLength="5"
+                                android:hint="Total Price"
+                                android:text="0">
+                            </EditText>
+                        </LinearLayout>
+
                     </TableRow>
                     <TableRow
                         android:layout_width="match_parent"

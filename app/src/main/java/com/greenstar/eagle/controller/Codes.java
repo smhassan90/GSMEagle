@@ -23,12 +23,16 @@ public interface Codes {
     public static final String PS_TYPE_Token = "730";
     public static final String PS_PULL_CLIENTS = "735";
     public static final String PS_TYPE_SCREENING = "740";
+    public static final String PS_TYPE_PRODUCTSERVICES = "750";
     public static final String PS_TYPE_INITIAL_SCREENING_FORMS = "745";
     public static final String PS_EAGLE_TYPE_PULL_QUESTIONS_AREAS = "780";
     public static final String PS_TYPE_Neighbour_attendees = "735";
     public static final String PS_TYPE_GET_Client = "800";
     public static final int CLIENTS_FOR_PROVIDERS = 2;
     public static final int CLIENTS_FOR_SITARABAJI = 1;
+
+    public static final int METHOD = 1;
+    public static final int SERVICE = 2;
 
 
     public static final String PullAllEagleData = "PULLEAGLE";
@@ -37,6 +41,7 @@ public interface Codes {
     public static final String CRFORMID = "CRForm";
     public static final String CHILDRENREGISTRATIONFORMID = "CHILDRENREGISTRATIONFORMID";
     public static final String TOKENFORM = "TOKENFORM";
+    public static final String PRODUCTSERVICE = "PRODUCTSERVICE";
     public static final String NEIGHBOURHOODFORM = "NEIGHBOURHOODFORM";
     public static final String NEIGHBOURHOODATTENDEESFORM = "NEIGHBOURHOODATTENDEESFORM";
     public static final String FOLLOWUPFORM = "FOLLOWUPFORM";
